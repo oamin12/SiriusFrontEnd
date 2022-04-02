@@ -1,12 +1,15 @@
 import React from "react";
 import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
+import PostingTweet from "./PostingTweet";
 
-function Home() {
+function Home(props) {
   return (
     <div className="layout">
       <SideBar />
-      <div className="feeder">feeder</div>
+      <div classfName="feeder">
+        <PostingTweet flag={props.flag} />
+      </div>
       <div className="widgets">
         <div className="search">search</div>
         <div className="whatsHappening">what's happening</div>

@@ -8,12 +8,12 @@ import Messages from "./Messages/Messages";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
 import Profile from "./Profile/Profile";
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
       <div className="homeLayout">
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Home flag={props.flag}/>} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
