@@ -12,7 +12,8 @@ import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import PublishIcon from '@mui/icons-material/Publish';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { color, shadows } from "@mui/system";
+import { color, margin, shadows } from "@mui/system";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -22,6 +23,7 @@ function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, re
     const [retweeted, setRetweeted]= useState(false);
     const [bookMarked, setBookMarked]= useState(false);
     const [likesCount,changeLikesCount] = useState(likeCount);
+    const [replieCount,changeRepliesCount] = useState(repliesCount);
     const [retweetsCount,changeRetweetsCount] = useState(retweetCount);
     const [hoverOverReply, setHoverReply] = useState(false);
     const [hoverOverRetweet, setHoverRetweet] = useState(false);
@@ -112,20 +114,23 @@ function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, re
          >
           <div className="post_header" >
             <div className="post_headerText">
-             <Avatar src={avatar}   sx={{ width: 48, height: 48 }}/>
+            <NavLink className="link_text" to="/profile"><Avatar src={avatar} sx={{ width: 48, height: 48 }}/></NavLink>
               <h3 className="userdata">
-                {name}{" "}
+              <NavLink className="link_text" to="/profile">{name}</NavLink>{" "}
                 <span className="post_headerUserName">
                   @
-                  {userName}
+                  <NavLink className="link_text2" to="/profile">{userName}</NavLink>
                 </span>
               </h3>
+
             </div>
-            <div className="post_headerDescription" style={{opacity: hoverOverTweet? "100%": "100%"}}>
+            <div className="post_headerDescription" style={{opacity: hoverOverTweet? "200%": "100%"}}>
             {/* TODO: check opacity */}
+
               <p className="content_style">{content}</p>
             </div>
           </div>
+
           {image?<img src={image} alt=""/>:null }
           <div className="post_footer" style={{opacity: hoverOverTweet? "100%": "100%"}}>
           <span className="buttons_style">

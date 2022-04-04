@@ -6,7 +6,8 @@ function Messages() {
   return (
     <div className="layout">
       <SideBar />
-      <div className="feeder">feeder</div>
+      <div className="feeder">
+      </div>
       <div className="widgets">
         <div className="search">search</div>
         <div className="whatsHappening">what's happening</div>

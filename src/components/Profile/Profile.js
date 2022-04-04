@@ -4,7 +4,8 @@ import ProfileData from "./ProfileData";
 import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
 import Users from "./Users";
-
+import {getTweet} from "../Home/Home.js"
+import Tweets from "../Home/Tweets"
 function createProfileData(User) {
   return (
       <ProfileData
@@ -29,6 +30,7 @@ function Profile() {
       <SideBar />
       <div className="feeder">
       {Users.map(createProfileData)}
+      {Tweets.map(getTweet)}
       </div>
       <div className="widgets">
         <div className="search">search</div>

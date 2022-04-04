@@ -21,6 +21,7 @@
   border-right: 1px solid rgb(245, 248, 250);
   height: auto;
   text-align: left;
+}
 
 .widgets {
   flex: 1.79;

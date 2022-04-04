@@ -2,7 +2,7 @@ import React from "react";
 import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
 import PostingTweet from "./PostingTweet";
-import Tweet from "../Tweet/Tweet";
+import Tweet from "../Tweet/Tweet.jsx";
 import tweets from "./Tweets.js";
 
 function getTweet(tweet)
@@ -45,3 +45,6 @@ function Home(props) {
 }
 
 export default Home;
+export {getTweet};
+
+
