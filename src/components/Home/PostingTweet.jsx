@@ -12,7 +12,7 @@ import Schedule from "./images/schedule.png"
 import Media from"./images/media.png"
 import poll from"./images/poll.png"
 import Happyface from "./images/happyface.png"
-import  Gif from"./images/gif.png"
+import  Gif from "./images/gif.png"
 import Poll from "./Icons/poll/Poll"
 
 

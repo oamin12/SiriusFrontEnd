@@ -1,3 +1,12 @@
+#posting_a_tweet{
+    align-items: flex-start;
+    border-bottom: 1px solid rgb(245, 248, 250) ;
+    padding-bottom: 10px;
+    height: auto;
+    flex: 1;
+    padding: 10px;
+    width: auto; /*mohema awy*/
+}
 
 .ProfilePicture{ 
     position: relative;  
@@ -40,6 +49,7 @@
     font-size:120%;
     color:black;  
     position:sticky;
+    text-align: left;
     margin-left:2.5%;
     margin-top:1.5%;
     

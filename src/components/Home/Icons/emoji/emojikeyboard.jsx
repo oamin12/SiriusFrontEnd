@@ -1,5 +1,5 @@
 import React from "react";
-import happyemoji from "C:/Users/basse/Downloads/Compressed/SiriusFrontEnd-main/src/components/Home/images/happyface.png"
+import happyemoji from "./happyface.png"
 function Emoji()
 {
     return(

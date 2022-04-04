@@ -1,6 +1,6 @@
 import React from "react";
-import Tweet from "C:/Users/basse/Downloads/Compressed/SiriusFrontEnd-main/src/components/Home/images/tweet2.png"
-import Tweetblur from "C:/Users/basse/Downloads/Compressed/SiriusFrontEnd-main/src/components/Home/images/tweet1.png"
+import Tweet from "./tweet2.png"
+import Tweetblur from "./tweet1.png"
 function Inputtext(props)
 {
     let [flag2,setflag2]=React.useState(0); 
