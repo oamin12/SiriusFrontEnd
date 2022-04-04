@@ -1,0 +1,152 @@
+#posting_a_tweet{
+    align-items: flex-start;
+    border-bottom: 1px solid rgb(245, 248, 250) ;
+    padding-bottom: 10px;
+    height: auto;
+    flex: 1;
+    padding: 10px;
+    width: auto; /*mohema awy*/
+}
+
+.ProfilePicture{ 
+    position: relative;  
+    height: 35%;
+    width: 35%;
+    border-radius:70%; 
+    margin-left:2%;
+    margin-top:7%;
+    
+}
+.profile_picture
+{
+    display:flex;
+    justify-content:space-around;
+    margin-left:15%;
+    border-bottom:1px solid rgb(241, 242, 243);
+    margin-left:0%;
+    padding-top: -8%;
+    margin-top:-6%;
+}
+.inputtext
+{
+    width:80%;
+    border:none;
+    outline: none;
+    margin-left:-20%;
+    margin-top:25%;
+    margin-bottom: -12%;
+   
+}
+.inputtext::placeholder
+{
+ font-size:150%;
+
+}
+
+.Heading
+{
+   font-family:Arial, Helvetica, sans-serif;
+    font-size:120%;
+    color:black;  
+    position:sticky;
+    text-align: left;
+    margin-left:2.5%;
+    margin-top:1.5%;
+    
+   
+}
+
+.Media
+{
+    height:42%;
+    width:40%;
+    margin-left:77%;
+}
+.Poll
+{
+
+    height:42%;
+    width:40%;
+    margin-left:77%;
+}
+.Gif
+{
+    height:42%;
+    width:40%;
+    margin-left:77%;
+   
+}
+.Happyface
+{
+    height:43%;
+    width:40%;
+    margin-left:77%;
+    
+}
+.Schedule
+{
+    height:38%;
+    width:38%;
+    margin-left:77%;
+    
+}
+.TweetButton
+{
+    width:17%;
+    height:17%;
+    border:none;
+    margin-left:50%;
+    padding-top:15%;
+    margin-top:10%;
+    margin-bottom:-15%;
+
+}
+.icons
+{
+    display:flex;
+    justify-content:space-around;
+    margin-left:0%;
+    width:25%;
+    margin-top:3%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid rgb(241, 242, 243);
+}
+/*
+.popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+   
+  .box {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+    max-height: 70vh;
+    margin-top: calc(100vh - 85vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+  }
+   
+  .close-icon {
+    content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(15% - 30px);
+    top: calc(100vh - 85vh - 33px);
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
+  }*/
