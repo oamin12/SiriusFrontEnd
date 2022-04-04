@@ -7,7 +7,8 @@ import Notifications from "./Notifications/Notifications";
 import Messages from "./Messages/Messages";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
-import Profile from "./Profile/Profile";
+import Profile from "./Profile/Profile"; 
+
 function App() {
   return (
     <BrowserRouter>
