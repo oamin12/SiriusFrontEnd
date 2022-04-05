@@ -11,7 +11,7 @@ import RepeatIcon from '@mui/icons-material/Repeat';
 import { NavLink } from "react-router-dom";
 
 
-function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, repliesCount, retweetCount })
+function Tweet({avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount })
 {
     const [liked, setLiked]= useState(false);
     const [retweeted, setRetweeted]= useState(false);

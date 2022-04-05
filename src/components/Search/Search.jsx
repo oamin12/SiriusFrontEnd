@@ -8,6 +8,7 @@ import "./Search.css";
 import SearchFilter from "./SearchFilter";
 import { NavLink } from "react-router-dom";
 import SideBar from "../SideBar/SideBar";
+import "../Layout.css";
 
 function createCard(contact) {
   return (
