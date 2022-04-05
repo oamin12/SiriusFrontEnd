@@ -15,7 +15,6 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { color, shadows } from "@mui/system";
 
 
-
 function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, repliesCount, retweetCount })
 {
     const [liked, setLiked]= useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import ProfilePicture from './constants/ProfilePicture';
+import { Avatar}from "@mui/material";
 import Inputtext from "./constants/Inputtext"
 import Heading from "./constants/Heading"
 import IconMedia from "./Icons/media/IconMedia"
@@ -22,7 +22,7 @@ function PostingTweet(props) {
        <Heading></Heading>
 
        <div className="profile_picture">
-          <ProfilePicture classname="ProfilePicture"></ProfilePicture>
+          <Avatar className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
           <Inputtext msg="what's happening?" classname={"TweetButton"} flag2={props.flag}/>
           {props.flag===0 ? <Poll flag={1}/>: <Poll flag={0}/> }
        </div>
