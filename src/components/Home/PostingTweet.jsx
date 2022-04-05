@@ -19,7 +19,6 @@ import Poll from "./Icons/poll/Poll"
 function PostingTweet(props) {
   return (
     <div id="posting_a_tweet" style={{"height":"auto"}}>
-       <Heading></Heading>
 
        <div className="profile_picture">
           <ProfilePicture classname="ProfilePicture"></ProfilePicture>
