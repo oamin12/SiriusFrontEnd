@@ -1,10 +1,6 @@
 import React from "react";
-import Poll from "./Poll";
 import "./poll.css";
 import "../../index.css";
-import Home from "../../Home";
-import Inputtext from "../../constants/Inputtext";
-import PostingTweet from "../../PostingTweet";
 import App from "../../../App";
 import ReactDOM from "react-dom";
 
@@ -13,6 +9,7 @@ function IconPoll(props) {
   function createpoll() { //the function that is responsible to change the flag that will hide the text box and create the poll
     flag1 = 1;   
     setflag1(flag1);
+    console.log("clicked");
   }
   return (
     <div>

@@ -11,8 +11,7 @@ import RepeatIcon from '@mui/icons-material/Repeat';
 import { NavLink } from "react-router-dom";
 
 
-
-function Tweet({avatar, name, userName, content, image,video, likeCount, repliesCount, retweetCount })
+function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, repliesCount, retweetCount })
 {
     const [liked, setLiked]= useState(false);
     const [retweeted, setRetweeted]= useState(false);
@@ -81,11 +80,11 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
     function handleLike(event)
     {
         setLiked(!liked);
-        
+
         if(!liked){
           changeLikesCount(likesCount+1)
         }
-        else{changeLikesCount(likesCount-1)}    
+        else{changeLikesCount(likesCount-1)}
     }
     function handleRetweet()
     {
@@ -93,12 +92,12 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
       if(!retweeted){
         changeRetweetsCount(retweetsCount+1)
       }
-      else{changeRetweetsCount(retweetsCount-1)}  
+      else{changeRetweetsCount(retweetsCount-1)}
 
     }
     function handleReply()
     {
-    
+
     }
 
 
@@ -128,15 +127,15 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
 
           {image?<img src={image} alt=""/>:null }
           {video?<video src={video} alt=""/>:null }
-          
+
           <div className="post_footer" style={{opacity: hoverOverTweet? "100%": "100%"}}>
           <span className="buttons_style">
           {/*REPLY BUTTON*/}
-          <IconButton  
-          onMouseOver={isOverReply} 
-          onMouseOut={isOutReply} 
+          <IconButton
+          onMouseOver={isOverReply}
+          onMouseOut={isOutReply}
           style={{color: hoverOverReply? "#1DA1F2":"gray", backGroundColor: hoverOverReply? "blue":"gray"}}
-          onClick={handleReply} 
+          onClick={handleReply}
           sx={{ width:0.1, height: 0.1 }}>
           <ModeCommentOutlinedIcon />
           </IconButton>
@@ -152,7 +151,7 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
             {retweetsCount}
             {/*LIKE BUTTON*/}
             <IconButton
-            onMouseOver={isOverLike} onMouseOut={isOutLike} 
+            onMouseOver={isOverLike} onMouseOut={isOutLike}
             style={{color: liked||hoverOverLike ? "red" : "gray" }}
             onClick={handleLike}
             sx={{ width:0.1, height: 0.1 }}>
@@ -160,8 +159,8 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
             </IconButton>
             {likesCount}
             {/*BOOKMARK BUTTON*/}
-            <IconButton 
-            onMouseOver={isOverBookMark} onMouseOut={isOutBookMark} 
+            <IconButton
+            onMouseOver={isOverBookMark} onMouseOut={isOutBookMark}
             style={{color: hoverOverBookMark||bookMarked? "#1DA1F2":"gray"}}
             onClick={handleBookmark}
              sx={{ width:0.1, height: 0.1 }}>
@@ -170,7 +169,7 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
           </span>
           </div>
         </div>
-        
+
 );
 
 
@@ -219,10 +218,10 @@ function Tweet({avatar, name, userName, content, image,video, likeCount, replies
           //      {name}{" "}
            //     <span className="post__headerSpecial">
             //     @
-             //    {userName}                 
+             //    {userName}
               //  </span>
            // </h3>
-            
+
        // </div>
    // </div>
 

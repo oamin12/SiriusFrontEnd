@@ -14,7 +14,8 @@ import Pollblur from "../../images/pollblur.png";
 import Add from "../../images/addatreadicon.png";
 import ReactDOM from "react-dom";
 import App from "../../../App";
-import { borderLeft } from "@mui/system";
+import {TextField} from '@mui/material'
+
 
 function Poll(props) {
   let [flag1, setflag1] = React.useState(0);  //those flags used for reseting the textboxes 
@@ -222,11 +223,11 @@ function Poll(props) {
   return (
     <div>
       {props.flag === 1 ? (
-        <div>
+    <div>
           {/* input texts for choices*/}
 
-          <div className="poll_text_boxes">
-            <div className="box">
+      <div >
+          <div className="box">
               <textarea
                 className="Inputbox_for_poll"
                 placeholder="Ask a question..."
@@ -238,24 +239,25 @@ function Poll(props) {
               />
             </div>
             <div className="poll">
-              <div className="choices">
-                <textarea
-                  placeholder="Choice 1"
+            <div className="choices">
+            <TextField
                   className="choice1"
                   name="choice1"
-                  size="20"
-                  value={textc1}
+                  label="Choice 1"
+                  varient="filled"
                   onChange={handlechange}
+                  value={textc1}
+                  multiline="TextareaAutosize" 
                 />
                 <br />
-                {/*<h4 className="header_choices_h2">{value2}/25</h4>*/}
-                <textarea
-                  placeholder="Choice 2"
+                <TextField
                   className="choice2"
-                  onChange={handlechange}
                   name="choice2"
+                  label="Choice 2"
+                  varient="filled"
+                  onChange={handlechange}
                   value={textc2}
-                  size="20"
+                  multiline="TextareaAutosize" 
                 />
                 <br />
 
@@ -265,59 +267,51 @@ function Poll(props) {
                 {flag9 === 1 && (
                   <div>
                     {/* <h4 className="header_choices">{value3}/25</h4>*/}
-                    <textarea
-                      placeholder="Choice 3(Optional)"
-                      className="choice3"
-                      onChange={handlechange}
-                      name="choice3"
-                      value={textc3}
-                      size="20"
-                    />
+                    <TextField
+                  className="choice3"
+                  name="choice3"
+                  label="Choice 3"
+                  varient="filled"
+                  onChange={handlechange}
+                  value={textc3}
+                  multiline="TextareaAutosize" 
+                />
                   </div>
                 )}
 
                 {flag9 === 2 && (
                   <div>
                     {/*<h4 className="header_choices">{value3}/25</h4>*/}
-                    <textarea
-                      placeholder="Choice 3(Optional)"
-                      className="choice3"
-                      name="choice3"
-                      value={textc3}
-                      size="20"
-                      onChange={handlechange}
-                    />
+                    <TextField
+                  className="choice3"
+                  name="choice3"
+                  label="Choice 3"
+                  varient="filled"
+                  onChange={handlechange}
+                  value={textc3}
+                  multiline="TextareaAutosize" 
+                />
                   </div>
                 )}
 
                 {flag9 === 2 && (
-                  <div>
-                    {/* <h4 className="header_choices">{value4}/25</h4>*/}
-                    <textarea
-                      placeholder="Choice 4(Optional)"
-                      className="choice4"
-                      name="choice4"
-                      value={textc4}
-                      size="20"
-                      onChange={handlechange}
-                    />
+                  <div>{/* <h4 className="header_choices">{value4}/25</h4>*/}
+                    <TextField
+                  className="choice4"
+                  name="choice4"
+                  label="Choice 4"
+                  varient="filled"
+                  onChange={handlechange}
+                  value={textc4}
+                  multiline="TextareaAutosize" 
+                />
                   </div>
                 )}
               </div>
-              {/* making a horizontal line after the choices*/}              
-              <hr
-                style={{
-                  width: "1055%",
-                  marginLeft: "-320%",
-                  marginTop: "50%",
-                  borderTop: "solid 1px rgb(203, 208, 211)",
-                  borderBottom: "none",
-                }}
-              />
-            </div>
             {/* drop down menus*/}
+            <h3 className="poll_heading">Poll length </h3>
             <div className="selecting">
-              <h3 className="poll_heading">Poll length </h3>
+             
               <div className="dayscont">
                 <h3 className="days_heading">Days</h3>
                 <select
@@ -438,7 +432,7 @@ function Poll(props) {
               {" "}
               Remove poll{" "}
             </button>
-
+   </div>
             <input
               type="image"
               src={img}
