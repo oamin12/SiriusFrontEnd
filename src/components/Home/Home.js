@@ -2,8 +2,9 @@ import React from "react";
 import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
 import PostingTweet from "./PostingTweet";
-import Tweet from "../Tweet/Tweet";
+import Tweet from "../Tweet/Tweet.jsx";
 import tweets from "./Tweets.js";
+import Heading from "./constants/Heading"
 
 function getTweet(tweet)
 {
@@ -29,6 +30,7 @@ function Home(props) {
     <div className="layout">
       <SideBar />
        <div className="feeder">
+       <Heading/>
        <PostingTweet flag={props.flag} />
        {tweets.map(getTweet)}
         
@@ -45,3 +47,6 @@ function Home(props) {
 }
 
 export default Home;
+export {getTweet};
+
+

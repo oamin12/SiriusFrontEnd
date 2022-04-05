@@ -1,12 +1,12 @@
 import React from "react";
+import "../index.css"
 function Heading()
 {
  return(  
-    <div>
-    <h3 className="Heading">
+    <h2 className="Heading">
         Home
-    </h3>
-    </div>
+    </h2>
+    
  );
 }
 export default Heading;

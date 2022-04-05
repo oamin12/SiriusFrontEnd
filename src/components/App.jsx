@@ -9,6 +9,7 @@ import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
 
 import Profile from "./Profile/Profile";
+import Tweet from "./Tweet/Tweet";
 function App(props) {
   return (
     <BrowserRouter>

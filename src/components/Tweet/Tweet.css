@@ -14,7 +14,7 @@
   }
   .content_style{
     font-family: 'Raleway', sans-serif;
-    padding-left: 40px;
+    padding-left: 50px;
 
     }
   .post_body > img {
@@ -22,7 +22,8 @@
     max-width: 600px;
     width: 80%;
     opacity: 100% !important;
-    margin-left: 10px;
+    margin-left: 50px;
+    
   }
   
   .post_footer {
@@ -32,6 +33,8 @@
     margin-top: 20px;
     flex-direction: row;
     padding-left: 40px;
+    margin-left: 90px;
+
     
   }
   
@@ -39,7 +42,6 @@
     margin-bottom: 10px;
     font-size: 15px;
     text-align: left;
-    padding: 20px;
     max-width: 60ch;
     word-wrap: break-word;
     padding-right: 10px;
@@ -71,6 +73,15 @@
  .buttons_style{
    max-width: 600px;
  }
+.link_text{
+  color: black;
+  width: min-content;
+
+}
+.link_text2{
+  color: gray;
+  width: min-content;
+}
 
 /* .tweet{
     display: flex;
@@ -79,10 +90,7 @@
     padding-bottom: 10px;
 }
 
-.user_data{
-    padding: 20px;
 
-}
 
 .tweetbody > img{
     border-radius: 20px;

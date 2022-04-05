@@ -20,7 +20,6 @@
   .feeder {
     flex: 2;
     border-right: 1px solid rgb(245, 248, 250);
-    padding: 32px;
     text-align: center;
   }
   .widgets {

@@ -5,6 +5,8 @@ import AddLocationOutlinedIcon from '@mui/icons-material/AddLocationOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import "./ProfileData.css";
+import getTweet from "../Home/Home.js"
+import Tweets from "../Home/Tweets"
 
 function ProfileData(props){
     return(
@@ -52,6 +54,7 @@ function ProfileData(props){
                 <Tab label="Media" />
                 <Tab label="Likes" />    
             </Tabs>
+         
 
             </div>
         </container>
