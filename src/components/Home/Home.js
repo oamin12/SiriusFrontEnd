@@ -5,6 +5,7 @@ import PostingTweet from "./PostingTweet";
 import Tweet from "../Tweet/Tweet.jsx";
 import tweets from "./Tweets.js";
 import Heading from "./constants/Heading"
+import { NavLink } from "react-router-dom";
 
 function getTweet(tweet)
 {
@@ -16,6 +17,7 @@ function getTweet(tweet)
     content={tweet.content}
     avatar={tweet.avatar}
     image={tweet.image}
+    video={tweet.video}
     likeCount={tweet.likeCount}
     repliesCount={tweet.repliesCount}
     retweetCount={tweet.retweetCount}
@@ -33,12 +35,11 @@ function Home(props) {
        <Heading/>
        <PostingTweet flag={props.flag} />
        {tweets.map(getTweet)}
-        
       </div> 
       
       
       <div className="widgets">
-        <div className="search">search</div>
+        <NavLink to="/search"><div className="search">search</div></NavLink>
         <div className="whatsHappening">what's happening</div>
         <div className="whoToFollow">who to follow</div>
       </div>

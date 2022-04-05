@@ -2,7 +2,6 @@ import React from "react";
 import "./index.css";
 import ProfilePicture from './constants/ProfilePicture';
 import Inputtext from "./constants/Inputtext"
-import Heading from "./constants/Heading"
 import IconMedia from "./Icons/media/IconMedia"
 import IconPoll from "./Icons/poll/IconPoll"
 import IconGif from "./Icons/gif/IconGif"

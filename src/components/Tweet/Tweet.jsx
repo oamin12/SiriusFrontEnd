@@ -1,23 +1,18 @@
-import { Avatar, Container } from "@mui/material";
+import { Avatar } from "@mui/material";
 import React, {useState} from "react";
 import "./Tweet.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import ModeCommentIcon from '@mui/icons-material/ModeComment';
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
-import PublishIcon from '@mui/icons-material/Publish';
 import RepeatIcon from '@mui/icons-material/Repeat';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { color, margin, shadows } from "@mui/system";
 import { NavLink } from "react-router-dom";
 
 
 
-function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, repliesCount, retweetCount })
+function Tweet({avatar, name, userName, content, image,video, likeCount, repliesCount, retweetCount })
 {
     const [liked, setLiked]= useState(false);
     const [retweeted, setRetweeted]= useState(false);
@@ -132,6 +127,8 @@ function Tweet({avatar, name, userName, timeStamp, content, image, likeCount, re
           </div>
 
           {image?<img src={image} alt=""/>:null }
+          {video?<video src={video} alt=""/>:null }
+          
           <div className="post_footer" style={{opacity: hoverOverTweet? "100%": "100%"}}>
           <span className="buttons_style">
           {/*REPLY BUTTON*/}

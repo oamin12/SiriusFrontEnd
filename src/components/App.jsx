@@ -7,9 +7,8 @@ import Notifications from "./Notifications/Notifications";
 import Messages from "./Messages/Messages";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
-
 import Profile from "./Profile/Profile";
-import Tweet from "./Tweet/Tweet";
+import Search from "./Search/Search"
 function App(props) {
   return (
     <BrowserRouter>
@@ -22,6 +21,7 @@ function App(props) {
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/search" element={<Search/>} />
         </Routes>
       </div>
     </BrowserRouter>

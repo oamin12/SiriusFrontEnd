@@ -5,15 +5,13 @@ import AddLocationOutlinedIcon from '@mui/icons-material/AddLocationOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import "./ProfileData.css";
-import getTweet from "../Home/Home.js"
-import Tweets from "../Home/Tweets"
 
 function ProfileData(props){
     return(
         <container className="profile__data" >
             <div className="profile__head">
 
-                <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: 700, height: 250 }} />
+                <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: 600, height: 250 }} />
                 <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
                 
             </div>  
