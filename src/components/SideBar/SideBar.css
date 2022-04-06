@@ -1,14 +1,24 @@
 * {
   font-family: Helvetica Neue, Arial, sans-serif;
 }
-.sideBar {
-  flex: 0.8;
+
+.sideBarParent {
+  flex: 0.2;
   border-right: 1px solid rgb(245, 248, 250);
-  padding: 20px;
-  padding-left: 60px;
-  padding-top: 12px;
-  display: block;
+  height: auto;
+}
+.sideBar {
+  width: auto;
   position: sticky;
+  padding: 20px;
+  display: block;
+  padding-top: 0;
+  padding-top: 12px;
+  display:flex;
+  flex-direction: column;
+  top: 0;
+  height: 100vh;
+  
 }
 .logo {
   text-decoration: none;
@@ -23,7 +33,7 @@
   height: auto;
   text-align: left;
 }
-.tweetButtonSideBar{
+.tweetButtonSideBar {
   height: auto;
   width: 100%;
   padding: 10px;
@@ -37,7 +47,11 @@
   transition: background-color 0.25s;
 }
 
-.tweetButtonSideBar:hover{
+.tweetButtonSideBar:hover {
   background-color: rgb(40, 151, 219);
 }
-
+@media (max-height: 410px) {
+  .sideBar {
+    overflow-y: scroll
+  }
+} ;
