@@ -1,13 +1,30 @@
-.profile__data {
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  width: auto;
-  max-width: 600px;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
+
+.profile__data {
+    height: auto;
+    max-width: 600px;
+        
+}
+.header {
+
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    font-size:120%;
+    color:black;
+    text-align: left;
+    height: 53px;
+    position: sticky;
+    top: 0;
+    background-color: #F5F8FA;
+    z-index: 100;
+    border: 1px solid white;
+    padding: 15px;
+    opacity: 80%;
 }
 .profile__head {
     height: auto;
+    max-height: 270px;
 
 }
 #profilepic {
@@ -36,8 +53,7 @@
 .more__info {
     display: flex;
     padding-bottom: 10px;
-    /* max-width: 60ch;
-    word-wrap: break-word; */
+  
 }
 
 .User__name {
@@ -58,4 +74,40 @@
     font-weight: 500;
     font-size: 14px;
     color: gray;
+}
+.Edit__profile__btn{
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  border-radius: 300px;
+  width: 112px;
+  height: 36;
+  font-size: 15px;
+  border-style:solid;
+  border-color: gray;
+  background-color: white;
+  margin-top: 12px;
+  text-align: center;
+  cursor: pointer;
+  /* transition: background-color 0.25s; */
+
+}
+
+.edit__btn {
+    position: relative;
+    text-align: right;
+    bottom: 85px;
+    right: 10px;
+}
+
+.ArrowIcon {
+    margin-left: 16px;
+    margin-right: 30px;
+    width: 34px;
+    height: 34px;
+}
+.header > h2 {
+    font-family: 'Raleway', sans-serif;
+    margin-right: 250px;
+    font-size: 20px;
 }

@@ -8,9 +8,12 @@ import Messages from "./Messages/Messages";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
 import Profile from "./Profile/Profile";
-import Search from "./Search/Search"
+import Search from "./Search/Search";
+import Followers from "./Profile/Followers";
+import Followings from "./Profile/ProfileFollowing/Followings";
 import Start  from "./StartupPage/Start";
 // import SignUp from "./StartupPage/SignUp";
+
 function App(props) {
   return (
     <BrowserRouter>
@@ -25,6 +28,11 @@ function App(props) {
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search/>} />
+          <Route path="/profile/with_replies" element={<Profile />} />
+          <Route path="/profile/media" element={<Profile />} />
+          <Route path="/profile/likes" element={<Profile />} />
+          <Route path="/profile/followers" element={<Followers />} />
+          <Route path="/profile/followings" element={<Followings />} />
         </Routes>
       </div>
     </BrowserRouter>
