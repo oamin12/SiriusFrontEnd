@@ -1,17 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-/*Styling Start Page*/
 * {
   font-family: "Lato", sans-serif;
 }
 .rightf1 > .backf1 {
-  height: 740px;
-  width: auto;
-  }
+  height: 700px;
+  width: 1000px;
+}
 .upf1 {
-  display: flex !important;
+  display: flex;
 }
 .h1f1 {
-  font-size: 70px ;
+  font-size: 60px;
   margin-top: 140px;
 }
 .h3f1 {
@@ -20,7 +19,7 @@
 }
 .leftf1 {
   margin-left: 100px;
-  margin-top: -20px;
+  margin-top: -120px;
 }
 .signupgooglef1 {
   margin-bottom: 20px;
@@ -42,7 +41,6 @@
 .signupfacebookf1 {
   margin-bottom: 20px;
   margin-left: 10px;
-  text-decoration: none;
   display: block;
   width: 300px;
   height: 40px;
@@ -56,6 +54,91 @@
   font-size: 15px;
   color: rgb(78, 78, 78);
 }
-.footerf1 {
-  background-color: red;
+.pf1 {
+  width: 60%;
+  text-align: center;
+  border-bottom: 1px solid rgb(240, 240, 240);
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  margin-left: 20px;
+}
+.pf1 > .spf1 {
+  background: #fff;
+  padding: 0 10px;
+}
+.signupf1 {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  display: block;
+  width: 300px;
+  height: 40px;
+  outline: none;
+  font-weight: bold;
+  border: 0;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  color: rgb(78, 78, 78);
+  background: #1da1f2;
+  color: #fff;
+}
+.terms {
+  font-size: 11px;
+  margin-left: 15px;
+  line-height: 13px;
+}
+.tos {
+  text-decoration: none;
+  color: #1da1f2;
+}
+.tos:hover {
+  text-decoration: underline;
+}
+.alreadyf1 {
+  margin-top: 100px;
+  font-size: 20px;
+}
+.loginf1 {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  display: block;
+  width: 300px;
+  height: 40px;
+  background-color: #fff;
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  color: #1da1f2;
+}
+.a1f1 {
+  text-decoration: none;
+  font-size: 14px;
+  color: #536471;
+  margin: 20px 20px;
+}
+.a1f1:hover {
+  text-decoration: underline;
+}
+.copyf1 {
+  margin-top: 5px;
+  color: #536471;
+  text-align: center;
+}
+.signupgooglef1:hover {
+  background: #1f94dd16;
+}
+
+.signupfacebookf1:hover {
+  background: #1f1f1f16;
+}
+.loginf1:hover {
+  background: #1f94dd16;
+}
+.signupf1:hover {
+  background: #1f94dd;
 }

@@ -18,9 +18,7 @@ const Start = () => {
           <p className="pf1">
             <span className="spf1">or</span>
           </p>
-          <a href="#" className="signup">
-            Sign up with phone or email
-          </a>
+          <button className="signupf1">Sign up with phone or email</button>
           <p className="terms">
             By signing up, you agree to the
             <a className="tos" href="#">
@@ -30,15 +28,17 @@ const Start = () => {
             and{" "}
             <a className="tos" href="#">
               {" "}
-              Privacy Policy{" "}
+              Privacy<br></br> Policy{" "}
             </a>
             , including
-            <a href="#"> Cookie Use </a>.
+            <a className="tos" href="#">
+              {" "}
+              Cookie Use{" "}
+            </a>
+            .
           </p>
           <h2 className="alreadyf1">Already have an account?</h2>
-          <a href="#" className="login">
-            Sign in
-          </a>
+          <button className="loginf1">Sign in</button>
         </div>
       </div>
       <div className="footerf1">
@@ -47,52 +47,52 @@ const Start = () => {
             About
           </a>
           <a className="a1f1" href="#">
-            help center
+            Help Center
           </a>
           <a className="a1f1" href="#">
-            terms of service
+            Terms of Service
           </a>
           <a className="a1f1" href="#">
-            privacy policy
+            Privacy Policy
           </a>
           <a className="a1f1" href="#">
-            cookie policy
+            Cookie Policy
           </a>
           <a className="a1f1" href="#">
             Accessibility
           </a>
           <a className="a1f1" href="#">
-            ads info
+            Ads Info
           </a>
           <a className="a1f1" href="#">
-            blog
+            Blog
           </a>
           <a className="a1f1" href="#">
-            status
+            Status
           </a>
           <a className="a1f1" href="#">
-            careers
+            Careers
           </a>
           <a className="a1f1" href="#">
-            brand resources
+            Brand Resources
           </a>
           <a className="a1f1" href="#">
-            advertising
+            Advertising
           </a>
           <a className="a1f1" href="#">
-            marketing
+            Marketing
           </a>
           <a className="a1f1" href="#">
-            twitter for business
+            Twitter for Business
           </a>
           <a className="a1f1" href="#">
-            developers
+            Developers
           </a>
           <a className="a1f1" href="#">
-            directory
+            Directory
           </a>
           <a className="a1f1" href="#">
-            settings
+            Settings
           </a>
         </nav>
         <footer className="copyf1">&copy; 2022 Sirius, Inc.</footer>
