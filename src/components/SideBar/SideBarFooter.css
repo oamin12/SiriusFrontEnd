@@ -1,0 +1,46 @@
+
+
+.avatarButton{
+    background-color: white;
+    border: 0px;
+    border-radius: 300px;
+    transition: background-color 0.25s;
+    width: 100%;
+    cursor: pointer;
+    padding: 10px;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    align-items: center;
+    
+  }
+  .avatarButton:hover{
+    background-color:  rgb(225, 232, 237);
+  }
+  .footer{
+    margin-top: auto;
+    bottom: 0;
+  }
+  .sideBarFooterMenuBar{
+      cursor: pointer;
+      transition: background-color 0.25s;
+  }
+  .sideBarFooterMenuBar:hover{
+    background-color:  rgb(225, 232, 237);
+  }
+  .Popover{
+      width: 10%;
+  }
+  @media (max-width: 640px) {
+    .info {
+      display: none;
+    }
+    .avatarButton {
+      border-radius: 50%;
+      width: 70%;
+      margin-left: 12px;
+    }
+    .moreHorizIcon
+    {
+        display: none;
+    }
+  }

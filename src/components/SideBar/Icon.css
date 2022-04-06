@@ -1,20 +1,15 @@
 .icon {
-  height: auto;
-  width: 100%;
   padding: 10px;
   border-radius: 300px;
   color: black;
-  text-decoration: none;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
   align-items: center;
   cursor: pointer;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
 }
 .icon:hover {
   background-color: rgb(225, 232, 237);
-  font-weight: 900;
+  font-weight: 600;
 }
 
 /*the class for material ui is .MuiSvgIcon-root*/
@@ -24,7 +19,25 @@
 
 .icon > h4 {
   font-weight: 100;
+  
+
 }
 .icon-active > h4 {
   font-weight: 600;
 }
+
+@media (max-width: 640px) {
+  h4 {
+    display: none;
+  }
+  .icon {
+    border-radius: 50%;
+    width: 50px;
+    margin-left: 16px;
+  }
+
+  .icon .MuiSvgIcon-root {
+    margin-left: 2.5px;
+  }
+}
+
