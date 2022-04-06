@@ -1,164 +1,61 @@
- /* Styling Start Page */
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-
-.bodyf1 {
+/*Styling Start Page*/
+* {
   font-family: "Lato", sans-serif;
-  overflow-x: hidden;
-  width: 1200px;
-  margin: auto 20p;
 }
-.contentf1 {
-  transform: translate(6%, 0%);
-}
-.containerf1 {
-  width: 100vw;
-  height: 87vh;
-  display: flex;
-  flex-wrap: wrap;
-}
-.imagef1 {
-  height: 100%;
-  background: url("./Images/whatshappening.png") center center/cover;
-  flex: 0 1 53vw;
-  position: relative;
-}
-.contentf1 {
-  flex: 0 0 47vw;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  padding: 2rem;
-}
-
-.h3f1 {
-  color: #0f1419;
-  font-weight: 900;
-  margin-bottom: -20px;
+.rightf1 > .backf1 {
+  height: 740px;
+  width: auto;
+  }
+.upf1 {
+  display: flex !important;
 }
 .h1f1 {
-  font-size: 80px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-.alreadyf1 {
-  margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 70px ;
+  margin-top: 140px;
 }
 .h3f1 {
-  margin-top: 20px;
-  font-size: 40px;
+  font-size: 45px;
+  margin-top: 40px;
 }
-
-.btnf1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 390px;
-  height: 50px;
-  border-radius: 10vw;
-  font-size: 1rem;
-  text-decoration: none;
-  font-weight: 800;
-}
-
-.btn-signupf1 {
-  background: #1da1f2;
-  color: #fff;
-  transition: all 0.2s ease;
-  margin-bottom: 40px;
-}
-.btn-signupf1:hover {
-  background: #1f94dd;
-  text-decoration: none;
-}
-
-.btn-loginf1 {
-  border: 1px solid #dadada;
-  color: #1da1f2;
-}
-
-.btn-loginf1:hover {
-  background: #1f94dd16;
-  text-decoration: none;
+.leftf1 {
+  margin-left: 100px;
+  margin-top: -20px;
 }
 .signupgooglef1 {
-  border: 1px solid #dadada;
-  color: #0f1419;
   margin-bottom: 20px;
-}
-
-.signupfacebookf1 {
-  border: 1px solid #dadada;
-  color: #0f1419;
-  margin-bottom: 40px;
-}
-.signupgooglef1:hover {
-  background: #1f94dd16;
+  margin-left: 10px;
   text-decoration: none;
-}
-
-.signupfacebookf1:hover {
-  background: #1f94dd16;
-  text-decoration: none;
-}
-.footerf1 {
-  padding: 1rem 2%;
-}
-
-.footerf1 nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.footerf1 nav a,
-.footerf1 nav div {
-  text-decoration: none;
-  font-size: 13px;
-  color: #536471;
-  margin: 0.3rem 1rem;
-  text-transform: capitalize;
-  border-bottom: 1px solid transparent;
+  display: block;
+  width: 300px;
+  height: 40px;
+  background-color: #fff;
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  text-align: center;
   transition: all 0.2s ease;
+  font-size: 15px;
+  color: rgb(78, 78, 78);
 }
-
-.footerf1 nav a:hover {
-  border-bottom: 1px solid #536471;
+.signupfacebookf1 {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  text-decoration: none;
+  display: block;
+  width: 300px;
+  height: 40px;
+  background-color: #fff;
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  color: rgb(78, 78, 78);
 }
-
 .footerf1 {
-  text-decoration: none;
-  font-size: 13px;
-  color: #536471;
-  margin: 0.3rem 0.5rem;
-  text-transform: capitalize;
-  border-bottom: 1px solid transparent;
-  text-align: center;
+  background-color: red;
 }
-.pf1 {
-  width: 100%;
-  text-align: center;
-  border-bottom: 1px solid rgb(240, 240, 240);
-  line-height: 0.1em;
-  margin: 10px 0 20px;
-}
-
-.pf1 span {
-  background: #fff;
-  padding: 0 10px;
-}
-.termsf1 {
-  font-size: 10px;
-  border-bottom: none;
-  margin-bottom: 50px;
-}
-.af1:hover {
-  text-decoration: underline;
-}
-.af1 {
-  color: #1da1f2;
-  text-decoration: none;
-} 
