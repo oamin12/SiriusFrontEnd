@@ -4,15 +4,47 @@ import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import AddLocationOutlinedIcon from '@mui/icons-material/AddLocationOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useState } from "react";
 import "./ProfileData.css";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 function ProfileData(props){
+    const [MediaSelected, setPage] = useState(false);
+    const [hoverOverLike, setHoverLike] = useState(false);
+
+    function handleChange(){
+        setPage(true);
+    }
+
+    function isOverBtn()
+    {
+      setHoverLike(true);
+    }
+    function isOutBtn()
+    {
+      setHoverLike(false);
+    }
+    
     return(
         <container className="profile__data" >
+            <div className="header">
+                <div className="ArrowIcon">
+                <NavLink to="/">
+                    <ArrowBackIcon fontSize="small" />   
+                </NavLink>
+                </div>
+            <h2>{props.name}</h2>
+            </div>
             <div className="profile__head">
 
-                <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: 600, height: 250 }} />
+                <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
                 <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
+                <div className="edit__btn">
+                    <button onMouseOver={isOverBtn} onMouseOut={isOutBtn} style={{backgroundColor: hoverOverLike ? "#F5F8FA" : "white" }} className="Edit__profile__btn" >
+                        <b>Edit profile</b>
+                    </button>
+                </div>
                 
             </div>  
             <div className="profile__body">
@@ -20,39 +52,51 @@ function ProfileData(props){
                     <h3>{props.name}</h3>
                     <p style={{"color":"gray","fontSize":"14px"}}>{props.username}</p>
                 </div>
-                <h4>{props.bio}</h4>
-                {/* <span className="more__info"> <AddLocationOutlinedIcon />{props.location}    {props.website}   {props.bdate}    {props.joineddate}</span> */}
+                <p style={{fontSize:"15px", marginBottom:10}}>{props.bio}</p>
                 <div className="more__info">
                     <div className="location">
-                        <AddLocationOutlinedIcon />
+                        <AddLocationOutlinedIcon style={{marginTop:"-4px"}}/>
                         <p>{props.location}</p>
                     </div>
-                    <div className="location">
-                        <LanguageOutlinedIcon />
+                    <div className="location" style={{marginLeft:"-40px"}}>
+                        <LanguageOutlinedIcon style={{marginTop:"-4px"}} />
                         <p> {props.website}</p>
                     </div>
                     <div className="location">
-                        <CakeOutlinedIcon />
+                        <CakeOutlinedIcon style={{marginTop:"-7px"}}/>
                         <p>{props.bdate}</p>
                     </div>
                     <div className="location">
-                        <CalendarMonthOutlinedIcon />
+                        <CalendarMonthOutlinedIcon style={{marginTop:"-6px"}}/>
                         <p>{props.joineddate}</p>
                     </div>
                 </div>
                 <div className="follow__section">
-                    <span><b>{props.followings}</b> Following &nbsp;</span>
+                    <NavLink to="/profile/Followings"  style={{color:"gray"}}>
+                    <span>
+                        <b>{props.followings} </b> 
+                    Following &nbsp; </span>
+                    </NavLink>
+                    <NavLink to="/profile/Followers"  style={{color:"gray"}}>
                     <span>&nbsp;<b>{props.followers}</b> Followers </span>
+                    </NavLink>
                 </div>
             </div>
             <div className="profile__footer"> 
-            <Tabs variant="fullWidth">
-                <Tab label="Tweets" />
-                <Tab label="Tweets & replies" />
-                <Tab label="Media" />
-                <Tab label="Likes" />    
+            <Tabs textColor="inheret" style={{color:"Black"}} variant="fullWidth">
+                <NavLink to="/profile" style={{color:"Black"}}>
+                <Tab onClick={handleChange} label="Tweets" />
+                </NavLink>
+                <NavLink to="/profile/with_replies" style={{color:"Black",fontSize:"14px"}}>
+                <Tab onClick={handleChange} label="Tweets & replies" style={{padding:"7px 7px 7px 7px"}} />
+                </NavLink>
+                <NavLink  to="/profile/media" style={{color:"Black"}}>
+                <Tab onClick={handleChange} label="Media" />
+                </NavLink>
+                <NavLink to="/profile/likes" style={{color:"Black"}}>
+                <Tab onClick={handleChange} label="Likes" />  
+                </NavLink>  
             </Tabs>
-         
 
             </div>
         </container>

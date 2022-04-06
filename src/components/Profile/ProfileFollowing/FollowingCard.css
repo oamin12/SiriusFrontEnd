@@ -1,0 +1,15 @@
+.Following {
+    height: auto;
+    max-width: 600px;
+}
+.FollowingData{
+    display:flex;
+    flex-direction: column;
+    font-size: 15px;
+  }
+
+  .FollowingCard{
+    display: flex;
+    padding: 15px;
+    height: auto;
+  }
