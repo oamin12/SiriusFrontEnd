@@ -16,7 +16,7 @@ import BookmarkIcon from "@mui/icons-material/Bookmark";
 import TagIcon from "@mui/icons-material/Tag";
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import { Link, NavLink, useLocation } from "react-router-dom";
-
+import SideBarFooter from "./SideBarFooter";
 const iconInfo = [
   {
     id: 0,
@@ -69,6 +69,12 @@ const iconInfo = [
   },
 ];
 
+const accountInfo = {
+  username: "test",
+  name: "testName",
+  picture: "",
+};
+
 function CreateIcons(icons) {
   let location = useLocation();
   if (location.pathname == icons.link) {
@@ -95,12 +101,15 @@ function CreateIcons(icons) {
 
 function SideBar() {
   return (
-    <div className="sideBar">
-      <NavLink to="/">
-        <h1 className="logo">Sirius</h1>
-      </NavLink>
-      {iconInfo.map(CreateIcons)}
-      <button className="tweetButtonSideBar">Tweet</button>
+    <div className="sideBarParent">
+      <div className="sideBar">
+        <NavLink to="/">
+          <h1 className="logo">Sirius</h1>
+        </NavLink>
+        {iconInfo.map(CreateIcons)}
+        <button className="tweetButtonSideBar">Tweet</button>
+        <SideBarFooter username={accountInfo.username} name={accountInfo.name} picture={accountInfo.picture}/>
+      </div>
     </div>
   );
 }

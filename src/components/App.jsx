@@ -11,12 +11,16 @@ import Profile from "./Profile/Profile";
 import Search from "./Search/Search";
 import Followers from "./Profile/Followers";
 import Followings from "./Profile/ProfileFollowing/Followings";
+import Start  from "./StartupPage/Start";
+// import SignUp from "./StartupPage/SignUp";
+
 function App(props) {
   return (
     <BrowserRouter>
       <div className="homeLayout">
         <Routes>
           <Route path="/" exact element={<Home flag={props.flag}/>} />
+          <Route path="/signin" exact element={<Start/>}/>
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />

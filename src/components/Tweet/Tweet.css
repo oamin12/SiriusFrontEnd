@@ -3,7 +3,7 @@
 
  .post_body {
     align-items: flex-start;
-    border-bottom: 1px solid rgb(245, 248, 250) ;
+    border-bottom: 3px solid rgb(245, 248, 250) ;
     padding-bottom: 10px;
     height: auto;
     flex: 1;
@@ -34,8 +34,6 @@
     flex-direction: row;
     padding-left: 40px;
     margin-left: 90px;
-
-    
   }
   
   .post_headerDescription {

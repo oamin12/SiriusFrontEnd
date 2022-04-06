@@ -40,7 +40,7 @@ function Home(props) {
       
       <div className="widgets">
         <NavLink to="/search"><div className="search">search</div></NavLink>
-        <div className="whatsHappening">what's happening</div>
+        <NavLink to="/signin"><div className="whatsHappening">what's happening</div></NavLink>
         <div className="whoToFollow">who to follow</div>
       </div>
     </div>
