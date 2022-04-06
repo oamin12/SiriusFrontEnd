@@ -19,8 +19,9 @@ function App(props) {
     <BrowserRouter>
       <div className="homeLayout">
         <Routes>
-          <Route path="/" exact element={<Home flag={props.flag}/>} />
-          <Route path="/signin" exact element={<Start/>}/>
+          <Route path="/" exact element={<Start/>}/>
+          <Route path="/home" exact element={<Home flag={props.flag}/>} />
+          
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />

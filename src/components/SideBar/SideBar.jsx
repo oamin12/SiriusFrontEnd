@@ -23,7 +23,7 @@ const iconInfo = [
     iconText: "Home",
     iconPicOutlined: HomeOutlinedIcon,
     iconPic: HomeIcon,
-    link: "/",
+    link: "/home",
   },
   {
     id: 1,
@@ -103,7 +103,7 @@ function SideBar() {
   return (
     <div className="sideBarParent">
       <div className="sideBar">
-        <NavLink to="/">
+        <NavLink to="/home">
           <h1 className="logo">Sirius</h1>
         </NavLink>
         {iconInfo.map(CreateIcons)}

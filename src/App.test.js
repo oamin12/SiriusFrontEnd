@@ -6,6 +6,8 @@ import React from "react";
 import Tweet from "./components/Tweet/Tweet";
 import { BrowserRouter as Router } from "react-router-dom";
 import SideBar from "./components/SideBar/SideBar";
+import ReactDOM from 'react-dom';
+
 
 test("when SideBarFooter is popUphandler function is called", () => {
   let handleClick = jest.fn();
@@ -29,3 +31,11 @@ test("renders without crashing", () => {
       </Router>
     );
   });
+
+
+
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<Router><Tweet/></Router>, div);
+});

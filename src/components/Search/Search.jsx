@@ -29,7 +29,7 @@ function SearchPage() {
         <div className="searchPage">
         <div className="searchTop">
         <div className="arrowBack">
-        <NavLink to="../">
+        <NavLink to="/home">
             <ArrowBackIcon fontSize="small" />
         </NavLink>
         </div>

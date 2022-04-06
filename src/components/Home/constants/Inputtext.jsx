@@ -16,7 +16,7 @@ function Inputtext(props)
      
       if(flag2===1)   
       {
-        tweets.unshift({id:4,name:"Omar Amin",userName:"OfficialOamin",content:text,avatar:"",image:"",likeCount:0,repliesCount:0,retweetCount:0})
+        tweets.unshift({id:4,name:"Remonda",userName:"Remonda_95",content:text,avatar:"",image:"",likeCount:0,repliesCount:0,retweetCount:0})
         console.log(tweets)
         text=""
         settext(text);

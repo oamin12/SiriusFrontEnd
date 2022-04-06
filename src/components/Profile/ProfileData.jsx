@@ -30,7 +30,7 @@ function ProfileData(props){
         <container className="profile__data" >
             <div className="header">
                 <div className="ArrowIcon">
-                <NavLink to="/">
+                <NavLink to="/home">
                     <ArrowBackIcon fontSize="small" />   
                 </NavLink>
                 </div>

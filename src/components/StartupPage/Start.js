@@ -1,7 +1,7 @@
 import React from "react";
 import "./stylez.css";
 import background from "./Images/whatshappening.png";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const Start = () => {
   let history = useNavigate();
   return (
@@ -38,7 +38,7 @@ const Start = () => {
             .
           </p>
           <h2 className="alreadyf1">Already have an account?</h2>
-          <button className="loginf1">Sign in</button>
+          <NavLink to = "/home"><button className="loginf1">Sign in</button></NavLink>
         </div>
       </div>
       <div className="footerf1">

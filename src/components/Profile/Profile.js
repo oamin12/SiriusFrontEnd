@@ -5,7 +5,7 @@ import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
 import Users from "./Users";
 import {getTweet} from "../Home/Home.js"
-import tweets from "../Home/Tweets";
+import Hometweets from "../Home/Hometweets.js";
 import TweetReplies from "../Home/TweetReplies";
 import Media from "../Home/Media";
 import { Link, NavLink, useLocation } from "react-router-dom";
@@ -61,11 +61,11 @@ function Profile() {
       
       {
         ProfileSubPage
-        (subpage==1)?tweets.map(getTweet):
+        (subpage==1)?Hometweets.map(getTweet):
         (subpage==2)?TweetReplies.map(getTweet):
         (subpage==3)?Media.map(getTweet):
         (subpage==4)?Likes.map(getTweet):
-        tweets.map(getTweet)
+        Hometweets.map(getTweet)
       }
       </div>
       <div className="widgets">
