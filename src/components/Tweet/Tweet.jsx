@@ -63,7 +63,9 @@ function Tweet({avatar, name, userName, timeStamp, content, image, video, likeCo
       setHoverLike(false);
     }
     //////////////////////
+
     //////////////////////
+
     function isOverTweet()
     {
       setHoverTweet(true);
@@ -80,7 +82,7 @@ function Tweet({avatar, name, userName, timeStamp, content, image, video, likeCo
     function handleLike(event)
     {
         setLiked(!liked);
-
+        
         if(!liked){
           changeLikesCount(likesCount+1)
         }
@@ -151,6 +153,7 @@ function Tweet({avatar, name, userName, timeStamp, content, image, video, likeCo
             {retweetsCount}
             {/*LIKE BUTTON*/}
             <IconButton
+            title="LikeButton"
             onMouseOver={isOverLike} onMouseOut={isOutLike}
             style={{color: liked||hoverOverLike ? "red" : "gray" }}
             onClick={handleLike}

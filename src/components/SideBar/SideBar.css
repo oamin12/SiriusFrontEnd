@@ -9,6 +9,8 @@
   padding-top: 12px;
   display: block;
   position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .logo {
   text-decoration: none;

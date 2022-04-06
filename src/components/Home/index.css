@@ -29,13 +29,14 @@
 }
 .inputtext
 {
-    width:210%;
+    width:190%;
     border:none;
     outline: none;
     margin-left:3%;
     margin-top:32%;
     margin-bottom: -12%;
     font-size: 100%;
+    resize: none;
 
    
 }
@@ -54,8 +55,8 @@
     height: auto;
     position: sticky;
     top: 0;
-    background-color: white;
     z-index: 100;
+    background-color: white;
     border: 1px solid white;
     padding: 15px;
     opacity: 80%;
@@ -104,7 +105,7 @@
     width:35%;
     height:35%;
     border:none;
-    margin-left:170%;
+    margin-left:150%;
     padding-top:12%;
     margin-top:13%;
     margin-bottom:-25%;
