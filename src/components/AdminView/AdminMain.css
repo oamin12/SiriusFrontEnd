@@ -1,0 +1,8 @@
+.AdminMain {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 100%;
+  gap: 20px;
+  height: fit-content;
+}

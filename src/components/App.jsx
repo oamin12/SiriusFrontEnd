@@ -11,7 +11,10 @@ import Profile from "./Profile/Profile";
 import Search from "./Search/Search";
 import Followers from "./Profile/Followers";
 import Followings from "./Profile/ProfileFollowing/Followings";
-import Start  from "./StartupPage/Start";
+import Start from "./StartupPage/Start";
+import AdminView from "./AdminView/AdminView";
+
+import AdminViewUser from "./AdminView/AdminUser";
 // import SignUp from "./StartupPage/SignUp";
 
 function App(props) {
@@ -21,7 +24,8 @@ function App(props) {
         <Routes>
           <Route path="/" exact element={<Start/>}/>
           <Route path="/home" exact element={<Home flag={props.flag}/>} />
-          
+          <Route path="/adminView/dashboard" element={<AdminView />} />
+          <Route path="/adminView/user" element={<AdminViewUser />}/>
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />

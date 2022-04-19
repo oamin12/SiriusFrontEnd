@@ -1,0 +1,44 @@
+.AdminWidgets {
+  display: flex;
+  justify-content: space-between; /*3ashan elicons elly kano foo2*/
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  padding: 10px;
+  border-radius: 12px;
+  height: fit-content;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.right {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rightText {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 14px;
+  /*&.positive{
+      color: red;
+  } made by conditions*/
+}
+.cardHeader{
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(101, 119, 134);
+}
+.cardCounter{
+    font-size: 28px;
+    font-size: 300;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.cardUsers{
+    width: max-content;
+    font-size: 12px;
+    border-bottom: 1px solid rgb(101, 119, 134);
+}

@@ -77,7 +77,7 @@ const accountInfo = {
 
 function CreateIcons(icons) {
   let location = useLocation();
-  if (location.pathname == icons.link) {
+  if (location.pathname.includes(icons.link)) {
     return (
       <Icon
         active

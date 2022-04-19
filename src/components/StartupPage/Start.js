@@ -18,8 +18,10 @@ const Start = () => {
           <p className="pf1">
             <span className="spf1">or</span>
           </p>
+          <NavLink to="/adminView/dashboard">
           <button className="signupf1">Sign up with phone or email</button>
-          <p className="terms">
+          </NavLink>
+            <p className="terms">
             By signing up, you agree to the
             <a className="tos" href="#">
               {" "}

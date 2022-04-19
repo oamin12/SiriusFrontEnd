@@ -1,0 +1,31 @@
+.emptyBookmarksFeeder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: min-content;
+}
+
+.emptyBookmarksImg {
+  width: 336px;
+  height: auto;
+  margin-top: 5%;
+}
+
+.emptyBookmarksHeader {
+  font-weight: bolder;
+  margin-top: 25px;
+}
+.emptyBookmarksFeeder > p {
+  color: rgb(101, 119, 134);
+
+  width: 100%;
+  margin: 10px;
+}
+.adjust{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

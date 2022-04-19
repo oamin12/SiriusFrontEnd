@@ -1,0 +1,41 @@
+.notificationsHeader {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  color: black;
+  text-align: left;
+  height: 53px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid white;
+  opacity: 80%;
+  padding: 0px 15px !important;
+  width: 100%;
+  cursor: pointer;
+}
+.notificationsText {
+  margin-top: 5px;
+}
+.notificationsSettingsButton {
+  width: 40px;
+  height: 70%;
+  margin-top: 5px;
+  background-color: white;
+  border: 0px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.notifLink {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}
+.notificationsSettingsButton:hover {
+  background-color: rgb(225, 232, 237);
+}

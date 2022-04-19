@@ -1,0 +1,103 @@
+.bookmarkHeader {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  color: black;
+  text-align: left;
+  height: 53px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  border: 1px solid white;
+  opacity: 80%;
+  padding: 0px 15px !important;
+  width: 100%;
+  cursor: pointer;
+}
+.headerText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 5px;
+}
+.headerText > h2 {
+  font-size: large;
+}
+.headerText > h3 {
+  font-size: small;
+  font-weight: normal;
+  color: rgb(101, 119, 134);
+}
+.bookmarkMoreButton {
+  width: 40px;
+  height: 70%;
+  margin-top: 5px;
+  background-color: white;
+  border: 0px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.bookmarkMoreButton:hover {
+  background-color: rgb(225, 232, 237);
+}
+.clearButton {
+  background-color: white;
+  border: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  padding: 10px;
+  color: red;
+}
+.clearButton:hover {
+  background-color: rgb(245, 248, 250);
+}
+.modalHeader {
+  margin-bottom: 10px;
+}
+.clearLink {
+  padding: 10px;
+  margin: 20px;
+  border-radius: 300px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background-color: red;
+  font-weight: bold;
+  border: 0px;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+.clearLink:hover {
+  background-color: rgb(206, 0, 0);
+}
+.boxParagraph {
+  color: rgb(101, 119, 134);
+  font-size: small;
+}
+.cancelButton {
+  padding: 10px;
+  border: 1px solid rgb(225, 232, 237);
+  border-radius: 300px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  background-color: white;
+  font-weight: bold;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+}
+.cancelButton:hover{
+    background-color: rgb(225, 232, 237);
+}
