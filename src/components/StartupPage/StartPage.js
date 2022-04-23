@@ -1,9 +1,9 @@
 import React from "react";
-import "./stylez.css";
+import "./Start.css";
 import background from "./Images/whatshappening.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 const Start = () => {
-  let history = useNavigate();
+  let history = useHistory();
   return (
     <div className="Start">
       <div className="upf1">
@@ -18,10 +18,15 @@ const Start = () => {
           <p className="pf1">
             <span className="spf1">or</span>
           </p>
-          <NavLink to="/adminView/dashboard">
-          <button className="signupf1">Sign up with phone or email</button>
-          </NavLink>
-            <p className="terms">
+          <button
+            className="signupf1"
+            onClick={() => {
+              history.push("./signup");
+            }}
+          >
+            Sign up with phone or email
+          </button>
+          <p className="terms">
             By signing up, you agree to the
             <a className="tos" href="#">
               {" "}
@@ -40,7 +45,14 @@ const Start = () => {
             .
           </p>
           <h2 className="alreadyf1">Already have an account?</h2>
-          <NavLink to = "/home"><button className="loginf1">Sign in</button></NavLink>
+          <button
+            className="loginf1"
+            onClick={() => {
+              history.push("./login");
+            }}
+          >
+            Sign in
+          </button>
         </div>
       </div>
       <div className="footerf1">

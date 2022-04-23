@@ -1,0 +1,138 @@
+/*Styling SignUp Page*/
+.backf3 {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 90%;
+}
+.containerf3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 500px;
+  height: 600px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+}
+.h1f3 {
+  font-size: 35px;
+  margin-top: -400px;
+  margin-left: -100px;
+  position: fixed;
+  text-align: center;
+}
+.namef3 {
+  margin-top: -250px;
+  width: 410px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
+}
+.phonef3 {
+  margin-top: -80px;
+  width: 410px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+}
+.closef3 {
+  margin-top: -550px;
+  margin-right: 450px;
+  position: fixed;
+  opacity: 50%;
+}
+.af3 {
+  color: #00acee;
+  text-decoration: none;
+  position: fixed;
+  margin-top: 30px;
+  margin-left: 300px;
+}
+.datef3 {
+  position: fixed;
+  margin-top: 100px;
+  margin-left: -345px;
+}
+.infof3 {
+  position: fixed;
+  margin-top: 170px;
+  margin-left: 10px;
+  margin-right: 20px;
+  font-size: 15px;
+  color: rgba(67, 67, 67, 0.722);
+}
+.nextbtnf3 {
+  width: 400px;
+  height: 50px;
+  background-color: rgb(141, 140, 140);
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  transition: all 0.2s ease;
+  color: #fff;
+  position: fixed;
+  margin-top: 470px;
+}
+
+/*Hovering*/
+.closef3:hover {
+  background-color: rgb(236, 236, 236);
+  border-radius: 50%;
+  border: 1px solid rgb(236, 236, 236);
+}
+.af3:hover {
+  text-decoration: underline;
+}
+.namef3:focus {
+  border: 1px solid #00acee;
+}
+.phonef3:focus {
+  border: 1px solid #00acee;
+}
+/*DropDown*/
+.Dropdown {
+  display: flex;
+  margin-top: 290px;
+  position: fixed;
+}
+select {
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 5px;
+}
+.month {
+  width: 190px;
+  height: 50px;
+}
+.day {
+  width: 80px;
+  height: 50px;
+  margin-left: 15px;
+}
+.year {
+  width: 100px;
+  height: 50px;
+  margin-left: 15px;
+}
+select {
+  cursor: pointer;
+  font-size: 12px;
+  color: rgba(67, 67, 67, 0.722);
+}

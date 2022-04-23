@@ -1,63 +1,65 @@
 import React from "react";
-import "./styles.css";
+import "./SignUp.css";
+import greyback from "./Images/grey.png";
 import { useHistory } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
+import Tooltip from "@mui/material/Tooltip";
 let type = 0;
 const SignUp = () => {
-  const ChangeToEmail = () => {
-    const a = document.getElementById("change");
-    const text = document.querySelector("a");
-    a.placeholder = "Email";
-    text.textContent = "Use phone instead";
-    type = 1;
-  };
-
-  const ChangeToPhone = () => {
-    const a = document.getElementById("change");
-    const text = document.querySelector("a");
-    a.placeholder = "Phone";
-    text.textContent = "Use email instead";
-    type = 0;
-  };
-
+  let history = useHistory();
+  let month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return (
-    <body>
-      <div className="container">
-        <header>
-          <h1>Create your account</h1>
-        </header>
-        <form>
-          <input type="text" placeholder="Name" maxlength="50" />
-          <input id="change" type="text" placeholder="Phone" />
-        </form>
-        <a
-          className="a"
-          onClick={() => {
-            type == 0 ? ChangeToEmail() : ChangeToPhone();
-          }}
-        >
-          Use email instead
-        </a>
-        <h4>Date of birth</h4>
-        <p>
+    <div className="SignUp">
+      <img className="backf3" src={greyback} />
+      <div className="containerf3">
+        <Tooltip title="Close">
+          <CloseIcon
+            className="closef3"
+            onClick={() => {
+              history.push("./");
+            }}
+          />
+        </Tooltip>
+        <h1 className="h1f3">Create your account</h1>
+        <input
+          className="namef3"
+          type="text"
+          placeholder="Name"
+          maxlength="50"
+        />
+        <input
+          className="phonef3"
+          id="change"
+          type="text"
+          placeholder="Phone"
+        />
+        <h4 className="datef3">Date of birth</h4>
+        <p className="infof3">
           This will not be shown publicly. Confirm your own age, even if this
+          <br />
           account is for a business, a pet, or something else.
         </p>
-        <form>
-          <div className="Dropdown">
-            <select className="month">
-              <option value="Month">Month</option>
-            </select>
-            <select className="day">
-              <option value="Day">Day</option>
-            </select>
-            <select className="year">
-              <option value="Year">Year</option>
-            </select>
-          </div>
-        </form>
-        <button className="next-btn">Next</button>
+        <div className="Dropdown">
+          <select className="month"></select>
+          <select className="day"></select>
+          <select className="year"></select>
+        </div>
+        <button className="nextbtnf3">Next</button>
       </div>
-    </body>
+    </div>
   );
 };
 
