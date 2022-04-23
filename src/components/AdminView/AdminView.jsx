@@ -24,7 +24,6 @@ function AdminView() {
         </div>
         <SideBarAdmin />
           </div>
-          
       <AdminMain />
     </div>
   );
