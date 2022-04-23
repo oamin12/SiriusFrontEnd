@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import greyback from "./Images/grey.png";
 import "./Login.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "react-icons-kit";
@@ -13,7 +13,7 @@ const LoginForm = ({ Login, error }) => {
     e.preventDefault();
     Login(details);
   };
-  let history = useHistory();
+  let history = useNavigate();
 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eye);

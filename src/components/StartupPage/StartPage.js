@@ -1,9 +1,9 @@
 import React from "react";
 import "./Start.css";
 import background from "./Images/whatshappening.png";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Start = () => {
-  let history = useHistory();
+  let history = useNavigate();
   return (
     <div className="Start">
       <div className="upf1">

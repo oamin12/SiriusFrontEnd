@@ -1,12 +1,12 @@
 import React from "react";
 import "./SignUp.css";
 import greyback from "./Images/grey.png";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "@mui/material/Tooltip";
 let type = 0;
 const SignUp = () => {
-  let history = useHistory();
+  let history = useNavigate();
   let month = [
     "January",
     "February",

@@ -11,11 +11,11 @@ import Profile from "./Profile/Profile";
 import Search from "./Search/Search";
 import Followers from "./Profile/Followers";
 import Followings from "./Profile/ProfileFollowing/Followings";
-import Start from "./StartupPage/Start";
+import StartPage from "./StartupPage/StartPage";
 import AdminView from "./AdminView/AdminView";
-import AdminReports from "./AdminView/AdminReports/AdminRports"
-
+import AdminReports from "./AdminView/AdminReports/AdminRports";
 import AdminViewUser from "./AdminView/AdminUser";
+import LoginForm from "./StartupPage/LoginForm";
 // import SignUp from "./StartupPage/SignUp";
 
 function App(props) {
@@ -23,24 +23,24 @@ function App(props) {
     <BrowserRouter>
       <div className="homeLayout">
         <Routes>
-          <Route path="/" exact element={<Start/>}/>
-          <Route path="/home" exact element={<Home flag={props.flag}/>} />
+          <Route path="/" exact element={<StartPage />} />
+          <Route path="/signin" exact element={<LoginForm />} />
+          <Route path="/home" exact element={<Home flag={props.flag} />} />
           <Route path="/adminView/dashboard" element={<AdminView />} />
-          <Route path="/adminView/user" element={<AdminViewUser />}/>
-          <Route path="/adminView/user/reports" element={<AdminReports />}/>
+          <Route path="/adminView/user" element={<AdminViewUser />} />
+          <Route path="/adminView/user/reports" element={<AdminReports />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/search" element={<Search/>} />
+          <Route path="/search" element={<Search />} />
           <Route path="/profile/with_replies" element={<Profile />} />
           <Route path="/profile/media" element={<Profile />} />
           <Route path="/profile/likes" element={<Profile />} />
           <Route path="/profile/followers" element={<Followers />} />
           <Route path="/profile/followings" element={<Followings />} />
-
         </Routes>
       </div>
     </BrowserRouter>
