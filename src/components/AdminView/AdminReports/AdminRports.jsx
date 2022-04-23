@@ -1,11 +1,12 @@
 import React from "react";
-import SideBarAdmin from "./SideBarAdmin";
-import AdminMain from "./AdminMain";
+import SideBarAdmin from "../SideBarAdmin";
+import AdminMain from "../AdminMain";
 import { NavLink } from "react-router-dom";
+import ReportCard from "./ReportCard";
 
-import "./AdminView.css";
+import "./AdminReports.css";
 
-function AdminView() {
+function AdminReports() {
   return (
     <div className="AdminView">
       <div className="SideBarAdmin">
@@ -24,9 +25,9 @@ function AdminView() {
         </div>
         <SideBarAdmin />
           </div>
-      <AdminMain />
+          <ReportCard />
     </div>
   );
 }
-export default AdminView;
+export default AdminReports;
 //pass a component as a prop

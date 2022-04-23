@@ -1,0 +1,28 @@
+.ReportMain {
+    margin-left: 7%;
+}
+.ReportCard {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+.ReportSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+.Report{
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 10px;
+    border-radius: 12px;
+    height: fit-content;
+   
+}
+.ReportHeader {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: rgb(29, 161, 242);
+    
+}

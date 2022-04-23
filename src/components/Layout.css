@@ -50,3 +50,10 @@
   position: sticky;
   top: 0;
 }
+
+@media (max-width:1020px) {
+  .widgets {
+      display: none;
+  }
+}
+  

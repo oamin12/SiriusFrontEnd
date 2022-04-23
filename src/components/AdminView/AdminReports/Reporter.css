@@ -1,0 +1,16 @@
+.Reporter {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-Top: 10px;
+    padding: 10px;
+
+    border: 1px solid lightgray ;
+    border-radius: 20px;
+    color: gray;
+    font-size: 14px;
+}
+.Reporter:hover {
+    background-color: rgb(225, 232, 237);
+    transition: background-color 0.25s;
+}

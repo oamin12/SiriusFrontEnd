@@ -1,26 +1,29 @@
 import React from "react";
 import AdminWidgets from "./AdminWidgets";
 import "./AdminMain.css";
+import AdminChartWidget from "./AdminChartWidget";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import AdminUserChart from "./AdminUserChart";
+import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart";
+import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
+import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
 const data = [
   {
-    id:0,
-    type: "Users",
+    id: 0,
+    type: "Users/day",
     counter: 720, //hngeebo mn elbackend
     icon: AccountCircleOutlinedIcon,
     typeLink: "see all users",
-    percentage: "20%"
+    percentage: "20%",
   },
   {
-    id:1,
-    type: "Tweets",
-    counter: 1000, //hngeebo mn elbackend
-    icon: ChatBubbleOutlineOutlinedIcon,
-    typeLink: "see all tweets",
-    percentage:"40%"
+    id: 1,
+    type: "Users/week",
+    counter: 720, //hngeebo mn elbackend
+    icon: AccountCircleOutlinedIcon,
+    typeLink: "see all users",
+    percentage: "20%",
   },
-  
 ];
 function mapCards(cards) {
   return (
@@ -37,7 +40,18 @@ function mapCards(cards) {
 function AdminMain() {
   return (
     <div className="AdminMain">
-      {data.map(mapCards)}
+      <div className="UserStatistics">
+        <div className="AdminMainCards">{data.map(mapCards)}</div>
+        <AdminUserChart />
+      </div>
+      <div className="Charts">
+        <AdminChartWidget />
+        <AdminFollowerBarChart />
+      </div>
+      <div className="ChartsCont">
+        <AdminLikesBarChart />
+        <AdminReportsBarChart />
+      </div>
     </div>
   );
 }

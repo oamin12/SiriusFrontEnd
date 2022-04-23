@@ -1,0 +1,17 @@
+.Following {
+    height: auto;
+    max-width: 600px;
+}
+.UsersData{
+    display:flex;
+    flex-direction: column !important;
+    font-size: 15px;
+    min-width: 170px;
+  }
+
+  .UsersCard{
+    display: flex;
+    padding: 15px;
+    height: auto;
+  }
+  

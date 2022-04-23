@@ -1,8 +1,39 @@
 .AdminMain {
   display: flex;
+  flex-direction: column;
+}
+.UserStatistics {
+  display: flex;
   flex-direction: row;
   padding: 20px;
   width: 100%;
+  gap: 20px;
+  height: fit-content;
+  
+}
+
+.AdminMainCards {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 100%;
+  gap: 20px;
+  height: fit-content;
+  align-items: center;
+}
+.Charts {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 99%;
+  gap: 20px;
+  height: fit-content;
+}
+.ChartsCont {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 99%;
   gap: 20px;
   height: fit-content;
 }

@@ -1,0 +1,21 @@
+.AdminUserStats{
+    display: flex;
+    flex-direction: row;
+    gap: 140px;
+
+}
+
+.UserStatsSection{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.StatsPercentage{
+    display: flex;
+}
+
+.ArrowStats {
+    display: flex;
+    align-items: center;
+}

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Tweet from "./Tweet";
 import IconButton from '@mui/material/IconButton';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { render, screen } from "@Testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { fireEvent } from '@testing-library/react';
 import { getByTitle } from '@testing-library/react';
 

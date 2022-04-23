@@ -1,0 +1,23 @@
+.UserMain{
+    display: flex;
+    flex-direction: column;
+}
+.AdminUserSearch{
+    display: flex;
+    width:20%;
+    align-items: center;
+    border: 0.5px solid lightgray;
+    border-radius: 20px;
+    padding: 3px;
+    background-color: rgb(249, 246, 246);
+    
+}
+.AdminUserSearch > input
+{
+ border: none;
+ outline: none;
+ background-color: transparent;
+}
+.AdminUserSearch > input::placeholder{
+    font-size: 12px;
+}

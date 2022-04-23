@@ -13,6 +13,7 @@ import Followers from "./Profile/Followers";
 import Followings from "./Profile/ProfileFollowing/Followings";
 import Start from "./StartupPage/Start";
 import AdminView from "./AdminView/AdminView";
+import AdminReports from "./AdminView/AdminReports/AdminRports"
 
 import AdminViewUser from "./AdminView/AdminUser";
 // import SignUp from "./StartupPage/SignUp";
@@ -26,6 +27,7 @@ function App(props) {
           <Route path="/home" exact element={<Home flag={props.flag}/>} />
           <Route path="/adminView/dashboard" element={<AdminView />} />
           <Route path="/adminView/user" element={<AdminViewUser />}/>
+          <Route path="/adminView/user/reports" element={<AdminReports />}/>
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
@@ -38,6 +40,7 @@ function App(props) {
           <Route path="/profile/likes" element={<Profile />} />
           <Route path="/profile/followers" element={<Followers />} />
           <Route path="/profile/followings" element={<Followings />} />
+
         </Routes>
       </div>
     </BrowserRouter>

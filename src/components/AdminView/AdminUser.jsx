@@ -1,6 +1,24 @@
 import React from "react";
 import SideBarAdmin from "./SideBarAdmin";
 import { NavLink } from "react-router-dom";
+import UsersCard from "./UsersCard";
+import people from "../Search/people";
+import  SearchOutlinedIcon  from "@mui/icons-material/SearchOutlined";
+import "./AdminUser.css";
+
+function createuserCard(contact) {
+  return (
+    <UsersCard 
+      key={contact.id}
+      id={contact.id}
+      name={contact.name}
+      username={contact.username}
+      bio={contact.bio}
+      img={contact.imgURL}
+    />
+  );
+}
+
 
 function AdminViewUser() {
   return (
@@ -21,7 +39,15 @@ function AdminViewUser() {
         </div>
         <SideBarAdmin />
       </div>
-      <div className="AdminMain">user</div>
+      <div className="AdminMain">
+      <div className="UserMain">
+          <div className="AdminUserSearch">
+            <SearchOutlinedIcon /> 
+            <input type="text" placeholder="search..." />
+          </div>
+      {people.map(createuserCard)}
+      </div>
+      </div>
     </div>
   );
 }

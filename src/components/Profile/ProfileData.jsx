@@ -27,7 +27,7 @@ function ProfileData(props){
     }
     
     return(
-        <container className="profile__data" >
+        <div className="profile__data" >
             <div className="header">
                 <div className="ArrowIcon">
                 <NavLink to="/home">
@@ -54,22 +54,22 @@ function ProfileData(props){
                 </div>
                 <p style={{fontSize:"15px", marginBottom:10}}>{props.bio}</p>
                 <div className="more__info">
-                    <div className="location">
-                        <AddLocationOutlinedIcon style={{marginTop:"-4px"}}/>
-                        <p>{props.location}</p>
-                    </div>
-                    <div className="location" style={{marginLeft:"-40px"}}>
-                        <LanguageOutlinedIcon style={{marginTop:"-4px"}} />
-                        <p> {props.website}</p>
-                    </div>
-                    <div className="location">
-                        <CakeOutlinedIcon style={{marginTop:"-7px"}}/>
-                        <p>{props.bdate}</p>
-                    </div>
-                    <div className="location">
-                        <CalendarMonthOutlinedIcon style={{marginTop:"-6px"}}/>
-                        <p>{props.joineddate}</p>
-                    </div>
+                <span className="location">
+                        <AddLocationOutlinedIcon />
+                        {props.location}
+                    </span>
+                    <span className="location" >
+                        <LanguageOutlinedIcon  />
+                       {props.website}
+                    </span>
+                    <span className="location">
+                        <CakeOutlinedIcon />
+                        {props.bdate}
+                    </span>
+                    <span className="locationn">
+                        <CalendarMonthOutlinedIcon />
+                        {props.joineddate}
+                    </span>
                 </div>
                 <div className="follow__section">
                     <NavLink to="/profile/Followings"  style={{color:"gray"}}>
@@ -99,7 +99,7 @@ function ProfileData(props){
             </Tabs>
 
             </div>
-        </container>
+        </div>
     
     );
 }
