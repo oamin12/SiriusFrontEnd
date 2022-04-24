@@ -13,6 +13,7 @@ function getTweet(tweet) {
   return (
     <Tweet
       key={tweet.id}
+      id={tweet.id}
       name={tweet.name}
       userName={tweet.userName}
       content={tweet.content}
@@ -22,6 +23,7 @@ function getTweet(tweet) {
       likeCount={tweet.likeCount}
       repliesCount={tweet.repliesCount}
       retweetCount={tweet.retweetCount}
+      bookMarked_flag={true}
     />
   );
 }

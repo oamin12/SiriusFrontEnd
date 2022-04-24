@@ -17,12 +17,15 @@ import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import BlockIcon from '@mui/icons-material/Block';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import VolumeOffOutlinedIcon from '@mui/icons-material/VolumeOffOutlined';
+import axios from "axios";
 
 
-function Tweet({ avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount }) {
+
+function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag }) {
   const [liked, setLiked] = useState(false);
   const [retweeted, setRetweeted] = useState(false);
-  const [bookMarked, setBookMarked] = useState(false);
+  const [bookMarked, setBookMarked] = useState(bookMarked_flag);
+
   const [likesCount, changeLikesCount] = useState(likeCount);
   const [replieCount, changeRepliesCount] = useState(repliesCount);
   const [retweetsCount, changeRetweetsCount] = useState(retweetCount);
@@ -62,8 +65,31 @@ function Tweet({ avatar, name, userName, timeStamp, content, image, video, likeC
     setHoverLike(false);
   }
   //////////////////////
-
+  async function PostTweet() {
+    let response = '';
+    try {
+      response = await axios.post('http://localhost:3001/Bookmarks/',{"id":id,"name":name,"userName":userName,"content":content,"avatar":avatar,"image":image,"likeCount":likeCount,"repliesCount":repliesCount,"retweetCount":retweetCount}).then((res) => res.data);
+      return (response);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+    console.log(response);
+    return (response);
+  }
   //////////////////////
+
+  function HandleDeleteAllBookmarks() {
+      // post request
+      (async () => {
+          await axios.delete(
+            "http://localhost:3001/Bookmarks/" + id
+          );
+      })();
+
+    }
+
 
   function isOverTweet() {
     setHoverTweet(true);
@@ -72,12 +98,21 @@ function Tweet({ avatar, name, userName, timeStamp, content, image, video, likeC
     setHoverTweet(false);
   }
   //////////////////////
+
   function handleBookmark() {
     setBookMarked(!bookMarked);
+    
+    if(!bookMarked)
+    {
+      PostTweet();
+    }
+    else
+    {
+      HandleDeleteAllBookmarks();
+    }
   }
   function handleLike(event) {
     setLiked(!liked);
-
     if (!liked) {
       changeLikesCount(likesCount + 1)
     }

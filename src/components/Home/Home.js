@@ -11,14 +11,14 @@ import axios from "axios";
 
 var config = {
   method: 'get',
-  url: 'http://localhost:3001/Tweets',
+  url: 'http://localhost:5000/home/62648da149a666a904026356/getTweet',
   headers: { }
 };
 async function GetTweetInfo() {
   let response = '';
   try {
-    response = await axios.get('http://localhost:3001/Tweets',config).then((res) => res.data);
-    return (response);
+    response = await axios.get('http://localhost:5000/home/62648da149a666a904026356/getTweet',config).then((res) => res.data);
+    return (response.data);
   } catch (error) {
     if (error.response) {
       return (error.response);
@@ -28,41 +28,28 @@ async function GetTweetInfo() {
   return (response);
 }
 
-// function getTweet(tweet)
-// {
+function getTweet(tweet)
+{
   
-//   return(
-//     <Tweet
-//     key={tweet.key}
-//     name={tweet.name}
-//     userName={tweet.username}
-//     content={tweet.tweetBody}
-//     avatar={tweet.userImage}
-//     image={tweet.tweetMedia}
-//     video=''
-//     likeCount={tweet.favoritersCount}
-//     repliesCount={tweet.repliesCount}
-//     retweetCount={tweet.retweetersCount}
-//     />
-
-//   )
-// }
-function getTweet(tweet) {
-  return (
+  return(
     <Tweet
-      key={tweet.id}
-      name={tweet.name}
-      userName={tweet.userName}
-      content={tweet.content}
-      avatar={tweet.avatar}
-      image={tweet.image}
-      video={tweet.video}
-      likeCount={tweet.likeCount}
-      repliesCount={tweet.repliesCount}
-      retweetCount={tweet.retweetCount}
+    key={tweet.key}
+    id={tweet.key}
+    name={tweet.name}
+    userName={tweet.username}
+    content={tweet.tweetBody}
+    avatar={tweet.userImage}
+    image={tweet.tweetMedia}
+    video=''
+    likeCount={tweet.favoritersCount}
+    repliesCount={tweet.repliesCount}
+    retweetCount={tweet.retweetersCount}
+    bookMarked_flag={false}
     />
-  );
+
+  )
 }
+
 
 function Home(props) {
   
