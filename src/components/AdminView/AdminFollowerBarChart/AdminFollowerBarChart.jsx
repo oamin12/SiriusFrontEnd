@@ -11,30 +11,16 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
+import getTopFollowers from "./AdminFollowerBarChartInfo";
 
-const data = [
-  {
-    name: "Person A",
-    Followers: 400,
-  },
-  {
-    name: "Person B",
-    Followers: 300,
-  },
-  {
-    name: "Person C",
-    Followers: 300,
-  },
-  {
-    name: "Person D",
-    Followers: 200,
-  },
-  {
-    name: "Person E",
-    Followers: 200,
-  },
-];
 function AdminBarChart() {
+  const [topFollowers, setTopFollowers] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getTopFollowers();
+      setTopFollowers(resp);
+    })();
+  }, []);
   return (
     <div className="AdminBarChart">
       <h2
@@ -50,7 +36,7 @@ function AdminBarChart() {
       </h2>
       <div>
         <ResponsiveContainer height={200}>
-          <BarChart width={730} height={250} data={data}>
+          <BarChart width={730} height={250} data={topFollowers}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" label="Follower" />
             <YAxis />

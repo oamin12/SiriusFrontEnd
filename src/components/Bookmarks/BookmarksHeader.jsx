@@ -42,14 +42,10 @@ function BookmarksHeader(props) {
     setOpenModal(false);
   }
   function handleClearLinkClick() {
-    while (tweets.length > 0) {
-      tweets.pop();
-    }
+    
     handleModalClose();
     handleClose();
-    props.handleFunction();
-    ReactDOM.render(<App flag={1} />, document.getElementById("root"));
-    console.log(tweets);
+    props.handleIndex();
   }
   function handleCancelButtonClick() {
     handleModalClose();

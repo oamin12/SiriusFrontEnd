@@ -11,30 +11,15 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
-
-const data = [
-  {
-    name: "Person A",
-    Reports: 400,
-  },
-  {
-    name: "Person B",
-    Reports: 300,
-  },
-  {
-    name: "Person C",
-    Reports: 300,
-  },
-  {
-    name: "Person D",
-    Reports: 200,
-  },
-  {
-    name: "Person E",
-    Reports: 200,
-  },
-];
+import getTopReports from "./AdminReportsBarChartInfo";
 function AdminReportsBarChart() {
+  const [topReported, setTopReported] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getTopReports();
+      setTopReported(resp);
+    })();
+  }, []);
   return (
     <div className="AdminBarChart">
       <h2
@@ -50,7 +35,7 @@ function AdminReportsBarChart() {
       </h2>
       <div>
         <ResponsiveContainer height={200}>
-          <BarChart width={730} height={250} data={data}>
+          <BarChart width={730} height={250} data={topReported}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" label="Reports" />
             <YAxis />

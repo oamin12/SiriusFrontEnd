@@ -7,41 +7,39 @@ import AdminUserChart from "./AdminUserChart";
 import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart";
 import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
 import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
-const data = [
-  {
-    id: 0,
-    type: "Users/day",
-    counter: 720, //hngeebo mn elbackend
-    icon: AccountCircleOutlinedIcon,
-    typeLink: "see all users",
-    percentage: "20%",
-  },
-  {
-    id: 1,
-    type: "Users/week",
-    counter: 720, //hngeebo mn elbackend
-    icon: AccountCircleOutlinedIcon,
-    typeLink: "see all users",
-    percentage: "20%",
-  },
-];
-function mapCards(cards) {
-  return (
-    <AdminWidgets
-      key={cards.id}
-      type={cards.type}
-      counter={cards.counter}
-      Icon={cards.icon}
-      typeLink={cards.typeLink}
-      percentage={cards.percentage}
-    />
-  );
-}
+import getUserStats from "./AdminWidgetsInfo";
+
 function AdminMain() {
+  const [userStats, setUserStats] = React.useState([
+    { counter: "", percentage: "" },
+    { counter: "", percentage: "" },
+  ]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getUserStats();
+      setUserStats(resp);
+    })();
+  }, []);
+
   return (
     <div className="AdminMain">
       <div className="UserStatistics">
-        <div className="AdminMainCards">{data.map(mapCards)}</div>
+        <div className="AdminMainCards">
+          <AdminWidgets
+            type="Users/week"
+            counter={userStats[0].counter}
+            Icon={AccountCircleOutlinedIcon}
+            typeLink="see all users"
+            percentage={userStats[0].percentage}
+          />
+          <AdminWidgets
+            type="Users/week"
+            counter={userStats[1].counter}
+            Icon={AccountCircleOutlinedIcon}
+            typeLink="see all users"
+            percentage={userStats[1].percentage}
+          />
+        </div>
         <AdminUserChart />
       </div>
       <div className="Charts">

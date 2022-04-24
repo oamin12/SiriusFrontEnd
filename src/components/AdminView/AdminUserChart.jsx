@@ -10,38 +10,17 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./AdminUserChart.css";
+import getTopUsersPerWeek from "./AdminUserChartInfo";
 
-const data = [
-  {
-    name: "Saturday",
-    Users: 400, //the number of new users
-  },
-  {
-    name: "Sunday",
-    Users: 300,
-  },
-  {
-    name: "Monday",
-    Users: 300,
-  },
-  {
-    name: "Tuesday",
-    Users: 200,
-  },
-  {
-    name: "Wednesday",
-    Users: 200,
-  },
-  {
-    name: "Thursday",
-    Users: 200,
-  },
-  {
-    name: "Friday",
-    Users: 200,
-  },
-];
+ 
 function AdminUserChart() {
+  const [topUsersPerWeek, setTopUsersPerWeek] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getTopUsersPerWeek();
+      setTopUsersPerWeek(resp);
+    })();
+  }, []);
   return (
     <div className="AdminUserChart">
       <h2
@@ -60,7 +39,7 @@ function AdminUserChart() {
           <AreaChart
             width={500}
             height={170}
-            data={data}
+            data={topUsersPerWeek}
             margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
           >
             <defs>
@@ -73,10 +52,10 @@ function AdminUserChart() {
             <YAxis />
             <CartesianGrid strokeDasharray="3 3" />
             <Tooltip
-                          wrapperStyle={{ width: "auto" }}
-                          labelStyle={{ color: "rgb(101, 119, 134)" }}
-                          itemStyle={{ color: "rgb(101, 119, 134)" }}
-                          formatter={(Users, name, props) => [Users + " user", name]}
+              wrapperStyle={{ width: "auto" }}
+              labelStyle={{ color: "rgb(101, 119, 134)" }}
+              itemStyle={{ color: "rgb(101, 119, 134)" }}
+              formatter={(Users, name, props) => [Users + " user", name]}
             />
             <Area
               type="monotone"

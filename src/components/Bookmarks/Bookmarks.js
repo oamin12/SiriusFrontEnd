@@ -4,8 +4,10 @@ import "./Bookmarks.css";
 import "../Layout.css";
 import Tweet from "../Tweet/Tweet";
 import SideBar from "../SideBar/SideBar";
-import tweets from "./BookmarkedTweets";
+import getUser from "../User";
 import EmptyBookmarksPage from "./EmptyBookmarksPage";
+import getBookmarks from "./BookmarkedTweets";
+import axios from "axios";
 
 function getTweet(tweet) {
   return (
@@ -25,18 +27,75 @@ function getTweet(tweet) {
 }
 
 function Bookmarks() {
-  const [empty, setEmpty] = React.useState(tweets.length == 0 ? true : false);
-  console.log(empty);
-  function handleEmpty() { 
-    setEmpty(true);
+  const [BookmarkedTweets, setBookmarkedTweets] = React.useState([]);
+  const [User, setUser] = React.useState([]);
+  const [wait, setWait] = React.useState(true);
+
+  const [empty, setEmpty] = React.useState(
+    BookmarkedTweets.length == 0 ? true : false
+  );
+
+  //console.log(BookmarkedTweets);
+
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getBookmarks();
+      setBookmarkedTweets(resp);
+      if (resp.length == 0) {
+        setWait(false);
+      } else setEmpty(false);
+    })();
+  }, []);
+  //----getting User----//
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getUser();
+      setUser(resp);
+    })();
+  }, []);
+
+  //-------------------------------------//
+
+  const [index, setIndex] = React.useState(false);
+  function HandleIndex() {
+    setIndex(true);
   }
+  function HandleDeleteAllBookmarks() {
+    if (index === true) {
+      // post request
+      (async () => {
+        for (let i = 0; i < BookmarkedTweets.length; i++) {
+          await axios.delete(
+            "http://localhost:3001/Bookmarks/" + BookmarkedTweets[i].id
+          );
+          console.log(BookmarkedTweets[i].id);
+        }
+        const resp = await getBookmarks();
+        setBookmarkedTweets(resp);
+        setEmpty(true);
+        setWait(false);
+        //console.log(resp);
+      })();
+      setIndex(false);
+
+      console.log(true);
+    }
+  }
+
+  HandleDeleteAllBookmarks();
+  //------------------------------------//
+
   return (
     <div className="layout">
       <SideBar />
       <div className="feeder">
-        <BookmarksHeader name="Bookmarks" username="@sohad" handleFunction={handleEmpty}/>
-        {empty === true && <EmptyBookmarksPage />}
-        {empty === false && tweets.map(getTweet)}
+        <BookmarksHeader
+          name="Bookmarks"
+          username={"@" + User.username}
+          handleIndex={HandleIndex}
+        />
+        {empty === true && wait === false && <EmptyBookmarksPage />}
+        {empty === false && BookmarkedTweets.map(getTweet)}
       </div>
       <div className="widgets">
         <div className="search">search</div>
@@ -46,5 +105,16 @@ function Bookmarks() {
     </div>
   );
 }
-console.log(tweets);
+
 export default Bookmarks;
+/*const sendGetRequest = async () => {
+    const res = await getBookmarks();
+    console.log(res);
+  };
+  sendGetRequest();
+  */
+/*React.useEffect(() => {
+    axios
+      .get("http://localhost:3001/Bookmarks")
+      .then(response =>  setBookmarkedTweets(response.data));
+  }, []);*/

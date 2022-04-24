@@ -8,29 +8,8 @@ import {
   Tooltip,
 } from "recharts";
 import "./AdminChartWidget.css";
+import getTopTrendingTweets from "./AdminChartWidgetInfo";
 
-const data = [
-  {
-    name: "Trend A",
-    value: 400,
-  },
-  {
-    name: "Trend B",
-    value: 300,
-  },
-  {
-    name: "Trend C",
-    value: 300,
-  },
-  {
-    name: "Trend D",
-    value: 200,
-  },
-  {
-    name: "Trend E",
-    value: 200,
-  },
-];
 const COLORS = ["#00bfff", " #33ccff", "#66d9ff", "#99e6ff", "#b3ecff"];
 
 const RADIAN = Math.PI / 180;
@@ -46,7 +25,6 @@ const renderCustomizedLabel = ({
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
   return (
     <text
       x={x}
@@ -60,6 +38,13 @@ const renderCustomizedLabel = ({
   );
 };
 function AdminChartWidget() {
+  const [topTrendingTweets, setTopTrendingTweets] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getTopTrendingTweets();
+      setTopTrendingTweets(resp);
+    })();
+  }, []);
   return (
     <div className="AdminChartWidget">
       <h2
@@ -77,7 +62,7 @@ function AdminChartWidget() {
         <ResponsiveContainer height={200}>
           <PieChart width={730} height={250}>
             <Pie
-              data={data}
+              data={topTrendingTweets}
               dataKey="value"
               nameKey="name"
               cx="50%"
@@ -85,9 +70,10 @@ function AdminChartWidget() {
               outerRadius={80}
               label={renderCustomizedLabel}
               labelLine={false}
+              isAnimationActive={false}
             >
-              {data.map((entry, index) => (
-                <Cell fill={COLORS[index]} />
+              {topTrendingTweets.map((entry, index) => (
+                <Cell  fill={COLORS[index]} />
               ))}
             </Pie>
             <Tooltip

@@ -12,29 +12,15 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Person A",
-    Likes: 400,
-  },
-  {
-    name: "Person B",
-    Likes: 300,
-  },
-  {
-    name: "Person C",
-    Likes: 300,
-  },
-  {
-    name: "Person D",
-    Likes: 200,
-  },
-  {
-    name: "Person E",
-    Likes: 200,
-  },
-];
+import getTopLikes from "./AdminLikesBarChartInfo";
 function AdminLikesBarChart() {
+  const [topLikes, setTopLikes] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await getTopLikes();
+      setTopLikes(resp);
+    })();
+  }, []);
   return (
     <div className="AdminBarChart">
       <h2
@@ -50,7 +36,7 @@ function AdminLikesBarChart() {
       </h2>
       <div>
         <ResponsiveContainer height={200}>
-          <BarChart width={730} height={250} data={data}>
+          <BarChart width={730} height={250} data={topLikes}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" label="Likes" />
             <YAxis />
