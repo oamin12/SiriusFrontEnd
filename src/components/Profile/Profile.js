@@ -4,14 +4,13 @@ import ProfileData from "./ProfileData";
 import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
 import Users from "./Users";
-import {getTweet} from "../Home/Home.js"
 import Hometweets from "../Home/Hometweets.js";
 import TweetReplies from "../Home/TweetReplies";
 import Media from "../Home/Media";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Likes from "../Home/Likes";
 import GetProfileInfo from "./GetProfileInfo";
-
+import Tweet from "../Tweet/Tweet";
 function createProfileData(User) {
  
   return (
@@ -28,6 +27,22 @@ function createProfileData(User) {
         joineddate={User.joineddate}
         followers={User.followers}
         followings={User.followings}
+      />
+    );
+  }
+  function getTweet(tweet) {
+    return (
+      <Tweet
+        key={tweet.id}
+        name={tweet.name}
+        userName={tweet.userName}
+        content={tweet.content}
+        avatar={tweet.avatar}
+        image={tweet.image}
+        video={tweet.video}
+        likeCount={tweet.likeCount}
+        repliesCount={tweet.repliesCount}
+        retweetCount={tweet.retweetCount}
       />
     );
   }

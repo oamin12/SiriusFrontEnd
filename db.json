@@ -1,23 +1,322 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicodeeeeeee" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": {
-        "id": 1,
-        "coverphoto":"",
-        "profilepic":"",
-        "name": "Remonda",
-        "username":"@Remonda_95",
-        "bio":"Software Engineer ❤️ Dev Ops!",
-        "location": "Egypt",
-        "website": "www.facebook.com",
-        "bdate": "Born October 1, 1998",
-        "joineddate": "Joined October 2019",
-        "followers": 135,
-        "followings": 101
-      }
-
-  }
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "Bookmarks": [],
+  "User": {
+    "id": 1,
+    "username": "Boody",
+    "name": "Abd ElRahman",
+    "email": "boody@gmail.com",
+    "password": "boody123",
+    "followersCount": 300,
+    "followingCount": 30,
+    "tweetsCount": 50,
+    "bio": "Software Engineer ❤️ Dev Ops!",
+    "location": "Egypt",
+    "website": "www.facebook.com",
+    "bdate": "Born October 1, 1995",
+    "joineddate": "Joined October 2019",
+    "coverphoto": "",
+    "profilepic": ""
+  },
+  "profile": {
+    "id": 1,
+    "coverphoto": "",
+    "profilepic": "",
+    "name": "Remonda",
+    "username": "@Remonda_95",
+    "bio": "Software Engineer ❤️ Dev Ops!",
+    "location": "Egypt",
+    "website": "www.facebook.com",
+    "bdate": "Born October 1, 1998",
+    "joineddate": "Joined October 2019",
+    "followers": 135,
+    "followings": 101
+  },
+  "TopFollowers": [
+    {
+      "name": "Person A",
+      "Followers": 400
+    },
+    {
+      "name": "Person B",
+      "Followers": 300
+    },
+    {
+      "name": "Person C",
+      "Followers": 300
+    },
+    {
+      "name": "Person D",
+      "Followers": 200
+    },
+    {
+      "name": "Person E",
+      "Followers": 200
+    }
+  ],
+  "TopLikes": [
+    {
+      "name": "Person A",
+      "Likes": 400
+    },
+    {
+      "name": "Person B",
+      "Likes": 300
+    },
+    {
+      "name": "Person C",
+      "Likes": 300
+    },
+    {
+      "name": "Person D",
+      "Likes": 200
+    },
+    {
+      "name": "Person E",
+      "Likes": 200
+    }
+  ],
+  "TopReported": [
+    {
+      "name": "Person A",
+      "Reports": 400
+    },
+    {
+      "name": "Person B",
+      "Reports": 300
+    },
+    {
+      "name": "Person C",
+      "Reports": 300
+    },
+    {
+      "name": "Person D",
+      "Reports": 200
+    },
+    {
+      "name": "Person E",
+      "Reports": 200
+    }
+  ],
+  "TopTrendingTweets": [
+    {
+      "name": "Trend A",
+      "value": 400
+    },
+    {
+      "name": "Trend B",
+      "value": 300
+    },
+    {
+      "name": "Trend C",
+      "value": 300
+    },
+    {
+      "name": "Trend D",
+      "value": 200
+    },
+    {
+      "name": "Trend E",
+      "value": 200
+    }
+  ],
+  "topUsersPerWeek": [
+    {
+      "name": "Saturday",
+      "Users": 400
+    },
+    {
+      "name": "Sunday",
+      "Users": 300
+    },
+    {
+      "name": "Monday",
+      "Users": 300
+    },
+    {
+      "name": "Tuesday",
+      "Users": 200
+    },
+    {
+      "name": "Wednesday",
+      "Users": 200
+    },
+    {
+      "name": "Thursday",
+      "Users": 200
+    },
+    {
+      "name": "Friday",
+      "Users": 200
+    }
+  ],
+  "UserStats": [
+    {
+      "id": 0,
+      "counter": 720,
+      "percentage": "20%"
+    },
+    {
+      "id": 1,
+      "counter": 720,
+      "percentage": "20%"
+    }
+  ],
+  "AllUsers": [
+    {
+      "id": 3,
+      "name": "Charlie Puth",
+      "username": "@charlieputh",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Neymar",
+      "username": "@Neymarxv",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1508423975793274881/Z3mj7Uq9_400x400.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Beyonce",
+      "username": "@Beyonce",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1490488622163763203/9DSoh1oE_400x400.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Robert Lewandowski",
+      "username": "@lewy_official",
+      "bio": "🇵🇱 l ❌ | 🙅🏻‍♂️ l #rl9",
+      "imgURL": "https://pbs.twimg.com/profile_images/1437890233417220101/FAlresZr_400x400.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Charlie Puth",
+      "username": "@charlieputh",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Neymar",
+      "username": "@Neymarxv",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1508423975793274881/Z3mj7Uq9_400x400.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Beyonce",
+      "username": "@Beyonce",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1490488622163763203/9DSoh1oE_400x400.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Robert Lewandowski",
+      "username": "@lewy_official",
+      "bio": "🇵🇱 l ❌ | 🙅🏻‍♂️ l #rl9",
+      "imgURL": "https://pbs.twimg.com/profile_images/1437890233417220101/FAlresZr_400x400.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Charlie Puth",
+      "username": "@charlieputh",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Neymar",
+      "username": "@Neymarxv",
+      "bio": "",
+      "imgURL": ""
+    }
+  ],
+  "AdminUserStatsTweets": [
+    {
+      "name": "Page A",
+      "value": 0
+    },
+    {
+      "name": "Page B",
+      "value": 10
+    },
+    {
+      "name": "Page C",
+      "value": 15
+    },
+    {
+      "name": "Page D",
+      "value": 30
+    },
+    {
+      "name": "Page E",
+      "value": 70
+    },
+    {
+      "name": "Page F",
+      "value": 120
+    },
+    {
+      "name": "Page G",
+      "value": 140
+    }
+  ],
+  "AdminUserStatsFollowers": [
+    {
+      "name": "Page A",
+      "value": 0
+    },
+    {
+      "name": "Page B",
+      "value": 10
+    },
+    {
+      "name": "Page C",
+      "value": 15
+    },
+    {
+      "name": "Page D",
+      "value": 30
+    },
+    {
+      "name": "Page E",
+      "value": 70
+    },
+    {
+      "name": "Page F",
+      "value": 120
+    },
+    {
+      "name": "Page G",
+      "value": 140
+    }
+  ],
+  "AdminUserStatsInfo": [
+    {
+      "id": 0,
+      "value": 4,
+      "percentage": "20%"
+    },
+    {
+      "id": 1,
+      "value": 120,
+      "percentage": "20%"
+    }
+  ]
+}

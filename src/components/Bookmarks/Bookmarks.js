@@ -32,7 +32,7 @@ function Bookmarks() {
   const [wait, setWait] = React.useState(true);
 
   const [empty, setEmpty] = React.useState(
-    BookmarkedTweets.length == 0 ? true : false
+    BookmarkedTweets.length === 0 ? true : false
   );
 
   //console.log(BookmarkedTweets);
@@ -41,7 +41,7 @@ function Bookmarks() {
     (async () => {
       const resp = await getBookmarks();
       setBookmarkedTweets(resp);
-      if (resp.length == 0) {
+      if (resp.length === 0) {
         setWait(false);
       } else setEmpty(false);
     })();

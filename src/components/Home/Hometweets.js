@@ -2,7 +2,7 @@ const Hometweets = [
     {
         id: 1,
         name : "Remonda",
-        userName:"@Remonda_95",
+        userName:"Remonda_95",
         content:"Software ❤️🐐",
         avatar:"",
         image:{med2:"https://tmssl.akamaized.net/images/foto/galerie/diego-maradona-1401100569-36.jpg?lm=1483605486"},
@@ -13,7 +13,7 @@ const Hometweets = [
      { 
         id: 2,
         name : "Remonda",
-        userName:"@Remonda_95",
+        userName:"Remonda_95",
         content:"Software ❤️🐐",
         avatar:"",
         image:"",
@@ -24,7 +24,7 @@ const Hometweets = [
       {
         id: 2,
         name : "Remonda",
-        userName:"@Remonda_95",
+        userName:"Remonda_95",
         content:"Software ❤️🐐",
         avatar:"",
         image:"",

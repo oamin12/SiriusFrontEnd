@@ -8,6 +8,7 @@ function EmptyBookmarksPage() {
         <img
           className="emptyBookmarksImg"
           src="https://abs.twimg.com/sticky/illustrations/empty-states/book-in-bird-cage-800x400.v1.png"
+          alt=""
         ></img>
         <h2 className="emptyBookmarksHeader">Save Tweets for later</h2>
         <p>
