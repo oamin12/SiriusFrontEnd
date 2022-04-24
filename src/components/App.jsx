@@ -9,7 +9,7 @@ import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
 import Profile from "./Profile/Profile";
 import Search from "./Search/Search";
-import Followers from "./Profile/Followers";
+import Followers from "./Profile/ProfileFollowers/Followers";
 import Followings from "./Profile/ProfileFollowing/Followings";
 import Start from "./StartupPage/Start";
 import AdminView from "./AdminView/AdminView";

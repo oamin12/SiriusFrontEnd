@@ -10,7 +10,10 @@ import TweetReplies from "../Home/TweetReplies";
 import Media from "../Home/Media";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Likes from "../Home/Likes";
+import GetProfileInfo from "./GetProfileInfo";
+
 function createProfileData(User) {
+ 
   return (
       <ProfileData
         key={User.id}
@@ -31,6 +34,7 @@ function createProfileData(User) {
   var subpage = 1;
 
   function ProfileSubPage(){
+    
     let location = useLocation();
     
     if (location.pathname=="/profile")
@@ -52,12 +56,22 @@ function createProfileData(User) {
     console.log(subpage);
   }
 function Profile() {
-  
+
+  const [ProfileInfo,setProfileInfo ] = React.useState([]);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await GetProfileInfo();
+      setProfileInfo(resp);
+    })();
+  }, []);
+
+  console.log(ProfileInfo);
   return (
+    
     <div className="layout">
       <SideBar />
       <div className="feeder">
-      {Users.map(createProfileData)}
+      {createProfileData(ProfileInfo)}
       
       {
         ProfileSubPage

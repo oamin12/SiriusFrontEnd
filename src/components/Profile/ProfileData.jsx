@@ -52,24 +52,24 @@ function ProfileData(props){
                     <h3>{props.name}</h3>
                     <p style={{"color":"gray","fontSize":"14px"}}>{props.username}</p>
                 </div>
-                <p style={{fontSize:"15px", marginBottom:10}}>{props.bio}</p>
+                <p style={{fontSize:"15px"}}>{props.bio}</p>
                 <div className="more__info">
-                <span className="location">
-                        <AddLocationOutlinedIcon />
-                        {props.location}
-                    </span>
-                    <span className="location" >
-                        <LanguageOutlinedIcon  />
-                       {props.website}
-                    </span>
                     <span className="location">
-                        <CakeOutlinedIcon />
-                        {props.bdate}
-                    </span>
-                    <span className="locationn">
-                        <CalendarMonthOutlinedIcon />
-                        {props.joineddate}
-                    </span>
+                            <AddLocationOutlinedIcon />
+                            {props.location}
+                        </span>
+                        <span className="location" >
+                            <LanguageOutlinedIcon  />
+                        {props.website}
+                        </span>
+                        <span className="location">
+                            <CakeOutlinedIcon />
+                            {props.bdate}
+                        </span>
+                        <span className="location">
+                            <CalendarMonthOutlinedIcon />
+                            {props.joineddate}
+                        </span>
                 </div>
                 <div className="follow__section">
                     <NavLink to="/profile/Followings"  style={{color:"gray"}}>

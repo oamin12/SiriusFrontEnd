@@ -1,0 +1,23 @@
+{
+    "posts": [
+      { "id": 1, "title": "json-server", "author": "typicodeeeeeee" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": {
+        "id": 1,
+        "coverphoto":"",
+        "profilepic":"",
+        "name": "Remonda",
+        "username":"@Remonda_95",
+        "bio":"Software Engineer ❤️ Dev Ops!",
+        "location": "Egypt",
+        "website": "www.facebook.com",
+        "bdate": "Born October 1, 1998",
+        "joineddate": "Joined October 2019",
+        "followers": 135,
+        "followings": 101
+      }
+
+  }

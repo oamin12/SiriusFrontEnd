@@ -51,8 +51,9 @@
 }
 
 .more__info {
-    /* display: flex;
-    padding-bottom: 10px; */
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px; 
   
 }
 
@@ -62,13 +63,19 @@
 }
 
 .location {
-    margin-right: 20px;
+
     /* width : 100%;
-    padding-right:2px ;
+   
     font-weight: 500;
     font-size: 14px; */
     color: gray;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    padding-right:5px ;
+    
+    /* white-space: nowrap; */
+
+
 }
 
 .follow__section {
@@ -114,12 +121,11 @@
 }
 
 
-@media only screen {
-    .locationn {
+@media (max-width:1020px) {
+    .more__info {
         display: inline-block;
-        margin-right: 20px;
         color: gray;
-  align-items: center;
+        align-items: center;
     }
 }
     

@@ -2,7 +2,6 @@ import React from "react";
 import FollowTab from "./FollowTab.jsx";
 import FollowingCard from "./FollowingCard.jsx";
 import people from "../../Search/people";
-import Users from "../Users";
 import "../../Layout.css";
 import SideBar from "../../SideBar/SideBar";
 

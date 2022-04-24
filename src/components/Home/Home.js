@@ -6,6 +6,9 @@ import Tweet from "../Tweet/Tweet.jsx";
 import tweets from "./Tweets.js";
 import Heading from "./constants/Heading"
 import { NavLink } from "react-router-dom";
+import axios from 'axios';
+
+
 
 function getTweet(tweet)
 {
@@ -28,7 +31,16 @@ function getTweet(tweet)
 
 
 function Home(props) {
+
+
+let getUsers = async () => {
+  let res = await axios.get("http://localhost:3001/posts");
+  console.log(res);
+};
+getUsers();
   return (
+    
+
     <div className="layout">
       <SideBar />
        <div className="feeder">
