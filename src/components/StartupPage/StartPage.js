@@ -1,7 +1,8 @@
 import React from "react";
-import "./stylez.css";
+import { NavLink } from "react-router-dom";
+import "./Start.css";
 import background from "./Images/whatshappening.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Start = () => {
   let history = useNavigate();
   return (
@@ -18,29 +19,43 @@ const Start = () => {
           <p className="pf1">
             <span className="spf1">or</span>
           </p>
-          <NavLink to="/adminView/dashboard">
-          <button className="signupf1">Sign up with phone or email</button>
+          <NavLink to="./signup">
+            <button className="signupf1">Sign up with phone or email</button>
           </NavLink>
-            <p className="terms">
+          <p className="terms">
             By signing up, you agree to the
-            <a className="tos" href="#">
+            <a
+              className="tos"
+              href="https://twitter.com/en/tos"
+              target="_blank"
+            >
               {" "}
               Terms of Service{" "}
             </a>
             and{" "}
-            <a className="tos" href="#">
+            <a
+              className="tos"
+              href="https://twitter.com/en/privacy"
+              target="_blank"
+            >
               {" "}
               Privacy<br></br> Policy{" "}
             </a>
             , including
-            <a className="tos" href="#">
+            <a
+              className="tos"
+              href="https://help.twitter.com/en/rules-and-policies/twitter-cookies"
+              target="_blank"
+            >
               {" "}
               Cookie Use{" "}
             </a>
             .
           </p>
           <h2 className="alreadyf1">Already have an account?</h2>
-          <NavLink to = "/home"><button className="loginf1">Sign in</button></NavLink>
+          <NavLink to="./signin">
+            <button className="loginf1">Sign in</button>
+          </NavLink>
         </div>
       </div>
       <div className="footerf1">

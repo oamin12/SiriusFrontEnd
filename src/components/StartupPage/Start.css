@@ -1,28 +1,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+/*Styling Start Page*/
 * {
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif !important;
+}
+body {
+  background-color: #fff;
+}
+.backf1 {
+  width: 1250px;
 }
 .rightf1 > .backf1 {
-  height: 700px;
-  width: 1000px;
+  transform: translate(-10%, -1%);
 }
 .upf1 {
   display: flex;
 }
 .h1f1 {
-  font-size: 60px;
+  font-size: 90px;
   margin-top: 140px;
 }
 .h3f1 {
   font-size: 45px;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 .leftf1 {
-  margin-left: 100px;
-  margin-top: -120px;
+  margin-left: -100px;
+  margin-top: -20px;
 }
 .signupgooglef1 {
   margin-bottom: 20px;
+  margin-top: 10px;
   margin-left: 10px;
   text-decoration: none;
   display: block;
@@ -55,7 +62,7 @@
   color: rgb(78, 78, 78);
 }
 .pf1 {
-  width: 60%;
+  width: 37%;
   text-align: center;
   border-bottom: 1px solid rgb(240, 240, 240);
   line-height: 0.1em;
@@ -101,6 +108,7 @@
 }
 .loginf1 {
   margin-bottom: 20px;
+  margin-top: 10px;
   margin-left: 10px;
   display: block;
   width: 300px;
@@ -131,14 +139,18 @@
 }
 .signupgooglef1:hover {
   background: #1f94dd16;
+  cursor: pointer;
 }
 
 .signupfacebookf1:hover {
   background: #1f1f1f16;
+  cursor: pointer;
 }
 .loginf1:hover {
   background: #1f94dd16;
+  cursor: pointer;
 }
 .signupf1:hover {
   background: #1f94dd;
+  cursor: pointer;
 }
