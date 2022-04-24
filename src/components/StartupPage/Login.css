@@ -130,10 +130,10 @@
   text-decoration: none;
 }
 .closef2 {
-  margin-top: -600px;
-  margin-right: 397px;
-  position: fixed;
-  opacity: 50%;
+  margin-top: -600px !important;
+  margin-right: 397px !important;
+  position: fixed !important;
+  opacity: 50% !important;
 }
 /*Hovering*/
 .closef2:hover {
