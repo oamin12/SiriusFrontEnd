@@ -15,7 +15,41 @@
     padding-left: 50px;
 
     }
-  .post_body > img {
+  .post_body1 > img {
+    border-radius: 20px;
+    max-width: 600px;
+    width: 80%;
+    opacity: 100% !important;
+    margin-left: 50px;
+    
+  }
+  .post_body2
+  {
+    display: flex;
+    margin-left: 50px;
+    max-width: 600px;
+    page-break-inside: auto;
+    
+
+  }
+  .post_body2 > img {
+    
+    max-width: 220px;
+    width: 100%;
+    opacity: 100% !important;
+    display: flex;
+    flex-direction: row !important;
+    
+  }
+  .post_body3 > img {
+    border-radius: 20px;
+    max-width: 600px;
+    width: 80%;
+    opacity: 100% !important;
+    margin-left: 50px;
+    
+  }
+  .post_body4 > img {
     border-radius: 20px;
     max-width: 600px;
     width: 80%;
@@ -30,7 +64,7 @@
     justify-content: space-between;
     margin-top: 20px;
     flex-direction: row;
-    padding-left: 40px;
+    padding-left: 60px;
     margin-left: 90px;
   }
   
@@ -65,9 +99,10 @@
 
   .userdata{
       padding: 10px;
+      display: flex;
   }
  .buttons_style{
-   max-width: 600px;
+   max-width: 800px;
  }
 .link_text{
   color: black;
@@ -77,6 +112,23 @@
 .link_text2{
   color: gray;
   width: min-content;
+}
+
+.tweet_settings{
+  position: relative;
+  display: flex;
+  justify-content:flex-end;
+}
+
+.tweet_settings_bar{
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.tweet_settings_bar:hover{
+background-color:  rgb(225, 232, 237);
+}
+.Popover_tweet{
+  width: 10%;
 }
 
 /* .tweet{

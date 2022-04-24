@@ -1,0 +1,63 @@
+.trend_head
+{
+
+display: flex;
+padding-top: 12px;
+padding-bottom: 12px;
+padding-left: 16px;
+}
+.trend_head:hover
+{
+    opacity: 200%;
+}
+.trend_data
+{
+display: flex;
+flex-direction: column;
+
+
+}
+.trend_settings
+{
+    justify-content: flex-end;
+    width: 80px;
+}
+.trend_settings_botton
+{
+    width: 10px;
+    height: 100%;
+    margin-top: 20px;
+    background-color: white;
+    border: 0px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.25s;
+    color: black !important;
+}
+.trend_name
+{
+    font-weight: 100;
+    font-size: 12px;
+    padding-bottom: 10px;
+    color: gray;
+}
+.trend_hash
+{
+    font-weight: 600;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+.trend_number
+{
+    font-weight: 100;
+    font-size: 12px;
+    padding-bottom: 10px;
+    color: gray;
+}
+.Popover_trend{
+    width: 30%;
+  }

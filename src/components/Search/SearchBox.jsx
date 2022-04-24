@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Search.css";
 import SearchIcon from '@mui/icons-material/Search';
 
-function SearchBox() {
+function SearchBox(props) {
   const [isClicked, setMouseOver] = useState(false);
 
   function handleMouseOver() {
@@ -19,7 +19,7 @@ function SearchBox() {
       className="searchBox" 
       type="text" 
       placeholder="Search Twitter" 
-      size="40" 
+      size={props.size} 
       style={{ borderWidth: isClicked ? "thick" : "none" }}
       onFocus={handleMouseOver}
     />

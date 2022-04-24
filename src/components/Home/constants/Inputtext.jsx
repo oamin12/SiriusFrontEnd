@@ -4,6 +4,8 @@ import ReactDOM from "react-dom";
 import Tweet from "./tweet2.png"
 import Tweetblur from "./tweet1.png"
 import tweets from "../Tweets.js"
+import axios from "axios";
+
 function Inputtext(props)
 {
     let [flag2,setflag2]=React.useState(0); 
@@ -11,17 +13,42 @@ function Inputtext(props)
     let [img,setimg]=React.useState(Tweetblur);
     let [text,settext]=React.useState("");
 
+    
      function handlechangeT()  //reset the textbox,post the tweet
     {
      
       if(flag2===1)   
       {
         tweets.unshift({id:4,name:"Remonda",userName:"Remonda_95",content:text,avatar:"",image:"",likeCount:0,repliesCount:0,retweetCount:0})
+        var data = '{"userId":"62648da149a666a904026356","body":'+text+',"media": []}';
+        var config = {
+          method: 'post',
+          url: 'localhost:5000/home/compose-tweet',
+          headers: { },
+          data:data
+        };
+        
+        async function PostTweet() {
+          let response = '';
+          try {
+            response = await axios.post('http://localhost:5000/home/compose-tweet',{userId:"62648da149a666a904026356",body:text,media: []}).then((res) => res.data);
+            return (response.data);
+          } catch (error) {
+            if (error.response) {
+              return (error.response);
+            }
+          }
+          console.log(response);
+          return (response);
+        }
+        PostTweet();
+        props.postingFlag();
+            
         console.log(tweets)
         text=""
         settext(text);
       setimg(Tweetblur);
-      ReactDOM.render(<App flag={1}/>, document.getElementById("root"));}
+      }
     }
 
     function handleChange(event) //check on the length of the text if >280 then change the tweet img 
@@ -52,6 +79,8 @@ function Inputtext(props)
    { 
      flag3=1
    }
+
+
     return (
     <div>
 

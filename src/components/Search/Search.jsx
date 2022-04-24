@@ -33,7 +33,7 @@ function SearchPage() {
             <ArrowBackIcon fontSize="small" />
         </NavLink>
         </div>
-        <SearchBox />
+        <SearchBox size="40"/>
     
         <div className="moreOptions">
             <MoreHorizIcon fontSize="small"/>

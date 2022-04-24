@@ -21,7 +21,7 @@ function PostingTweet(props) {
 
        <div className="profile_picture">
           <Avatar className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
-          <Inputtext msg="what's happening?" classname={"TweetButton"} flag2={props.flag}/>
+          <Inputtext msg="what's happening?" classname={"TweetButton"} flag2={props.flag} postingFlag={props.postingFlag}/>
           {props.flag===0 ? <Poll flag={1}/>: <Poll flag={0}/> }
        </div>
     { (props.flag===1)  && 
