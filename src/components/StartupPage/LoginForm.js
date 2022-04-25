@@ -76,6 +76,7 @@ const LoginForm = ({ Login, error }) => {
           <div
             style={{
               marginBottom: "-600px",
+              textAlign: "center",
               color: "red",
               position: "fixed",
             }}
