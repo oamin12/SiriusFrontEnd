@@ -32,7 +32,7 @@ function Inputtext(props)
         async function PostTweet() {
           let response = '';
           try {
-            response = await axios.post('http://localhost:5000/home/compose-tweet',{body:text,media: []},{headers: {Authorization:"Bearer "+token}}).then((res) => res.data);
+            response = await axios.post('http://localhost:3000/home/compose-tweet',{body:text,media: []},{headers: {Authorization:"Bearer "+token}}).then((res) => res.data);
             return (response.data);
           } catch (error) {
             if (error.response) {
