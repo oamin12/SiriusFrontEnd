@@ -16,12 +16,16 @@ const LoginForm = () => {
   const [errorName, setError] = useState("");
 
   let navigate = useNavigate();
-  async function SignIn() {
+
+    async function SignIn() {
     let response = '';
     try {
       response = await axios.post('http://localhost:3000/login',{email:details.name,password:details.password}).then((res) => res.data);
-      setSignInToken(response.token);
+      localStorage.setItem("tokenValue",response.token);
+
+      // setSignInToken(response.token);
       setSignInState(response.success);
+      
       return (response.data);
     } catch (error) {
       if (error.response) {
@@ -71,7 +75,21 @@ const LoginForm = () => {
   console.log(SignInToken);
   console.log(SignInState);
   console.log(errorName);
-  localStorage.setItem("tokenValue",SignInToken);
+  // React.useEffect(() => {
+  //   (async () => {
+  //     const resp = await GetProfileInfo();
+  //     setProfileInfo(resp);
+  //   })();
+  // }, []);
+  // const [ProfileInfo,setProfileInfo ] = React.useState([]);
+  
+  //localStorage.setItem("tokenValue",SignInToken);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await SignIn();
+      setSignInState(resp);
+    })();
+  }, []);
   return (
     <div className="Login">
       <img className="backf2" src={greyback} />
