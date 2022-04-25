@@ -20,7 +20,7 @@ const LoginForm = () => {
     async function SignIn() {
     let response = '';
     try {
-      response = await axios.post('http://localhost:3000/login',{email:details.name,password:details.password}).then((res) => res.data);
+      response = await axios.post('http://34.236.108.123:3000/login',{email:details.name,password:details.password}).then((res) => res.data);
       localStorage.setItem("tokenValue",response.token);
 
       // setSignInToken(response.token);
