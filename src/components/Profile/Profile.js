@@ -21,10 +21,10 @@ function createProfileData(User) {
         name={User.name}
         username={User.username}
         bio={User.bio}
-        location={User.country+", "+User.city}
+        location={User.location}
         website={User.website}
         birthdate={User.birthdate}
-        joineddate={User.createdAt}
+        joineddate={User.joineddate}
         followersCount={User.followersCount}
         followingCount={User.followingCount}
       />
