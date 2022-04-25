@@ -140,7 +140,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     setOpen(null);
     
   }
-  var lol=1;
+  var lol=2;
   return (
     <div className="post_body"
       onMouseOver={isOverTweet}
@@ -219,9 +219,31 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
       
       {/* {image ? <img src={image.med1} alt="" /> : null} */}
       
-      {image.length===1? <div className="post_body1"><img id="lolxd" src={image[0]} alt="" /></div>:
-      image.length===2? <div className="post_body2"><img id="lolxd" style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image.med1} alt="" />
-      <img id="lolxd" style={{"border-top-right-radius":"20px", "border-bottom-right-radius":"20px"}} src={image.med2} alt="" /></div>:null} 
+      {image.length===1? <div className="post_body1"><img src={image[0]} alt="" /></div>:
+      image.length===2? <div className="post_body2">
+      <img style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image[0]} alt="" />
+      <img style={{"border-top-right-radius":"20px", "border-bottom-right-radius":"20px"}} src={image[1]} alt="" /></div>:
+      image.length===3?<div className="post_body3">
+        <div className="post_body3_1">
+        <img style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image[0]} alt="" />
+        </div>
+        <div className="post_body3_2">
+        <img style={{"border-top-right-radius":"20px"}} src={image[1]} alt="" />
+        <img style={{ "border-bottom-right-radius":"20px"}} src={image[2]} alt="" />
+        </div>
+      </div> :
+      image.length===4?
+      <div className="post_body4">
+      <div className="post_body4_1">
+      <img style={{"border-top-left-radius":"20px"}} src={image[0]} alt="" />
+      <img style={{"border-bottom-left-radius":"20px"}} src={image[1]} alt="" />
+      </div> 
+      <div className="post_body4_2">
+      <img style={{"border-top-right-radius":"20px"}} src={image[2]} alt="" />
+      <img style={{ "border-bottom-right-radius":"20px"}} src={image[3]} alt="" />
+      </div>
+      </div>
+      :null} 
       
       
       {video ? <video src={video} alt="" /> : null}

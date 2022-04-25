@@ -13,20 +13,23 @@ import GetProfileInfo from "./GetProfileInfo";
 import Tweet from "../Tweet/Tweet";
 function createProfileData(User) {
  
+
+
   return (
       <ProfileData
-        key={User.id}
+        key={User._id}
         coverphoto={User.coverphotoURL}
         profilepic={User.profilepic}
         name={User.name}
         username={User.username}
         bio={User.bio}
-        location={User.location}
+        location={User.country+", "+User.city}
         website={User.website}
         birthdate={User.birthdate}
-        joineddate={User.joineddate}
+        joineddate={User.createdAt}
         followersCount={User.followersCount}
         followingCount={User.followingCount}
+        isMe={User.isMe}
       />
     );
   }

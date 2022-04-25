@@ -101,7 +101,7 @@ function ProfileData(props){
                 <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
                 <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
                 <div className="edit__btn">
-                    {visitedProfileId===profileId ?
+                    {props.isMe ?
                     <button onMouseOver={isOverBtn} onMouseOut={isOutBtn} style={{backgroundColor: hoverOverLike ? "#F5F8FA" : "white" }} className="Edit__profile__btn" >
                             <b>Edit profile</b>
                     </button>:
@@ -160,7 +160,7 @@ function ProfileData(props){
                         </div>
                         <div className="location">
                             <CakeOutlinedIcon />
-                            {props.bdate}
+                            {props.birthdate}
                         </div>
                         <div className="location">
                             <CalendarMonthOutlinedIcon />
@@ -170,11 +170,11 @@ function ProfileData(props){
                 <div className="follow__section">
                     <NavLink to="/profile/Followings"  style={{color:"gray"}}>
                     <span>
-                        <b>{props.followings} </b> 
+                        <b>{props.followingCount} </b> 
                     Following &nbsp; </span>
                     </NavLink>
                     <NavLink to="/profile/Followers"  style={{color:"gray"}}>
-                    <span>&nbsp;<b>{props.followers}</b> Followers </span>
+                    <span>&nbsp;<b>{props.followersCount}</b> Followers </span>
                     </NavLink>
                 </div>
             </div>
