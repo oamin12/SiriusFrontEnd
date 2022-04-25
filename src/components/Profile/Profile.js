@@ -21,7 +21,7 @@ function createProfileData(User) {
         coverphoto={User.coverphotoURL}
         profilepic={User.profilepic}
         name={User.name}
-        username={User.username}
+        username={'@'+User.username}
         bio={User.bio}
         location={User.country+", "+User.city}
         website={User.website}
