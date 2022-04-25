@@ -4,6 +4,8 @@ import StartPage from "./StartPage";
 import LoginForm from "./LoginForm";
 import SignUp from "./SignUp";
 import Home from "../Home/Home";
+import { useNavigate } from "react-router-dom";
+
 //Contains The Fake database data as admin user
 function SignInRedirect() {
   const adminUser = {
@@ -12,6 +14,7 @@ function SignInRedirect() {
   };
   const [user, setUser] = useState({ name: "", password: "" });
   const [error, setError] = useState("");
+  let navigate = useNavigate();
 
   const Login = (details) => {
     console.log(details);
@@ -29,7 +32,7 @@ function SignInRedirect() {
   };
   return (
     <div classname="App">
-      {user.name != "" ? <Home /> : <LoginForm Login={Login} error={error} />}
+      {user.name != "" ? navigate("/home") : <LoginForm Login={Login} error={error} />}
     </div>
   );
 }
