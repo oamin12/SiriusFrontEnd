@@ -52,7 +52,7 @@ const Start = () => {
             </a>
           </p>
           <h2 className="alreadyf1">Already have an account?</h2>
-          <NavLink to="./signin">
+          <NavLink to="./signinredirect">
             <button className="loginf1">Sign in</button>
           </NavLink>
         </div>

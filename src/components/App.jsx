@@ -18,6 +18,7 @@ import AdminViewUser from "./AdminView/AdminUser";
 import LoginForm from "./StartupPage/LoginForm";
 import SignUp from "./StartupPage/SignUp";
 import ForgetPassword from "./StartupPage/ForgetPassword";
+import SignInRedirect from "./StartupPage/SignInRedirect";
 
 function App(props) {
   return (
@@ -25,6 +26,7 @@ function App(props) {
       <div className="homeLayout">
         <Routes>
           <Route path="/" exact element={<StartPage />} />
+          <Route path="/signinredirect" exact element={<SignInRedirect />} />
           <Route path="/signin" exact element={<LoginForm />} />
           <Route path="/signup" exact element={<SignUp />} />
           <Route path="/forgetpassword" exact element={<ForgetPassword />} />
