@@ -4,7 +4,7 @@ import StartPage from "./StartPage";
 import LoginForm from "./LoginForm";
 import SignUp from "./SignUp";
 import Home from "../Home/Home";
-
+//Contains The Fake database data as admin user
 function SignInRedirect() {
   const adminUser = {
     name: "Omar",
