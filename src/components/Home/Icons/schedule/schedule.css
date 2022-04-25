@@ -1,0 +1,116 @@
+.cancelbutton
+{
+margin-left:-2%;
+margin-top:-3%;
+}
+.date_heading{
+margin-top: 4%;
+margin-left:-0.5%;
+font-size: 95%;
+font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", "sans-serif";
+font-weight: lighter;
+color: rgb(115, 115, 115);
+}
+.time_heading{
+    margin-top: 30%;
+    margin-bottom: 2%;
+    margin-left:-0.5%;
+    font-size: 95%;
+    font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", "sans-serif";
+    font-weight: lighter;
+    color: rgb(115, 115, 115);
+  }
+.loaction_heading{
+margin-left: -2%;
+font-size: 125%;
+font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", "sans-serif";
+font-weight: lighter;
+color: black;
+}
+.timezone_heading{
+margin-top: 45%;
+margin-left: -2%;
+font-size: 95%;
+font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", sans-serif;
+font-weight: lighter;
+color: rgb(115, 115, 115);
+ }
+.scheduletittle
+{
+margin-left: -28%;
+margin-top: -36.5%;
+font-style: solid 3px;
+padding-left: 40%;
+}
+.scheduletittle_validation_confirm
+{
+  margin-left: -28%;
+  margin-top: -28.5%;
+  font-style: solid 3px;
+  padding-left: 40%;
+
+}
+.scheduletittle_validation_update
+{
+  margin-left: -28%;
+  margin-top: -32.5%;
+  font-style: solid 3px;
+  padding-left: 40%;
+}
+.sendstatus{
+margin-top:-46%;
+margin-left:3%;
+font-size: 95%;
+font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", sans-serif;
+font-weight: lighter;
+color: rgb(115, 115, 115);
+}
+.schedule{
+display:flex;
+align-content: center;
+height:auto;
+width:auto;
+}
+.scheduletittle2
+{
+margin-left: -28%;
+margin-top: -40%;
+font-style: solid 3px;
+padding-left: 40%;
+}
+.sendstatus2{
+  margin-top:-43%;
+  margin-left:3%;
+  font-size: 95%;
+  font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", sans-serif;
+  font-weight: lighter;
+  color: rgb(115, 115, 115);
+  }
+  .sendstatus_inputtext
+  {
+    margin-top:2%;
+    font-size: 95%;
+    font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", sans-serif;
+    font-weight: lighter;
+    color: rgb(115, 115, 115);
+  }
+  .schedule
+  {
+    height:auto;
+    width:auto;
+    display: flex;
+  }
+  .loaction_heading_validation{
+    font-size: 125%;
+    font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", "sans-serif";
+    font-weight: lighter;
+    color: black;
+    }
+    .timezone_heading_validation{
+
+   
+    font-size: 95%;
+    font-family:"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", sans-serif;
+    font-weight: lighter;
+    color: rgb(115, 115, 115);
+     }
