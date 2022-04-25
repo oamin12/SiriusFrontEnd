@@ -19,6 +19,7 @@ import LoginForm from "./StartupPage/LoginForm";
 import SignUp from "./StartupPage/SignUp";
 import ForgetPassword from "./StartupPage/ForgetPassword";
 import SignInRedirect from "./StartupPage/SignInRedirect";
+import Logout from "./StartupPage/Logout";
 
 function App(props) {
   return (
@@ -28,6 +29,7 @@ function App(props) {
           <Route path="/" exact element={<StartPage />} />
           <Route path="/signinredirect" exact element={<SignInRedirect />} />
           <Route path="/signin" exact element={<LoginForm />} />
+          <Route path="/logout" exact element={<Logout />} />
           <Route path="/signup" exact element={<SignUp />} />
           <Route path="/forgetpassword" exact element={<ForgetPassword />} />
           <Route path="/home" exact element={<Home flag={props.flag} />} />

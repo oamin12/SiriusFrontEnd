@@ -1,0 +1,76 @@
+.backf4 {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 90%;
+}
+.containerf4 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 350px;
+  height: 350px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+}
+.h1f4 {
+  margin-top: -220px;
+  position: fixed;
+  text-align: center;
+  font-size: 25px;
+}
+.youf4 {
+  opacity: 70%;
+  font-size: 16px;
+  margin-right: -80px;
+  margin-top: -80px;
+}
+.outf4 {
+  color: white;
+  width: 270px;
+  height: 40px;
+  background-color: rgb(0, 0, 0);
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  transition: all 0.2s ease;
+  position: fixed;
+  margin-bottom: -220px;
+  margin-top: -90px;
+}
+.cancelf4 {
+  width: 270px;
+  height: 40px;
+  background-color: #fff;
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  transition: all 0.2s ease;
+  margin-top: 250px;
+  position: fixed;
+}
+/*Hovering*/
+.outf4:hover {
+  background: #292929f7;
+  cursor: pointer;
+}
+.cancelf4:hover {
+  background: #b7b7b742;
+  cursor: pointer;
+}
