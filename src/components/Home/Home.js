@@ -11,13 +11,15 @@ import axios from "axios";
 
 var config = {
   method: 'get',
-  url: 'http://localhost:5000/home/62648da149a666a904026356/getTweet',
+  url: 'http://localhost:5000/home/62648da149a666a904026356/',
+
   headers: { }
 };
 async function GetTweetInfo() {
   let response = '';
   try {
-    response = await axios.get('http://localhost:5000/home/62648da149a666a904026356/getTweet',config).then((res) => res.data);
+    response = await axios.get('http://localhost:5000/home/62648da149a666a904026356/',config).then((res) => res.data);
+
     return (response.data);
   } catch (error) {
     if (error.response) {

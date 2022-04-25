@@ -101,7 +101,7 @@ function ProfileData(props){
                 <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
                 <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
                 <div className="edit__btn">
-                    {visitedProfileId===profileId ?
+                    {props.isMe ?
                     <button onMouseOver={isOverBtn} onMouseOut={isOutBtn} style={{backgroundColor: hoverOverLike ? "#F5F8FA" : "white" }} className="Edit__profile__btn" >
                             <b>Edit profile</b>
                     </button>:
