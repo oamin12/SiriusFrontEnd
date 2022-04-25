@@ -5,6 +5,7 @@ import Tweet from "./tweet2.png"
 import Tweetblur from "./tweet1.png"
 import tweets from "../Tweets.js"
 import axios from "axios";
+var token=localStorage.getItem("tokenValue");
 
 function Inputtext(props)
 {
@@ -20,18 +21,18 @@ function Inputtext(props)
       if(flag2===1)   
       {
         tweets.unshift({id:4,name:"Remonda",userName:"Remonda_95",content:text,avatar:"",image:"",likeCount:0,repliesCount:0,retweetCount:0})
-        var data = '{"userId":"62648da149a666a904026356","body":'+text+',"media": []}';
+        var data = '{"body":'+text+',"media": []}';
         var config = {
           method: 'post',
           url: 'localhost:5000/home/compose-tweet',
-          headers: { },
+          headers: {Authorization:"Bearer "+token},
           data:data
         };
         
         async function PostTweet() {
           let response = '';
           try {
-            response = await axios.post('http://localhost:5000/home/compose-tweet',{userId:"62648da149a666a904026356",body:text,media: []}).then((res) => res.data);
+            response = await axios.post('http://localhost:5000/home/compose-tweet',{body:text,media: []},{headers: {Authorization:"Bearer "+token}}).then((res) => res.data);
             return (response.data);
           } catch (error) {
             if (error.response) {

@@ -13,14 +13,14 @@ var token=localStorage.getItem("tokenValue");
  console.log('dah el token ',localStorage.getItem("tokenValue"));
 var config = {
   method: 'get',
-  url: 'http://localhost:5000/home/62648da149a666a904026356/',
+  url: 'http://localhost:5000/home/',
 
   headers: {Authorization:"Bearer "+token}
 };
 async function GetTweetInfo() {
   let response = '';
   try {
-    response = await axios.get('http://localhost:5000/home/62648da149a666a904026356/',config).then((res) => res.data);
+    response = await axios.get('http://localhost:5000/home/',config).then((res) => res.data);
 
     return (response.data);
   } catch (error) {
