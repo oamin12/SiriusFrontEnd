@@ -1,10 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 /*Styling Start Page*/
 * {
-  font-family: "Lato", sans-serif !important;
+  font-family: "Lato", sans-serif;
 }
 body {
   background-color: #fff;
+}
+.Start {
+  overflow: hidden;
 }
 .backf1 {
   width: 1250px;
@@ -17,7 +20,7 @@ body {
 }
 .h1f1 {
   font-size: 90px;
-  margin-top: 140px;
+  margin-top: 165px;
 }
 .h3f1 {
   font-size: 45px;
@@ -64,10 +67,11 @@ body {
 .pf1 {
   width: 37%;
   text-align: center;
-  border-bottom: 1px solid rgb(240, 240, 240);
+  border-bottom: 1px solid rgb(230, 230, 230);
   line-height: 0.1em;
   margin: 10px 0 20px;
   margin-left: 20px;
+  opacity: 70%;
 }
 .pf1 > .spf1 {
   background: #fff;
@@ -128,6 +132,7 @@ body {
   font-size: 14px;
   color: #536471;
   margin: 20px 20px;
+  margin-right: 22px;
 }
 .a1f1:hover {
   text-decoration: underline;
@@ -153,4 +158,9 @@ body {
 .signupf1:hover {
   background: #1f94dd;
   cursor: pointer;
+}
+@media (max-width: 1500px) {
+  .backf1 {
+    display: none;
+  }
 }

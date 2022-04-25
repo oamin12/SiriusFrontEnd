@@ -48,9 +48,8 @@ const Start = () => {
               target="_blank"
             >
               {" "}
-              Cookie Use{" "}
+              Cookie Use.{" "}
             </a>
-            .
           </p>
           <h2 className="alreadyf1">Already have an account?</h2>
           <NavLink to="./signin">

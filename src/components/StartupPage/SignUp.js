@@ -3,10 +3,10 @@ import "./SignUp.css";
 import greyback from "./Images/grey.png";
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import Tooltip from "@mui/material/Tooltip";
+import { NavLink } from "react-router-dom";
 let type = 0;
 const SignUp = () => {
-  let history = useNavigate();
+  let navigate = useNavigate();
   let month = [
     "January",
     "February",
@@ -25,14 +25,7 @@ const SignUp = () => {
     <div className="SignUp">
       <img className="backf3" src={greyback} />
       <div className="containerf3">
-        <Tooltip title="Close">
-          <CloseIcon
-            className="closef3"
-            onClick={() => {
-              history.push("./");
-            }}
-          />
-        </Tooltip>
+        <CloseIcon className="closef3" onClick={() => navigate("/")} />
         <h1 className="h1f3">Create your account</h1>
         <input
           className="namef3"
@@ -43,8 +36,8 @@ const SignUp = () => {
         <input
           className="phonef3"
           id="change"
-          type="text"
-          placeholder="Phone"
+          type="email"
+          placeholder="Email"
         />
         <h4 className="datef3">Date of birth</h4>
         <p className="infof3">

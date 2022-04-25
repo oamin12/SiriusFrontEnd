@@ -42,7 +42,7 @@
   position: fixed;
 }
 .phonef3 {
-  margin-top: -80px;
+  margin-top: -100px;
   width: 410px;
   height: 55px;
   outline: none;
@@ -66,12 +66,13 @@
 .datef3 {
   position: fixed;
   margin-top: 100px;
-  margin-left: -345px;
+  text-align: left;
+  margin-left: 60px;
 }
 .infof3 {
   position: fixed;
   margin-top: 170px;
-  margin-left: 10px;
+  margin-left: 80px;
   margin-right: 20px;
   font-size: 15px;
   color: rgba(67, 67, 67, 0.722);
@@ -120,16 +121,17 @@ select {
 .month {
   width: 190px;
   height: 50px;
+  margin-left: 30px;
 }
 .day {
   width: 80px;
   height: 50px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 .year {
   width: 100px;
   height: 50px;
-  margin-left: 15px;
+  margin-left: 20px;
 }
 select {
   cursor: pointer;

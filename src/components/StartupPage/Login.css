@@ -90,6 +90,7 @@
   border: 1px solid rgb(211, 210, 210);
   border-radius: 4px;
   padding-left: 10px;
+  position: fixed;
 }
 .nextbtnf2 {
   color: white;
@@ -124,16 +125,16 @@
 .accountf2 {
   position: inherit;
   margin-bottom: -450px;
+  text-align: center;
 }
 .af2 {
   color: #00acee;
   text-decoration: none;
 }
 .closef2 {
-  margin-top: -600px !important;
-  margin-right: 397px !important;
-  position: fixed !important;
-  opacity: 50% !important;
+  margin-bottom: 580px;
+  margin-left: -400px;
+  color: grey;
 }
 /*Hovering*/
 .closef2:hover {
@@ -156,7 +157,7 @@
 
 .boxpf2:focus {
   border: 1px solid #00acee;
-  font-size: 16px;
+  font-size: 18px;
 }
 .nextbtnf2:hover {
   background: #292929f7;
@@ -171,13 +172,14 @@
 }
 /*Icons*/
 .visiblef2 {
-  margin-left: 280px;
+  margin-left: 270px;
   margin-top: 100px;
   position: fixed;
   cursor: pointer;
 }
 .visiblef2:hover {
   background-color: rgb(236, 236, 236);
-  border-radius: 50%;
+  border-radius: 60%;
   border: 1px solid rgb(236, 236, 236);
+  width: 5%;
 }

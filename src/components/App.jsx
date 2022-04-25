@@ -17,6 +17,7 @@ import AdminReports from "./AdminView/AdminReports/AdminRports";
 import AdminViewUser from "./AdminView/AdminUser";
 import LoginForm from "./StartupPage/LoginForm";
 import SignUp from "./StartupPage/SignUp";
+import ForgetPassword from "./StartupPage/ForgetPassword";
 
 function App(props) {
   return (
@@ -26,6 +27,7 @@ function App(props) {
           <Route path="/" exact element={<StartPage />} />
           <Route path="/signin" exact element={<LoginForm />} />
           <Route path="/signup" exact element={<SignUp />} />
+          <Route path="/forgetpassword" exact element={<ForgetPassword />} />
           <Route path="/home" exact element={<Home flag={props.flag} />} />
           <Route path="/adminView/dashboard" element={<AdminView />} />
           <Route path="/adminView/user" element={<AdminViewUser />} />
