@@ -9,11 +9,13 @@ import { NavLink } from "react-router-dom";
 import SearchBox from "../Search/SearchBox";
 import axios from "axios";
 
+var token=localStorage.getItem("tokenValue");
+ console.log('dah el token ',localStorage.getItem("tokenValue"));
 var config = {
   method: 'get',
   url: 'http://localhost:5000/home/62648da149a666a904026356/',
 
-  headers: { }
+  headers: {Authorization:"Bearer "+token}
 };
 async function GetTweetInfo() {
   let response = '';

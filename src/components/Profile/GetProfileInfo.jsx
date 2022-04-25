@@ -1,8 +1,9 @@
 import axios from "axios";
+var token = localStorage.getItem("tokenValue");
 var config = {
   method: 'get',
   url: 'http://localhost:5000/Boody',
-  headers: {Authorization:"Bearer "+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjYwNDg0ZTI4OGE0MDVhMGQyNjIxOCIsImlhdCI6MTY1MDg1MzM3NCwiZXhwIjoxNjU5NDkzMzc0fQ.qcNDIgCHJGUs9i1WEQWb3L8RJFlmyVslxC7qIi9-0cM" }
+  headers: {Authorization:"Bearer "+token }
 };
 export default async function GetProfileInfo() {
   let response = '';

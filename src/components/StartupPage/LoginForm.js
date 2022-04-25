@@ -7,19 +7,59 @@ import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import { NavLink } from "react-router-dom";
-const LoginForm = ({ Login, error }) => {
-  const [details, setDetails] = useState({ name: "", password: "" });
-  const sumbitHandler = (e) => {
-    e.preventDefault();
-    Login(details);
-  };
-  let navigate = useNavigate();
+import axios from "axios";
 
+const LoginForm = () => {
+  const [details, setDetails] = useState({ name: "", password: "" });
+  const [SignInToken,setSignInToken ] = React.useState();  
+  const [SignInState,setSignInState ] = React.useState(false);
+  const [errorName, setError] = useState("");
+
+  let navigate = useNavigate();
+  async function SignIn() {
+    let response = '';
+    try {
+      response = await axios.post('http://localhost:5000/login',{email:details.name,password:details.password}).then((res) => res.data);
+      setSignInToken(response.token);
+      setSignInState(response.success);
+      return (response.data);
+    } catch (error) {
+      if (error.response) {
+        //setError(error.response.data);
+        console.log(error.response);
+        return (error.response);
+      }
+    }
+    console.log(response);
+    return (response);
+  }
+  const sumbitHandler = (e) => {
+    SignIn();
+    if(details.name === "" || details.password==="")
+    {
+      setError("email or password can't be empty");
+      e.preventDefault();
+
+      return;
+    }
+    if(SignInState)
+    {
+      navigate("/home");
+    }
+    else
+    {
+      setError("email or password is incorrect");
+    }
+
+    e.preventDefault();
+    // Login(SignInState);
+  };
+ 
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eye);
 
   const passwordToggle = () => {
-    if (type == "password") {
+    if (type === "password") {
       setIcon(eyeOff);
       setType("text");
     } else {
@@ -27,7 +67,11 @@ const LoginForm = ({ Login, error }) => {
       setType("password");
     }
   };
-
+  
+  console.log(SignInToken);
+  console.log(SignInState);
+  console.log(errorName);
+  localStorage.setItem("tokenValue",SignInToken);
   return (
     <div className="Login">
       <img className="backf2" src={greyback} />
@@ -72,7 +116,7 @@ const LoginForm = ({ Login, error }) => {
             Sign Up
           </a>
         </p>
-        {error != "" ? (
+        {errorName != "" ? (
           <div
             style={{
               marginBottom: "-600px",
@@ -82,7 +126,7 @@ const LoginForm = ({ Login, error }) => {
             }}
             classname="errorf2"
           >
-            {error}
+            {errorName}
           </div>
         ) : (
           ""
