@@ -54,6 +54,7 @@
     display: flex;
     flex-direction: row;
     padding-bottom: 10px; 
+
   
 }
 
@@ -72,6 +73,7 @@
     display: flex;
     align-items: center;
     padding-right:5px ;
+    white-space: nowrap;
     
     /* white-space: nowrap; */
 
@@ -98,6 +100,53 @@
   text-align: center;
   cursor: pointer;
   /* transition: background-color 0.25s; */
+
+}
+
+.followingBtn{
+    height: auto;
+  width: 100%;
+  padding: 10px;
+  border-radius: 300px;
+  width: 112px;
+  height: 36;
+  font-size: 15px;
+  border-style:solid;
+  border-color: lightgray;
+  background-color: white;
+  margin-top: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.followingBtn:hover{
+    border-color: rgb(253,201,206);
+    background-color: rgb(244,33,46,0.1);
+    color: red;
+}
+.notifAndMoreBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    padding: 10px;
+    border-radius: 300px;
+    height: 40px;
+    font-size: 15px;
+    border-style:solid;
+    border-color: lightgray;
+    background-color: white;
+    margin-top: 12px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.visitedProfile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
 
 }
 

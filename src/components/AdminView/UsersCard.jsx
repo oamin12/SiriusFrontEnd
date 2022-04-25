@@ -9,7 +9,6 @@ import { useState } from "react";
 import ReactDOM from "react-dom";
 import App from "../App";
 import AdminUserStats from "./AdminUserStats/AdminUserStats";
-import axios from "axios";
 import getAllUsers from "./UserCardInfo";
 
 const style = {
