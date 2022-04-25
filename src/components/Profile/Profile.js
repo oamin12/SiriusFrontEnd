@@ -13,11 +13,9 @@ import GetProfileInfo from "./GetProfileInfo";
 import Tweet from "../Tweet/Tweet";
 function createProfileData(User) {
  
-
-
   return (
       <ProfileData
-        key={User._id}
+        key={User.id}
         coverphoto={User.coverphotoURL}
         profilepic={User.profilepic}
         name={User.name}
@@ -29,7 +27,6 @@ function createProfileData(User) {
         joineddate={User.createdAt}
         followersCount={User.followersCount}
         followingCount={User.followingCount}
-        isMe={User.isMe}
       />
     );
   }

@@ -160,7 +160,7 @@ function ProfileData(props){
                         </div>
                         <div className="location">
                             <CakeOutlinedIcon />
-                            {props.birthdate}
+                            {props.bdate}
                         </div>
                         <div className="location">
                             <CalendarMonthOutlinedIcon />
@@ -170,11 +170,11 @@ function ProfileData(props){
                 <div className="follow__section">
                     <NavLink to="/profile/Followings"  style={{color:"gray"}}>
                     <span>
-                        <b>{props.followingCount} </b> 
+                        <b>{props.followings} </b> 
                     Following &nbsp; </span>
                     </NavLink>
                     <NavLink to="/profile/Followers"  style={{color:"gray"}}>
-                    <span>&nbsp;<b>{props.followersCount}</b> Followers </span>
+                    <span>&nbsp;<b>{props.followers}</b> Followers </span>
                     </NavLink>
                 </div>
             </div>

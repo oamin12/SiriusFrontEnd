@@ -36,22 +36,19 @@
   align-content: center;
 }
 .search {
-  border: 0px solid rgb(245, 248, 250);
+  border: 2px solid rgb(245, 248, 250);
   text-align: center;
-  position: sticky !important;
-  z-index: 100 !important;
-  top:0;
+  position: sticky;
 }
 .whatsHappening {
   border: 2px solid rgb(245, 248, 250);
   text-align: center;
 }
 .whoToFollow {
-  border: 0px solid rgb(245, 248, 250);
+  border: 2px solid rgb(245, 248, 250);
   text-align: center;
-  position: sticky !important;
-  z-index: 100 !important;
-  top: -1 !important;
+  position: sticky;
+  top: 0;
 }
 
 @media (max-width:1020px) {
