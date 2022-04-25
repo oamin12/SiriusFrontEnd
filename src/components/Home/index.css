@@ -1,162 +1,123 @@
 #posting_a_tweet{
-    align-items: flex-start;
-    border-bottom: 1px solid rgb(245, 248, 250) ;
-    padding-bottom: 10px;
-    height: auto;
-    flex: 1;
-    padding: 10px;
-    width: auto; /*mohema awy*/
-  
+  align-items: flex-start;
+  border-bottom: 1px solid rgb(245, 248, 250) ;
+  padding-bottom: 10px;
+  height: auto;
+  flex: 1;
+  padding: 10px;
+  width: auto; /*mohema awy*/
+
 }
 
 .ProfilePicture{ 
-    border-radius:100%; 
-    margin-left:-1%;
-    margin-top:11%;
+  border-radius:100%; 
+  margin-left:-1%;
+  margin-top:11%;
 
-    
+  
 }
 .profile_picture
 {
-    display:flex;
-    justify-content:space-around;
-    margin-left:15%;
-    border-bottom:1px solid rgb(241, 242, 243);
-    margin-left:1%;
-    margin-top:-10%;
-   
-    
+  display:flex;
+  justify-content:space-around;
+  margin-left:15%;
+  border-bottom:1px solid rgb(241, 242, 243);
+  margin-left:1%;
+  margin-top:-10%;
+ 
+  
 }
 .inputtext
 {
-    width:190%;
-    border:none;
-    outline: none;
-    margin-left:3%;
-    margin-top:32%;
-    margin-bottom: -12%;
-    font-size: 100%;
-    resize: none;
+  width:190%;
+  border:none;
+  outline: none;
+  margin-left:3%;
+  margin-top:32%;
+  margin-bottom: -12%;
+  font-size: 100%;
+  resize: none;
 
-   
+ 
 }
 .inputtext::placeholder
 {
- font-size:140%;
+font-size:140%;
 
 }
 
 .Heading
 {
-   font-family:Arial, Helvetica, sans-serif;
-    font-size:130%;
-    color:black;  
-    text-align: left;
-    height: auto;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background-color: white;
-    border: 1px solid white;
-    padding: 15px;
-    opacity: 80%;
+ font-family:Arial, Helvetica, sans-serif;
+  font-size:130%;
+  color:black;  
+  text-align: left;
+  height: auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  border: 1px solid white;
+  padding: 15px;
+  opacity: 80%;
 }
 
 .Media
 {
-    height:70%;
-    width:70%;
-    margin-left:160%;
+  height:70%;
+  width:70%;
+  margin-left:160%;
 
 }
 .Poll
 {
-   height:70%;
-    width:70%;
-    margin-left:390%;
-  
+ height:70%;
+  width:70%;
+  margin-left:390%;
+
 }
 .Gif
 {
-    height:70%;
-    width:70%;
-    margin-left:120%;
-    margin-top:4%;
+  height:70%;
+  width:70%;
+  margin-left:120%;
+  margin-top:4%;
+
  
-   
 }
 .Happyface
 {
-    height:75%;
-    width:75%;
-    margin-left:420%;
- 
-    
+  height:75%;
+  width:75%;
+  margin-left:420%;
+
+  
 }
 .Schedule
 {
-    height:70%;
-    width:70%;
-    margin-left:350%;
-    
+  height:70%;
+  width:70%;
+  margin-left:350%;
+  
 }
 .TweetButton
 {
-    width:35%;
-    height:35%;
-    border:none;
-    margin-left:155%;
+  width:35%;
+  height:35%;
+  border:none;
+  margin-left:155%;
 
-    padding-top:12%;
-    margin-top:13%;
-    margin-bottom:-25%;
+  padding-top:12%;
+  margin-top:13%;
+  margin-bottom:-25%;
 }
 .icons
 {
-    display:flex;
-    justify-content:space-around;
-    margin-left:0%;
-    width:25%;
-    margin-top:4%;
-    padding-bottom: 3%;
-    border-bottom: 1px solid rgb(241, 242, 243);
+  display:flex;
+  justify-content:space-around;
+  margin-left:0%;
+  width:25%;
+  margin-top:4%;
+  padding-bottom: 3%;
+  border-bottom: 1px solid rgb(241, 242, 243);
 }
-/*
-.popup-box {
-    position: fixed;
-    background: #00000050;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-  }
-   
-  .box {
-    position: relative;
-    width: 70%;
-    margin: 0 auto;
-    height: auto;
-    max-height: 70vh;
-    margin-top: calc(100vh - 85vh - 20px);
-    background: #fff;
-    border-radius: 4px;
-    padding: 20px;
-    border: 1px solid #999;
-    overflow: auto;
-  }
-   
-  .close-icon {
-    content: 'x';
-    cursor: pointer;
-    position: fixed;
-    right: calc(15% - 30px);
-    top: calc(100vh - 85vh - 33px);
-    background: #ededed;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    line-height: 20px;
-    text-align: center;
-    border: 1px solid #999;
-    font-size: 20px;
-  }*/

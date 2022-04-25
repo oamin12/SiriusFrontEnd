@@ -32,7 +32,7 @@ function App(props) {
           <Route path="/logout" exact element={<Logout />} />
           <Route path="/signup" exact element={<SignUp />} />
           <Route path="/forgetpassword" exact element={<ForgetPassword />} />
-          <Route path="/home" exact element={<Home flag={props.flag} />} />
+          <Route path="/home" exact element={<Home flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule}  flag={props.flag} weekdayName={props.weekdayName} am_pm={props.am_pm}  month={props.month} date={props.date} year={props.year}  time={props.time} flagconfirm={props.flagconfirm} />} />
           <Route path="/adminView/dashboard" element={<AdminView />} />
           <Route path="/adminView/user" element={<AdminViewUser />} />
           <Route path="/adminView/user/reports" element={<AdminReports />} />

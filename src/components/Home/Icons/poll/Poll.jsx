@@ -1,20 +1,21 @@
 import React from "react";
 import Tweet from "../../images/tweet2.png";
 import Tweetblur from "../../images/tweet1.png";
-import IconMedia from "../media/IconMedia";
 import IconPoll from "../poll/IconPoll";
 import IconGif from "../gif/IconGif";
 import IconSchedule from "../schedule/IconSchedule";
-import IconHappyFace from "../emoji/IconHappyFace";
 import Scheduleblur from "../../images/scheduleblur.png";
 import Mediablur from "../../images/mediablur.png";
-import Happyfaceblur from "../../images/happyface.png";
+import Happyface from "../../images/happyface.png"
 import Gifblur from "../../images/gifblur.png";
 import Pollblur from "../../images/pollblur.png";
 import Add from "../../images/addatreadicon.png";
 import ReactDOM from "react-dom";
 import App from "../../../App";
 import {TextField} from '@mui/material'
+import Picker from 'emoji-picker-react';
+import Popover from '@mui/material/Popover';
+import { useState } from 'react';
 
 
 function Poll(props) {
@@ -35,10 +36,26 @@ function Poll(props) {
   let [sel_value, setsel_value] = React.useState(5);  //values of the drop down menus
   let [sel_value2, setsel_value2] = React.useState(0);
   let [img, setimg] = React.useState(Tweetblur);
+  const [flag_stop_working,set_flag_stop_working]=React.useState(1)
+  const [inputStr, setInputStr] = useState('');
+  const [showPicker, setShowPicker] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const onEmojiClick = (event, emojiObject) => {
+    settextc(prevInput => prevInput + emojiObject.emoji);
+    setShowPicker(false);
+  };
+
+  function open_pop_over (event) {
+    setAnchorEl(event.currentTarget);
+    setShowPicker(true)
+  };
 
   function handlechange(event) {
     name = event.target.name;
-    console.log(name); 
     /*on change of the text box we check every time is the 2 choices text box written 
      in or not to know weather the user can tweet or not*/
     if (name === "choice1") {
@@ -157,6 +174,7 @@ function Poll(props) {
   }
   function removepoll() {  //we reneder the app a new time when removing the poll 
     setflag9(0);
+    set_flag_stop_working(0)
     setcounter(2); //reseting the number of text boxes when removing the poll
     ReactDOM.render(<App flag={1} />, document.getElementById("root")); //we send to it a flag that is supposed to show the text box as will as the icons, that was hidden when we called the poll
   }
@@ -182,10 +200,6 @@ function Poll(props) {
     { 
       sel_value1 = valueS;
       setsel_value1(sel_value1);
-      console.log(valueS)
-      console.log(sel_value2)
-      console.log(sel_value)
-      console.log(typeof(sel_value))
       if (sel_value === "0" && sel_value2 === "0" && valueS === "0")  //we must check on valueS not sel_value1 bec selvalue1 will not be changed whed we apply the condition 
       {
         sel_value = 5;
@@ -197,9 +211,6 @@ function Poll(props) {
     if (nameS === "days") {
       sel_value2 = valueS;
       setsel_value2(sel_value2);
-      console.log(valueS)
-      console.log(sel_value1)
-      console.log(sel_value)
       if (sel_value === "0" && sel_value1 === "0" && valueS === "0") {
         sel_value = 5;
         console.log("entered2");
@@ -209,9 +220,6 @@ function Poll(props) {
     if (nameS === "minutes") {
       sel_value = valueS;
       setsel_value(valueS);
-      console.log(valueS)
-      console.log(sel_value1)
-      console.log(sel_value2)
       if (sel_value1 === "0" && sel_value2 === "0" && valueS === "0") {
         sel_value = 5;
         setsel_value(sel_value);
@@ -237,6 +245,24 @@ function Poll(props) {
                 size="36"
                 onChange={handlechange}
               />
+                 <img
+                    alt=""
+                    src={Happyface}
+                    className="emojis"
+                    onClick={open_pop_over} />
+           <Popover  open={open}
+             anchorEl={anchorEl}
+             onClose={handleClose} sx={{width:"35%", height:"50%",marginTop:'-3%'}}>
+
+            {showPicker && <Picker
+            disableSkinTonePicker="true"
+            pickerStyle={{ width: '100%',
+            margin:'0px',
+            
+            }}
+          onEmojiClick={onEmojiClick} />}
+          </Popover>
+
             </div>
             <div className="poll">
             <div className="choices">
@@ -432,7 +458,7 @@ function Poll(props) {
               {" "}
               Remove poll{" "}
             </button>
-   </div>
+          </div>
             <input
               type="image"
               src={img}
@@ -442,11 +468,9 @@ function Poll(props) {
             />
            {/* on click we see if we will reset */}
             <div className="Iconsblur">
-              <IconMedia img={Mediablur} classname={"Mediablur"} />
               <IconPoll img={Pollblur} classname={"Pollblur"} />
               <IconGif img={Gifblur} classname={"Gifblur"} />
-              <IconSchedule img={Scheduleblur} classname={"Scheduleblur"} />
-              <IconHappyFace img={Happyfaceblur} classname={"Happyfaceblur"} />
+              <IconSchedule img={Scheduleblur} classname={"Scheduleblur"}  />
             </div>
 
             <input

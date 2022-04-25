@@ -87,7 +87,7 @@ function Home(props) {
       <SideBar />
        <div className="feeder">
        <Heading/>
-       <PostingTweet flag={props.flag} postingFlag={handleAddTweet} />
+       <PostingTweet flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule} flag={props.flag} postingFlag={handleAddTweet} />
        {tweetsInfo.map(getTweet)}
       </div> 
       
