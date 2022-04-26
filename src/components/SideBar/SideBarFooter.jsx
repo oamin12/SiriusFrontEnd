@@ -28,8 +28,8 @@ function SideBarFooter(props) {
       <button className="avatarButton" onClick={handleClick}>
         <Avatar alt="profile picture" src={props.picture} />
         <div className="info">
-          <div>{props.name}</div>
-          <div>{props.username}</div>
+          <div>{localStorage.getItem("Name")}</div>
+          <div>@{localStorage.getItem("UserName")}</div>
         </div>
         <div className="moreHorizIcon">
           <MoreHorizIcon />
@@ -59,7 +59,7 @@ function SideBarFooter(props) {
               Add an existing account
             </Typography>
             <Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
-              Log out @{props.username}
+              Log out @{localStorage.getItem("UserName")}
             </Typography>
           </div>
         </Popover>
