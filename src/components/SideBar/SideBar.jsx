@@ -17,6 +17,9 @@ import TagIcon from "@mui/icons-material/Tag";
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import SideBarFooter from "./SideBarFooter";
+
+
+var UserName=localStorage.getItem("UserName");
 const iconInfo = [
   {
     id: 0,
@@ -58,7 +61,7 @@ const iconInfo = [
     iconText: "Profile",
     iconPic: PersonIcon,
     iconPicOutlined: PermIdentityIcon,
-    link: "/profile",
+    link: "/"+UserName,
   },
   {
     id: 6,

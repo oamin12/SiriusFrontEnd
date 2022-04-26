@@ -24,7 +24,7 @@ function Inputtext(props)
         var data = '{"body":'+text+',"media": []}';
         var config = {
           method: 'post',
-          url: '34.236.108.123:3000/home/compose-tweet',
+          url: '34.236.108.123:3000/compose-tweet',
           headers: {Authorization:"Bearer "+token},
           data:data
         };

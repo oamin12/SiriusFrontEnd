@@ -22,7 +22,7 @@ async function GetTweetInfo() {
   try {
     response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
     console.log('herererer',response.userName);
-    localStorage.setItem("UserName",response.userName)
+    localStorage.setItem("UserName",response.userName);
     return (response.data);
   } catch (error) {
     if (error.response) {

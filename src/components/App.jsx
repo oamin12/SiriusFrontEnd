@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Home/Home";
@@ -22,10 +22,22 @@ import SignInRedirect from "./StartupPage/SignInRedirect";
 import Logout from "./StartupPage/Logout";
 
 function App(props) {
+  // var userName=localStorage.getItem("UserProfile");
+  var UserName=localStorage.getItem("UserName");
+
+ // var userName=localStorage.setItem("UserProfile",localStorage.getItem("UserName"));
+  // const [UserProfile, setUserProfile] = useState(userName);
+  // function setProfileRoute()
+  // {
+  //   setUserProfile(userName);
+  // }
+  //setProfileRoute();
+  // console.log("AAAAAAAAAAAAAAAAAA",UserProfile);
   return (
     <BrowserRouter>
       <div className="homeLayout">
         <Routes>
+        {/* userName= {localStorage.getItem("UserProfile")} */}
           <Route path="/" exact element={<StartPage />} />
           <Route path="/signinredirect" exact element={<SignInRedirect />} />
           <Route path="/signin" exact element={<LoginForm />} />
@@ -40,8 +52,10 @@ function App(props) {
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/:userName" element={<Profile  />} />
+          <Route path={"/"+UserName} element={<Profile  />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile  />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profile/with_replies" element={<Profile />} />
           <Route path="/profile/media" element={<Profile />} />

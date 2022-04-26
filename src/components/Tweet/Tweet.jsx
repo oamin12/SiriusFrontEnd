@@ -1,4 +1,6 @@
 import { Avatar } from "@mui/material";
+import ReactDOM from "react-dom";
+import App from "../App";
 import React, { useState } from "react";
 import "./Tweet.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -34,6 +36,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
   const [hoverOverBookMark, setHoverBookMark] = useState(false);
   const [hoverOverLike, setHoverLike] = useState(false);
   const [hoverOverTweet, setHoverTweet] = useState(false);
+  const [UserProfile, setUserProfile] = useState(userName);
 
   //const numOfPics= image
   //////////////////////
@@ -140,6 +143,15 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     setOpen(null);
     
   }
+
+  function handleUserClicked(){
+    //ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={0}  flag={1}/>, document.getElementById("root"));
+    console.log('in tweet click',userName);
+    localStorage.setItem("UserProfile",userName);
+    console.log("USERPROFILEDADAWDWDAD", localStorage.getItem("UserProfile"));
+  }
+
+  localStorage.setItem("UserProfile",userName);
   var lol=2;
   return (
     <div className="post_body"
@@ -148,13 +160,13 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     >
       <div className="post_header" >
         <div className="post_headerText">
-          <NavLink className="link_text" to="/profile"><Avatar src={avatar} sx={{ width: 48, height: 48 }} /></NavLink>
+          <NavLink className="link_text" to={"/"+userName} onClick={handleUserClicked}><Avatar src={avatar} sx={{ width: 48, height: 48 }} /></NavLink>
           <h3 className="userdata">
             <div>
-              <NavLink className="link_text" to="/profile">{name}</NavLink>{" "}
+              <NavLink  className="link_text" to={"/"+userName} onClick={handleUserClicked}>{name}</NavLink>{" "}
               <span className="post_headerUserName">
                 @
-                <NavLink className="link_text2" to="/profile">{userName}</NavLink>
+                <NavLink className="link_text2" to={"/"+userName} onClick={handleUserClicked} >{userName}</NavLink>
               </span>
             </div>
             {/*Button Button Button Button Button Button Button*/}

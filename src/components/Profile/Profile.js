@@ -10,6 +10,8 @@ import Media from "../Home/Media";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Likes from "../Home/Likes";
 import GetProfileInfo from "./GetProfileInfo";
+import GetUserProfile from "./GetUserProfile";
+
 import Tweet from "../Tweet/Tweet";
 function createProfileData(User) {
  
@@ -73,32 +75,43 @@ function createProfileData(User) {
     }
     console.log(subpage);
   }
+
 function Profile() {
+  console.log("BEFORE GETTING",localStorage.getItem("UserProfile"));
 
   const [ProfileInfo,setProfileInfo ] = React.useState([]);
   React.useEffect(() => {
     (async () => {
-      const resp = await GetProfileInfo();
+      const resp = await GetUserProfile(localStorage.getItem("UserProfile"));
       setProfileInfo(resp);
+      //console.log("IS ME CHECK GOWA",ProfileInfo.isMe,ProfileInfo.username);
+
     })();
   }, []);
+  console.log("IS ME CHECK",ProfileInfo.isMe,ProfileInfo.username);
+  // const [OtherProfileInfo,setOtherProfileInfo ] = React.useState([]);
+  // React.useEffect(() => {
+  //   (async () => {
+  //     const resp = await GetUserProfile(props.userName);
+  //     setOtherProfileInfo(resp);
+  //   })();
+  // }, []);
 
-  console.log(ProfileInfo);
+  
   return (
     
     <div className="layout">
       <SideBar />
       <div className="feeder">
       {createProfileData(ProfileInfo)}
-      
-      {
-        ProfileSubPage
+       
+      {/* {  ProfileSubPage
         (subpage==1)?Hometweets.map(getTweet):
         (subpage==2)?TweetReplies.map(getTweet):
         (subpage==3)?Media.map(getTweet):
         (subpage==4)?Likes.map(getTweet):
         Hometweets.map(getTweet)
-      }
+      } */}
       </div>
       <div className="widgets">
         <div className="search">search</div>
