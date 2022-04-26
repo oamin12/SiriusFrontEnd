@@ -37,6 +37,10 @@ const renderCustomizedLabel = ({
     </text>
   );
 };
+/**
+ * @description Component that contains a pie chart representing the number of tweets per top trending and calculates its percentage
+ * @returns {div} A div that returns that component
+ */
 function AdminChartWidget() {
   const [topTrendingTweets, setTopTrendingTweets] = React.useState([]);
   React.useEffect(() => {

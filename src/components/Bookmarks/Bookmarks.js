@@ -27,7 +27,10 @@ function getTweet(tweet) {
     />
   );
 }
-
+/**
+ * @description A component which contains the bookmarks header component, the bookmarked tweets, sidebar, and the widgets component.
+ * @returns {div} returns a div that contains the component
+ */
 function Bookmarks() {
   const [BookmarkedTweets, setBookmarkedTweets] = React.useState([]);
   const [User, setUser] = React.useState([]);

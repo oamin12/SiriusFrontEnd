@@ -71,10 +71,7 @@ function mapType6(Type6) {
     );
 }
 
-/**
- * @description page that contaon 6 main types of reports for each user 
- * @returns {div} contains 6 divs each one has the users that reported this user for the 6 different types of reports
- */
+
 function ReportCard() {
   return (
       <div className="ReportMain">

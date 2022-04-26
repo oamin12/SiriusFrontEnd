@@ -11,8 +11,13 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
-
 import getTopLikes from "./AdminLikesBarChartInfo";
+
+
+/**
+ * @description Component that represents a bar chart representing the top 5 Liked Tweets
+ * @returns {div} A div that contains the component
+ */
 function AdminLikesBarChart() {
   const [topLikes, setTopLikes] = React.useState([]);
   React.useEffect(() => {

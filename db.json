@@ -177,6 +177,13 @@
   ],
   "AllUsers": [
     {
+      "id": 3,
+      "name": "Charlie Puth",
+      "username": "@charlieputh",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
+    },
+    {
       "id": 4,
       "name": "Neymar",
       "username": "@Neymarxv",

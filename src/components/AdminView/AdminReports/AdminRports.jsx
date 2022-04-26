@@ -5,10 +5,7 @@ import { NavLink } from "react-router-dom";
 import ReportCard from "./ReportCard";
 
 import "./AdminReports.css";
-/**
- * @description page contains all reports for every user that admin can have track on
- * @returns {div}
- */
+
 function AdminReports() {
   return (
     <div className="AdminView">

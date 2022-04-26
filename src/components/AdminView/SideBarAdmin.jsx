@@ -48,7 +48,11 @@ function CreateIcons(icons) {
         />
       );
     }
-  }
+}
+  /**
+   * @description component which returns the sidebar that contains the navigation routes
+   * @returns {div} A div that returns the component
+   */
 
 function SideBarAdmin() {
   return (

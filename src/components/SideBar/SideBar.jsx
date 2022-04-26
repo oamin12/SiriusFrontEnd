@@ -18,8 +18,7 @@ import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import SideBarFooter from "./SideBarFooter";
 
-
-var UserName=localStorage.getItem("UserName");
+var UserName = localStorage.getItem("UserName");
 const iconInfo = [
   {
     id: 0,
@@ -61,7 +60,7 @@ const iconInfo = [
     iconText: "Profile",
     iconPic: PersonIcon,
     iconPicOutlined: PermIdentityIcon,
-    link: "/"+UserName,
+    link: "/" + UserName,
   },
   {
     id: 6,
@@ -101,7 +100,10 @@ function CreateIcons(icons) {
     );
   }
 }
-
+/**
+ *@description Component which is the sidebar which conatins all the navigation routes of the website and the website header
+ * @returns {div} a div that returns that component
+ */
 function SideBar() {
   return (
     <div className="sideBarParent">
@@ -111,7 +113,11 @@ function SideBar() {
         </NavLink>
         {iconInfo.map(CreateIcons)}
         <button className="tweetButtonSideBar">Tweet</button>
-        <SideBarFooter username={accountInfo.username} name={accountInfo.name} picture={accountInfo.picture}/>
+        <SideBarFooter
+          username={accountInfo.username}
+          name={accountInfo.name}
+          picture={accountInfo.picture}
+        />
       </div>
     </div>
   );

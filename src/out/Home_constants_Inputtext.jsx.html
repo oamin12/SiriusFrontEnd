@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Home/constants/Inputtext.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Home/constants/Inputtext.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import App from "../../App"
+import ReactDOM from "react-dom";
+import Tweet from "./tweet2.png"
+import Tweetblur from "./tweet1.png"
+import tweets from "../Tweets.js"
+import axios from "axios";
+
+/**
+ * 
+ * @param {object} props flags
+ * @description  Component that contains the area dedicated for writing a tweet and the tweet button that contains the option of blurring due to undesirable events
+ * @returns {div} A div that returns that component
+ */
+function Inputtext(props)
+{
+    let [flag2,setflag2]=React.useState(0); 
+    let [flag3,setflag3]=React.useState(0);
+    let [img,setimg]=React.useState(Tweetblur);
+    let [text,settext]=React.useState("");
+
+    
+     function handlechangeT()  //reset the textbox,post the tweet
+    {
+     
+      if(flag2===1)   
+      {
+        tweets.unshift({id:4,name:"Remonda",userName:"Remonda_95",content:text,avatar:"",image:"",likeCount:0,repliesCount:0,retweetCount:0})
+        var data = '{"userId":"62648da149a666a904026356","body":'+text+',"media": []}';
+        var config = {
+          method: 'post',
+          url: 'localhost:5000/home/compose-tweet',
+          headers: { },
+          data:data
+        };
+        
+        async function PostTweet() {
+          let response = '';
+          try {
+            response = await axios.post('http://localhost:5000/home/compose-tweet',{userId:"62648da149a666a904026356",body:text,media: []}).then((res) => res.data);
+            return (response.data);
+          } catch (error) {
+            if (error.response) {
+              return (error.response);
+            }
+          }
+          console.log(response);
+          return (response);
+        }
+        PostTweet();
+        props.postingFlag();
+            
+        console.log(tweets)
+        text=""
+        settext(text);
+      setimg(Tweetblur);
+      }
+    }
+
+    function handleChange(event) //check on the length of the text if >280 then change the tweet img 
+    {
+       text=event.target.value;
+       if(text.length===0 || text.length>280 )  
+       {
+        flag2=0;
+        setflag2(0);
+        img=Tweetblur;
+        setimg(img);
+        settext(text);
+        
+       }
+       else if(280>=text.length)
+       {
+      
+           flag2=1;
+           setflag2(1);
+           settext(text);
+           img=Tweet;
+           setimg(img);
+         
+       }
+    }
+   flag3=props.flag2; //flag that is resposible to hide or show the text box
+   if(flag3!==0 &amp;&amp; flag3!== 1 )  // at the begining of the app the flag value is garbbige so if it is not 0 or one we will put it 1=>the text box should be showed 
+   { 
+     flag3=1
+   }
+
+
+    return (
+    &lt;div>
+
+     { flag3===1 ?   &lt;div>
+       &lt;textarea className="inputtext"
+       type="textbox" 
+       size="50"
+       value={text}
+       placeholder={props.msg}
+       onChange={handleChange}
+       />
+       { 
+       &lt;input
+       className={props.classname}
+       type="image" 
+       src={img}
+       alt=""
+       onClick={handlechangeT}
+       />
+       } &lt;/div> :null}
+    &lt;/div>
+    );
+
+}
+
+export default Inputtext;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Apr 25 2022 22:19:21 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

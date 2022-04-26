@@ -4,7 +4,12 @@ import { Avatar } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import "./SideBarFooter.css";
-
+/**
+ *
+ * @param {object} props profile picture, name, username
+ * @description component that contains user info, option to logout or login from another account. To be rendered at the at the end of the sidebar.
+ * @returns {div} A div that returns that component
+ */
 function SideBarFooter(props) {
   const [open, setOpen] = React.useState(null);
 

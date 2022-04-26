@@ -9,6 +9,10 @@ import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
 import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
 import getUserStats from "./AdminWidgetsInfo";
 
+/**
+ * @descriptiom component represents the dashboard of the admin view which contains most of the statistics
+ * @returns {div} A div that returns that component
+ */
 function AdminMain() {
   const [userStats, setUserStats] = React.useState([
     { counter: "", percentage: "" },

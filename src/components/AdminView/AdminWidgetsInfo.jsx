@@ -1,5 +1,5 @@
 import axios from "axios";
- async function getUserStats() {
+export default async function getUserStats() {
   let response = "";
   try {
     response = await axios
@@ -17,4 +17,3 @@ import axios from "axios";
   }
   return response;
 }
-export default getUserStats;

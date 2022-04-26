@@ -4,9 +4,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Popover } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
-import tweets from "./BookmarkedTweets";
-import ReactDOM from "react-dom";
-import App from "../App";
+
 
 const style = {
   position: "absolute",
@@ -25,6 +23,12 @@ const style = {
   flexDirection: "column",
 };
 
+/**
+ *
+ * @param {object} props name->Bookmarks, username
+ * @description A component which contains the  header of the bookmarks page and a button that is used for clearing all tweets
+ * @returns {div} a div component which returns the component
+ */
 function BookmarksHeader(props) {
   const [open, setOpen] = React.useState(null);
 
@@ -42,7 +46,6 @@ function BookmarksHeader(props) {
     setOpenModal(false);
   }
   function handleClearLinkClick() {
-    
     handleModalClose();
     handleClose();
     props.handleIndex();

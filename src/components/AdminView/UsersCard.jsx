@@ -1,13 +1,16 @@
 import React from "react";
 import "./UsersCard.css";
 import { Avatar } from "@mui/material";
-import { NavLink} from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "../Bookmarks/BookmarksHeader.css";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { useState } from "react";
-
+import ReactDOM from "react-dom";
+import App from "../App";
 import AdminUserStats from "./AdminUserStats/AdminUserStats";
+import axios from "axios";
+import getAllUsers from "./UserCardInfo";
 
 const style = {
   position: "absolute",
@@ -38,16 +41,7 @@ const styleStats = {
   p: 4,
   borderRadius: "8px",
 };
-/**
- * @description A component that contain the profile picture, name, username, bio of every user. 4 buttons 
- * 1. Statistics button that shows the change in number, percentage of followers and percantage of tweets for user 
- * 2. Profile button that shows the profile of user
- * 3. Ban button that can ban the user forever
- * 4. Reports button that renders a page showing all reports done on a user
- * @param {object} props id for user - name - username -image(profile pic) - bio 
- *
- * @returns {div} containing profile data plus 4 buttons
- */
+
 function UsersCard(props) {
   //console.log(people);
   const [openModal, setOpenModal] = useState(false);
@@ -60,6 +54,26 @@ function UsersCard(props) {
   }
   function handleBanLinkClick() {
     props.handleIndexing(props.id);
+
+    /*for (let i = 0; i < people.length; i++) {
+      console.log(people[i].id);
+
+      console.log(props.id);
+
+      if (people[i].id == [props.id]) {
+        // post request
+        (async () => {
+          await axios.delete("http://localhost:3001/AllUsers/" + props.id);
+        })();
+        //document.location.reload();
+        //setPeople(people.splice(i, 1));
+        break;
+      }
+    }
+    // props.handleRendering();
+
+    ReactDOM.render(<App flag={1} />, document.getElementById("root"));
+    //console.log(people);*/
     handleModalClose();
   }
   function handleCancelButtonClick() {
@@ -71,6 +85,7 @@ function UsersCard(props) {
   function handleStatButtonClick() {
     setOpenModalStats(true);
   }
+
   function handleModalStatsClose() {
     setOpenModalStats(false);
   }

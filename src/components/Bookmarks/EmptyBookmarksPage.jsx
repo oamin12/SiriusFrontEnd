@@ -1,6 +1,9 @@
 import React from "react";
 import "./EmptyBookmarksPage.css";
-
+/**
+ * @description Component to be rendered when the bookmarks page is empty. It contains the text and the image
+ * @returns {div}A div that returns the component
+ */
 function EmptyBookmarksPage() {
   return (
     <div className="adjust">
