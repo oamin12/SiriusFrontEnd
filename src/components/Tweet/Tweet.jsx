@@ -19,6 +19,8 @@ import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import BlockIcon from '@mui/icons-material/Block';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import VolumeOffOutlinedIcon from '@mui/icons-material/VolumeOffOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import axios from "axios";
 
 
@@ -143,6 +145,10 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     setOpen(null);
     
   }
+  function handleDeleteTweet()
+  {
+
+  }
 
   function handleUserClicked(){
     //ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={0}  flag={1}/>, document.getElementById("root"));
@@ -151,7 +157,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     console.log("USERPROFILEDADAWDWDAD", localStorage.getItem("UserProfile"));
   }
 
-  localStorage.setItem("UserProfile",userName);
+  //localStorage.setItem("UserProfile",userName); TODO
   var lol=2;
   return (
     <div className="post_body"
@@ -199,6 +205,16 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
                 height: "auto",
               }}
             >
+            {userName===localStorage.getItem("UserName")?
+            <div>
+                <Typography onClick={handleDeleteTweet} sx={{ p: 2 }} className="tweet_settings_bar">
+                  <div style={{color:"red"}}><DeleteOutlinedIcon fontSize="small"/> Delete</div>
+                </Typography>
+                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
+                  <PushPinOutlinedIcon fontSize="small"/> Pin
+                </Typography>
+              </div>
+            :
               <div>
                 <Typography sx={{ p: 2 }} className="tweet_settings_bar">
                   <PersonAddOutlinedIcon fontSize="small"/> Follow @{userName}
@@ -212,7 +228,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
                 <Typography sx={{ p: 2 }} className="tweet_settings_bar">
                   <VolumeOffOutlinedIcon fontSize="small"/> Mute @{userName}
                 </Typography>
-              </div>
+              </div>}
             </Popover>
           </div>
 

@@ -33,6 +33,7 @@ function App(props) {
   // }
   //setProfileRoute();
   // console.log("AAAAAAAAAAAAAAAAAA",UserProfile);
+  /*TODO: CHANGE PROFILE ROUTES*/
   return (
     <BrowserRouter>
       <div className="homeLayout">
@@ -57,11 +58,17 @@ function App(props) {
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile  />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/profile/with_replies" element={<Profile />} />
-          <Route path="/profile/media" element={<Profile />} />
-          <Route path="/profile/likes" element={<Profile />} />
-          <Route path="/profile/followers" element={<Followers />} />
-          <Route path="/profile/followings" element={<Followings />} />
+          <Route path="/:userName" element={<Profile  />} />
+          <Route path={"/"+UserName+"/with_replies"} element={<Profile />} />
+          <Route path={"/"+UserName+"/media"} element={<Profile />} />
+          <Route path={"/"+UserName+"/likes"} element={<Profile />} />
+          <Route path={"/"+UserName+"/followers"} element={<Followers />} />
+          <Route path={"/"+UserName+"/followings"} element={<Followings />} />
+          <Route path="/:username/with_replies" element={<Profile />} />
+          <Route path="/:username/media" element={<Profile />} />
+          <Route path="/:username/likes" element={<Profile />} />
+          <Route path="/:username/followers" element={<Followers />} />
+          <Route path="/:username/followings" element={<Followings />} />
         </Routes>
       </div>
     </BrowserRouter>

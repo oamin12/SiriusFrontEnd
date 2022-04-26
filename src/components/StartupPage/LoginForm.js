@@ -21,7 +21,7 @@ const LoginForm = () => {
     let response = '';
     try {
       response = await axios.post('http://34.236.108.123:3000/login',{email:details.name,password:details.password}).then((res) => res.data);
-      localStorage.setItem("tokenValue",response.token);
+      sessionStorage.setItem("tokenValue",response.token);
       if(response.status==="Success")
       {
         navigate("/home");

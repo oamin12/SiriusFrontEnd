@@ -13,17 +13,17 @@ function FollowTab(props){
         <div style={{height:"auto" , maxWidth:"635.29px"}}>
             <div className="header">
                 <div className="ArrowIcon">
-                <NavLink to="/profile">
+                <NavLink to={"/"+props.username}>
                     <ArrowBackIcon fontSize="small" />   
                 </NavLink>
                 </div>
             <h2>{props.name}</h2>
             </div>
             <Tabs variant="fullWidth">
-                <NavLink style={{width:"317.15px", color:"black"}} to="/profile/followers">
+                <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/followers"}>
                 <Tab label="Followers" />
                 </NavLink>
-                <NavLink style={{width:"317.15px", color:"black"}} to="/profile/followings">
+                <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/followings"}>
                 <Tab label="Followings" />
                 </NavLink>
             </Tabs>

@@ -5,12 +5,12 @@ export default async function GetUserProfile(UserName) {
     console.log("INSIDE FUNCTION",UserName);
     var config = {
         method: 'get',
-        url: 'http://34.236.108.123:3000/'+UserName,
+        url: 'http://localhost:5000/'+UserName,
         headers: {Authorization:"Bearer "+token }
       };
     let response = '';
   try {
-    response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
+    response = await axios.get('http://localhost:5000/'+UserName,config).then((res) => res.data);
     return (response);
   } catch (error) {
     if (error.response) {

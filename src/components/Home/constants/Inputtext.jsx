@@ -5,7 +5,7 @@ import Tweet from "./tweet2.png"
 import Tweetblur from "./tweet1.png"
 import tweets from "../Tweets.js"
 import axios from "axios";
-var token=localStorage.getItem("tokenValue");
+var token=sessionStorage.getItem("tokenValue");
 
 function Inputtext(props)
 {
@@ -32,7 +32,8 @@ function Inputtext(props)
         async function PostTweet() {
           let response = '';
           try {
-            response = await axios.post('http://34.236.108.123:3000/home/compose-tweet',{body:text,media: []},{headers: {Authorization:"Bearer "+token}}).then((res) => res.data);
+            response = await axios.post('http://34.236.108.123:3000/compose-tweet',{body:text,media: []},{headers: {Authorization:"Bearer "+token}}).then((res) => res.data);
+            
             return (response.data);
           } catch (error) {
             if (error.response) {

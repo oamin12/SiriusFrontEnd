@@ -61,7 +61,7 @@ function Home(props) {
   const [tweetsInfo,setTweetsInfo ] = React.useState([]);
   const [addedTweet,setAddedTweet ] = React.useState(false);
 
-  var token=localStorage.getItem("tokenValue");
+  var token=sessionStorage.getItem("tokenValue");
  //console.log('dah el token ',localStorage.getItem("tokenValue"));
   var config = {
   method: 'get',
@@ -73,7 +73,7 @@ async function GetTweetInfo() {
   let response = '';
   try {
     response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
-    console.log('herererer',response.userName);
+    //console.log('herererer',response.userName);
     localStorage.setItem("UserName",response.userName);
     localStorage.setItem("Name",response.name);
     setTweetsInfo(response.data);
