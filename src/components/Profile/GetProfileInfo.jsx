@@ -1,7 +1,7 @@
 import axios from "axios";
 var token = localStorage.getItem("tokenValue");
 var UserName=localStorage.getItem("UserName");
-var config = {
+  var config = {
   method: 'get',
   url: 'http://34.236.108.123:3000/'+UserName,
   headers: {Authorization:"Bearer "+token }

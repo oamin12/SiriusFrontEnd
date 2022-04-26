@@ -75,7 +75,10 @@ function createProfileData(User) {
     }
     console.log(subpage);
   }
-
+ /**
+   * @description Profile Page that contains all information of user, all tweets that he tweeted, retweeted, liked, replied, or media
+   * @returns {div} 
+   */
 function Profile() {
   console.log("BEFORE GETTING",localStorage.getItem("UserProfile"));
 

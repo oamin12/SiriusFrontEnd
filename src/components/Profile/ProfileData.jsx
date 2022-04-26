@@ -33,7 +33,13 @@ const style = {
     flexDirection: "column",
   };
   
-
+/**
+ * @description profile page with all the information of visited user or the logged in user
+ * @param {object} props username - name - profile picture - cover photo - bio - location - birthdate - joined data 
+ * - indicator for wether this is my profile or not - no. of followings - no. of followers
+ * @returns {div} contains all information of user, edit button if I'm the logged in user, follow button if visiting a non followed user
+ * , following button if I'm visiting a following user, tab to navigate between different type of tweets for users
+ */
 function ProfileData(props){
     var profileId = 123;
     var visitedProfileId = 1;
