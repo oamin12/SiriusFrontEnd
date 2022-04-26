@@ -6,7 +6,11 @@ import UsersCard from "./UsersCard";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import "./AdminUser.css";
 import getAllUsers from "./UserCardInfo";
-
+/**
+ * @description this page contains all users in the system and a search bar that an admin 
+ * can search for any user by his name and he can ban him, show some statistics, visit his profile and show his reports
+ * @returns {div} div conatining search bar, all users 
+ */
 function AdminViewUser() {
   const [AllUsers, setAllUsers] = React.useState([]);
   React.useEffect(() => {
@@ -31,33 +35,18 @@ function AdminViewUser() {
           console.log(AllUsers);
         })();
         setIndex(-1);
-        //document.location.reload();
-        //setPeople(people.splice(i, 1));
         break;
       }
     }
   }
 
   HandleBan();
-  /* const [rerender, setRerender] = React.useState(false);
-  function HandleRerender() {
-    setRerender(true);
-  }
-  function SetRendererFalse() {
-    setRerender(false);
-  }
-  
-  React.useEffect(() => {
-    if (rerender == true) {
-      (async () => {
-        const resp = await getAllUsers();
-        setAllUsers(resp);
-        console.log("rendered");
-        SetRendererFalse();
-      })();
-    }
-  }, []);*/
 
+  /**
+   * @description function that maps users from database to users 
+   * @param {object} contact id - name - username - bio - profile picture  
+   * @returns {UsersCard} 
+   */
   function createuserCard(contact) {
     return (
       <UsersCard

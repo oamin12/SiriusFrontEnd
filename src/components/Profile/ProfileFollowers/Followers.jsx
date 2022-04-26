@@ -16,7 +16,10 @@ function createCard(contact) {
       />
     );
   }
-  
+  /**
+   * @description page of all followers of a user
+   * @returns {div}
+   */
 function Followers() {
   return (
     <div className="layout">

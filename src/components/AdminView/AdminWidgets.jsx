@@ -3,6 +3,11 @@ import "./AdminWidgets.css";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 
 var percentageState = false; //decreasing
+/**
+ * @description A component that return a widget that contains the number of added users in our system per specific duration(week/month)
+ * @param {object} props Icon, counter, typeLink, percentage
+ * @returns {div} returns a div that contains percentage of increasing or decreasing users
+ */
 function AdminWidgets({ Icon, type, counter, typeLink, percentage}) {
   return (
     <div className="AdminWidgets">

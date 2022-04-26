@@ -1,9 +1,13 @@
 import React from "react";
-import {Avatar,Tabs,Tab} from "@mui/material";
+import {Tabs,Tab} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "../ProfileData.css";
-import { Link, NavLink, useLocation } from "react-router-dom";
-
+import { NavLink} from "react-router-dom";
+/**
+ * @description component that contains tab to navigate between followers and followings of user, name of user
+ * @param {object} props name
+ * @returns {div} contains a Tab to navigate between followers and followings of user
+ */
 function FollowTab(props){
     return ( 
         <div style={{height:"auto" , maxWidth:"635.29px"}}>
