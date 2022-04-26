@@ -9,28 +9,29 @@ import { NavLink } from "react-router-dom";
 import SearchBox from "../Search/SearchBox";
 import axios from "axios";
 
-var token=localStorage.getItem("tokenValue");
- console.log('dah el token ',localStorage.getItem("tokenValue"));
-var config = {
-  method: 'get',
-  url: 'http://34.236.108.123:3000/home/',
+// var token=localStorage.getItem("tokenValue");
+//  console.log('dah el token ',localStorage.getItem("tokenValue"));
+// var config = {
+//   method: 'get',
+//   url: 'http://34.236.108.123:3000/home/',
 
-  headers: {Authorization:"Bearer "+token}
-};
-async function GetTweetInfo() {
-  let response = '';
-  try {
-    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
-    console.log('herererer',response.userName);
-    localStorage.setItem("UserName",response.userName);
-    return (response.data);
-  } catch (error) {
-    if (error.response) {
-      return (error.response);
-    }
-  }
-  return (response);
-}
+//   headers: {Authorization:"Bearer "+token}
+// };
+// async function GetTweetInfo() {
+//   let response = '';
+//   try {
+//     response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
+//     console.log('herererer',response.userName);
+//     localStorage.setItem("UserName",response.userName);
+//     setTweetsInfo(response.data);
+//     return (response.data);
+//   } catch (error) {
+//     if (error.response) {
+//       return (error.response);
+//     }
+//   }
+//   return (response);
+// }
 
 function getTweet(tweet)
 {
@@ -59,6 +60,31 @@ function Home(props) {
   
   const [tweetsInfo,setTweetsInfo ] = React.useState([]);
   const [addedTweet,setAddedTweet ] = React.useState(false);
+
+  var token=localStorage.getItem("tokenValue");
+ //console.log('dah el token ',localStorage.getItem("tokenValue"));
+  var config = {
+  method: 'get',
+  url: 'http://34.236.108.123:3000/home/',
+
+  headers: {Authorization:"Bearer "+token}
+};
+async function GetTweetInfo() {
+  let response = '';
+  try {
+    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
+    console.log('herererer',response.userName);
+    localStorage.setItem("UserName",response.userName);
+    setTweetsInfo(response.data);
+    return (response.data);
+  } catch (error) {
+    if (error.response) {
+      return (error.response);
+    }
+  }
+  return (response);
+}
+
 
   function handleAddTweet(){
     setAddedTweet(true);

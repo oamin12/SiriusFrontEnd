@@ -12,7 +12,7 @@ import axios from "axios";
 const LoginForm = () => {
   const [details, setDetails] = useState({ name: "", password: "" });
   const [SignInToken,setSignInToken ] = React.useState();  
-  const [SignInState,setSignInState ] = React.useState(false);
+  const [SignInState,setSignInState ] = React.useState("");
   const [errorName, setError] = useState("");
 
   let navigate = useNavigate();
@@ -22,14 +22,17 @@ const LoginForm = () => {
     try {
       response = await axios.post('http://34.236.108.123:3000/login',{email:details.name,password:details.password}).then((res) => res.data);
       localStorage.setItem("tokenValue",response.token);
+      if(response.status==="Success")
+      {
+        navigate("/home");
+      }
+     // setSignInState(response.status);
+      //console.log("SUCCESS",response.status);
 
-      // setSignInToken(response.token);
-      setSignInState(response.success);
-      
       return (response.data);
     } catch (error) {
       if (error.response) {
-        //setError(error.response.data);
+        setError("email or password is incorrect");
         console.log(error.response);
         return (error.response);
       }
@@ -37,8 +40,7 @@ const LoginForm = () => {
     console.log(response);
     return (response);
   }
-  const sumbitHandler = (e) => {
-    SignIn();
+  const  sumbitHandler = (e) => {
     if(details.name === "" || details.password==="")
     {
       setError("email or password can't be empty");
@@ -46,14 +48,7 @@ const LoginForm = () => {
 
       return;
     }
-    if(SignInState)
-    {
-      navigate("/home");
-    }
-    else
-    {
-      setError("email or password is incorrect");
-    }
+    SignIn();
 
     e.preventDefault();
     // Login(SignInState);
@@ -72,24 +67,13 @@ const LoginForm = () => {
     }
   };
   
-  console.log(SignInToken);
-  console.log(SignInState);
-  console.log(errorName);
+  
   // React.useEffect(() => {
   //   (async () => {
-  //     const resp = await GetProfileInfo();
-  //     setProfileInfo(resp);
+  //     const resp = await SignIn();
+  //     setSignInState(resp);
   //   })();
   // }, []);
-  // const [ProfileInfo,setProfileInfo ] = React.useState([]);
-  
-  //localStorage.setItem("tokenValue",SignInToken);
-  React.useEffect(() => {
-    (async () => {
-      const resp = await SignIn();
-      setSignInState(resp);
-    })();
-  }, []);
   return (
     <div className="Login">
       <img className="backf2" src={greyback} />
@@ -105,14 +89,16 @@ const LoginForm = () => {
           className="boxf2" // Username input box
           type="text"
           placeholder="Email address, or username"
-          onChange={(e) => setDetails({ ...details, name: e.target.value })}
+          onChange={function func(e){ setDetails({ ...details, name: e.target.value })
+          }}
           value={details.name}
         />
         <input
           className="boxpf2" // Password input box
           type={type}
           placeholder="Password"
-          onChange={(e) => setDetails({ ...details, password: e.target.value })}
+          onChange={function func(e) { setDetails({ ...details, password: e.target.value })
+          }}
           value={details.password}
         />
         <span onClick={passwordToggle} className="visiblef2">

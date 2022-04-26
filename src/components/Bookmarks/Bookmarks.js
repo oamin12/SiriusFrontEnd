@@ -96,7 +96,7 @@ function Bookmarks() {
       <div className="feeder">
         <BookmarksHeader
           name="Bookmarks"
-          username={"@" + User.username}
+          username={"@" + localStorage.getItem("UserName")}
           handleIndex={HandleIndex}
         />
         {empty === true && wait === false && <EmptyBookmarksPage />}
