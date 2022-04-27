@@ -8,6 +8,7 @@ import Messages from "./Messages/Messages";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import Settings from "./Settings/Settings";
 import Profile from "./Profile/Profile";
+import Verify from "./StartupPage/Verify"
 import Search from "./Search/Search";
 import Followers from "./Profile/ProfileFollowers/Followers";
 import Followings from "./Profile/ProfileFollowing/Followings";
@@ -44,6 +45,7 @@ function App(props) {
           <Route path="/signin" exact element={<LoginForm />} />
           <Route path="/logout" exact element={<Logout />} />
           <Route path="/signup" exact element={<SignUp />} />
+          <Route path="/signup/verify" exact element={<Verify />} />
           <Route path="/forgetpassword" exact element={<ForgetPassword />} />
           <Route path="/home" exact element={<Home flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule}  flag={props.flag} weekdayName={props.weekdayName} am_pm={props.am_pm}  month={props.month} date={props.date} year={props.year}  time={props.time} flagconfirm={props.flagconfirm} />} />
           <Route path="/adminView/dashboard" element={<AdminView />} />
