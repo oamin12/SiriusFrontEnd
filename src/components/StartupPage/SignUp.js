@@ -93,7 +93,7 @@ const SignUp = () => {
     <div className="SignUp">
       <img className="backf3" src={greyback} alt="Grey Background" />
       <form className="containerf3">
-        <pre>{JSON.stringify(dataValues, undefined, 2)}</pre>
+        {/* <pre>{JSON.stringify(dataValues, undefined, 2)}</pre> */}
         {/*This pre shows the data in json format*/}
         <CloseIcon className="closef3" onClick={() => navigate("/")} />
         <h1 className="h1f3">Create your account</h1>
