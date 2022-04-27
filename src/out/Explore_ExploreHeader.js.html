@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: AdminView/AdminMain.jsx</title>
+    <title>JSDoc: Source: Explore/ExploreHeader.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: AdminView/AdminMain.jsx</h1>
+    <h1 class="page-title">Source: Explore/ExploreHeader.js</h1>
 
     
 
@@ -27,66 +27,89 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import AdminWidgets from "./AdminWidgets";
-import "./AdminMain.css";
-import AdminChartWidget from "./AdminChartWidget";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AdminUserChart from "./AdminUserChart";
-import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart";
-import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
-import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
-import getUserStats from "./AdminWidgetsInfo";
+import "./Explore.css";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { NavLink } from "react-router-dom";
+import SearchBox from "../Search/SearchBox";
+import { Tabs,Tab, Button } from "@mui/material";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 
 /**
- * @descriptiom component represents the dashboard of the admin view which contains most of the statistics
- * @returns {div} A div that returns that component
- */
-function AdminMain() {
-  const [userStats, setUserStats] = React.useState([
-    { counter: "", percentage: "" },
-    { counter: "", percentage: "" },
-  ]);
-  React.useEffect(() => {
-    (async () => {
-      const resp = await getUserStats();
-      setUserStats(resp);
-    })();
-  }, []);
+ * @description Component which is the Explore Header Which contans search box area and its settings
+ * @returns div that renders the component
+ */ 
+function ExploreHeader(props) {
+    const [openModal, setOpenModal] = React.useState(false);
 
-  return (
-    &lt;div className="AdminMain">
-      &lt;div className="UserStatistics">
-        &lt;div className="AdminMainCards">
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[0].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[0].percentage}
-          />
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[1].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[1].percentage}
-          />
+    function handleClick(event) {
+      setOpenModal(event.currentTarget)
+    }
+    
+    function handleModalClose() {
+      setOpenModal(false);
+    }
+    
+    
+    
+    const style = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: 600,
+        height:500,
+        bgcolor: "background.paper",
+        border: "0px",
+        boxShadow: 24,
+        p: 4,
+        borderRadius: "8px",
+        display: "flex",
+        flexDirection: "column",
+      };
+  
+  
+    return (
+    &lt;div className="exploreHeader">
+      &lt;div className="exploreHeader_settings">
+        &lt;div className="explore_searchBox">&lt;SearchBox size="60"/>&lt;/div>
+        &lt;div className="button_area">&lt;Button className="exploreSettingsButton" onClick={handleClick}>
+        &lt;SettingsOutlinedIcon fontSize="medium"/>
+        &lt;/Button>
         &lt;/div>
-        &lt;AdminUserChart />
       &lt;/div>
-      &lt;div className="Charts">
-        &lt;AdminChartWidget />
-        &lt;AdminFollowerBarChart />
-      &lt;/div>
-      &lt;div className="ChartsCont">
-        &lt;AdminLikesBarChart />
-        &lt;AdminReportsBarChart />
-      &lt;/div>
+        &lt;Modal open={openModal} onClose={handleModalClose}>
+          &lt;Box sx={style}>
+            &lt;h2 className="modalHeader">Trends&lt;/h2>
+            &lt;div style={{display:"flex"}}>
+            &lt;div>
+            &lt;p className="exploreHeader_settings_menu_p1" >Trends for you&lt;/p>
+            &lt;p className="exploreHeader_settings_menu_p2">Personalize trends based on your location and who you follow.&lt;/p>
+            &lt;/div>
+            &lt;input style={{width:"40px"}} type="checkbox"/>
+            &lt;/div>
+          &lt;/Box>
+        &lt;/Modal>
+        &lt;div className="Tabs_explore">
+        &lt;Tabs textColor="inheret" style={{color:"Black"}} variant="fullWidth">
+                &lt;NavLink to="/explore" style={{color:"Black"}}>
+                &lt;Tab  label="For you" />
+                &lt;/NavLink>
+                &lt;NavLink to="/explore" style={{color:"Black",fontSize:"14px"}}>
+                &lt;Tab  label="News" style={{padding:"7px 7px 7px 7px"}} />
+                &lt;/NavLink>
+                &lt;NavLink  to="/explore" style={{color:"Black"}}>
+                &lt;Tab  label="Sports" />
+                &lt;/NavLink>
+                &lt;NavLink to="/explore" style={{color:"Black"}}>
+                &lt;Tab  label="Entertainment" />  
+                &lt;/NavLink>  
+            &lt;/Tabs>
+        &lt;/div> 
     &lt;/div>
   );
 }
-export default AdminMain;
-//pass a component as a prop
+export default ExploreHeader;
 </code></pre>
         </article>
     </section>

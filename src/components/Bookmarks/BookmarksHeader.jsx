@@ -61,7 +61,7 @@ function BookmarksHeader(props) {
         <h2>{props.name}</h2>
         <h3>{props.username}</h3>
       </div>
-      <button className="bookmarkMoreButton" onClick={handleClick}>
+      <button data-testid="more-button" className="bookmarkMoreButton" onClick={handleClick}>
         <MoreHorizIcon />
       </button>
       <Popover
@@ -92,10 +92,10 @@ function BookmarksHeader(props) {
               your Bookmarks.
             </p>
 
-            <button className="clearLink" onClick={handleClearLinkClick}>
+            <button data-testid="clear-button" className="clearLink" onClick={handleClearLinkClick}>
               clear
             </button>
-            <button className="cancelButton" onClick={handleCancelButtonClick}>
+            <button  className="cancelButton" onClick={handleCancelButtonClick}>
               Cancel
             </button>
           </Box>

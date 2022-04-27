@@ -119,11 +119,11 @@ function ProfileData(props){
                             <NotificationAddOutlinedIcon />
                             </button>
                             {!followed ?
-                                <button  className="Edit__profile__btn" onClick={handleFollow} style={{backgroundColor:"black",color:"white",borderColor:"black"}}>
+                                <button data-testid="Follow-button" className="Edit__profile__btn" onClick={handleFollow} style={{backgroundColor:"black",color:"white",borderColor:"black"}}>
                                <b>Follow</b>
                         </button>
                         :
-                        <button onMouseOver={isOverFollowingBtn} onClick={handleBanButtonClick} onMouseOut={isOutFollowingBtn} className="followingBtn" >
+                        <button data-testid="Following-Unfollow-button" onMouseOver={isOverFollowingBtn} onClick={handleBanButtonClick} onMouseOut={isOutFollowingBtn} className="followingBtn" >
                                {changeFollow?<b>Unfollow</b>:<b>Following</b>} 
                         </button>}
                         <Modal open={openModal} onClose={handleModalClose}>

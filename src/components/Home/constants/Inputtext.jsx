@@ -29,6 +29,12 @@ import { IconButton } from "@mui/material";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 var token=sessionStorage.getItem("tokenValue");
 
+/**
+ *
+ * @param {object} flags
+ * @description Component that contains the area dedicated for writing tweet
+ * @returns A div that renders this component
+ */ 
 function Inputtext(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   let [flag2, setflag2] = React.useState(0);

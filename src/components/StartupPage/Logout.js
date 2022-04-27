@@ -3,6 +3,10 @@ import greyback from "./Images/grey.png";
 import { useNavigate } from "react-router-dom";
 import "./Logout.css";
 
+/**
+ * @description Component that contains the logout page which makes sure the user wants to log out
+ * @returns {div}
+ */  
 const Logout = () => {
   let navigate = useNavigate();
   function handleLogOut()

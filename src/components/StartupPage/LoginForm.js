@@ -8,7 +8,10 @@ import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-
+/**
+   * @description Component that renders the Login Page which contains the username input area, password input area and all the required logic to authenticate the user
+   * @returns {div}
+   */
 const LoginForm = () => {
   const [details, setDetails] = useState({ name: "", password: "" });
   const [SignInToken,setSignInToken ] = React.useState();  

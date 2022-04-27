@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: AdminView/AdminMain.jsx</title>
+    <title>JSDoc: Source: Explore/Explore.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: AdminView/AdminMain.jsx</h1>
+    <h1 class="page-title">Source: Explore/Explore.js</h1>
 
     
 
@@ -27,66 +27,49 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import AdminWidgets from "./AdminWidgets";
-import "./AdminMain.css";
-import AdminChartWidget from "./AdminChartWidget";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AdminUserChart from "./AdminUserChart";
-import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart";
-import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
-import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
-import getUserStats from "./AdminWidgetsInfo";
-
-/**
- * @descriptiom component represents the dashboard of the admin view which contains most of the statistics
- * @returns {div} A div that returns that component
- */
-function AdminMain() {
-  const [userStats, setUserStats] = React.useState([
-    { counter: "", percentage: "" },
-    { counter: "", percentage: "" },
-  ]);
-  React.useEffect(() => {
-    (async () => {
-      const resp = await getUserStats();
-      setUserStats(resp);
-    })();
-  }, []);
-
+import "../Layout.css";
+import SideBar from "../SideBar/SideBar";
+import "./Explore.css";
+import ExploreHeader from "./ExploreHeader";
+import Card from "../Search/Card";
+import people from "../Search/people";
+import TrendsData from "./TrendsData";
+import Trend from "./Trend";
+function CreateTrends(Trends) {
   return (
-    &lt;div className="AdminMain">
-      &lt;div className="UserStatistics">
-        &lt;div className="AdminMainCards">
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[0].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[0].percentage}
-          />
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[1].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[1].percentage}
-          />
-        &lt;/div>
-        &lt;AdminUserChart />
+    &lt;Trend
+      id={Trends.id}
+      number={Trends.number}
+      type={Trends.type}
+      name={Trends.name}
+      tweets_num={Trends.tweets_num}
+    />
+  );
+}
+//make width same as home/profile
+/**
+ * @param {object} Trends id, number, type, name, tweets per trend
+ * @description Component containing the the trending topics
+ * @returns A div component that renders this component
+ */ 
+function Explore() {
+  return (
+    &lt;div className="layout">
+      &lt;SideBar />
+      &lt;div className="feeder">
+        &lt;ExploreHeader/>
+        {TrendsData.map(CreateTrends)}
       &lt;/div>
-      &lt;div className="Charts">
-        &lt;AdminChartWidget />
-        &lt;AdminFollowerBarChart />
-      &lt;/div>
-      &lt;div className="ChartsCont">
-        &lt;AdminLikesBarChart />
-        &lt;AdminReportsBarChart />
+      &lt;div className="widgets">
+        &lt;div className="search">search&lt;/div>
+        &lt;div className="whatsHappening">what's happening&lt;/div>
+        &lt;div className="whoToFollow">who to follow&lt;/div>
       &lt;/div>
     &lt;/div>
   );
 }
-export default AdminMain;
-//pass a component as a prop
+
+export default Explore;
 </code></pre>
         </article>
     </section>

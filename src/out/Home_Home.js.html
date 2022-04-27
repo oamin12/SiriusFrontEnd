@@ -37,24 +37,29 @@ import { NavLink } from "react-router-dom";
 import SearchBox from "../Search/SearchBox";
 import axios from "axios";
 
-var config = {
-  method: 'get',
-  url: 'http://localhost:5000/home/62648da149a666a904026356/getTweet',
-  headers: { }
-};
-async function GetTweetInfo() {
-  let response = '';
-  try {
-    response = await axios.get('http://localhost:5000/home/62648da149a666a904026356/getTweet',config).then((res) => res.data);
-    return (response.data);
-  } catch (error) {
-    if (error.response) {
-      return (error.response);
-    }
-  }
+// var token=localStorage.getItem("tokenValue");
+//  console.log('dah el token ',localStorage.getItem("tokenValue"));
+// var config = {
+//   method: 'get',
+//   url: 'http://34.236.108.123:3000/home/',
 
-  return (response);
-}
+//   headers: {Authorization:"Bearer "+token}
+// };
+// async function GetTweetInfo() {
+//   let response = '';
+//   try {
+//     response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
+//     console.log('herererer',response.userName);
+//     localStorage.setItem("UserName",response.userName);
+//     setTweetsInfo(response.data);
+//     return (response.data);
+//   } catch (error) {
+//     if (error.response) {
+//       return (error.response);
+//     }
+//   }
+//   return (response);
+// }
 
 function getTweet(tweet)
 {
@@ -79,15 +84,41 @@ function getTweet(tweet)
 }
 
 /**
- * 
- * @param {object} props flag
- * @description component that represents the homepage. It contains the sidebar, page header, user tweets, widgets
- * @returns {div} A div that returns that component
- */
+ *
+ * @param {object} id, name, username, tweet text, user image, tweet images/videos, likes/ replies count, retweet count, bookmarked count
+ * @description Component that contains the tweets, the area designed for writing tweets, side Bar and widgets
+ * @returns {div} A div that renders this page
+ */ 
 function Home(props) {
   
   const [tweetsInfo,setTweetsInfo ] = React.useState([]);
   const [addedTweet,setAddedTweet ] = React.useState(false);
+
+  var token=sessionStorage.getItem("tokenValue");
+ //console.log('dah el token ',localStorage.getItem("tokenValue"));
+  var config = {
+  method: 'get',
+  url: 'http://34.236.108.123:3000/home/',
+
+  headers: {Authorization:"Bearer "+token}
+};
+async function GetTweetInfo() {
+  let response = '';
+  try {
+    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
+    //console.log('herererer',response.userName);
+    localStorage.setItem("UserName",response.userName);
+    localStorage.setItem("Name",response.name);
+    setTweetsInfo(response.data);
+    return (response.data);
+  } catch (error) {
+    if (error.response) {
+      return (error.response);
+    }
+  }
+  return (response);
+}
+
 
   function handleAddTweet(){
     setAddedTweet(true);
@@ -116,7 +147,17 @@ function Home(props) {
       &lt;SideBar />
        &lt;div className="feeder">
        &lt;Heading/>
-       &lt;PostingTweet flag={props.flag} postingFlag={handleAddTweet} />
+       &lt;PostingTweet
+       weekdayName={props.weekdayName}
+       month={props.month}
+       date={props.date}
+       year={props.year_toset_theyear_value}
+       time={props.time}
+       minutes={props.minutes}
+       hours={props.hours} 
+       am_pm={props.am_pm}  
+       flagconfirm={props.flagconfirm}
+       flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule} flag={props.flag} postingFlag={handleAddTweet}/>       
        {tweetsInfo.map(getTweet)}
       &lt;/div> 
       
@@ -144,13 +185,13 @@ export {getTweet};
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Explore">Explore</a></li><li><a href="global.html#ExploreHeader">ExploreHeader</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#Logout">Logout</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#Start">Start</a></li><li><a href="global.html#Trend">Trend</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Apr 25 2022 22:19:21 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 27 2022 06:33:14 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

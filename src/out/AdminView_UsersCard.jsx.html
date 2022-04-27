@@ -132,16 +132,16 @@ function UsersCard(props) {
           &lt;/p>
         &lt;/div>
 
-        &lt;button
+        &lt;button data-testid="stat-button"
           className="followButton"
           onClick={handleStatButtonClick}
           style={{ backgroundColor: "green", marginLeft: "20px" }}
         >
           Statistics
         &lt;/button>
-        &lt;Modal open={openModalStats} onClose={handleModalStatsClose}>
+        &lt;Modal data-testid="stat-Modal" open={openModalStats} onClose={handleModalStatsClose} isOpen >
           &lt;Box sx={styleStats}>
-            &lt;h2
+            &lt;h2 data-testid="Header-stat"
               className="modalHeader"
               style={{
                 color: "rgb(29, 161, 242)",
@@ -153,7 +153,7 @@ function UsersCard(props) {
               User Statistics
             &lt;/h2>
             &lt;AdminUserStats />
-            &lt;button className="cancelButton" onClick={handleModalStatsClose}>
+            &lt;button data-testid="cancel-stat-Modal" className="cancelButton" onClick={handleModalStatsClose}>
               Cancel
             &lt;/button>
           &lt;/Box>
@@ -175,6 +175,7 @@ function UsersCard(props) {
           &lt;/NavLink>
         &lt;/div>
         &lt;button
+          data-testid="Ban-button"
           className="followButton"
           id={props.id}
           onClick={handleBanButtonClick}
@@ -186,7 +187,8 @@ function UsersCard(props) {
         >
           Ban
         &lt;/button>
-        &lt;Modal open={openModal} onClose={handleModalClose}>
+        &lt;Modal data-testid="Ban-Modal"
+        open={openModal} onClose={handleModalClose}>
           &lt;Box sx={style}>
             &lt;h3 className="modalHeader" style={{ textAlign: "center" }}>
               Ban User
@@ -195,10 +197,10 @@ function UsersCard(props) {
               This can't be undone and you'll ban this user
             &lt;/p>
 
-            &lt;button className="clearLink" onClick={handleBanLinkClick}>
+            &lt;button data-testid="Ban-Ban-button" className="clearLink" onClick={handleBanLinkClick}>
               Ban
             &lt;/button>
-            &lt;button className="cancelButton" onClick={handleCancelButtonClick}>
+            &lt;button data-testid="cancel-button" className="cancelButton" onClick={handleCancelButtonClick}>
               Cancel
             &lt;/button>
           &lt;/Box>
@@ -231,13 +233,13 @@ export default UsersCard;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminReports">AdminReports</a></li><li><a href="global.html#AdminViewUser">AdminViewUser</a></li><li><a href="global.html#AdminWidgets">AdminWidgets</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ReportCard">ReportCard</a></li><li><a href="global.html#Reporter">Reporter</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Explore">Explore</a></li><li><a href="global.html#ExploreHeader">ExploreHeader</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#Logout">Logout</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#Start">Start</a></li><li><a href="global.html#Trend">Trend</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Apr 25 2022 22:26:36 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 27 2022 06:33:14 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

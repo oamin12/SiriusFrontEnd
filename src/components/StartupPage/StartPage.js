@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import "./Start.css";
 import background from "./Images/whatshappening.png";
 import { useNavigate } from "react-router-dom";
+/**
+ * @description Component that contains the start page where the user can log in or sign up for a new account
+ * @returns {div}
+ */ 
 const Start = () => {
   let history = useNavigate();
   return (

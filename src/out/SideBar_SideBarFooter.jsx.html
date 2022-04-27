@@ -32,6 +32,8 @@ import { Avatar } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import "./SideBarFooter.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 /**
  *
  * @param {object} props profile picture, name, username
@@ -39,6 +41,8 @@ import "./SideBarFooter.css";
  * @returns {div} A div that returns that component
  */
 function SideBarFooter(props) {
+  let navigate = useNavigate();
+
   const [open, setOpen] = React.useState(null);
 
   function handleClick(event) {
@@ -56,8 +60,8 @@ function SideBarFooter(props) {
       &lt;button className="avatarButton" onClick={handleClick}>
         &lt;Avatar alt="profile picture" src={props.picture} />
         &lt;div className="info">
-          &lt;div>{props.name}&lt;/div>
-          &lt;div>{props.username}&lt;/div>
+          &lt;div>{localStorage.getItem("Name")}&lt;/div>
+          &lt;div>@{localStorage.getItem("UserName")}&lt;/div>
         &lt;/div>
         &lt;div className="moreHorizIcon">
           &lt;MoreHorizIcon />
@@ -86,9 +90,10 @@ function SideBarFooter(props) {
             &lt;Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
               Add an existing account
             &lt;/Typography>
-            &lt;Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
-              Log out @{props.username}
+            &lt;NavLink to="/logout" style={{"color":"black"}}> &lt;Typography  sx={{ p: 2 }} className="sideBarFooterMenuBar">
+            Log out @{localStorage.getItem("UserName")}
             &lt;/Typography>
+            &lt;/NavLink>
           &lt;/div>
         &lt;/Popover>
       &lt;/div>
@@ -107,13 +112,13 @@ export default SideBarFooter;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Explore">Explore</a></li><li><a href="global.html#ExploreHeader">ExploreHeader</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#Logout">Logout</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#Start">Start</a></li><li><a href="global.html#Trend">Trend</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Apr 25 2022 22:19:21 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 27 2022 06:33:14 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

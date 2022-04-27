@@ -6,6 +6,13 @@ import Media from"./images/media.png"
 import Happyface from "./images/happyface.png"
 import Poll from "./Icons/poll/Poll"
 
+/**
+ *
+ * @param {object} flags
+ * @description Component that contains the are dedicated for writing tweets. It contains a bar for tweeting options ex(Schedule, emojis, gallery)
+ *
+ * @returns {div} A div that contains this component
+ */ 
 
 function PostingTweet(props) {
   return (

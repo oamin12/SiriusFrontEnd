@@ -55,7 +55,12 @@ function getTweet(tweet)
   )
 }
 
-
+/**
+ *
+ * @param {object} id, name, username, tweet text, user image, tweet images/videos, likes/ replies count, retweet count, bookmarked count
+ * @description Component that contains the tweets, the area designed for writing tweets, side Bar and widgets
+ * @returns {div} A div that renders this page
+ */ 
 function Home(props) {
   
   const [tweetsInfo,setTweetsInfo ] = React.useState([]);

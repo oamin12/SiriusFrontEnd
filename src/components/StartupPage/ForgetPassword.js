@@ -3,7 +3,10 @@ import greyback from "./Images/grey.png";
 import "./ForgetPassword.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
-
+/**
+ * @description A component used whenever the user forgets the password by entering email or username
+ * @returns A div that contains this component
+ */  
 const ForgetPassword = () => {
   let navigate = useNavigate();
   return (

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: AdminView/AdminMain.jsx</title>
+    <title>JSDoc: Source: StartupPage/Logout.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: AdminView/AdminMain.jsx</h1>
+    <h1 class="page-title">Source: StartupPage/Logout.js</h1>
 
     
 
@@ -27,66 +27,48 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import AdminWidgets from "./AdminWidgets";
-import "./AdminMain.css";
-import AdminChartWidget from "./AdminChartWidget";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AdminUserChart from "./AdminUserChart";
-import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart";
-import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
-import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
-import getUserStats from "./AdminWidgetsInfo";
+import greyback from "./Images/grey.png";
+import { useNavigate } from "react-router-dom";
+import "./Logout.css";
 
 /**
- * @descriptiom component represents the dashboard of the admin view which contains most of the statistics
- * @returns {div} A div that returns that component
- */
-function AdminMain() {
-  const [userStats, setUserStats] = React.useState([
-    { counter: "", percentage: "" },
-    { counter: "", percentage: "" },
-  ]);
-  React.useEffect(() => {
-    (async () => {
-      const resp = await getUserStats();
-      setUserStats(resp);
-    })();
-  }, []);
+ * @description Component that contains the logout page which makes sure the user wants to log out
+ * @returns {div}
+ */  
+const Logout = () => {
+  let navigate = useNavigate();
+  function handleLogOut()
+  {
+    sessionStorage.setItem("tokenValue","");
+    localStorage.setItem("UserName","");
+    localStorage.setItem("Name","");
+    localStorage.setItem("UserProfile","");
+    localStorage.setItem("TopName","");
 
+    navigate("/");
+  }
   return (
-    &lt;div className="AdminMain">
-      &lt;div className="UserStatistics">
-        &lt;div className="AdminMainCards">
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[0].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[0].percentage}
-          />
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[1].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[1].percentage}
-          />
-        &lt;/div>
-        &lt;AdminUserChart />
-      &lt;/div>
-      &lt;div className="Charts">
-        &lt;AdminChartWidget />
-        &lt;AdminFollowerBarChart />
-      &lt;/div>
-      &lt;div className="ChartsCont">
-        &lt;AdminLikesBarChart />
-        &lt;AdminReportsBarChart />
+    &lt;div className="Logout">
+      &lt;img className="backf4" src={greyback} />
+      &lt;div className="containerf4">
+        &lt;h1 className="h1f4">Log out of Sirius?&lt;/h1>
+        &lt;p className="youf4">
+          You can always log back in at any &lt;br /> time. If you just want to
+          switch &lt;br /> accounts, you can do that by adding &lt;br /> an existing
+          account.
+        &lt;/p>
+        &lt;button onClick={handleLogOut} className="outf4">
+          Log out
+        &lt;/button>
+        &lt;button onClick={() => navigate("/home")} className="cancelf4">
+          Cancel
+        &lt;/button>
       &lt;/div>
     &lt;/div>
   );
-}
-export default AdminMain;
-//pass a component as a prop
+};
+
+export default Logout;
 </code></pre>
         </article>
     </section>

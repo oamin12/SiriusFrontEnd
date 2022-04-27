@@ -27,49 +27,44 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import "./index.css";
+import "./index.css"
 import { Avatar}from "@mui/material";
 import Inputtext from "./constants/Inputtext"
-import IconMedia from "./Icons/media/IconMedia"
-import IconPoll from "./Icons/poll/IconPoll"
-import IconGif from "./Icons/gif/IconGif"
-import IconSchedule from "./Icons/schedule/IconSchedule"
-import IconHappyFace from "./Icons/emoji/IconHappyFace"
-import Schedule from "./images/schedule.png"
 import Media from"./images/media.png"
-import poll from"./images/poll.png"
 import Happyface from "./images/happyface.png"
-import  Gif from "./images/gif.png"
 import Poll from "./Icons/poll/Poll"
 
 /**
- * 
- * @param {object} props flag
- * @description Component that contatins the text area for writing a tweet, icons for other tweeting options(Media, poll, gif, schedule, emojis) 
- * @returns {div} A div that returns that component 
- */
+ *
+ * @param {object} flags
+ * @description Component that contains the are dedicated for writing tweets. It contains a bar for tweeting options ex(Schedule, emojis, gallery)
+ *
+ * @returns {div} A div that contains this component
+ */ 
+
 function PostingTweet(props) {
   return (
     &lt;div id="posting_a_tweet" style={{"height":"auto"}}>
 
        &lt;div className="profile_picture">
           &lt;Avatar className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
-          &lt;Inputtext msg="what's happening?" classname={"TweetButton"} flag2={props.flag} postingFlag={props.postingFlag}/>
-          {props.flag===0 ? &lt;Poll flag={1}/>: &lt;Poll flag={0}/> }
+          &lt;Inputtext msg="what's happening?"
+            weekdayName={props.weekdayName}
+            month={props.month}
+            date={props.date}
+            year={props.year_toset_theyear_value}
+            time={props.time}
+            minutes={props.minutes}
+            hours={props.hours} 
+            am_pm={props.am_pm} 
+            flag_confirm={props.flag_confirm}
+            classname={"TweetButton"} flag2={props.flag} postingFlag={props.postingFlag} img_media={Media} img={Happyface} classname_media={"Media"} classname_emoji={"emoji"}/>
+            {props.flag===0 ? &lt;Poll flag={1}/>: &lt;Poll flag={0}/> }
        &lt;/div>
-    { (props.flag===1)  &amp;&amp; 
-    &lt;div className="icons">
-          &lt;IconMedia img={Media} classname={"Media"}/>
-          &lt;IconPoll img={poll} classname={"Poll"}/>
-          &lt;IconGif img={Gif} classname={"Gif"}/>
-          &lt;IconSchedule img={Schedule} classname={"Schedule"}/>
-          &lt;IconHappyFace img={Happyface} classname={"Happyface"}/>
-    &lt;/div> }
 
     &lt;/div>   );
 }
-export default PostingTweet;
-</code></pre>
+export default PostingTweet;</code></pre>
         </article>
     </section>
 
@@ -79,13 +74,13 @@ export default PostingTweet;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Explore">Explore</a></li><li><a href="global.html#ExploreHeader">ExploreHeader</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#Logout">Logout</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#Start">Start</a></li><li><a href="global.html#Trend">Trend</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Apr 25 2022 22:19:21 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 27 2022 06:33:14 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

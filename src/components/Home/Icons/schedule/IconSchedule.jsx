@@ -330,7 +330,7 @@ function IconSchedule(props) {
   }
   return (
     <div>
-      <input
+      <input data-testid="Schedule-button"
         type="image"
         className={props.classname}
         src={props.img}
@@ -341,7 +341,7 @@ function IconSchedule(props) {
         <div className="schedule">
           <Modal open={Open} onClose={closeschedule} >
             <Box sx={style}>
-            <CloseTwoToneIcon
+            <CloseTwoToneIcon data-testid="close-button"
                   onClick={closeschedule}
                 />
               <div className="first_div_schedule">
@@ -638,7 +638,7 @@ function IconSchedule(props) {
 
                   <div>
                     <h5 className="timezone_heading"> Time zone</h5>
-                    <h5 className="loaction_heading">
+                    <h5 data-testid="Time-text" className="loaction_heading">
                       {" "}
                       Eastern European Standard Time{" "}
                     </h5>

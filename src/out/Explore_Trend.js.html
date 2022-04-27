@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: AdminView/AdminMain.jsx</title>
+    <title>JSDoc: Source: Explore/Trend.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: AdminView/AdminMain.jsx</h1>
+    <h1 class="page-title">Source: Explore/Trend.js</h1>
 
     
 
@@ -27,67 +27,82 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import AdminWidgets from "./AdminWidgets";
-import "./AdminMain.css";
-import AdminChartWidget from "./AdminChartWidget";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AdminUserChart from "./AdminUserChart";
-import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart";
-import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
-import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
-import getUserStats from "./AdminWidgetsInfo";
+import "../Layout.css";
+import "./Trend.css";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
+import { IconButton } from "@mui/material";
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import { useState } from "react";
+import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
+import SentimentDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentDissatisfiedOutlined';
 
 /**
- * @descriptiom component represents the dashboard of the admin view which contains most of the statistics
- * @returns {div} A div that returns that component
- */
-function AdminMain() {
-  const [userStats, setUserStats] = React.useState([
-    { counter: "", percentage: "" },
-    { counter: "", percentage: "" },
-  ]);
-  React.useEffect(() => {
-    (async () => {
-      const resp = await getUserStats();
-      setUserStats(resp);
-    })();
-  }, []);
+ * 
+ * @param {object} props number, type, name, tweets_num
+ * @description Component that contains the header of trend and trend settings button
+ * @returns A div that renders the component
+ */ 
+function Trend(props) {
+    const [open, setOpen] = useState(null);
 
-  return (
-    &lt;div className="AdminMain">
-      &lt;div className="UserStatistics">
-        &lt;div className="AdminMainCards">
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[0].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[0].percentage}
-          />
-          &lt;AdminWidgets
-            type="Users/week"
-            counter={userStats[1].counter}
-            Icon={AccountCircleOutlinedIcon}
-            typeLink="see all users"
-            percentage={userStats[1].percentage}
-          />
+  function handleSettings(event) {
+    setOpen(event.currentTarget);
+    
+  }
+
+  function handleClose() {
+    setOpen(null);
+    
+  }
+ return (
+    &lt;div className="trend_head">
+        &lt;div className="trend_data">
+            &lt;p className="trend_name">{props.number}. {props.type}. Trending&lt;/p>
+            &lt;p className="trend_hash">{props.name}&lt;/p>
+            &lt;p className="trend_number">{props.tweets_num} Tweets&lt;/p>
         &lt;/div>
-        &lt;AdminUserChart />
-      &lt;/div>
-      &lt;div className="Charts">
-        &lt;AdminChartWidget />
-        &lt;AdminFollowerBarChart />
-      &lt;/div>
-      &lt;div className="ChartsCont">
-        &lt;AdminLikesBarChart />
-        &lt;AdminReportsBarChart />
-      &lt;/div>
+    &lt;div className="trend_settings">
+    &lt;IconButton sx={{ width: 0.5, height: 0.5 }} className="trend_settings_botton" onClick={handleSettings} >
+        &lt;MoreHorizOutlinedIcon fontSize="medium"/>
+    &lt;/IconButton>
+    &lt;div className="Popover_trend">
+            &lt;Popover
+              open={Boolean(open)}
+              anchorEl={open}
+              onClose={handleClose}
+              anchorReference="anchorEl"
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              style={{
+                width: "350px",
+                height: "auto",
+              }}
+            >
+              &lt;div>
+                &lt;Typography sx={{ p: 2 }} className="tweet_settings_bar">
+                  &lt;SentimentDissatisfiedOutlinedIcon fontSize="small"/>  Not interested in this
+                &lt;/Typography>
+                &lt;Typography sx={{ p: 2 }} className="tweet_settings_bar">
+                  &lt;SentimentDissatisfiedOutlinedIcon fontSize="small"/>  This trend is harmful or spammy
+                &lt;/Typography>
+               
+              &lt;/div>
+            &lt;/Popover>
+          &lt;/div>
     &lt;/div>
-  );
+    &lt;/div>
+ )
+
 }
-export default AdminMain;
-//pass a component as a prop
-</code></pre>
+
+export default Trend;</code></pre>
         </article>
     </section>
 
