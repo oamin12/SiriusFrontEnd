@@ -5,6 +5,16 @@ import "./Logout.css";
 
 const Logout = () => {
   let navigate = useNavigate();
+  function handleLogOut()
+  {
+    sessionStorage.setItem("tokenValue","");
+    localStorage.setItem("UserName","");
+    localStorage.setItem("Name","");
+    localStorage.setItem("UserProfile","");
+    localStorage.setItem("TopName","");
+
+    navigate("/");
+  }
   return (
     <div className="Logout">
       <img className="backf4" src={greyback} />
@@ -15,7 +25,7 @@ const Logout = () => {
           switch <br /> accounts, you can do that by adding <br /> an existing
           account.
         </p>
-        <button onClick={() => navigate("/")} className="outf4">
+        <button onClick={handleLogOut} className="outf4">
           Log out
         </button>
         <button onClick={() => navigate("/home")} className="cancelf4">

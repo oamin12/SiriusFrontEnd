@@ -114,7 +114,17 @@ async function GetTweetInfo() {
       <SideBar />
        <div className="feeder">
        <Heading/>
-       <PostingTweet flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule} flag={props.flag} postingFlag={handleAddTweet} />
+       <PostingTweet
+       weekdayName={props.weekdayName}
+       month={props.month}
+       date={props.date}
+       year={props.year_toset_theyear_value}
+       time={props.time}
+       minutes={props.minutes}
+       hours={props.hours} 
+       am_pm={props.am_pm}  
+       flagconfirm={props.flagconfirm}
+       flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule} flag={props.flag} postingFlag={handleAddTweet}/>       
        {tweetsInfo.map(getTweet)}
       </div> 
       

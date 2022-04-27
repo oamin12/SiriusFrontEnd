@@ -30,11 +30,12 @@
 .inputtext
 {
   width:190%;
+  height: 100px;
   border:none;
   outline: none;
   margin-left:3%;
   margin-top:32%;
-  margin-bottom: -12%;
+  margin-bottom: 0%;
   font-size: 100%;
   resize: none;
 
@@ -64,60 +65,52 @@ font-size:140%;
 
 .Media
 {
-  height:70%;
-  width:70%;
-  margin-left:160%;
-
+  width:12%;
+ margin-left: -70%;
+ margin-top: 2%;
 }
 .Poll
 {
- height:70%;
-  width:70%;
-  margin-left:390%;
-
+  width:40%;
+  margin-left: -250%;
+  margin-top: 4%;
 }
 .Gif
 {
-  height:70%;
-  width:70%;
-  margin-left:120%;
-  margin-top:4%;
-
- 
+  width:40%;
+  margin-left: -170%;
+  margin-top: 6%;
 }
-.Happyface
+.emoji
 {
-  height:75%;
-  width:75%;
-  margin-left:420%;
-
-  
+  width:7%;
+  height: 7%;
 }
 .Schedule
 {
-  height:70%;
-  width:70%;
-  margin-left:350%;
-  
+  width:40%;
+  margin-left: -170%;
+  margin-top: 3%;
 }
 .TweetButton
 {
-  width:35%;
-  height:35%;
-  border:none;
-  margin-left:155%;
-
-  padding-top:12%;
-  margin-top:13%;
-  margin-bottom:-25%;
-}
-.icons
-{
-  display:flex;
-  justify-content:space-around;
-  margin-left:0%;
   width:25%;
-  margin-top:4%;
-  padding-bottom: 3%;
+  border:none;
+  height: 10%;
+  margin-top: -2%;
+  margin-bottom: 4%;
+}
+.iconsfooter
+{
   border-bottom: 1px solid rgb(241, 242, 243);
+  display:flex;
+  margin-left: 12%;
+}
+#file-input
+{
+ display:none;
+}
+.icons{
+display:flex;
+margin-left:-30%;
 }

@@ -21,17 +21,21 @@ import NativeSelect from "@mui/material/NativeSelect";
 import InputLabel from "@mui/material/InputLabel";
 import { clearbutton_style } from "./inlinestylesheet_schedule";
 import { updatebutton_style } from "./inlinestylesheet_schedule";
-import { ConnectedTvOutlined } from "@mui/icons-material";
+import { style1 } from "./inlinestylesheet_schedule";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 function IconSchedule(props) {
   let currentDate = new Date();
 
   // function+variables to open and close the pop up page
   const [Open, setOpen] = React.useState(false);
-  console.log(props.flag_stop_working_from_poll_schedule)
-  const openschedule = () => {if((props.flag_stop_working!==1 && props.flag_stop_working_from_poll_to_schedule!==true))
-    setOpen(true)};
-
+  const [openScheduledTweets, setopenScheduledTweets] = React.useState(false);
+  {
+    /** dummy array schedule tweets*/
+  }
+  let [showScheduledTweets,set_showScheduledTweets]= React.useState(0)
   //variables to set the current time
   let [day_0_5, setday_0_5] = React.useState(currentDate.getDay());
   let [daymonth, setdaymonth] = React.useState(currentDate.getDate());
@@ -61,7 +65,7 @@ function IconSchedule(props) {
   );
   //used 3shan ashof h3red fy el dropdown menus 30 or 31 or 28 days
   let [flagmonthdays, set_flagmonthdays] = React.useState(
-    monthnumber === 1 ||
+      monthnumber === 1 ||
       monthnumber === 3 ||
       monthnumber === 7 ||
       monthnumber === 8 ||
@@ -78,22 +82,9 @@ function IconSchedule(props) {
     React.useState(1);
   let [flag_schedule_validation_days, setflag_schedule_validation_days] =
     React.useState(1);
-  /*let [scheduled_tweets, setscheduled_tweets] = React.useState([]);
-  //varibales used to save the schedule of the tweet
-  let [day_0_5_tweet,setday_0_5_tweet ]= React.useState(currentDate.getDay()) //days from 0 to 5 in a week
-  let [weekdayname_tweet, setweekdayname_tweet] = React.useState(getName(day_0_5_tweet)) //name of the day in the week sunday,monday...
-  let [month_tweet, setmonth_tweet] = React.useState() //monthname
-  let [monthnumber_tweet, setmonthnumber_tweet] = React.useState(); //monthnumber
-  let [daynumber_0_30_tweet, setdaynumber_0_30_tweet] = React.useState(currentDate.getDate());//ehna kam fy el shahr
-  let [year_tweet, setyear_tweet] = React.useState(currentDate.getFullYear()); 
-  let [minutes_tweet, setminutes_tweet] = React.useState(currentDate.getMinutes());
-  let [am_pm_tweet, setam_pm_tweet] = React.useState( 0 < hours && (hours < 12 || hours === 12) ? "am" : "pm");
-  let [hours_tweet, sethours_tweet] = React.useState(currentDate.getHours());
-  let [hours_1_12_tweet, sethours_1_12_tweet] = React.useState(0 < hours_tweet && (hours_tweet < 12 || hours_tweet === 12) ? hours_tweet : hours_tweet
-   - 12);
-  let [time_tweet, settime_tweet] = React.useState(
-    hours_1_12_tweet + ":" + minutes_tweet
-  );*/ //bydisplay el hours gmb el secounds
+  var [backSchedule, set_backSchedule] = React.useState(0);
+  var [deleteScheduledTweets, set_deleteScheduledTweets] = React.useState(0);
+  var [editScheduledTweets, set_editScheduledTweets] = React.useState(0);
   //bydisplayel days mn 0 l 5
 
   //functions to convert the date from a numerical value from 0 to 6 to a week day name
@@ -149,18 +140,8 @@ function IconSchedule(props) {
 
   function closeschedule() {
     setOpen(false);
-    if (flag_confirm === 0) {
-      /*setmonthnumber(currentDate.getMonth() + 1);
-      setmonth_tweet(convert_monthnumber_to_name(monthnumber));
-      sethours_tweet(currentDate.getHours());
-      setam_pm_tweet(ampm(hours_tweet));
-      setminutes_tweet(currentDate.getMinutes());
-      set_year_toset_theyear_value(currentDate.getFullYear());
-      setdaynumbertweet(currentDate.getDate());
-      day_tweet=currentDate.getDay()
-      setweekday_tweet(getName(day_tweet))
-    */
 
+    if (flag_confirm === 0) {
       setmonthnumber(currentDate.getMonth() + 1);
       setmonth(convert_monthnumber_to_name(monthnumber));
       sethours(currentDate.getHours());
@@ -172,6 +153,7 @@ function IconSchedule(props) {
       setdaymonth(currentDate.getDate());
       day_0_5 = currentDate.getDay();
       setweekdayName(getName(day_0_5));
+    
     }
   }
   function cancelschedule() {
@@ -192,21 +174,6 @@ function IconSchedule(props) {
     day_0_5 = currentDate.getDay();
     setday_0_5(day_0_5);
     setweekdayName(getName(day_0_5));
-
-    /*  //msh hnghyer el tweet_time l2n lma n3mel cancel m3na en el flag_confrim b 1 
-      //=>flag=2 =>mfesh tweet htetsgel asln therfore msh mhtaga el information bt3etha
-      setmonthnumber(currentDate.getMonth() + 1);
-      setmonth_tweet(convert_monthnumber_to_name(monthnumber));
-      sethours_tweet(currentDate.getHours());
-      setam_pm_tweet(ampm(hours_tweet));
-      setminutes_tweet(currentDate.getMinutes());
-       //msh bnset el year y3shan sybeno constat b value this year 
-      //el tany hwa el bytghyer 3la hasb el user mkhtar eh
-      set_year_toset_theyear_value(currentDate.getFullYear());
-      setdaynumber_0_30_tweet(currentDate.getDate());
-      day_0_5=currentDate.getDay()
-      setweekdayName(getName(day_0_5))*/
-
     flag_confirm = 0;
     setflag_confirm(flag_confirm);
   }
@@ -244,6 +211,7 @@ function IconSchedule(props) {
       setmonthnumber(monthnumber);
       month = convert_monthnumber_to_name(monthnumber);
       setmonth(month);
+      console.log(month)
       if (
         monthnumber === "1" ||
         monthnumber === "3" ||
@@ -333,7 +301,33 @@ function IconSchedule(props) {
     time = hours_1_12 + ":" + minutes;
     settime(time);
   }
-
+  const openschedule = () => {
+    if (
+      props.flag_stop_working !== 1 &&
+      props.flag_stop_working_from_poll_to_schedule !== 1
+    )
+     { setOpen(true);}
+     else
+     setOpen(false);
+  };
+  const openScheduleTweets_function = () => {
+    setopenScheduledTweets(true);
+  };
+  function deleteScheduledTweets() {}
+  function editScheduledTweets() {set_editScheduledTweets(1)}
+  function handleScheduledTweets() 
+  {
+    if(props.scheduledtweets!==undefined)
+    {
+      set_showScheduledTweets(1)
+    }
+    else
+    set_showScheduledTweets(0)
+  }
+  function handledraft() {}
+  function backToSchedule() {
+    setopenScheduledTweets(false);
+  }
   return (
     <div>
       <input
@@ -343,315 +337,386 @@ function IconSchedule(props) {
         alt=""
         onClick={openschedule}
       />
-      <div className="schedule">
-        <Modal open={Open} onClose={closeschedule}>
-          <Box sx={style}>
+      {openScheduledTweets == 0 ? (
+        <div className="schedule">
+          <Modal open={Open} onClose={closeschedule} >
+            <Box sx={style}>
             <CloseTwoToneIcon
-              onClick={closeschedule}
-              className="cancelbutton"
-            />
+                  onClick={closeschedule}
+                />
+              <div className="first_div_schedule">
+                
+                <h3 className="scheduletittle"> Schedule </h3>
 
-            {flag_confirm === 0 &&
-              flag_schedule_validation_months === 1 &&
-              flag_schedule_validation_days === 1 && (
-                <Button
-                  variant="contained"
-                  className="confirmbutton"
-                  onClick={handleconfirm}
-                  sx={confirmbutton_style}
-                >
-                  {" "}
-                  Confirm
-                </Button>
-              )}
-
-            {flag_confirm === 1 && (
-              <div>
-                <Button
-                  variant="contained"
-                  className="clearbutton"
-                  onClick={cancelschedule}
-                  sx={clearbutton_style}
-                >
-                  Clear
-                </Button>
-                {flag_schedule_validation_months === 1 &&
+                {flag_confirm === 0 &&
+                  flag_schedule_validation_months === 1 &&
                   flag_schedule_validation_days === 1 && (
                     <Button
                       variant="contained"
-                      className="updatebutton"
+                      className="confirmbutton"
                       onClick={handleconfirm}
-                      sx={updatebutton_style}
+                      sx={confirmbutton_style}
                     >
-                      Update
+                      {" "}
+                      Confirm
                     </Button>
                   )}
+
+                {flag_confirm === 1 && (
+                  <div className="clear_update_cont">
+                    <Button
+                      variant="contained"
+                      onClick={cancelschedule}
+                      sx={clearbutton_style}
+                    >
+                      Clear
+                    </Button>
+                    {flag_schedule_validation_months === 1 &&
+                      flag_schedule_validation_days === 1 && (
+                        <Button
+                          variant="contained"
+                          className="updatebutton"
+                          onClick={handleconfirm}
+                          sx={updatebutton_style}
+                        >
+                          Update
+                        </Button>
+                      )}
+                  </div>
+                )}
               </div>
-            )}
+             
 
-            {flag_schedule_validation_months === 1 &&
-            flag_schedule_validation_days === 1 ? (
-              <CalendarMonthOutlinedIcon sx={calendericon_style} />
-            ) : null}
-            <h5 className="date_heading">Date</h5>
+              <div className="date">
+                <Box>
+                  <FormControl sx={months_style}>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                    >
+                      Month
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={monthnumber}
+                      onClick={handlemonths}
+                      inputProps={{
+                        name: "month",
+                      }}
+                    >
+                      <option value={1}>January</option>{" "}
+                      <option value={2}>February</option>
+                      <option value={3}>March</option>
+                      <option value={4}>April</option>
+                      <option value={5}>May</option>
+                      <option value={6}>June</option>
+                      <option value={7}>July</option>
+                      <option value={8}>Augast</option>
+                      <option value={9}>September</option>
+                      <option value={10}>Octobar</option>
+                      <option value={11}>Novamber</option>{" "}
+                      <option value={12}>December</option>
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl sx={days_style}>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                    >
+                      Day
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={daymonth}
+                      onClick={handledaymonth}
+                      inputProps={{
+                        name: "day",
+                      }}
+                    >
+                      <option value={1}>1</option> <option value={2}>2</option>
+                      <option value={3}>3</option>
+                      <option value={4}>4</option>
+                      <option value={5}>5</option>
+                      <option value={6}>6</option>
+                      <option value={7}>7</option>
+                      <option value={8}>8</option>
+                      <option value={9}>9</option>
+                      <option value={10}>10</option>
+                      <option value={11}>11</option>{" "}
+                      <option value={12}>12</option>
+                      <option value={13}>13</option>{" "}
+                      <option value={14}>14</option>{" "}
+                      <option value={15}>15</option>
+                      <option value={16}>16</option>{" "}
+                      <option value={17}>17</option>{" "}
+                      <option value={18}>18</option>
+                      <option value={19}>19</option>{" "}
+                      <option value={20}>20</option>
+                      <option value={21}>21</option>
+                      <option value={22}>22</option>
+                      <option value={23}>23</option>
+                      <option value={24}>24</option>
+                      <option value={25}>25</option>
+                      <option value={26}>26</option>
+                      <option value={27}>27</option>
+                      <option value={28}>28 </option>
+                      {(flagmonthdays === 2 || flagmonthdays === 1) && (
+                        <option value={29}>29</option>
+                      )}
+                      {(flagmonthdays === 2 || flagmonthdays === 1) && (
+                        <option value={30}>30</option>
+                      )}
+                      {flagmonthdays === 1 && <option value={31}>31</option>}
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl sx={years_style}>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                    >
+                      year
+                    </InputLabel>
+                    <NativeSelect
+                      onClick={handleyears}
+                      defaultValue={year_toset_theyear_value}
+                      inputProps={{
+                        name: "year",
+                      }}
+                    >
+                      <option value={year}>{year}</option>{" "}
+                      <option value={year + 1}>{year + 1}</option>
+                      <option value={year + 2}>{year + 2}</option>
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+              </div>
 
-            <div className="date">
-              <Box>
-                <FormControl sx={months_style}>
-                  <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                    Month
-                  </InputLabel>
-                  <NativeSelect
-                    defaultValue={monthnumber}
-                    onClick={handlemonths}
-                    inputProps={{
-                      name: "month",
-                    }}
-                  >
-                    <option value={1}>January</option>{" "}
-                    <option value={2}>February</option>
-                    <option value={3}>March</option>
-                    <option value={4}>April</option>
-                    <option value={5}>May</option>
-                    <option value={6}>June</option>
-                    <option value={7}>July</option>
-                    <option value={8}>Augast</option>
-                    <option value={9}>September</option>
-                    <option value={10}>Octobar</option>
-                    <option value={11}>Novamber</option>{" "}
-                    <option value={12}>December</option>
-                  </NativeSelect>
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl sx={days_style}>
-                  <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                    Day
-                  </InputLabel>
-                  <NativeSelect
-                    defaultValue={daymonth}
-                    onClick={handledaymonth}
-                    inputProps={{
-                      name: "day",
-                    }}
-                  >
-                    <option value={1}>1</option> <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
-                    <option value={6}>6</option>
-                    <option value={7}>7</option>
-                    <option value={8}>8</option>
-                    <option value={9}>9</option>
-                    <option value={10}>10</option>
-                    <option value={11}>11</option>{" "}
-                    <option value={12}>12</option>
-                    <option value={13}>13</option>{" "}
-                    <option value={14}>14</option>{" "}
-                    <option value={15}>15</option>
-                    <option value={16}>16</option>{" "}
-                    <option value={17}>17</option>{" "}
-                    <option value={18}>18</option>
-                    <option value={19}>19</option>{" "}
-                    <option value={20}>20</option>
-                    <option value={21}>21</option>
-                    <option value={22}>22</option>
-                    <option value={23}>23</option>
-                    <option value={24}>24</option>
-                    <option value={25}>25</option>
-                    <option value={26}>26</option>
-                    <option value={27}>27</option>
-                    <option value={28}>28 </option>
-                    {(flagmonthdays === 2 || flagmonthdays === 1) && (
-                      <option value={29}>29</option>
-                    )}
-                    {(flagmonthdays === 2 || flagmonthdays === 1) && (
-                      <option value={30}>30</option>
-                    )}
-                    {flagmonthdays === 1 && <option value={31}>31</option>}
-                  </NativeSelect>
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl sx={years_style}>
-                  <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                    year
-                  </InputLabel>
-                  <NativeSelect
-                    onClick={handleyears}
-                    defaultValue={year_toset_theyear_value}
-                    inputProps={{
-                      name: "year",
-                    }}
-                  >
-                    <option value={year}>{year}</option>{" "}
-                    <option value={year + 1}>{year + 1}</option>
-                    <option value={year + 2}>{year + 2}</option>
-                  </NativeSelect>
-                </FormControl>
-              </Box>
-            </div>
-            {flag_confirm === 0 &&
-            flag_schedule_validation_days === 1 &&
-            flag_schedule_validation_months === 1 ? (
-              <h3 className="scheduletittle"> Schedule </h3>
-            ) : flag_confirm === 1 &&
-              flag_schedule_validation_days === 1 &&
-              flag_schedule_validation_months === 1 ? (
-              <h3 className="scheduletittle2"> Schedule </h3>
-            ) : flag_confirm === 0 &&
-              (flag_schedule_validation_days === 0 ||
-                flag_schedule_validation_months === 0) ? (
-              <h3 className="scheduletittle_validation_confirm"> Schedule </h3>
-            ) : (
-              <h3 className="scheduletittle_validation_update"> Schedule </h3>
-            )}
 
-            <h5 className="time_heading"> Time</h5>
-            <Box>
-              <FormControl sx={hours_style}>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                  Hours
-                </InputLabel>
-                <NativeSelect
-                  defaultValue={hours_1_12}
-                  onClick={handlehours}
-                  inputProps={{
-                    name: "hour",
+              <div className="time">
+                <Box>
+                  <FormControl sx={hours_style}>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                    >
+                      Hours
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={hours_1_12}
+                      onClick={handlehours}
+                      inputProps={{
+                        name: "hour",
+                      }}
+                    >
+                      <option value={1}>1</option> <option value={2}>2</option>
+                      <option value={3}>3</option>
+                      <option value={4}>4</option>
+                      <option value={5}>5</option>
+                      <option value={6}>6</option>
+                      <option value={7}>7</option>
+                      <option value={8}>8</option>
+                      <option value={9}>9</option>
+                      <option value={10}>10</option>
+                      <option value={11}>11</option>{" "}
+                      <option value={12}>12</option>
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl sx={minutes_style}>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                    >
+                      Minutes
+                    </InputLabel>
+                    <NativeSelect
+                      defaultValue={minutes}
+                      onClick={handleminutes}
+                      inputProps={{
+                        name: "Minute",
+                      }}
+                    >
+                      <option value={1}>1</option> <option value={2}>2</option>
+                      <option value={3}>3</option>
+                      <option value={4}>4</option>
+                      <option value={5}>5</option>
+                      <option value={6}>6</option>
+                      <option value={7}>7</option>
+                      <option value={8}>8</option>
+                      <option value={9}>9</option>
+                      <option value={10}>10</option>
+                      <option value={11}>11</option>{" "}
+                      <option value={12}>12</option>
+                      <option value={13}>13</option>{" "}
+                      <option value={14}>14</option>{" "}
+                      <option value={15}>15</option>
+                      <option value={16}>16</option>{" "}
+                      <option value={17}>17</option>{" "}
+                      <option value={18}>18</option>
+                      <option value={19}>19</option>{" "}
+                      <option value={20}>20</option>
+                      <option value={21}>21</option>
+                      <option value={22}>22</option>
+                      <option value={23}>23</option>
+                      <option value={24}>24</option>
+                      <option value={25}>25</option>
+                      <option value={26}>26</option>
+                      <option value={27}>27</option>
+                      <option value={28}>28 </option>{" "}
+                      <option value={29}>29 </option>{" "}
+                      <option value={30}>30 </option>
+                      <option value={31}>31</option>{" "}
+                      <option value={32}>32</option>
+                      <option value={33}>33</option>
+                      <option value={34}>34</option>
+                      <option value={35}>35</option>
+                      <option value={36}>36</option>
+                      <option value={37}>37</option>
+                      <option value={38}>38</option>
+                      <option value={39}>39</option>
+                      <option value={40}>40</option>
+                      <option value={41}>41</option>{" "}
+                      <option value={42}>42</option>
+                      <option value={43}>43</option>{" "}
+                      <option value={44}>44</option>{" "}
+                      <option value={45}>45</option>
+                      <option value={46}>46</option>{" "}
+                      <option value={47}>47</option>{" "}
+                      <option value={48}>48</option>
+                      <option value={49}>49</option>
+                      <option value={50}>50</option>
+                      <option value={51}>51</option>{" "}
+                      <option value={52}>52</option>
+                      <option value={53}>53</option>{" "}
+                      <option value={54}>54</option>{" "}
+                      <option value={55}>55</option>
+                      <option value={56}>56</option>{" "}
+                      <option value={57}>57</option>{" "}
+                      <option value={58}>58</option>
+                      <option value={59}>59</option>{" "}
+                      <option value={60}>60</option>
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+                <Box>
+                  <FormControl sx={am_pm_style}>
+                    <InputLabel
+                      variant="standard"
+                      htmlFor="uncontrolled-native"
+                    >
+                      AM/PM
+                    </InputLabel>
+                    <NativeSelect
+                      onClick={handle_am_pm}
+                      defaultValue={am_pm}
+                      inputProps={{
+                        name: "am_pm",
+                      }}
+                    >
+                      <option value={"am"}>am</option>{" "}
+                      <option value={"pm"}>pm</option>
+                    </NativeSelect>
+                  </FormControl>
+                </Box>
+              </div>
+              <div className="secound_div_cont">
+                <CalendarMonthOutlinedIcon sx={calendericon_style} />
+           
+
+                  <div>
+                  <h5 className="sendstatus">
+                    {" "}
+                    Will send on {weekdayName} , {month} {daymonth},{" "}
+                    {year_toset_theyear_value} at {time} {am_pm}{" "}
+                  </h5>
+                  </div>
+                 <h5 className="date_heading">Date</h5>
+                 <h5 className="time_heading"> Time</h5>
+
+                  <div>
+                    <h5 className="timezone_heading"> Time zone</h5>
+                    <h5 className="loaction_heading">
+                      {" "}
+                      Eastern European Standard Time{" "}
+                    </h5>
+                  </div>
+                
+                <Button
+                  onClick={openScheduleTweets_function}
+                  sx={{
+                    transform: "lowercase",
+                    marginTop:'4%',
+                    width: "35%",
+                
                   }}
                 >
-                  <option value={1}>1</option> <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={8}>8</option>
-                  <option value={9}>9</option>
-                  <option value={10}>10</option>
-                  <option value={11}>11</option> <option value={12}>12</option>
-                </NativeSelect>
-              </FormControl>
-            </Box>
-            <Box>
-              <FormControl sx={minutes_style}>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                  Minutes
-                </InputLabel>
-                <NativeSelect
-                  defaultValue={minutes}
-                  onClick={handleminutes}
-                  inputProps={{
-                    name: "Minute",
-                  }}
-                >
-                  <option value={1}>1</option> <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={8}>8</option>
-                  <option value={9}>9</option>
-                  <option value={10}>10</option>
-                  <option value={11}>11</option> <option value={12}>12</option>
-                  <option value={13}>13</option> <option value={14}>14</option>{" "}
-                  <option value={15}>15</option>
-                  <option value={16}>16</option> <option value={17}>17</option>{" "}
-                  <option value={18}>18</option>
-                  <option value={19}>19</option> <option value={20}>20</option>
-                  <option value={21}>21</option>
-                  <option value={22}>22</option>
-                  <option value={23}>23</option>
-                  <option value={24}>24</option>
-                  <option value={25}>25</option>
-                  <option value={26}>26</option>
-                  <option value={27}>27</option>
-                  <option value={28}>28 </option>{" "}
-                  <option value={29}>29 </option>{" "}
-                  <option value={30}>30 </option>
-                  <option value={31}>31</option> <option value={32}>32</option>
-                  <option value={33}>33</option>
-                  <option value={34}>34</option>
-                  <option value={35}>35</option>
-                  <option value={36}>36</option>
-                  <option value={37}>37</option>
-                  <option value={38}>38</option>
-                  <option value={39}>39</option>
-                  <option value={40}>40</option>
-                  <option value={41}>41</option> <option value={42}>42</option>
-                  <option value={43}>43</option> <option value={44}>44</option>{" "}
-                  <option value={45}>45</option>
-                  <option value={46}>46</option> <option value={47}>47</option>{" "}
-                  <option value={48}>48</option>
-                  <option value={49}>49</option>
-                  <option value={50}>50</option>
-                  <option value={51}>51</option> <option value={52}>52</option>
-                  <option value={53}>53</option> <option value={54}>54</option>{" "}
-                  <option value={55}>55</option>
-                  <option value={56}>56</option> <option value={57}>57</option>{" "}
-                  <option value={58}>58</option>
-                  <option value={59}>59</option> <option value={60}>60</option>
-                </NativeSelect>
-              </FormControl>
-            </Box>
-            <Box>
-              <FormControl sx={am_pm_style}>
-                <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                  AM/PM
-                </InputLabel>
-                <NativeSelect
-                  onClick={handle_am_pm}
-                  defaultValue={am_pm}
-                  inputProps={{
-                    name: "am_pm",
-                  }}
-                >
-                  <option value={"am"}>am</option>{" "}
-                  <option value={"pm"}>pm</option>
-                </NativeSelect>
-              </FormControl>
-            </Box>
-            {flag_confirm === 0 &&
-            flag_schedule_validation_days === 1 &&
-            flag_schedule_validation_months === 1 ? (
-              <h5 className="sendstatus">
-                {" "}
-                Will send on {weekdayName} , {month} {daymonth},{" "}
-                {year_toset_theyear_value} at {time} {am_pm}{" "}
-              </h5>
-            ) : (
-              flag_confirm === 1 &&
-              flag_schedule_validation_days === 1 &&
-              flag_schedule_validation_months === 1 && (
-                <h5 className="sendstatus2">
-                  {""}
-                  Will send on {weekdayName} , {month} {daymonth},{" "}
-                  {year_toset_theyear_value} at {time} {am_pm}{" "}
-                </h5>
-              )
-            )}
-            {flag_schedule_validation_days === 1 &&
-            flag_schedule_validation_months === 1 ? (
-              <div>
-                <h5 className="timezone_heading"> Time zone</h5>
-                <h5 className="loaction_heading">
-                  {" "}
-                  Eastern European Standard Time{" "}
-                </h5>
+                  Scheduled Tweets
+                </Button>
               </div>
-            ) : (
-              <div>
-                <h5 className="timezone_heading_validation"> Time zone</h5>
-                <h5 className="loaction_heading_validation">
-                  {" "}
-                  Eastern European Standard Time{" "}
-                </h5>
+            </Box>
+          </Modal>
+        </div>
+      ) : null}
+      {openScheduledTweets == 1 ? (
+        <div>
+          <Modal open={openScheduledTweets} onClose={closeschedule}>
+            <Box sx={style1}>
+              <div className="firstdiv">
+                <ArrowBackIcon onClick={backToSchedule}></ArrowBackIcon>
+                <h2 className="UnsendTweets_Heading">Unsent Tweets</h2>
+                {/* hena el mfrod atcheck el awel fy tweets wla la <Button onClick={editScheduledTweets} sx={{marginLeft:'23%',  backgroundColor:"black",
+                 color:"white",
+                fontSize: "95%",
+                "&:hover": {
+                background: "rgb(52, 48, 48)"}}>Edit</Button>*/}
               </div>
-            )}
-          </Box>
-        </Modal>
-      </div>
+              {/** imp =>mapping functions for the scheduled tweets*/}
+              <div className="secounddiv">
+                {/* el div kolo shghel lma mykonsh fy tweets bs */}
+                <Box sx={{style1}}>
+                  <Tabs >
+                    <Tab label="Drafts" sx={{marginLeft:'-10%'}} onClick={handledraft}/>
+                    <Tab sx={{width:'40%' ,marginLeft:'5%'}} label="scheduled tweets" onClick={handleScheduledTweets}  />
+                  </Tabs>
+                </Box>
+               {showScheduledTweets===0 &&
+                 <div>
+                   <img
+                  className="scheduledtweets_background"
+                  src="https://abs.twimg.com/sticky/illustrations/empty-states/alarm-clock-800x400.v1.png"
+                  alt=""
+                />
+                <h1 className="heading1">Hold that thought</h1>
+                <h3 className="heading2_part1">
+                  Not ready to send a Tweet just yet? Save it to your
+                </h3>
+                <h3 className="heading2_part2">
+                  drafts or schedule it for later
+                </h3>
+            
+              </div> }
+              {console.log(showScheduledTweets)}
+              {
+                showScheduledTweets===1 && <div>
+                {props.scheduledtweets.map(function showstweets()
+                {
+                  return <div>
+                    <CalendarMonthOutlinedIcon />
+                    <h3>  Will send on {props.scheduledtweets.weekdayName} , {props.scheduledtweets.month} {props.scheduledtweets.date},{props.scheduledtweets.year} at {props.scheduledtweets.time} {props.scheduledtweets.am_pm}{" "}</h3>
+                  <p>{props.scheduledtweets.content}</p>
+                  </div>
+                })}
+                </div>
+              }
+            </div> 
+
+            </Box>
+          </Modal>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -145,23 +145,22 @@
   padding-left: -20%;
 }
 .Pollblur {
-  width: 25%;
+  width: 30%;
   margin-left: -20%;
 }
 .Gifblur {
-  width: 25%;
+  width: 30%;
   margin-left: -15%;
   margin-top: 3%;
 }
 .Scheduleblur {
-  width: 25%;
+  width: 30%;
   margin-left: -10%;
   margin-top: -1%;
 }
 .emojis{
-width:9%;
-margin-bottom: -124%;
-margin-left: -78%;
+width:11%
+
 }
 .Inputbox_for_poll {
   width: 170%;
@@ -172,6 +171,7 @@ margin-left: -78%;
   margin-left: -90%;
   margin-bottom: 7%;
   font-size:100%;
+  resize: none;
 }
 .Inputbox_for_poll::placeholder {
   font-size: 120%;

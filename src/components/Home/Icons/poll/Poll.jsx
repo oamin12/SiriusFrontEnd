@@ -176,7 +176,7 @@ function Poll(props) {
     setflag9(0);
     set_flag_stop_working(0)
     setcounter(2); //reseting the number of text boxes when removing the poll
-    ReactDOM.render(<App flag={1} />, document.getElementById("root")); //we send to it a flag that is supposed to show the text box as will as the icons, that was hidden when we called the poll
+    ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={1} flag={1} />, document.getElementById("root")); //we send to it a flag that is supposed to show the text box as will as the icons, that was hidden when we called the poll
   }
 
   function add_textbox() {  //if we want to add a text box we fisrt check on our counter(max textboxes to be added is two)
@@ -245,23 +245,7 @@ function Poll(props) {
                 size="36"
                 onChange={handlechange}
               />
-                 <img
-                    alt=""
-                    src={Happyface}
-                    className="emojis"
-                    onClick={open_pop_over} />
-           <Popover  open={open}
-             anchorEl={anchorEl}
-             onClose={handleClose} sx={{width:"35%", height:"50%",marginTop:'-3%'}}>
-
-            {showPicker && <Picker
-            disableSkinTonePicker="true"
-            pickerStyle={{ width: '100%',
-            margin:'0px',
-            
-            }}
-          onEmojiClick={onEmojiClick} />}
-          </Popover>
+               
 
             </div>
             <div className="poll">
@@ -468,9 +452,27 @@ function Poll(props) {
             />
            {/* on click we see if we will reset */}
             <div className="Iconsblur">
-              <IconPoll img={Pollblur} classname={"Pollblur"} />
+              {/*by7sel infinte loop t2rbyen lma asod 3la poll fy poll f hwef el function bt3tha lma ab2a fy el poll*/}
+              <IconPoll img={Pollblur} classname={"Pollblur"} flag_stop_working={1}/>
               <IconGif img={Gifblur} classname={"Gifblur"} />
-              <IconSchedule img={Scheduleblur} classname={"Scheduleblur"}  />
+              <IconSchedule img={Scheduleblur} classname={"Scheduleblur"}  flag_stop_working_from_poll_to_schedule={1} />
+              <img
+                      alt=""
+                      src={Happyface}
+                      className="emojis"
+                      onClick={open_pop_over} />
+            <Popover  open={open}
+              anchorEl={anchorEl}
+              onClose={handleClose} sx={{width:"35%", height:"50%",marginTop:'-3%'}}>
+
+              {showPicker && <Picker
+              disableSkinTonePicker="true"
+              pickerStyle={{ width: '100%',
+              margin:'0px',
+              
+              }}
+          onEmojiClick={onEmojiClick} />}
+          </Popover>
             </div>
 
             <input

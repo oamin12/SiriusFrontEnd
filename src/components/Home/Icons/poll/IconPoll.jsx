@@ -20,7 +20,7 @@ function IconPoll(props) {
         alt=""
         onClick={createpoll}
       />
-      {flag1 === 1 && (ReactDOM.render(<App flag={0} flag_stop_working_from_poll_to_schedule={true}/>, document.getElementById("root")))}
+      {flag1 === 1 && (ReactDOM.render(<App flag={0} />, document.getElementById("root")))}
     </div>
   );
 }

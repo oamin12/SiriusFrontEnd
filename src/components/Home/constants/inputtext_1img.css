@@ -1,4 +1,4 @@
-/* .inputtext_img {
+.inputtext_img {
   width: 190%;
   height: 100px;
   border: none;
@@ -13,7 +13,7 @@
   font-size: 140%;
 }
 
-.Happyface_img {
+.emoji_img {
   width: 6%;
   height: 6%;
   margin-left: 10%;
@@ -34,7 +34,7 @@
   margin-top: 58%;
   margin-left: -320%;
 }
-.media_img {
+.Media_img {
   width: 10%;
   margin-top: 20%;
 }
@@ -44,18 +44,12 @@
 }
 
 .TweetButton_img {
-  width: 20%;
-  height: 20%;
+  width: 16%;
+  height: 16%;
   border: none;
-  margin-left: 100%;
-  padding-top: 2%;
+  margin-left: 70%;
   margin-top: -20%;
-  margin-bottom: 5%;
-}
-
-.sendstatus_inputtext {
-  margin-left: 20%;
-  margin-top: -200%;
+  margin-bottom: 10%;
 }
 .image-upload_img > input {
   display: none;
@@ -86,6 +80,7 @@
   height: 370px;
   border-radius: 20px;
   margin-top: -90%;
+  margin-bottom: 25%;
   margin-left: 10%;
 }
 
@@ -94,8 +89,8 @@
   margin-bottom: -100%;
 }
 .image1_to_beuploaded3 {
-  width: 225px;
-  height: 335px;
+  width: 230px;
+  height: 345px;
   border-radius: 20px;
   margin-top: -92%;
   margin-left: -65%;
@@ -106,12 +101,13 @@
   border-radius: 20px;
   margin-left: 5%;
   margin-top: -90%;
+  margin-bottom: 25%;
 }
 .image3_to_beuploaded3 {
   width: 200px;
   height: 160px;
   border-radius: 20px;
-  margin-top: -70%;
+  margin-top: -30%;
   margin-left: 52%;
   
 }
@@ -149,6 +145,7 @@
   height: 180px;
   width: 240px;
   border-radius: 20px;
+  margin-bottom: 25%;
   margin-top: -48%;
   margin-left: 50%;
-} */
+}

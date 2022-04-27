@@ -4,6 +4,8 @@ import { Avatar } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import "./SideBarFooter.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 /**
  *
  * @param {object} props profile picture, name, username
@@ -11,6 +13,8 @@ import "./SideBarFooter.css";
  * @returns {div} A div that returns that component
  */
 function SideBarFooter(props) {
+  let navigate = useNavigate();
+
   const [open, setOpen] = React.useState(null);
 
   function handleClick(event) {
@@ -58,9 +62,10 @@ function SideBarFooter(props) {
             <Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
               Add an existing account
             </Typography>
-            <Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
-              Log out @{localStorage.getItem("UserName")}
+            <NavLink to="/logout" style={{"color":"black"}}> <Typography  sx={{ p: 2 }} className="sideBarFooterMenuBar">
+            Log out @{localStorage.getItem("UserName")}
             </Typography>
+            </NavLink>
           </div>
         </Popover>
       </div>
