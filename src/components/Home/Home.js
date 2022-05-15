@@ -30,22 +30,6 @@ import axios from "axios";
 
    )
  }
-function getTweet(tweet) {
-  return (
-    <Tweet
-      key={tweet.id}
-      name={tweet.name}
-      userName={tweet.userName}
-      content={tweet.content}
-      avatar={tweet.avatar}
-      image={tweet.image}
-      video={tweet.video}
-      likeCount={tweet.likeCount}
-      repliesCount={tweet.repliesCount}
-      retweetCount={tweet.retweetCount}
-    />
-  );
-}
 
 /**
  *
