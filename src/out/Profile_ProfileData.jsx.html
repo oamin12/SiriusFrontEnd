@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Profile/ProfileData.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Profile/ProfileData.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { Avatar,Tabs,Tab } from "@mui/material";
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import AddLocationOutlinedIcon from '@mui/icons-material/AddLocationOutlined';
+import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import IconButton from '@mui/material/IconButton';
+import NotificationAddOutlinedIcon from '@mui/icons-material/NotificationAddOutlined';
+import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import "../Bookmarks/BookmarksHeader.css";
+import { useState } from "react";
+import "./ProfileData.css";
+import { Link, NavLink, useLocation } from "react-router-dom";
+
+const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 320,
+    height:300,
+    bgcolor: "background.paper",
+    border: "0px",
+    boxShadow: 24,
+    p: 4,
+    borderRadius: "8px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  };
+  
+/**
+ * @description profile page with all the information of visited user or the logged in user
+ * @param {object} props username - name - profile picture - cover photo - bio - location - birthdate - joined data 
+ * - indicator for wether this is my profile or not - no. of followings - no. of followers
+ * @returns {div} contains all information of user, edit button if I'm the logged in user, follow button if visiting a non followed user
+ * , following button if I'm visiting a following user, tab to navigate between different type of tweets for users
+ */
+function ProfileData(props){
+    var profileId = 123;
+    var visitedProfileId = 1;
+    const [MediaSelected, setPage] = useState(false);
+    //UseState for edit profile button
+    const [hoverOverLike, setHoverLike] = useState(false); 
+    //UseState to keep track of following and unfollowing users
+    const [changeFollow, setChangeFollow] = useState(false);
+    const [followed, setFollowed] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+    localStorage.setItem("TopName",props.name);//for name displayed in following/follower
+
+    function handleChange(){
+        setPage(true);
+    }
+
+    function isOverBtn()
+    {
+      setHoverLike(true);
+    }
+    function isOutBtn()
+    {
+        setHoverLike(false);
+    }
+    
+    function isOverFollowingBtn()
+    {
+        setChangeFollow(true);
+    }
+    function isOutFollowingBtn()
+    {
+        setChangeFollow(false);
+    }
+    function handleFollow()
+    {
+        setFollowed(true);
+    }
+    function handleUnfollow()
+    {
+        setFollowed(false);
+        handleModalClose();
+    }
+    
+    function handleBanButtonClick() 
+    {
+        setOpenModal(true);
+    }
+    function handleModalClose()
+    {
+        setOpenModal(false);
+    }
+    
+    return(
+        &lt;div className="profile__data" >
+            &lt;div className="header">
+                &lt;div className="ArrowIcon">
+                &lt;NavLink to="/home">
+                    &lt;ArrowBackIcon fontSize="small" />   
+                &lt;/NavLink>
+                &lt;/div>
+            &lt;h2>{props.name}&lt;/h2>
+            &lt;/div>
+            &lt;div className="profile__head">
+
+                &lt;Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
+                &lt;Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
+                &lt;div className="edit__btn">
+                    {props.isMe ?
+                    &lt;button onMouseOver={isOverBtn} onMouseOut={isOutBtn} style={{backgroundColor: hoverOverLike ? "#F5F8FA" : "white" }} className="Edit__profile__btn" >
+                            &lt;b>Edit profile&lt;/b>
+                    &lt;/button>:
+                    &lt;div className="visitedProfile">
+                       &lt;button  className="notifAndMoreBtn">
+                            &lt;MoreHorizOutlinedIcon />
+                            &lt;/button>
+                            &lt;button  className="notifAndMoreBtn">
+                            &lt;NotificationAddOutlinedIcon />
+                            &lt;/button>
+                            {!followed ?
+                                &lt;button data-testid="Follow-button" className="Edit__profile__btn" onClick={handleFollow} style={{backgroundColor:"black",color:"white",borderColor:"black"}}>
+                               &lt;b>Follow&lt;/b>
+                        &lt;/button>
+                        :
+                        &lt;button data-testid="Following-Unfollow-button" onMouseOver={isOverFollowingBtn} onClick={handleBanButtonClick} onMouseOut={isOutFollowingBtn} className="followingBtn" >
+                               {changeFollow?&lt;b>Unfollow&lt;/b>:&lt;b>Following&lt;/b>} 
+                        &lt;/button>}
+                        &lt;Modal open={openModal} onClose={handleModalClose}>
+                            &lt;Box sx={style}>
+                                &lt;b className="modalHeader" style={{ textAlign: "center",fontSize:"20px" }}>
+                                Unfollow {props.username}
+                                &lt;/b>
+                                &lt;p className="boxParagraph" style={{fontSize:"15px"}}>
+                                Their Tweets will no longer show up in your home timeline. You can still view their profile, unless their Tweets are protected.
+                                &lt;/p>
+
+                                &lt;button className="clearLink" style={{backgroundColor:"black", height:"42px"}} onClick={handleUnfollow}>
+                                &lt;b>Unfollow&lt;/b>
+                                &lt;/button>
+                                &lt;button className="cancelButton" onClick={handleModalClose}>
+                                &lt;b>Cancel&lt;/b>
+                                &lt;/button>
+                            &lt;/Box>
+                        &lt;/Modal>
+                        
+                    &lt;/div>}
+                    
+                &lt;/div>
+                
+            &lt;/div>  
+            &lt;div className="profile__body">
+                &lt;div className="User__name">
+                    &lt;h3>{props.name}&lt;/h3>
+                    &lt;p style={{"color":"gray","fontSize":"14px"}}>@{props.username}&lt;/p>
+                &lt;/div>
+                &lt;p style={{fontSize:"15px"}}>{props.bio}&lt;/p>
+                &lt;div className="more__info">
+                    &lt;div className="location">
+                            &lt;AddLocationOutlinedIcon />
+                            {props.location}
+                        &lt;/div>
+                        &lt;div className="location" >
+                            &lt;LanguageOutlinedIcon  />
+                        {props.website}
+                        &lt;/div>
+                        &lt;div className="location">
+                            &lt;CakeOutlinedIcon />
+                            {props.birthdate}
+                        &lt;/div>
+                        &lt;div className="location">
+                            &lt;CalendarMonthOutlinedIcon />
+                            {props.joineddate}
+                        &lt;/div>
+                &lt;/div>
+                &lt;div className="follow__section">
+                    &lt;NavLink to={"/"+props.username+"/Followings"}  style={{color:"gray"}}>
+                    &lt;span>
+                        &lt;b>{props.followingCount} &lt;/b> 
+                    Following &amp;nbsp; &lt;/span>
+                    &lt;/NavLink>
+                    &lt;NavLink to={"/"+props.username+"/Followers"}  style={{color:"gray"}}>
+                    &lt;span>&amp;nbsp;&lt;b>{props.followersCount}&lt;/b> Followers &lt;/span>
+                    &lt;/NavLink>
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="profile__footer"> 
+            &lt;Tabs textColor="inheret" style={{color:"Black"}} variant="fullWidth">
+                &lt;NavLink to={"/"+props.username} style={{color:"Black"}}>
+                &lt;Tab onClick={handleChange} label="Tweets" />
+                &lt;/NavLink>
+                &lt;NavLink to={"/"+props.username+"/with_replies"} style={{color:"Black",fontSize:"14px"}}>
+                &lt;Tab onClick={handleChange} label="Tweets &amp; replies" style={{padding:"7px 7px 7px 7px"}} />
+                &lt;/NavLink>
+                &lt;NavLink  to={"/"+props.username+"/media"} style={{color:"Black"}}>
+                &lt;Tab onClick={handleChange} label="Media" />
+                &lt;/NavLink>
+                &lt;NavLink to={"/"+props.username+"/likes"} style={{color:"Black"}}>
+                &lt;Tab onClick={handleChange} label="Likes" />  
+                &lt;/NavLink>  
+            &lt;/Tabs>
+
+            &lt;/div>
+        &lt;/div>
+    
+    );
+}
+
+export default ProfileData</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Explore">Explore</a></li><li><a href="global.html#ExploreHeader">ExploreHeader</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#Logout">Logout</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#Start">Start</a></li><li><a href="global.html#Trend">Trend</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 27 2022 06:33:14 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

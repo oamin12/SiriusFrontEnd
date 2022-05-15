@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: StartupPage/StartPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: StartupPage/StartPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Start.css";
+import background from "./Images/whatshappening.png";
+import { useNavigate } from "react-router-dom";
+/**
+ * @description Component that contains the start page where the user can log in or sign up for a new account
+ * @returns {div}
+ */ 
+const Start = () => {
+  let history = useNavigate();
+  return (
+    &lt;div className="Start">
+      &lt;div className="upf1">
+        &lt;div className="rightf1">
+          &lt;img className="backf1" src={background} />
+        &lt;/div>
+        &lt;div className="leftf1">
+          &lt;h1 className="h1f1">Happening now&lt;/h1>
+          &lt;h3 className="h3f1">Join Sirius today.&lt;/h3>
+          &lt;button className="signupgooglef1">Sign up with Google&lt;/button>
+          &lt;button className="signupfacebookf1"> Sign up with Facebook &lt;/button>
+          &lt;p className="pf1">
+            &lt;span className="spf1">or&lt;/span>
+          &lt;/p>
+          &lt;NavLink to="./signup">
+            &lt;button className="signupf1">Sign up with phone or email&lt;/button>
+          &lt;/NavLink>
+          &lt;p className="terms">
+            By signing up, you agree to the
+            &lt;a
+              className="tos"
+              href="https://twitter.com/en/tos"
+              target="_blank"
+            >
+              {" "}
+              Terms of Service{" "}
+            &lt;/a>
+            and{" "}
+            &lt;a
+              className="tos"
+              href="https://twitter.com/en/privacy"
+              target="_blank"
+            >
+              {" "}
+              Privacy&lt;br>&lt;/br> Policy{" "}
+            &lt;/a>
+            , including
+            &lt;a
+              className="tos"
+              href="https://help.twitter.com/en/rules-and-policies/twitter-cookies"
+              target="_blank"
+            >
+              {" "}
+              Cookie Use.{" "}
+            &lt;/a>
+          &lt;/p>
+          &lt;h2 className="alreadyf1">Already have an account?&lt;/h2>
+          &lt;NavLink to="./signin">
+            &lt;button className="loginf1">Sign in&lt;/button>
+          &lt;/NavLink>
+        &lt;/div>
+      &lt;/div>
+      &lt;div className="footerf1">
+        &lt;nav>
+          &lt;a className="a1f1" href="#">
+            About
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Help Center
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Terms of Service
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Privacy Policy
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Cookie Policy
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Accessibility
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Ads Info
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Blog
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Status
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Careers
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Brand Resources
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Advertising
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Marketing
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Twitter for Business
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Developers
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Directory
+          &lt;/a>
+          &lt;a className="a1f1" href="#">
+            Settings
+          &lt;/a>
+        &lt;/nav>
+        &lt;footer className="copyf1">&amp;copy; 2022 Sirius, Inc.&lt;/footer>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+export default Start;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminBarChart">AdminBarChart</a></li><li><a href="global.html#AdminChartWidget">AdminChartWidget</a></li><li><a href="global.html#AdminLikesBarChart">AdminLikesBarChart</a></li><li><a href="global.html#AdminMain">AdminMain</a></li><li><a href="global.html#AdminReportsBarChart">AdminReportsBarChart</a></li><li><a href="global.html#AdminUserChart">AdminUserChart</a></li><li><a href="global.html#AdminView">AdminView</a></li><li><a href="global.html#Bookmarks">Bookmarks</a></li><li><a href="global.html#BookmarksHeader">BookmarksHeader</a></li><li><a href="global.html#EmptyBookmarksPage">EmptyBookmarksPage</a></li><li><a href="global.html#Explore">Explore</a></li><li><a href="global.html#ExploreHeader">ExploreHeader</a></li><li><a href="global.html#FollowerCard">FollowerCard</a></li><li><a href="global.html#Followers">Followers</a></li><li><a href="global.html#FollowingCard">FollowingCard</a></li><li><a href="global.html#Followings">Followings</a></li><li><a href="global.html#FollowTab">FollowTab</a></li><li><a href="global.html#ForgetPassword">ForgetPassword</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Icon">Icon</a></li><li><a href="global.html#Inputtext">Inputtext</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#Logout">Logout</a></li><li><a href="global.html#PostingTweet">PostingTweet</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#ProfileData">ProfileData</a></li><li><a href="global.html#ProfilePicture">ProfilePicture</a></li><li><a href="global.html#SideBar">SideBar</a></li><li><a href="global.html#SideBarAdmin">SideBarAdmin</a></li><li><a href="global.html#SideBarFooter">SideBarFooter</a></li><li><a href="global.html#SignUp">SignUp</a></li><li><a href="global.html#Start">Start</a></li><li><a href="global.html#Trend">Trend</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Apr 27 2022 06:33:14 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

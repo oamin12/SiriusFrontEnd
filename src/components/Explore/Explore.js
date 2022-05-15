@@ -19,6 +19,11 @@ function CreateTrends(Trends) {
   );
 }
 //make width same as home/profile
+/**
+ * @param {object} Trends id, number, type, name, tweets per trend
+ * @description Component containing the the trending topics
+ * @returns A div component that renders this component
+ */ 
 function Explore() {
   return (
     <div className="layout">

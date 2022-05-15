@@ -15,8 +15,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
-  width: 500px;
-  height: 600px;
+  width: 700px;
+  height: 800px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -25,14 +25,14 @@
   font-family: "Lato", sans-serif;
 }
 .h1f3 {
-  font-size: 35px;
-  margin-top: -400px;
-  margin-left: -100px;
+  font-size: 50px;
+  margin-top: -650px;
+  margin-left: -20px;
   position: fixed;
   text-align: center;
 }
 .namef3 {
-  margin-top: -250px;
+  margin-top: -450px;
   width: 410px;
   height: 55px;
   outline: none;
@@ -41,46 +41,84 @@
   padding-left: 10px;
   position: fixed;
 }
-.phonef3 {
-  margin-top: -100px;
+.usernamef3 {
+  margin-top: -290px;
   width: 410px;
   height: 55px;
   outline: none;
   border: 1px solid rgb(211, 210, 210);
   border-radius: 4px;
   padding-left: 10px;
+  position: fixed;
+}
+.emailf3 {
+  margin-top: -140px;
+  width: 410px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
+}
+.countryf3 {
+  margin-top: 320px;
+  width: 410px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
+}
+.boxpp {
+  margin-top: 10px;
+  width: 410px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
+}
+.boxpp:focus {
+  border: 1px solid #00acee;
+}
+/*Icons*/
+.visiblep {
+  margin-left: 370px;
+  margin-top: 20px;
+  position: fixed;
+  cursor: pointer;
+}
+.visiblep:hover {
+  background-color: rgb(236, 236, 236);
+  border-radius: 60%;
+  border: 1px solid rgb(236, 236, 236);
+  width: 5%;
+}
+.cityf3 {
+  margin-top: 160px;
+  width: 410px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
 }
 .closef3 {
-  margin-top: -550px;
-  margin-right: 450px;
+  margin-top: -750px;
+  margin-right: 650px;
   position: fixed;
   opacity: 50%;
 }
-.af3 {
-  color: #00acee;
-  text-decoration: none;
-  position: fixed;
-  margin-top: 30px;
-  margin-left: 300px;
-}
-.datef3 {
-  position: fixed;
-  margin-top: 100px;
-  text-align: left;
-  margin-left: 60px;
-}
-.infof3 {
-  position: fixed;
-  margin-top: 170px;
-  margin-left: 80px;
-  margin-right: 20px;
-  font-size: 15px;
-  color: rgba(67, 67, 67, 0.722);
-}
+
 .nextbtnf3 {
+  color: white;
   width: 400px;
   height: 50px;
-  background-color: rgb(141, 140, 140);
+  background-color: rgb(0, 0, 0);
   outline: none;
   font-weight: bold;
   border: 1px solid rgb(211, 210, 210);
@@ -88,16 +126,18 @@
   justify-content: center;
   font-family: "Lato", sans-serif;
   transition: all 0.2s ease;
-  color: #fff;
   position: fixed;
-  margin-top: 470px;
+  margin-top: 700px;
 }
-
 /*Hovering*/
 .closef3:hover {
   background-color: rgb(236, 236, 236);
   border-radius: 50%;
   border: 1px solid rgb(236, 236, 236);
+}
+.nextbtnf3:hover {
+  background: #292929f7;
+  cursor: pointer;
 }
 .af3:hover {
   text-decoration: underline;
@@ -105,36 +145,22 @@
 .namef3:focus {
   border: 1px solid #00acee;
 }
-.phonef3:focus {
+.emailf3:focus {
   border: 1px solid #00acee;
 }
-/*DropDown*/
-.Dropdown {
-  display: flex;
-  margin-top: 290px;
+.errorf3 {
+  margin-bottom: -550px;
+  text-align: center;
+  color: red;
   position: fixed;
 }
-select {
+.dateboxf3 {
+  margin-top: 480px;
+  width: 410px;
+  height: 55px;
+  outline: none;
   border: 1px solid rgb(211, 210, 210);
-  border-radius: 5px;
-}
-.month {
-  width: 190px;
-  height: 50px;
-  margin-left: 30px;
-}
-.day {
-  width: 80px;
-  height: 50px;
-  margin-left: 20px;
-}
-.year {
-  width: 100px;
-  height: 50px;
-  margin-left: 20px;
-}
-select {
-  cursor: pointer;
-  font-size: 12px;
-  color: rgba(67, 67, 67, 0.722);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
 }

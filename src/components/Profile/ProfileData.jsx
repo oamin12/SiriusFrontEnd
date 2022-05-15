@@ -32,19 +32,25 @@ const style = {
     justifyContent: "center",
     flexDirection: "column",
   };
-  
 
+/**
+ * @description profile page with all the information of visited user or the logged in user
+ * @param {object} props username - name - profile picture - cover photo - bio - location - birthdate - joined data
+ * - indicator for wether this is my profile or not - no. of followings - no. of followers
+ * @returns {div} contains all information of user, edit button if I'm the logged in user, follow button if visiting a non followed user
+ * , following button if I'm visiting a following user, tab to navigate between different type of tweets for users
+ */
 function ProfileData(props){
     var profileId = 123;
     var visitedProfileId = 1;
     const [MediaSelected, setPage] = useState(false);
     //UseState for edit profile button
-    const [hoverOverLike, setHoverLike] = useState(false); 
+    const [hoverOverLike, setHoverLike] = useState(false);
     //UseState to keep track of following and unfollowing users
     const [changeFollow, setChangeFollow] = useState(false);
     const [followed, setFollowed] = useState(false);
     const [openModal, setOpenModal] = useState(false);
-
+    localStorage.setItem("TopName",props.name);//for name displayed in following/follower
 
     function handleChange(){
         setPage(true);
@@ -58,7 +64,7 @@ function ProfileData(props){
     {
         setHoverLike(false);
     }
-    
+
     function isOverFollowingBtn()
     {
         setChangeFollow(true);
@@ -76,8 +82,8 @@ function ProfileData(props){
         setFollowed(false);
         handleModalClose();
     }
-    
-    function handleBanButtonClick() 
+
+    function handleBanButtonClick()
     {
         setOpenModal(true);
     }
@@ -85,13 +91,13 @@ function ProfileData(props){
     {
         setOpenModal(false);
     }
-    
+
     return(
         <div className="profile__data" >
             <div className="header">
                 <div className="ArrowIcon">
                 <NavLink to="/home">
-                    <ArrowBackIcon fontSize="small" />   
+                    <ArrowBackIcon fontSize="small" />
                 </NavLink>
                 </div>
             <h2>{props.name}</h2>
@@ -113,12 +119,12 @@ function ProfileData(props){
                             <NotificationAddOutlinedIcon />
                             </button>
                             {!followed ?
-                                <button  className="Edit__profile__btn" onClick={handleFollow} style={{backgroundColor:"black",color:"white",borderColor:"black"}}>
+                                <button data-testid="Follow-button" className="Edit__profile__btn" onClick={handleFollow} style={{backgroundColor:"black",color:"white",borderColor:"black"}}>
                                <b>Follow</b>
                         </button>
                         :
-                        <button onMouseOver={isOverFollowingBtn} onClick={handleBanButtonClick} onMouseOut={isOutFollowingBtn} className="followingBtn" >
-                               {changeFollow?<b>Unfollow</b>:<b>Following</b>} 
+                        <button data-testid="Following-Unfollow-button" onMouseOver={isOverFollowingBtn} onClick={handleBanButtonClick} onMouseOut={isOutFollowingBtn} className="followingBtn" >
+                               {changeFollow?<b>Unfollow</b>:<b>Following</b>}
                         </button>}
                         <Modal open={openModal} onClose={handleModalClose}>
                             <Box sx={style}>
@@ -137,16 +143,16 @@ function ProfileData(props){
                                 </button>
                             </Box>
                         </Modal>
-                        
+
                     </div>}
-                    
+
                 </div>
-                
-            </div>  
+
+            </div>
             <div className="profile__body">
                 <div className="User__name">
                     <h3>{props.name}</h3>
-                    <p style={{"color":"gray","fontSize":"14px"}}>{props.username}</p>
+                    <p style={{"color":"gray","fontSize":"14px"}}>@{props.username}</p>
                 </div>
                 <p style={{fontSize:"15px"}}>{props.bio}</p>
                 <div className="more__info">
@@ -168,35 +174,35 @@ function ProfileData(props){
                         </div>
                 </div>
                 <div className="follow__section">
-                    <NavLink to="/profile/Followings"  style={{color:"gray"}}>
+                    <NavLink to={"/"+props.username+"/Followings"}  style={{color:"gray"}}>
                     <span>
-                        <b>{props.followings} </b> 
+                        <b>{props.followings} </b>
                     Following &nbsp; </span>
                     </NavLink>
-                    <NavLink to="/profile/Followers"  style={{color:"gray"}}>
-                    <span>&nbsp;<b>{props.followers}</b> Followers </span>
+                    <NavLink to={"/"+props.username+"/Followers"}  style={{color:"gray"}}>
+                    <span>&nbsp;<b>{props.followersCount}</b> Followers </span>
                     </NavLink>
                 </div>
             </div>
-            <div className="profile__footer"> 
+            <div className="profile__footer">
             <Tabs textColor="inheret" style={{color:"Black"}} variant="fullWidth">
-                <NavLink to="/profile" style={{color:"Black"}}>
+                <NavLink to={"/"+props.username} style={{color:"Black"}}>
                 <Tab onClick={handleChange} label="Tweets" />
                 </NavLink>
-                <NavLink to="/profile/with_replies" style={{color:"Black",fontSize:"14px"}}>
+                <NavLink to={"/"+props.username+"/with_replies"} style={{color:"Black",fontSize:"14px"}}>
                 <Tab onClick={handleChange} label="Tweets & replies" style={{padding:"7px 7px 7px 7px"}} />
                 </NavLink>
-                <NavLink  to="/profile/media" style={{color:"Black"}}>
+                <NavLink  to={"/"+props.username+"/media"} style={{color:"Black"}}>
                 <Tab onClick={handleChange} label="Media" />
                 </NavLink>
-                <NavLink to="/profile/likes" style={{color:"Black"}}>
-                <Tab onClick={handleChange} label="Likes" />  
-                </NavLink>  
+                <NavLink to={"/"+props.username+"/likes"} style={{color:"Black"}}>
+                <Tab onClick={handleChange} label="Likes" />
+                </NavLink>
             </Tabs>
 
             </div>
         </div>
-    
+
     );
 }
 

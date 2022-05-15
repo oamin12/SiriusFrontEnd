@@ -4,7 +4,10 @@ import AdminMain from "./AdminMain";
 import { NavLink } from "react-router-dom";
 
 import "./AdminView.css";
-
+/**
+ * @description Component which renders AdminMain
+ * @returns {div} A div which returns that component
+ */
 function AdminView() {
   return (
     <div className="AdminView">
@@ -23,7 +26,7 @@ function AdminView() {
           </NavLink>
         </div>
         <SideBarAdmin />
-          </div>
+      </div>
       <AdminMain />
     </div>
   );

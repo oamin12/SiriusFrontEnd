@@ -13,6 +13,11 @@ import {
 } from "recharts";
 import getTopFollowers from "./AdminFollowerBarChartInfo";
 
+
+/**
+ * @description Component that represents a bar chart representing the top 5 Followed users
+ * @returns {div} A div that contains the component
+ */
 function AdminBarChart() {
   const [topFollowers, setTopFollowers] = React.useState([]);
   React.useEffect(() => {

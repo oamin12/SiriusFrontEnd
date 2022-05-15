@@ -12,7 +12,10 @@ import {
 import "./AdminUserChart.css";
 import getTopUsersPerWeek from "./AdminUserChartInfo";
 
- 
+ /**
+  * @description Component that contains an area chart representing the number of new users every week
+  * @returns {div} A div that returns that component 
+  */
 function AdminUserChart() {
   const [topUsersPerWeek, setTopUsersPerWeek] = React.useState([]);
   React.useEffect(() => {

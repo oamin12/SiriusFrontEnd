@@ -1,19 +1,18 @@
 import React from "react";
-import "./index.css";
+import "./index.css"
 import { Avatar}from "@mui/material";
 import Inputtext from "./constants/Inputtext"
-import IconMedia from "./Icons/media/IconMedia"
-import IconPoll from "./Icons/poll/IconPoll"
-import IconGif from "./Icons/gif/IconGif"
-import IconSchedule from "./Icons/schedule/IconSchedule"
-import IconHappyFace from "./Icons/emoji/IconHappyFace"
-import Schedule from "./images/schedule.png"
 import Media from"./images/media.png"
-import poll from"./images/poll.png"
 import Happyface from "./images/happyface.png"
-import  Gif from "./images/gif.png"
 import Poll from "./Icons/poll/Poll"
 
+/**
+ *
+ * @param {object} flags
+ * @description Component that contains the are dedicated for writing tweets. It contains a bar for tweeting options ex(Schedule, emojis, gallery)
+ *
+ * @returns {div} A div that contains this component
+ */ 
 
 function PostingTweet(props) {
   return (
@@ -21,17 +20,19 @@ function PostingTweet(props) {
 
        <div className="profile_picture">
           <Avatar className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
-          <Inputtext msg="what's happening?" classname={"TweetButton"} flag2={props.flag} postingFlag={props.postingFlag}/>
-          {props.flag===0 ? <Poll flag={1}/>: <Poll flag={0}/> }
+          <Inputtext msg="what's happening?"
+            weekdayName={props.weekdayName}
+            month={props.month}
+            date={props.date}
+            year={props.year_toset_theyear_value}
+            time={props.time}
+            minutes={props.minutes}
+            hours={props.hours} 
+            am_pm={props.am_pm} 
+            flag_confirm={props.flag_confirm}
+            classname={"TweetButton"} flag2={props.flag} postingFlag={props.postingFlag} img_media={Media} img={Happyface} classname_media={"Media"} classname_emoji={"emoji"}/>
+            {props.flag===0 ? <Poll flag={1}/>: <Poll flag={0}/> }
        </div>
-    { (props.flag===1)  && 
-    <div className="icons">
-          <IconMedia img={Media} classname={"Media"}/>
-          <IconPoll img={poll} classname={"Poll"}/>
-          <IconGif img={Gif} classname={"Gif"}/>
-          <IconSchedule img={Schedule} classname={"Schedule"}/>
-          <IconHappyFace img={Happyface} classname={"Happyface"}/>
-    </div> }
 
     </div>   );
 }

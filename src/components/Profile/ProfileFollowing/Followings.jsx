@@ -16,14 +16,18 @@ function createCard(contact) {
       />
     );
   }
-  
+  /**
+   * @description page of all followings of a user
+   * @returns {div}
+   */
 function Followings() {
   return (
     <div className="layout">
       <SideBar />
       <div className="feeder">
       <FollowTab
-        name="Ziad Ahmed"
+        name={localStorage.getItem("TopName")}
+        username={localStorage.getItem("UserProfile")}
        />
       {people.map(createCard)}</div>
       <div className="widgets">

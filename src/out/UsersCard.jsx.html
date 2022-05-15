@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: UsersCard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: UsersCard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import "./UsersCard.css";
+import { Avatar } from "@mui/material";
+import { NavLink} from "react-router-dom";
+import "../Bookmarks/BookmarksHeader.css";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import { useState } from "react";
+
+import AdminUserStats from "./AdminUserStats/AdminUserStats";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 300,
+  bgcolor: "background.paper",
+  border: "0px",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "8px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+};
+
+const styleStats = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "600px",
+  bgcolor: "background.paper",
+  border: "0px",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "8px",
+};
+/**
+ * @description A component that contain the profile picture, name, username, bio of every user. 4 buttons 
+ * 1. Statistics button that shows the change in number, percentage of followers and percantage of tweets for user 
+ * 2. Profile button that shows the profile of user
+ * 3. Ban button that can ban the user forever
+ * 4. Reports button that renders a page showing all reports done on a user
+ * @param {object} props id for user - name - username -image(profile pic) - bio 
+ *
+ * @returns {div} containing profile data plus 4 buttons
+ */
+function UsersCard(props) {
+  //console.log(people);
+  const [openModal, setOpenModal] = useState(false);
+
+  function handleBanButtonClick() {
+    setOpenModal(true);
+  }
+  function handleModalClose() {
+    setOpenModal(false);
+  }
+  function handleBanLinkClick() {
+    props.handleIndexing(props.id);
+    handleModalClose();
+  }
+  function handleCancelButtonClick() {
+    handleModalClose();
+  }
+
+  const [openModalStats, setOpenModalStats] = useState(false);
+
+  function handleStatButtonClick() {
+    setOpenModalStats(true);
+  }
+  function handleModalStatsClose() {
+    setOpenModalStats(false);
+  }
+
+  return (
+    &lt;div>
+      &lt;div className="UsersCard">
+        &lt;Avatar style={{ marginRight: "4px" }} src={props.img} />
+
+        &lt;div className="UsersData">
+          &lt;p style={{ margin: "0px 0px 4px 4px" }}>
+            &lt;b>{props.name}&lt;/b>
+          &lt;/p>
+          &lt;p
+            style={{
+              margin: "0px 0px 4px 4px",
+              fontSize: "13px",
+              color: "gray",
+            }}
+          >
+            {props.username}
+          &lt;/p>
+          &lt;p
+            style={{
+              margin: "0px 0px 4px 4px",
+              fontSize: "13px",
+              color: "gray",
+            }}
+          >
+            {props.bio}
+          &lt;/p>
+        &lt;/div>
+
+        &lt;button
+          className="followButton"
+          onClick={handleStatButtonClick}
+          style={{ backgroundColor: "green", marginLeft: "20px" }}
+        >
+          Statistics
+        &lt;/button>
+        &lt;Modal open={openModalStats} onClose={handleModalStatsClose}>
+          &lt;Box sx={styleStats}>
+            &lt;h2
+              className="modalHeader"
+              style={{
+                color: "rgb(29, 161, 242)",
+                textAlign: "center",
+                paddingBottom: "10px",
+                borderBottom: "1px solid lightgray",
+              }}
+            >
+              User Statistics
+            &lt;/h2>
+            &lt;AdminUserStats />
+            &lt;button className="cancelButton" onClick={handleModalStatsClose}>
+              Cancel
+            &lt;/button>
+          &lt;/Box>
+        &lt;/Modal>
+
+        &lt;div
+          className="followButton"
+          style={{
+            backgroundColor: "rgb(29, 161, 242)",
+            minWidth: "70px",
+            marginLeft: "20px",
+          }}
+        >
+          &lt;NavLink
+            to="/profile"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Profile
+          &lt;/NavLink>
+        &lt;/div>
+        &lt;button
+          className="followButton"
+          id={props.id}
+          onClick={handleBanButtonClick}
+          style={{
+            backgroundColor: "red",
+            minWidth: "70px",
+            marginLeft: "20px",
+          }}
+        >
+          Ban
+        &lt;/button>
+        &lt;Modal open={openModal} onClose={handleModalClose}>
+          &lt;Box sx={style}>
+            &lt;h3 className="modalHeader" style={{ textAlign: "center" }}>
+              Ban User
+            &lt;/h3>
+            &lt;p className="boxParagraph">
+              This can't be undone and you'll ban this user
+            &lt;/p>
+
+            &lt;button className="clearLink" onClick={handleBanLinkClick}>
+              Ban
+            &lt;/button>
+            &lt;button className="cancelButton" onClick={handleCancelButtonClick}>
+              Cancel
+            &lt;/button>
+          &lt;/Box>
+        &lt;/Modal>
+
+        &lt;div
+          className="followButton"
+          style={{ backgroundColor: "black", marginLeft: "20px" }}
+        >
+          &lt;NavLink
+            to="/adminView/user/reports"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Reports
+          &lt;/NavLink>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
+  );
+}
+
+export default UsersCard;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AdminReports">AdminReports</a></li><li><a href="global.html#AdminViewUser">AdminViewUser</a></li><li><a href="global.html#AdminWidgets">AdminWidgets</a></li><li><a href="global.html#ReportCard">ReportCard</a></li><li><a href="global.html#Reporter">Reporter</a></li><li><a href="global.html#UsersCard">UsersCard</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Mon Apr 25 2022 21:58:33 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

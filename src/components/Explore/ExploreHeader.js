@@ -7,7 +7,10 @@ import { Tabs,Tab, Button } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 
-
+/**
+ * @description Component which is the Explore Header Which contans search box area and its settings
+ * @returns div that renders the component
+ */ 
 function ExploreHeader(props) {
     const [openModal, setOpenModal] = React.useState(false);
 

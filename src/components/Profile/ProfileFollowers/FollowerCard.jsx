@@ -2,7 +2,11 @@ import React from "react";
 import "./FollowerCard.css";
 import {Avatar,Tabs,Tab} from "@mui/material";
 
-
+/**
+ * @description component contains the information of followers
+ * @param {object} props profile pic - username - name - bio
+ * @returns {div} information of users plus follow or following button depending on the state of this follower to the user 
+ */
 function FollowerCard(props) {
   return (
             

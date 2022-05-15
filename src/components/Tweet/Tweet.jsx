@@ -1,4 +1,6 @@
 import { Avatar } from "@mui/material";
+import ReactDOM from "react-dom";
+import App from "../App";
 import React, { useState } from "react";
 import "./Tweet.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -17,6 +19,8 @@ import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import BlockIcon from '@mui/icons-material/Block';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import VolumeOffOutlinedIcon from '@mui/icons-material/VolumeOffOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import axios from "axios";
 
 
@@ -34,6 +38,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
   const [hoverOverBookMark, setHoverBookMark] = useState(false);
   const [hoverOverLike, setHoverLike] = useState(false);
   const [hoverOverTweet, setHoverTweet] = useState(false);
+  const [UserProfile, setUserProfile] = useState(userName);
 
   //const numOfPics= image
   //////////////////////
@@ -101,7 +106,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
 
   function handleBookmark() {
     setBookMarked(!bookMarked);
-    
+
     if(!bookMarked)
     {
       PostTweet();
@@ -133,14 +138,27 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
 
   function handleSettings(event) {
     setOpen(event.currentTarget);
-    
+
   }
 
   function handleClose() {
     setOpen(null);
-    
+
   }
-  var lol=1;
+  function handleDeleteTweet()
+  {
+
+  }
+
+  function handleUserClicked(){
+    //ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={0}  flag={1}/>, document.getElementById("root"));
+    console.log('in tweet click',userName);
+    localStorage.setItem("UserProfile",userName);
+    console.log("USERPROFILEDADAWDWDAD", localStorage.getItem("UserProfile"));
+  }
+
+  //localStorage.setItem("UserProfile",userName); TODO
+  var lol=2;
   return (
     <div className="post_body"
       onMouseOver={isOverTweet}
@@ -148,19 +166,19 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     >
       <div className="post_header" >
         <div className="post_headerText">
-          <NavLink className="link_text" to="/profile"><Avatar src={avatar} sx={{ width: 48, height: 48 }} /></NavLink>
+          <NavLink className="link_text" to={"/"+userName} onClick={handleUserClicked}><Avatar src={avatar} sx={{ width: 48, height: 48 }} /></NavLink>
           <h3 className="userdata">
             <div>
-              <NavLink className="link_text" to="/profile">{name}</NavLink>{" "}
+              <NavLink  className="link_text" to={"/"+userName} onClick={handleUserClicked}>{name}</NavLink>{" "}
               <span className="post_headerUserName">
                 @
-                <NavLink className="link_text2" to="/profile">{userName}</NavLink>
+                <NavLink className="link_text2" to={"/"+userName} onClick={handleUserClicked} >{userName}</NavLink>
               </span>
             </div>
             {/*Button Button Button Button Button Button Button*/}
             <div className="tweet_settings">
               <IconButton sx={{ width: 0.15, height: 1 }} onClick={handleSettings} >
-                <MoreHorizIcon />
+                <MoreHorizIcon data-testid="More-Tweet"/>
               </IconButton>
             </div>
           </h3>
@@ -187,6 +205,16 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
                 height: "auto",
               }}
             >
+            {userName===localStorage.getItem("UserName")?
+            <div>
+                <Typography onClick={handleDeleteTweet} sx={{ p: 2 }} className="tweet_settings_bar">
+                  <div style={{color:"red"}}><DeleteOutlinedIcon fontSize="small"/> Delete</div>
+                </Typography>
+                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
+                  <PushPinOutlinedIcon fontSize="small"/> Pin
+                </Typography>
+              </div>
+            :
               <div>
                 <Typography sx={{ p: 2 }} className="tweet_settings_bar">
                   <PersonAddOutlinedIcon fontSize="small"/> Follow @{userName}
@@ -200,7 +228,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
                 <Typography sx={{ p: 2 }} className="tweet_settings_bar">
                   <VolumeOffOutlinedIcon fontSize="small"/> Mute @{userName}
                 </Typography>
-              </div>
+              </div>}
             </Popover>
           </div>
 
@@ -216,14 +244,14 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
           <p className="content_style">{content}</p>
         </div>
       </div>
-      
+
       {/* {image ? <img src={image.med1} alt="" /> : null} */}
-      
+
       {image.length===1? <div className="post_body1"><img id="lolxd" src={image[0]} alt="" /></div>:
       image.length===2? <div className="post_body2"><img id="lolxd" style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image.med1} alt="" />
-      <img id="lolxd" style={{"border-top-right-radius":"20px", "border-bottom-right-radius":"20px"}} src={image.med2} alt="" /></div>:null} 
-      
-      
+      <img id="lolxd" style={{"border-top-right-radius":"20px", "border-bottom-right-radius":"20px"}} src={image.med2} alt="" /></div>:null}
+
+
       {video ? <video src={video} alt="" /> : null}
 
       <div className="post_footer" style={{ opacity: hoverOverTweet ? "100%" : "100%" }}>

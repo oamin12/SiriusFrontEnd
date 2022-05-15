@@ -1,7 +1,11 @@
 import React from "react";
 import "./FollowingCard.css";
-import {Avatar,Tabs,Tab} from "@mui/material";
-
+import {Avatar} from "@mui/material";
+/**
+ * @description information about user who is following another user 
+ * @param {object} props name - username -image(profile pic) - bio  
+ * @returns {div} ontains the profile picture and the username of a user
+ */
 
 function FollowingCard(props) {
   return (

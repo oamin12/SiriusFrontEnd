@@ -9,46 +9,27 @@ import { NavLink } from "react-router-dom";
 import SearchBox from "../Search/SearchBox";
 import axios from "axios";
 
-var config = {
-  method: "get",
-  url: "http://localhost:3001/Tweets",
-  headers: {},
-};
-async function GetTweetInfo() {
-  let response = "";
-  try {
-    response = await axios
-      .get("http://localhost:3001/Tweets", config)
-      .then((res) => res.data);
-    return response;
-  } catch (error) {
-    if (error.response) {
-      return error.response;
-    }
-  }
 
-  return response;
-}
 
-// function getTweet(tweet)
-// {
+ function getTweet(tweet)
+ {
 
-//   return(
-//     <Tweet
-//     key={tweet.key}
-//     name={tweet.name}
-//     userName={tweet.username}
-//     content={tweet.tweetBody}
-//     avatar={tweet.userImage}
-//     image={tweet.tweetMedia}
-//     video=''
-//     likeCount={tweet.favoritersCount}
-//     repliesCount={tweet.repliesCount}
-//     retweetCount={tweet.retweetersCount}
-//     />
+   return(
+     <Tweet
+     key={tweet.key}
+     name={tweet.name}
+     userName={tweet.username}
+     content={tweet.tweetBody}
+     avatar={tweet.userImage}
+     image={tweet.tweetMedia}
+     video=''
+     likeCount={tweet.favoritersCount}
+     repliesCount={tweet.repliesCount}
+     retweetCount={tweet.retweetersCount}
+     />
 
-//   )
-// }
+   )
+ }
 function getTweet(tweet) {
   return (
     <Tweet
@@ -66,11 +47,43 @@ function getTweet(tweet) {
   );
 }
 
+/**
+ *
+ * @param {object} id, name, username, tweet text, user image, tweet images/videos, likes/ replies count, retweet count, bookmarked count
+ * @description Component that contains the tweets, the area designed for writing tweets, side Bar and widgets
+ * @returns {div} A div that renders this page
+ */
 function Home(props) {
   const [tweetsInfo, setTweetsInfo] = React.useState([]);
   const [addedTweet, setAddedTweet] = React.useState(false);
 
-  function handleAddTweet() {
+  var token=sessionStorage.getItem("tokenValue");
+ //console.log('dah el token ',localStorage.getItem("tokenValue"));
+  var config = {
+  method: 'get',
+  url: 'http://34.236.108.123:3000/home/',
+
+  headers: {Authorization:"Bearer "+token}
+};
+async function GetTweetInfo() {
+  let response = '';
+  try {
+    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
+    //console.log('herererer',response.userName);
+    localStorage.setItem("UserName",response.userName);
+    localStorage.setItem("Name",response.name);
+    setTweetsInfo(response.data);
+    return (response.data);
+  } catch (error) {
+    if (error.response) {
+      return (error.response);
+    }
+  }
+  return (response);
+}
+
+
+  function handleAddTweet(){
     setAddedTweet(true);
   }
 
@@ -94,11 +107,22 @@ function Home(props) {
   return (
     <div className="layout">
       <SideBar />
-      <div className="feeder">
-        <Heading />
-        <PostingTweet flag={props.flag} postingFlag={handleAddTweet} />
-        {tweetsInfo.map(getTweet)}
+       <div className="feeder">
+       <Heading/>
+       <PostingTweet
+       weekdayName={props.weekdayName}
+       month={props.month}
+       date={props.date}
+       year={props.year_toset_theyear_value}
+       time={props.time}
+       minutes={props.minutes}
+       hours={props.hours}
+       am_pm={props.am_pm}
+       flagconfirm={props.flagconfirm}
+       flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule} flag={props.flag} postingFlag={handleAddTweet}/>
+       {tweetsInfo.map(getTweet)}
       </div>
+
 
       <div className="widgets">
         <div className="search">

@@ -4,8 +4,17 @@ import { Avatar } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import "./SideBarFooter.css";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+/**
+ *
+ * @param {object} props profile picture, name, username
+ * @description component that contains user info, option to logout or login from another account. To be rendered at the at the end of the sidebar.
+ * @returns {div} A div that returns that component
+ */
 function SideBarFooter(props) {
+  let navigate = useNavigate();
+
   const [open, setOpen] = React.useState(null);
 
   function handleClick(event) {
@@ -23,8 +32,8 @@ function SideBarFooter(props) {
       <button className="avatarButton" onClick={handleClick}>
         <Avatar alt="profile picture" src={props.picture} />
         <div className="info">
-          <div>{props.name}</div>
-          <div>{props.username}</div>
+          <div>{localStorage.getItem("Name")}</div>
+          <div>@{localStorage.getItem("UserName")}</div>
         </div>
         <div className="moreHorizIcon">
           <MoreHorizIcon />
@@ -53,9 +62,10 @@ function SideBarFooter(props) {
             <Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
               Add an existing account
             </Typography>
-            <Typography sx={{ p: 2 }} className="sideBarFooterMenuBar">
-              Log out @{props.username}
+            <NavLink to="/logout" style={{"color":"black"}}> <Typography  sx={{ p: 2 }} className="sideBarFooterMenuBar">
+            Log out @{localStorage.getItem("UserName")}
             </Typography>
+            </NavLink>
           </div>
         </Popover>
       </div>

@@ -9,6 +9,12 @@ import { useState } from "react";
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentDissatisfiedOutlined';
 
+/**
+ * 
+ * @param {object} props number, type, name, tweets_num
+ * @description Component that contains the header of trend and trend settings button
+ * @returns A div that renders the component
+ */ 
 function Trend(props) {
     const [open, setOpen] = useState(null);
 
