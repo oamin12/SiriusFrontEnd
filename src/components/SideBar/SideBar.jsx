@@ -19,6 +19,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import SideBarFooter from "./SideBarFooter";
 
 var UserName = localStorage.getItem("UserName");
+let isAdmin = true;
 const iconInfo = [
   {
     id: 0,
@@ -113,6 +114,11 @@ function SideBar() {
         </NavLink>
         {iconInfo.map(CreateIcons)}
         <button className="tweetButtonSideBar">Tweet</button>
+        {isAdmin?<NavLink to="/adminView/dashboard">
+        <button className="tweetButtonSideBar">Switch to Admin</button>
+        </NavLink>
+        : null
+        }
         <SideBarFooter
           username={accountInfo.username}
           name={accountInfo.name}

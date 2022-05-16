@@ -1,6 +1,14 @@
 .SideBarAdminIcons{
     display: flex;
     flex-direction: column;
-    padding-top: 16px;
+    padding:16px;
+    position: sticky;
+    display: block;
+    height: 100vh;
    
 }
+@media (max-height: 410px) {
+    .SideBarAdminIcons {
+      overflow-y: scroll
+    }
+  } ;

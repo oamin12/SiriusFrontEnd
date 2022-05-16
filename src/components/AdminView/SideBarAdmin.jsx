@@ -2,11 +2,12 @@ import React from "react";
 import "./SideBarAdmin.css";
 import "../SideBar/Icon";
 import Icon from "../SideBar/Icon";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from '@mui/icons-material/Person';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import { margin } from "@mui/system";
 
 const iconInfo = [
   {
@@ -58,6 +59,11 @@ function SideBarAdmin() {
   return (
     <div className="SideBarAdminIcons">
           {iconInfo.map(CreateIcons)}
+          <div className="SideBarFooter">
+          <NavLink to="/home">
+          <button className="tweetButtonSideBar" style={{marginTop:"450px", marginRight:"20px"}}>Return to Home</button>
+          </NavLink>
+          </div>
     </div>
   );
 }

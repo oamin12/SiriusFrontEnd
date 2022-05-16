@@ -19,7 +19,7 @@ function createProfileData(User) {
       <ProfileData
         key={User.id}
         coverphoto={User.coverphotoURL}
-        profilepic={User.profilepic}
+        profilepic={User.image}
         name={User.name}
         username={User.username}
         bio={User.bio}
@@ -88,12 +88,13 @@ function Profile() {
       console.log("INSIDE FUNCTION",UserName);
       var config = {
           method: 'get',
-          url: 'http://34.236.108.123:3000/'+UserName,
+          // url: 'http://34.236.108.123:3000/'+UserName,
           headers: {Authorization:"Bearer "+token }
         };
       let response = '';
     try {
-      response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
+      //response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
+      response = await axios.get("http://localhost:3001/User").then((res) => res.data);
       setProfileInfo(response);
       return (response);
     } catch (error) {
@@ -103,16 +104,16 @@ function Profile() {
     }
     return (response);
   }
-  GetUserProfile(localStorage.getItem("UserProfile"));
+  //GetUserProfile(localStorage.getItem("UserProfile"));
 
-  // React.useEffect(() => {
-  //   (async () => {
-  //     const resp = await GetUserProfile(localStorage.getItem("UserProfile"));
-  //     setProfileInfo(resp);
-  //     //console.log("IS ME CHECK GOWA",ProfileInfo.isMe,ProfileInfo.username);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await GetUserProfile(localStorage.getItem("UserProfile"));
+      setProfileInfo(resp);
+      //console.log("IS ME CHECK GOWA",ProfileInfo.isMe,ProfileInfo.username);
 
-  //   })();
-  // }, []);
+    })();
+  }, []);
   console.log("IS ME CHECK",ProfileInfo.isMe,ProfileInfo.username);
   // const [OtherProfileInfo,setOtherProfileInfo ] = React.useState([]);
   // React.useEffect(() => {
@@ -128,7 +129,8 @@ function Profile() {
     <div className="layout">
       <SideBar />
       <div className="feeder">
-      {createProfileData(ProfileInfo)}
+      {
+        createProfileData(ProfileInfo)}
        
       {  ProfileSubPage
         (subpage==1)?Hometweets.map(getTweet):

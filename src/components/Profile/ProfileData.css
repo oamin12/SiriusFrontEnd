@@ -50,12 +50,32 @@
     
 }
 
-.more__info {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 10px; 
+.Profile__information {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgb(83, 100, 113);
 
-  
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+   
+}
+
+.Profile__info__sub {
+    
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    gap:4px;
+    
+    /* overflow-wrap: break-word; */
+    
+    
+    
+    
+    
 }
 
 .User__name {
@@ -63,28 +83,14 @@
     padding-bottom: 10px;
 }
 
-.location {
-
-    /* width : 100%;
-   
-    font-weight: 500;
-    font-size: 14px; */
-    color: gray;
-    display: flex;
-    align-items: center;
-    padding-right:5px ;
-    white-space: nowrap;
-    
-    /* white-space: nowrap; */
-
-
-}
 
 .follow__section {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
-    color: gray;
+    color: rgb(83, 100, 113);
 }
+
+
 .Edit__profile__btn{
   height: auto;
   width: 100%;
@@ -104,7 +110,7 @@
 }
 
 .followingBtn{
-    height: auto;
+  height: auto;
   width: 100%;
   padding: 10px;
   border-radius: 300px;
@@ -139,7 +145,9 @@
     margin-top: 12px;
     text-align: center;
     cursor: pointer;
-
+}
+.notifAndMoreBtn:hover{
+    background-color: #F5F8FA;
 }
 
 .visitedProfile {
@@ -147,7 +155,6 @@
     align-items: center;
     justify-content: flex-end;
     gap: 10px;
-
 }
 
 .edit__btn {
@@ -171,10 +178,6 @@
 
 
 @media (max-width:1020px) {
-    .more__info {
-        display: inline-block;
-        color: gray;
-        align-items: center;
-    }
+    
 }
     

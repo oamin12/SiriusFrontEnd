@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar,Tabs,Tab } from "@mui/material";
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import LinkIcon from '@mui/icons-material/Link';
 import AddLocationOutlinedIcon from '@mui/icons-material/AddLocationOutlined';
 import CakeOutlinedIcon from '@mui/icons-material/CakeOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
@@ -152,6 +152,7 @@ function ProfileData(props){
             <div className="profile__body">
                 <div className="User__name">
                     <h3>{props.name}</h3>
+<<<<<<< Updated upstream
                     <p style={{"color":"gray","fontSize":"14px"}}>@{props.username}</p>
                 </div>
                 <p style={{fontSize:"15px"}}>{props.bio}</p>
@@ -172,14 +173,34 @@ function ProfileData(props){
                             <CalendarMonthOutlinedIcon />
                             {props.joineddate}
                         </div>
+=======
+                    <p style={{color:"rgb(83, 100, 113)",fontSize:"14px"}}>@{props.username}</p>
+>>>>>>> Stashed changes
                 </div>
+                <p style={{fontSize:"15px", color:"rgb(83, 100, 113)", marginBottom:"15px"}}>{props.bio}</p>
+
+              
+            <div className="Profile__information">
+            {(props.location!==(" "||undefined))?
+            <div className="Profile__info__sub"><AddLocationOutlinedIcon fontSize="small" /> {props.location}</div>
+            :null}
+            {(props.website!==(" "||null||undefined))?
+            <div className="Profile__info__sub"><LinkIcon fontSize="small" /> {props.website}</div>
+            :null}
+            {(props.birthdate!==(" "||null||undefined))?
+            <div className="Profile__info__sub"><CakeOutlinedIcon fontSize="small" /> {props.birthdate}</div>
+            :null}
+            {(props.joineddate!==(" "||null||undefined))?
+            <div className="Profile__info__sub"><CalendarMonthOutlinedIcon fontSize="small" />  {props.joineddate}</div>
+            :null}
+            </div>
                 <div className="follow__section">
-                    <NavLink to={"/"+props.username+"/Followings"}  style={{color:"gray"}}>
+                    <NavLink to={"/"+props.username+"/Followings"}  style={{color:"rgb(83, 100, 113)"}}>
                     <span>
                         <b>{props.followings} </b>
                     Following &nbsp; </span>
                     </NavLink>
-                    <NavLink to={"/"+props.username+"/Followers"}  style={{color:"gray"}}>
+                    <NavLink to={"/"+props.username+"/Followers"}  style={{color:"rgb(83, 100, 113)"}}>
                     <span>&nbsp;<b>{props.followersCount}</b> Followers </span>
                     </NavLink>
                 </div>
