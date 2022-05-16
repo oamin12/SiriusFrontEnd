@@ -20,7 +20,6 @@ import SideBarFooter from "./SideBarFooter";
 import getNotifications from "../Notifications/Notifsdb";
 
 var UserName = localStorage.getItem("UserName");
-<<<<<<< Updated upstream
 let isAdmin = true;
 const iconInfo = [
   {
@@ -73,8 +72,6 @@ const iconInfo = [
     link: "/settings",
   },
 ];
-=======
->>>>>>> Stashed changes
 
 const accountInfo = {
   username: "test",
