@@ -13,13 +13,11 @@
 }
 
 /*the class for material ui is .MuiSvgIcon-root*/
-.icon .MuiSvgIcon-root {
-  margin-right: 20px;
-}
+
 
 .icon > h4 {
   font-weight: 100;
-  
+  margin-left: 20px;
 
 }
 .icon-active > h4 {

@@ -179,6 +179,37 @@
   ],
   "AllUsers": [
     {
+<<<<<<< Updated upstream
+=======
+      "id": 5,
+      "name": "Beyonce",
+      "username": "@Beyonce",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1490488622163763203/9DSoh1oE_400x400.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Robert Lewandowski",
+      "username": "@lewy_official",
+      "bio": "🇵🇱 l ❌ | 🙅🏻‍♂️ l #rl9",
+      "imgURL": "https://pbs.twimg.com/profile_images/1437890233417220101/FAlresZr_400x400.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Charlie Puth",
+      "username": "@charlieputh",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Neymar",
+      "username": "@Neymarxv",
+      "bio": "",
+      "imgURL": "https://pbs.twimg.com/profile_images/1508423975793274881/Z3mj7Uq9_400x400.jpg"
+    },
+    {
+>>>>>>> Stashed changes
       "id": 9,
       "name": "Beyonce",
       "username": "@Beyonce",
@@ -317,6 +348,44 @@
       "likeCount": 0,
       "repliesCount": 0,
       "retweetCount": 0
+    }
+  ],
+  "Notifications": [
+    {
+      "id": 0,
+      "type": 1,
+      "blockDays": 3,
+      "status": "old"
+    },
+    {
+      "id": 1,
+      "type": 2,
+      "userName": "Sohad",
+      "profilePic": "",
+      "tweetText": "hello from backend",
+      "status": "old"
+    },
+    {
+      "id": 2,
+      "type": 3,
+      "userName": "Bassant",
+      "profilePic": "",
+      "tweetText": "hello from backend",
+      "status": "old"
+    },
+    {
+      "id": 3,
+      "type": 4,
+      "userName": "Bassant",
+      "profilePic": "",
+      "status": "old"
+    },
+    {
+      "id": 4,
+      "type": 4,
+      "userName": "Bassant",
+      "profilePic": "",
+      "status": "old"
     }
   ]
 }
