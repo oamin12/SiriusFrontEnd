@@ -161,13 +161,13 @@ function ProfileData(props){
             {(props.location!==(" "||undefined))?
             <div className="Profile__info__sub"><AddLocationOutlinedIcon fontSize="small" /> {props.location}</div>
             :null}
-            {(props.website!==(" "||null||undefined))?
+            {(props.website!==(""||null||undefined))?
             <div className="Profile__info__sub"><LinkIcon fontSize="small" /> {props.website}</div>
             :null}
             {(props.birthdate!==(" "||null||undefined))?
             <div className="Profile__info__sub"><CakeOutlinedIcon fontSize="small" /> {props.birthdate}</div>
             :null}
-            {(props.joineddate!==(" "||null||undefined))?
+            {(props.joineddate!==(""||null||undefined))?
             <div className="Profile__info__sub"><CalendarMonthOutlinedIcon fontSize="small" />  {props.joineddate}</div>
             :null}
             </div>

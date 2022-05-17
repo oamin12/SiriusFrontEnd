@@ -23,12 +23,14 @@ function createProfileData(User) {
         name={User.name}
         username={User.username}
         bio={User.bio}
-        location={User.location}
+        location={User.country +", " + User.city}
         website={User.website}
         birthdate={User.birthdate}
-        joineddate={User.joineddate}
+        joineddate={User.createdAt}
         followersCount={User.followersCount}
         followingCount={User.followingCount}
+        isMe={User.isMe}
+
       />
     );
   }
@@ -56,9 +58,11 @@ function createProfileData(User) {
    * @returns {div} 
    */
 function Profile() {
-  console.log("BEFORE GETTING",localStorage.getItem("UserProfile"));
+  //console.log("BEFORE GETTING",localStorage.getItem("UserProfile"));
 
   const [ProfileInfo,setProfileInfo ] = React.useState([]);
+  const [profileTweets,setProfileTweets ] = React.useState([]);
+  const [ProfileInfoReplies,setProfileInfoReplies ] = React.useState([]);
   function ProfileSubPage(){
     
     let location = useLocation();
@@ -93,9 +97,10 @@ function Profile() {
         };
       let response = '';
     try {
-      //response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
-      response = await axios.get("http://localhost:3001/User").then((res) => res.data);
+      response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
+      //response = await axios.get("http://localhost:3001/User").then((res) => res.data);
       setProfileInfo(response);
+      // console.log(response.tweets[0].body)    
       return (response);
     } catch (error) {
       if (error.response) {
@@ -104,26 +109,51 @@ function Profile() {
     }
     return (response);
   }
-  //GetUserProfile(localStorage.getItem("UserProfile"));
+
 
   React.useEffect(() => {
     (async () => {
       const resp = await GetUserProfile(localStorage.getItem("UserProfile"));
       setProfileInfo(resp);
+      setProfileTweets(resp.tweets);
+      
       //console.log("IS ME CHECK GOWA",ProfileInfo.isMe,ProfileInfo.username);
 
     })();
   }, []);
-  console.log("IS ME CHECK",ProfileInfo.isMe,ProfileInfo.username);
-  // const [OtherProfileInfo,setOtherProfileInfo ] = React.useState([]);
-  // React.useEffect(() => {
-  //   (async () => {
-  //     const resp = await GetUserProfile(props.userName);
-  //     setOtherProfileInfo(resp);
-  //   })();
-  // }, []);
+  //console.log(profileTweets[0].body)
+  async function GetUserProfileReplies(UserName) {
+    console.log("INSIDE FUNCTION",UserName);
+    var config = {
+        method: 'get',
+        // url: 'http://34.236.108.123:3000/'+UserName,
+        headers: {Authorization:"Bearer "+token }
+      };
+    let response = '';
+  try {
+    response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
+    //response = await axios.get("http://localhost:3001/User").then((res) => res.data);
+    setProfileInfoReplies(response);
+    return (response);
+  } catch (error) {
+    if (error.response) {
+      return (error.response);
+    }
+  }
+  return (response);
+}
 
-  
+
+React.useEffect(() => {
+  (async () => {
+    const resp = await GetUserProfileReplies(localStorage.getItem("UserProfile"));
+    setProfileInfoReplies(resp);
+    
+  })();
+}, []);
+
+
+
   return (
     
     <div className="layout">
@@ -131,13 +161,22 @@ function Profile() {
       <div className="feeder">
       {
         createProfileData(ProfileInfo)}
-       
       {  ProfileSubPage
         (subpage==1)?Hometweets.map(getTweet):
         (subpage==2)?TweetReplies.map(getTweet):
         (subpage==3)?Media.map(getTweet):
         (subpage==4)?Likes.map(getTweet):
-        Hometweets.map(getTweet)
+        <Tweet 
+        name={ProfileInfo.name}
+        userName={ProfileInfo.username}
+        content={1}
+        avatar={""}
+        image={""}
+        video={""}
+        likeCount={1}
+        repliesCount={1}
+        retweetCount={1}
+        />
       }
       </div>
       <div className="widgets">
