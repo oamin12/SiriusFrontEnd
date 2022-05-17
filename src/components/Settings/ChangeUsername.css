@@ -1,0 +1,45 @@
+.header-user {
+  margin-top: 20px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+.username-user {
+  width: 600px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.username-user::placeholder {
+  font-size: 18px;
+}
+.username-user:focus {
+  border: 1px solid #00acee;
+}
+.save-user {
+  position: fixed;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 550px;
+  display: block;
+  width: 80px;
+  height: 35px;
+  outline: none;
+  font-weight: bold;
+  border: 0;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  color: rgb(78, 78, 78);
+  background: #1da1f2;
+  color: #fff;
+}
+.save-user:hover {
+  background: #1f94dd;
+  cursor: pointer;
+}

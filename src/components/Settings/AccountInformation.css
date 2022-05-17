@@ -1,0 +1,87 @@
+.header-account {
+  margin-top: 20px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+.username-account {
+  position: fixed;
+  display: block;
+  width: 644px;
+  height: 60px;
+  margin-top: 30px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0.669);
+  border: 0;
+  background-color: white;
+}
+.username-account:hover {
+  cursor: pointer;
+  background: #c3c3c32b;
+}
+.arrow1-account {
+  position: fixed;
+  opacity: 60%;
+  margin-left: 510px;
+  margin-top: 10px;
+}
+.email-account {
+  position: fixed;
+  display: block;
+  width: 644px;
+  height: 60px;
+  margin-top: 100px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0.669);
+  border: 0;
+  background-color: white;
+}
+.email-account:hover {
+  cursor: pointer;
+  background: #c3c3c32b;
+}
+.arrow2-account {
+  position: fixed;
+  opacity: 60%;
+  margin-left: 543px;
+  margin-top: 10px;
+}
+.line-account {
+  opacity: 10%;
+  margin-top: 170px;
+}
+.protect-account {
+  position: fixed;
+  display: block;
+  width: 644px;
+  height: 60px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0.669);
+  border: 0;
+  background-color: white;
+}
+.protect-account:hover {
+  cursor: pointer;
+  background: #c3c3c32b;
+}
+.arrow3-account {
+  position: fixed;
+  opacity: 60%;
+  margin-left: 460px;
+  margin-top: 10px;
+}
+.line2-account {
+  opacity: 10%;
+  margin-top: 60px;
+}

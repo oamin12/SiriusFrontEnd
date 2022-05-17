@@ -22,6 +22,13 @@ import ForgetPassword from "./StartupPage/ForgetPassword";
 import SignInRedirect from "./StartupPage/SignInRedirect";
 import Logout from "./StartupPage/Logout";
 import ShowMoreOFWhoToFollow from "./WhoToFollow/showmoreOFwhotofollow";
+import AccountInformation from "./Settings/AccountInformation";
+import ChangePassword from "./Settings/ChangePassword";
+import DeactivateAccount from "./Settings/DeactivateAccount";
+import Popup from "./Settings/Popup";
+import ChangeUsername from "./Settings/ChangeUsername";
+import ChangeEmail from "./Settings/ChangeEmail";
+import ProtectedTweets from "./Settings/ProtectedTweets";
 
 function App(props) {
   // var userName=localStorage.getItem("UserProfile");
@@ -54,6 +61,14 @@ function App(props) {
             exact
             element={
               <Home
+                weekdayName={props.weekdayName}
+                month={props.month}
+                date={props.date}
+                year={props.year_toset_theyear_value}
+                time={props.time}
+                minutes={props.minutes}
+                hours={props.hours}
+                am_pm={props.am_pm}
                 flag_stop_working_from_poll_to_schedule={
                   props.flag_stop_working_from_poll_to_schedule
                 }
@@ -93,6 +108,22 @@ function App(props) {
           <Route path="/:username/followers" element={<Followers />} />
           <Route path="/:username/followings" element={<Followings />} />
           <Route path="/whotofollow" element={<ShowMoreOFWhoToFollow />} />
+          <Route
+            path="/settings/accountinformation"
+            element={<AccountInformation />}
+          />
+          <Route path="/settings/changepassword" element={<ChangePassword />} />
+          <Route
+            path="/settings/deactivateaccount"
+            element={<DeactivateAccount />}
+          />
+          <Route path="/settings/confirmdeactivate" element={<Popup />} />
+          <Route path="/settings/changeusername" element={<ChangeUsername />} />
+          <Route path="/settings/changeemail" element={<ChangeEmail />} />
+          <Route
+            path="/settings/protectedtweets"
+            element={<ProtectedTweets />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
