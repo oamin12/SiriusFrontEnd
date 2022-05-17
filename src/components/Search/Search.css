@@ -1,153 +1,177 @@
 * {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-  }
-  
-    .profile_picture_srch{
-      margin-left: 30px;
-      border-radius: 40%;
-      height:50px;
-      width:50px;
-      object-fit: contain;
-      padding-right: 10px;
-  }
-  
-  .searchCard{
-    display: flex;
-    padding: 15px;
-    height: auto;
-  }
-    
-  .Headingg
-  {
-     font-family:Arial, Helvetica, sans-serif;
-      font-size:120%;
-      color:black;  
-      position:sticky;
-      margin-left:2.5%;
-      margin-top:1.5%;
-      
-     
-  }
-   
-    
-   .searchBox{
-     
-      position: relative;
-      border: none;
-      border-radius: 0px 50px 50px 0px;
-      height:43px;
-      width: 500px;
-      padding-left:20px;
-      background-color: #EFF3F4;
-      border-color: #45A1DF;
-      
-   }
-  
-  
-  
-   .searchIcon{
-     display: flex;
-    
-    border-radius: 50px 0px 0px 50px;
-    padding-left: 10px;
-    padding-top: 2px;
-    border-width: 0px;
-    height:25px;
-    width: 30px;
-    background-color: #EFF3F4;
-    position: relative; 
-    margin: auto;
-   }
-  
-   .searchContainer{
-      display: flex;
-      vertical-align: top;
-      height: 43px;
-      width: 50px;
-      position: relative;
-      left: 50px;
-      top: 5px;
-      border-radius: 50px 0px 0px 50px;
-      border-color: #45A1DF;
-      background-color: #EFF3F4;
-  
-   }
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
 
-   .followButton{
-    width: 100%;
-    padding: 10px;
-    border-radius: 300px;
-    width: 90px;
-    height: 32px;
-    font-size: 13px;
-    border: none;
-    background-color: black;
-    text-align: center;
-    color: white;
-    margin: auto;
-    font-weight: bold;
-   
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    cursor: pointer;
-    transition: background-color 0.25s;
-   }
-  
- 
-.moreOptions{
-    
-    position: relative;
-    text-align: right;
-    right: 15px;
-    top: 15px;
+.profile_picture_srch {
+  margin-left: 30px;
+  border-radius: 40%;
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
+  padding-right: 10px;
+}
 
+.searchCard {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: auto;
+  cursor: pointer;
+}
+.searchCard:hover {
+  background-color: #f0f0f0;
+}
+.Headingg {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+  color: black;
+  position: sticky;
+  margin-left: 2.5%;
+  margin-top: 1.5%;
+}
 
-}   
+.searchBox {
+  position: sticky;
+  top: -1;
+  z-index: 100;
+  /* height: auto; */
+  border: none;
+  border-radius: 50px 50px 50px 50px;
+  height: 43px;
+  width: 300px;
+  padding-left: 40px;
+  background-color: #eff3f4;
+  margin-left: -65%;
+  z-index: 1;
+}
+.searchBox:focus {
+  outline: none;
+  background: none;
+  border: 0.3mm solid;
+  border-color: #45a1df;
+}
 
-.searchTop{
-    display: flex;
-    height: 40px;
-    width: 500px;
-    margin-bottom: 10px;
-   }
-  
-   .line{
-     display: inline-block;
-     vertical-align: auto;
-    background-color: rgb(29, 155, 240);
-    width: 30px;
-    height: 4px;
-    align-self: center;
-    column-gap: 40px;
-  }
+.searchIcon {
+  display: flex;
+  border-radius: 50px 0px 0px 50px;
+  border-width: 0px;
+  height: 25px;
+  width: 30px;
+  position: relative;
+  margin-left: -10%;
+  margin-top: 20%;
+  color: grey;
+  z-index: 2;
+}
 
-  .arrowBack{
-    display: flex;
-    position: relative;
-    left: 38px;
-    margin-top: 15px;
-    width: 50px;
-  }
-  
-  .searchFilter{
+.searchContainer {
+  display: flex;
+  vertical-align: top;
+  height: 43px;
+  width: 50px;
+  position: relative;
+  left: 50px;
+  top: 5px;
+  border-radius: 50px 0px 0px 50px;
+  border-color: #45a1df;
+  /* background-color: #EFF3F4; */
+}
 
-    max-width: 500px;
-    width: auto;
-    height: auto;
-    padding-top: 5px;
-  }
-  
-  .SearchData{
-    display:flex;
-    flex-direction: column;
-    font-size: 15px;
-  }
+.followButton {
+  width: 30%;
+  padding: 10px;
+  border-radius: 300px;
+  font-size: 13px;
+  border: none;
+  background-color: black;
+  text-align: center;
+  color: white;
+  margin: auto;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.followingButton {
+  width: 30%;
+  padding: 10px;
+  border-radius: 300px;
+  font-size: 13px;
+  background-color: white;
+  text-align: center;
+  color: black;
+  border: 1px solid;
+  border-color: #a8a8a8;
+  margin: auto;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+.followingButton:hover {
+  color: red;
+  background-color: rgb(252, 219, 219);
+}
 
-  .searchPage{
-    margin-left: 40px;
-    padding-left: 10px;
-    width: auto;
-    max-width: 600px;
+.moreOptions {
+  position: relative;
+  text-align: right;
+  right: 15px;
+  top: 15px;
+}
 
-  }
+.searchTop {
+  display: flex;
+  height: 40px;
+  width: 500px;
+  margin-bottom: 10px;
+}
+
+.line {
+  display: inline-block;
+  vertical-align: auto;
+  background-color: rgb(29, 155, 240);
+  width: 30px;
+  height: 4px;
+  align-self: center;
+  column-gap: 40px;
+}
+
+.arrowBack {
+  display: flex;
+  position: relative;
+  left: 38px;
+  margin-top: 15px;
+  width: 50px;
+}
+
+.searchFilter {
+  max-width: 500px;
+  width: auto;
+  height: auto;
+  padding-top: 5px;
+}
+
+.SearchData {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+.SearchData:hover {
+  background-color: #f0f0f0;
+}
+
+.searchPage {
+  margin-left: 40px;
+  padding-left: 10px;
+  width: auto;
+  max-width: 600px;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+  display: none;
+}

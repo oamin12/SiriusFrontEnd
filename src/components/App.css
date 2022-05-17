@@ -22,6 +22,8 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+  position: sticky;
+  top: 0;
 }
 .search {
   border: 2px solid rgb(245, 248, 250);

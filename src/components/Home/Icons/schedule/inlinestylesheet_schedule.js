@@ -5,6 +5,7 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "48%",
   height: "75%",
+  border: "none",
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -25,7 +26,7 @@ const confirmbutton_style = {
   width: "20%",
   height: "10%",
   borderRadius: "300px",
-  textTransform: "lowercase",
+  textTransform: "none",
   fontStyle: "solid 5px ",
   backgroundColor: "black",
   color: "white",
@@ -67,7 +68,7 @@ const minutes_style = {
 const updatebutton_style = {
   width: "25%",
   borderRadius: "300px",
-  textTransform: "lowercase",
+  textTransform: "none",
   fontStyle: "solid 5px ",
   backgroundColor: "black",
   color: "white",
@@ -84,7 +85,7 @@ const clearbutton_style = {
   Width: "auto",
   width: "25%",
   borderRadius: "300px",
-  textTransform: "lowercase",
+  textTransform: "none",
   fontStyle: "solid 5px ",
   backgroundColor: "black",
   color: "white",
@@ -92,20 +93,27 @@ const clearbutton_style = {
   marginLeft: "38%",
   fontSize: "95%",
   "&:hover": {
+    backgroundColor: "rgb(52, 48, 48)",
+  },
+};
+const edit_button = {
+  width: "15%",
+  height: "5%",
+  borderRadius: "300px",
+  textTransform: "none",
+  fontStyle: "solid 5px ",
+  backgroundColor: "black",
+  color: "white",
+
+  marginLeft: "8%",
+  fontSize: "95%",
+  "&:hover": {
     background: "rgb(52, 48, 48)",
   },
 };
 const style1 = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "48%",
-  height: "85%",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  overFlow: "auto",
+  minHeight: "110%",
+  marginTop: "-2%",
   borderRadius: "4%",
 };
 
@@ -121,3 +129,4 @@ export { minutes_style };
 export { years_style };
 export { clearbutton_style };
 export { updatebutton_style };
+export { edit_button };
