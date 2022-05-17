@@ -53,12 +53,16 @@
   top: 0 !important; /*bassant changed it from -1 to 0 this is before adding whats happinig*/
   border-radius: 50px;
   background-color: #fdf9f9;
-  margin-left: 0%;
-  padding-right: 10%;
+  margin-left: 10%;
   text-align: left;
   display: flex;
   flex-direction: column;
-  margin-left: 10%;
+  padding:20px;
+  padding-right: 0px;
+  width: fit-content;
+  min-width: 348px;
+  
+
 }
 
 @media (max-width: 1020px) {

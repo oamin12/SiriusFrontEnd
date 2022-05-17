@@ -1,10 +1,9 @@
 const Button_showmore = {
   textTransform: "none",
   fontSize: "100%",
-  marginLeft: "0%",
   color: "rgb(29, 161, 242)",
   textAlign: "left",
-  paddingRight: "70%",
+  paddingRight: "0%",
   "&:hover": {
     backgroundColor: "#F0F0F0",
   },

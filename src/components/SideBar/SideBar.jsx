@@ -18,6 +18,7 @@ import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import SideBarFooter from "./SideBarFooter";
 import TweetPopUpPage from "./TweetPopUpPage";
+let isAdmin = true;
 var UserName = localStorage.getItem("UserName");
 const iconInfo = [
   {
@@ -129,6 +130,13 @@ function SideBar(props) {
             >
               Tweet
             </button>
+            {isAdmin?
+          <NavLink to="/adminView/dashboard"> 
+              <button className="tweetButtonSideBar">
+              Switch to Admin
+              </button>
+          </NavLink>
+          :null}
             <SideBarFooter
               username={accountInfo.username}
               name={accountInfo.name}
@@ -138,6 +146,7 @@ function SideBar(props) {
         </div>
       )}
       <TweetPopUpPage setOpen={setOpen} Open={Open} />
+        
     </div>
   );
 }

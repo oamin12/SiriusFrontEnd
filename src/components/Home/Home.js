@@ -144,7 +144,7 @@ async function GetTweetInfo() {
         </div>
         <NavLink to="/signin"><div className="whatsHappening">what's happening</div></NavLink>
         <div className="whoToFollow">
-          < WhoToFollow/>
+          <WhoToFollow />
         </div>
         
       </div>

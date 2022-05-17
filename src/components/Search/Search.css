@@ -31,7 +31,7 @@
 }
 
 .searchBox {
-  position: sticky;
+  /* position: sticky; */
   top: -1;
   z-index: 100;
   /* height: auto; */
@@ -43,6 +43,7 @@
   background-color: #eff3f4;
   margin-left: -65%;
   z-index: 1;
+  min-width: 350px;
 }
 .searchBox:focus {
   outline: none;
