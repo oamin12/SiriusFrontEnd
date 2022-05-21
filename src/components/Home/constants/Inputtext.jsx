@@ -16,9 +16,13 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 import Button from "@mui/material/Button";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { tweetbutton } from "./inlinestyling_inputetext";
+import { tweetbuttonblur } from "./inlinestyling_inputetext";
 import { tweetbutton_popuppage } from "./inlinestyling_inputetext";
 import { schedulebutton } from "./inlinestyling_inputetext";
 import { schedulebutton_popuppage } from "./inlinestyling_inputetext";
+import { tweetbutton_popuppageblur } from "./inlinestyling_inputetext";
+import { schedulebuttonblur } from "./inlinestyling_inputetext";
+import { schedulebutton_popuppageblur } from "./inlinestyling_inputetext";
 import { calendericon } from "./inlinestyling_inputetext";
 import { calenderstatus } from "./inlinestyling_inputetext";
 // 1.dlw2ty el user lma hydos schedule fy el input text el data el fy el schedule htroh lel backend
@@ -40,10 +44,12 @@ function Inputtext(props) {
   const [inputStr, setInputStr] = useState("");
   const [showPicker, setShowPicker] = useState(false);
   let [image, setImage] = React.useState([""]);
+  let [image2, setImage2] = React.useState([""]);
   const [loading, setLoading] = React.useState(false);
   const [flag_img, set_flag_img] = React.useState(false);
   const [flag_stop_working, set_flag_stop_working] = React.useState(0);
   let [counter_for_images, set_counter_for_images] = React.useState(0);
+  let [counter_for_images2, set_counter_for_images2] = React.useState(0);
   let [scheduled_tweets, set_scheduled_tweets] = React.useState([
     {
       content: "",
@@ -87,6 +93,32 @@ function Inputtext(props) {
       if (image[counter_for_images] !== undefined) {
         setImage((state) => [...state, image]);
         set_counter_for_images(++counter_for_images);
+      }
+      setLoading(false);
+    }
+  };
+  const uploadImage2 = async (e) => {
+    console.log("2" + props.flag_tweetpopuppage);
+    set_flag_stop_working(1);
+    if (counter_for_images < 5) {
+      const files = e.target.files;
+      const data = new FormData();
+      data.append("file", files[0]);
+      data.append("upload_preset", "darwin");
+      setLoading(true);
+      set_flag_img(true);
+      const res = await fetch(
+        "	https://api.cloudinary.com/v1_1/dxifxd1ms/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+      const file = await res.json();
+      image2[counter_for_images2] = file.secure_url;
+      if (image2[counter_for_images2] !== undefined) {
+        setImage((state) => [...state, image]);
+        set_counter_for_images(++counter_for_images2);
       }
       setLoading(false);
     }
@@ -641,34 +673,65 @@ function Inputtext(props) {
 
         {flag2_toschedule !== 0 && flag2_toschedule !== 2 ? (
           <div>
-            {props.flag_tweetpopuppage != 1 ? (
-              <Button sx={tweetbutton} onClick={handlechangeT}>
+            {props.flag_tweetpopuppage != 1 ? 
+              <div>
+             { flag2===1 ? 
+             <Button sx={tweetbutton} onClick={handlechangeT}>
                 Tweet
-              </Button>
-            ) : (
+              </Button> :
+              <Button sx={tweetbuttonblur} onClick={handlechangeT}>
+                Tweet
+              </Button> 
+             } </div>
+            : ( 
+              <div>
+              {  flag2===1 ?
               <Button sx={tweetbutton_popuppage} onClick={handlechangeT}>
                 Tweet
               </Button>
+              :
+              <Button sx={tweetbutton_popuppageblur} onClick={handlechangeT}>
+              Tweet
+            </Button>
+             }
+              </div>
             )}
           </div>
         ) : flag2_toschedule == 2 ? (
           <div>
             {props.flag_tweetpopuppage != 1 ? (
-              <Button
+              <div>
+            { flag2===2 ? <Button
                 sx={schedulebutton}
                 className={props.classname}
                 onClick={handlechangeT}
               >
                 Schedule
-              </Button>
+              </Button>:<Button
+                sx={schedulebuttonblur}
+                className={props.classname}
+                onClick={handlechangeT}
+              >
+                Schedule
+              </Button>}
+              </div>
             ) : (
-              <Button
+              <div>
+              { flag2===2 ? <Button
                 sx={schedulebutton_popuppage}
                 className={props.classname}
                 onClick={handlechangeT}
               >
                 Schedule
-              </Button>
+              </Button>:
+              <Button
+                sx={schedulebutton_popuppageblur}
+                className={props.classname}
+                onClick={handlechangeT}
+              >
+                Schedule
+              </Button>}
+              </div>
             )}
           </div>
         ) : null}

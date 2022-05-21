@@ -43,7 +43,7 @@
 .Media {
   color: rgb(29, 161, 242);
   cursor: pointer;
-  margin-left: -230%;
+  margin-left: -310%;
 }
 .MediaTweetButton {
   color: rgb(29, 161, 242);
@@ -53,11 +53,12 @@
 .Poll {
   color: rgb(29, 161, 242);
   cursor: pointer;
+  margin-left: -6%;
 }
 .Gif {
   color: rgb(29, 161, 242);
   cursor: pointer;
-  margin-left: -260%;
+  margin-left: -250%;
 }
 .emoji {
   cursor: pointer;
