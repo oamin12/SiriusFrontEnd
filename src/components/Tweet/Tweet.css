@@ -121,6 +121,9 @@
 }
 
 .tweet_settings_bar{
+  display: flex;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
   transition: background-color 0.25s;
 }

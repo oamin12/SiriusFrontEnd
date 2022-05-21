@@ -8,6 +8,7 @@ import AdminFollowerBarChart from "./AdminFollowerBarChart/AdminFollowerBarChart
 import AdminLikesBarChart from "./AdminLikesBarChart/AdminLikesBarChart";
 import AdminReportsBarChart from "./AdminReportsBarChart/AdminReportsBarChart";
 import getUserStats from "./AdminWidgetsInfo";
+import dashBoardStats from "./AdminUserChartInfo";
 
 /**
  * @descriptiom component represents the dashboard of the admin view which contains most of the statistics
@@ -20,8 +21,8 @@ function AdminMain() {
   ]);
   React.useEffect(() => {
     (async () => {
-      const resp = await getUserStats();
-      setUserStats(resp);
+      const resp = await dashBoardStats();
+      setUserStats(resp.UserStats);
     })();
   }, []);
 

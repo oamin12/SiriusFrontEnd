@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./AdminUserChart.css";
-import getTopUsersPerWeek from "./AdminUserChartInfo";
+import dashBoardStats from "./AdminUserChartInfo";
 
  /**
   * @description Component that contains an area chart representing the number of new users every week
@@ -20,10 +20,11 @@ function AdminUserChart() {
   const [topUsersPerWeek, setTopUsersPerWeek] = React.useState([]);
   React.useEffect(() => {
     (async () => {
-      const resp = await getTopUsersPerWeek();
-      setTopUsersPerWeek(resp);
+      const resp = await dashBoardStats();
+      setTopUsersPerWeek(resp.topUsersPerWeek);
     })();
   }, []);
+
   return (
     <div className="AdminUserChart">
       <h2
@@ -58,11 +59,11 @@ function AdminUserChart() {
               wrapperStyle={{ width: "auto" }}
               labelStyle={{ color: "rgb(101, 119, 134)" }}
               itemStyle={{ color: "rgb(101, 119, 134)" }}
-              formatter={(Users, name, props) => [Users + " user", name]}
+              formatter={(users, name, props) => [users + " user", name]}
             />
             <Area
               type="monotone"
-              dataKey="Users"
+              dataKey="users"
               stroke="#1DA1F2"
               fillOpacity={1}
               fill="url(#colorUv)"
@@ -72,6 +73,7 @@ function AdminUserChart() {
       </div>
     </div>
   );
+        
 }
 export default AdminUserChart;
 //pass a component as a prop

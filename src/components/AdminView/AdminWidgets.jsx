@@ -1,16 +1,25 @@
 import React from "react";
 import "./AdminWidgets.css";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { NavLink } from "react-router-dom";
 
-var percentageState = false; //decreasing
+
+
 function AdminWidgets({ Icon, type, counter, typeLink, percentage }) {
+  var percentageState = false; //decreasing
+if(percentage>=0){
+  percentageState = true;
+}
+else{
+  percentageState = false;
+}
   return (
     <div className="AdminWidgets">
       <div className="left">
         <h2 className="cardHeader">{type}</h2>
         <p className="cardCounter">{counter}</p>
-        <NavLink to="/adminView/user" style={{ color: "black" }}>
+        <NavLink to="/admin/user" style={{ color: "black" }}>
           <div className="cardUsers">{typeLink}</div>
         </NavLink>
       </div>
@@ -19,8 +28,10 @@ function AdminWidgets({ Icon, type, counter, typeLink, percentage }) {
           className="rightText"
           style={{ color: percentageState ? "green" : "red" }}
         >
-          <KeyboardArrowUpOutlinedIcon />
-          {percentage}
+          {percentageState?<KeyboardArrowUpOutlinedIcon />
+          :<KeyboardArrowDownIcon />
+          }
+          {percentage}%
         </div>
         <div>
           <Icon />

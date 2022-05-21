@@ -4,15 +4,18 @@ import FollowingCard from "./FollowingCard.jsx";
 import people from "../../Search/people";
 import "../../Layout.css";
 import SideBar from "../../SideBar/SideBar";
+import axios from "axios";
 
 function createCard(contact) {
     return (
       <FollowingCard
-        key={contact.id}
+        key={contact._id}
         name={contact.name}
         username={contact.username}
         bio={contact.bio}
-        img={contact.imgURL}
+        img={contact.image}
+        protectedTweets={contact.protectedTweets}
+        followsMe={contact.followsMe}
       />
     );
   }
@@ -21,6 +24,39 @@ function createCard(contact) {
    * @returns {div}
    */
 function Followings() {
+
+  const [profileFollowings,setprofileFollowings ] = React.useState([]);
+  var token = sessionStorage.getItem("tokenValue");
+
+  async function GetUserFollowings(UserName) {
+      console.log("INSIDE FUNCTION",UserName);
+      var config = {
+          method: 'get',
+          // url: 'http://34.236.108.123:3000/'+UserName,
+          headers: {Authorization:"Bearer "+token }
+        };
+      let response = '';
+    try {
+      response = await axios.get('http://34.236.108.123:3000/'+UserName+'/following',config).then((res) => res.data);
+      //response = await axios.get("http://localhost:3001/User").then((res) => res.data);
+      
+      return (response);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+    return (response);
+  }
+
+
+  React.useEffect(() => {
+    (async () => {
+      const resp = await GetUserFollowings(localStorage.getItem("UserProfile"));
+      setprofileFollowings(resp.following);
+
+    })();
+  }, []);
   return (
     <div className="layout">
       <SideBar />
@@ -29,7 +65,7 @@ function Followings() {
         name={localStorage.getItem("TopName")}
         username={localStorage.getItem("UserProfile")}
        />
-      {people.map(createCard)}</div>
+      {profileFollowings.map(createCard)}</div>
       <div className="widgets">
         <div className="search">search</div>
         <div className="whatsHappening">what's happening</div>

@@ -71,11 +71,6 @@
     gap:4px;
     
     /* overflow-wrap: break-word; */
-    
-    
-    
-    
-    
 }
 
 .User__name {
@@ -154,7 +149,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px;
+
 }
 
 .edit__btn {
@@ -176,6 +171,13 @@
     font-size: 20px;
 }
 
+.protectedAccount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 15%;
+}
 
 @media (max-width:1020px) {
     

@@ -23,7 +23,7 @@ function FollowTab(props){
                 <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/followers"}>
                 <Tab label="Followers" />
                 </NavLink>
-                <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/followings"}>
+                <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/following"}>
                 <Tab label="Followings" />
                 </NavLink>
             </Tabs>

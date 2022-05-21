@@ -59,7 +59,7 @@ function UsersCard(props) {
     setOpenModal(false);
   }
   function handleBanLinkClick() {
-    props.handleIndexing(props.id);
+    props.handleIndexing(props.username);
     handleModalClose();
   }
   function handleCancelButtonClick() {
@@ -73,6 +73,12 @@ function UsersCard(props) {
   }
   function handleModalStatsClose() {
     setOpenModalStats(false);
+  }
+  function handleUserClicked(){
+    localStorage.setItem("UserProfile",props.username);
+  }
+  function handleReportClicked(){
+    localStorage.setItem("UserProfile",props.username);
   }
 
   return (
@@ -139,8 +145,8 @@ function UsersCard(props) {
             marginLeft: "20px",
           }}
         >
-          <NavLink
-            to="/profile"
+          <NavLink onClick={handleUserClicked}
+            to={props.link}
             style={{ textDecoration: "none", color: "white" }}
           >
             Profile
@@ -183,8 +189,9 @@ function UsersCard(props) {
           style={{ backgroundColor: "black", marginLeft: "20px" }}
         >
           <NavLink
-            to="/adminView/user/reports"
+            to={"/admin/" + props.username + "/reports"}
             style={{ textDecoration: "none", color: "white" }}
+            onClick={handleReportClicked}
           >
             Reports
           </NavLink>

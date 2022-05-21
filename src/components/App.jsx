@@ -78,15 +78,13 @@ function App(props) {
               />
             }
           />
-          <Route path="/adminView/dashboard" element={<AdminView />} />
-          <Route path="/adminView/user" element={<AdminViewUser />} />
-          <Route path="/adminView/user/reports" element={<AdminReports />} />
+          <Route path="/admin/dashboard" element={<AdminView />} />
+          <Route path="/admin/user" element={<AdminViewUser />} />
+          <Route path="/admin/:user/reports" element={<AdminReports />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/:userName" element={<Profile />} />
-          <Route path={"/" + UserName} element={<Profile />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />  
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
@@ -99,14 +97,14 @@ function App(props) {
           <Route path={"/" + UserName + "/likes"} element={<Profile />} />
           <Route path={"/" + UserName + "/followers"} element={<Followers />} />
           <Route
-            path={"/" + UserName + "/followings"}
+            path={"/" + UserName + "/following"}
             element={<Followings />}
           />
           <Route path="/:username/with_replies" element={<Profile />} />
           <Route path="/:username/media" element={<Profile />} />
           <Route path="/:username/likes" element={<Profile />} />
           <Route path="/:username/followers" element={<Followers />} />
-          <Route path="/:username/followings" element={<Followings />} />
+          <Route path="/:username/following" element={<Followings />} />
           <Route path="/whotofollow" element={<ShowMoreOFWhoToFollow />} />
           <Route
             path="/settings/accountinformation"

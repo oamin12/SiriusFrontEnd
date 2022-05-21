@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import getTopFollowers from "./AdminFollowerBarChartInfo";
+import dashBoardStats from "../AdminUserChartInfo";
 
 
 /**
@@ -22,8 +23,8 @@ function AdminBarChart() {
   const [topFollowers, setTopFollowers] = React.useState([]);
   React.useEffect(() => {
     (async () => {
-      const resp = await getTopFollowers();
-      setTopFollowers(resp);
+      const resp = await dashBoardStats();
+      setTopFollowers(resp.TopFollowers);
     })();
   }, []);
   return (
