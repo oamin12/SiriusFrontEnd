@@ -131,7 +131,7 @@ function SideBar(props) {
               Tweet
             </button>
             {isAdmin?
-          <NavLink to="/adminView/dashboard"> 
+          <NavLink to="/admin/dashboard"> 
               <button className="tweetButtonSideBar">
               Switch to Admin
               </button>

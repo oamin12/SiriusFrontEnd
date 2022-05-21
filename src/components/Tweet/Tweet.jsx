@@ -22,12 +22,46 @@ import VolumeOffOutlinedIcon from '@mui/icons-material/VolumeOffOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import axios from "axios";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import { LeafPoll, Result } from 'react-leaf-polls'
+import 'react-leaf-polls/dist/index.css'
+import { WrapText } from "@mui/icons-material";
+var token=sessionStorage.getItem("tokenValue");
+const resData = [
+  { id: 0, text: 'Answer 1', votes: 0 },
+  { id: 1, text: 'Answer 2', votes: 0 },
+  { id: 2, text: 'Answer 3', votes: 0 }
+]
+const customTheme = {
+  textColor: 'black',
+  mainColor: '#1d9bf0',
+  backgroundColor: 'rgb(255,255,255)',
+  alignment: 'center',
+  width: "10px",
+  height:"10px"
+  
+}
 
-
-
-function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag }) {
-  const [liked, setLiked] = useState(false);
-  const [retweeted, setRetweeted] = useState(false);
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 300,
+  bgcolor: "background.paper",
+  border: "0px",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "8px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+};
+function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply }) {
+  const [liked, setLiked] = useState(liked_flag);
+  const [retweeted, setRetweeted] = useState(retweeteded_flag);
   const [bookMarked, setBookMarked] = useState(bookMarked_flag);
 
   const [likesCount, changeLikesCount] = useState(likeCount);
@@ -69,7 +103,12 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
   function isOutLike() {
     setHoverLike(false);
   }
-  //////////////////////
+  ///////-POLL DATA-///////////////
+  function vote(item: Result, results: Result[]) {
+    // Here you probably want to manage
+    // and return the modified data to the server.
+  }
+  ///////////////////////
   async function PostTweet() {
     let response = '';
     try {
@@ -83,9 +122,70 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     console.log(response);
     return (response);
   }
+
+  async function PostLike() {
+    let response = '';
+    try {
+      response = await axios.post('http://34.236.108.123:3000/home/'+id+'/likeTweet',{},{ headers: { Authorization: "Bearer " + token }}).then((res) => res.data);
+      return (response);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+    console.log(response);
+    return (response);
+  }
+  async function PostRetweet() {
+    let response = '';
+    try {
+      response = await axios.post('http://34.236.108.123:3000/home/'+id+'/retweet',{},{ headers: { Authorization: "Bearer " + token }}).then((res) => res.data);
+      return (response);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+    console.log(response);
+    return (response);
+  }
+
+  async function PostBookmark() {
+    let response = '';
+    try {
+      response = await axios.post('http://34.236.108.123:3000/home/'+id+'/bookmarkTweet',{},{ headers: { Authorization: "Bearer " + token }}).then((res) => res.data);
+      return (response);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+    console.log(response);
+    return (response);
+  }
+
+
+  var config = {
+    method: 'get',
+    url: 'http://34.236.108.123:3000/home/'+id+'/deleteTweet',
+    headers: {Authorization:"Bearer "+token}
+  };
+  async function DeleteTweet() {
+    let response = '';
+    try {
+      response = await axios.delete('http://34.236.108.123:3000/home/'+id+'/deleteTweet',config).then((res) => res.data);
+      return (response);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+    console.log(response);
+    return (response);
+  }
   //////////////////////
 
-  function HandleDeleteAllBookmarks() {
+  function HandleDeleteBookmark() {
       // post request
       (async () => {
           await axios.delete(
@@ -104,27 +204,44 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
   }
   //////////////////////
 
+  const [openModal, setOpenModal] = React.useState(false);
+  function handleDeleteButtonClick() {
+    setOpenModal(true);
+  }
+  function handleModalClose() {
+    setOpenModal(false);
+  }
+  
+  function handleCancelButtonClick() {
+    handleModalClose();
+    handleClose();
+  }
+  ////////////////////////
   function handleBookmark() {
     setBookMarked(!bookMarked);
-
-    if(!bookMarked)
-    {
-      PostTweet();
-    }
-    else
-    {
-      HandleDeleteAllBookmarks();
-    }
+    PostBookmark();
+    // if(!bookMarked)
+    // {
+      
+    // }
+    // else
+    // {
+    //   HandleDeleteBookmark();
+    // }
   }
   function handleLike(event) {
     setLiked(!liked);
+    PostLike();
     if (!liked) {
       changeLikesCount(likesCount + 1)
     }
     else { changeLikesCount(likesCount - 1) }
+    
+    
   }
   function handleRetweet() {
     setRetweeted(!retweeted)
+    PostRetweet();
     if (!retweeted) {
       changeRetweetsCount(retweetsCount + 1)
     }
@@ -132,6 +249,8 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
 
   }
   function handleReply() {
+    localStorage.setItem("TweetID",id);
+    handleReplyReply();
 
   }
   const [open, setOpen] = useState(null);
@@ -147,7 +266,9 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
   }
   function handleDeleteTweet()
   {
-
+    DeleteTweet();
+    deleted_flag();
+    handleReplyReply();
   }
 
   function handleUserClicked(){
@@ -207,8 +328,24 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
             >
             {userName===localStorage.getItem("UserName")?
             <div>
-                <Typography onClick={handleDeleteTweet} sx={{ p: 2 }} className="tweet_settings_bar">
-                  <div style={{color:"red"}}><DeleteOutlinedIcon fontSize="small"/> Delete</div>
+                <Typography  sx={{ p: 2 }} className="tweet_settings_bar">
+                  <div onClick={handleDeleteButtonClick} style={{color:"red"}}><DeleteOutlinedIcon fontSize="small"/> Delete</div>
+                    <Modal open={openModal} onClose={handleModalClose}>
+                      <Box sx={style}>
+                        <h3 className="modalHeader">Delete Tweet?</h3>
+                        <p className="boxParagraph">
+                        This can't be undone and it will be removed from your profile, 
+                        the timeline of any accounts that follow you, and from Twitter search results. 
+                        </p>
+
+                        <button data-testid="clear-button" className="clearLink" onClick={handleDeleteTweet}>
+                          Delete
+                        </button>
+                        <button  className="cancelButton" onClick={handleCancelButtonClick}>
+                          Cancel
+                        </button>
+                      </Box>
+                   </Modal>
                 </Typography>
                 <Typography sx={{ p: 2 }} className="tweet_settings_bar">
                   <PushPinOutlinedIcon fontSize="small"/> Pin
@@ -238,34 +375,65 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
         {/***********************************************************************************************************************/}
         {/***********************************************************************************************************************/}
 
-        <div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
-          {/* TODO: check opacity */}
-
-          <p className="content_style">{content}</p>
-        </div>
+        
+            
+          {(isPoll==="true" || !isReply)?<div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
+          <p className="content_style">{content}</p></div>:
+          <div className="Poll"><LeafPoll
+              type='multiple'
+              question='What you wanna ask?'
+              results={resData}
+              theme={customTheme}
+              onVote={vote}
+              isVoted={false}
+            /></div>
+          }
+        
       </div>
 
       {/* {image ? <img src={image.med1} alt="" /> : null} */}
 
-      {image.length===1? <div className="post_body1"><img id="lolxd" src={image[0]} alt="" /></div>:
-      image.length===2? <div className="post_body2"><img id="lolxd" style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image.med1} alt="" />
-      <img id="lolxd" style={{"border-top-right-radius":"20px", "border-bottom-right-radius":"20px"}} src={image.med2} alt="" /></div>:null}
-
+      {image.length===1? <div className="post_body1"><img src={image[0]} alt="" /></div>:
+      image.length===2? <div className="post_body2">
+      <img style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image[0]} alt="" />
+      <img style={{"border-top-right-radius":"20px", "border-bottom-right-radius":"20px"}} src={image[1]} alt="" /></div>:
+      image.length===3?<div className="post_body3">
+        <div className="post_body3_1">
+        <img style={{"border-top-left-radius":"20px", "border-bottom-left-radius":"20px"}} src={image[0]} alt="" />
+        </div>
+        <div className="post_body3_2">
+        <img style={{"border-top-right-radius":"20px"}} src={image[1]} alt="" />
+        <img style={{ "border-bottom-right-radius":"20px"}} src={image[2]} alt="" />
+        </div>
+      </div> :
+      image.length===4?
+      <div className="post_body4">
+      <div className="post_body4_1">
+      <img style={{"border-top-left-radius":"20px"}} src={image[0]} alt="" />
+      <img style={{"border-bottom-left-radius":"20px"}} src={image[1]} alt="" />
+      </div> 
+      <div className="post_body4_2">
+      <img style={{"border-top-right-radius":"20px"}} src={image[2]} alt="" />
+      <img style={{ "border-bottom-right-radius":"20px"}} src={image[3]} alt="" />
+      </div>
+      </div>
+      :null} 
 
       {video ? <video src={video} alt="" /> : null}
 
       <div className="post_footer" style={{ opacity: hoverOverTweet ? "100%" : "100%" }}>
         <span className="buttons_style">
           {/*REPLY BUTTON*/}
+          <NavLink to={"/"+userName+"/status/"+id} onClick={handleReply}>
           <IconButton
             onMouseOver={isOverReply}
             onMouseOut={isOutReply}
             style={{ color: hoverOverReply ? "#1DA1F2" : "gray", backGroundColor: hoverOverReply ? "blue" : "gray" }}
-            onClick={handleReply}
             sx={{ width: 0.08, height: 1 }}>
             <ModeCommentOutlinedIcon />
           </IconButton>
-          {repliesCount}
+          </NavLink>
+          {replieCount}
           {/*RETWEET BUTTON*/}
           <IconButton
             onMouseOver={isOverRetweet} onMouseOut={isOutRetweet}

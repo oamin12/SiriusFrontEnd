@@ -16,12 +16,15 @@ function PostingTweet(props) {
 
        <div className="profile_picture">
           <Avatar className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
-          <Inputtext msg="what's happening?"
+          <Inputtext msg={props.flag_reply===true?"Tweet your Reply":"What's Happening"}
             flag_confirm={props.flag_confirm}
             flag_tweetpopuppage={0}
             postingFlag={props.postingFlag} 
             classname_media={"Media"} 
-            classname_emoji={"emoji"}/>
+            classname_emoji={props.flag_reply!==true?"emoji":"emoji_in_reply"}
+            flag_reply={props.flag_reply}
+            tweet_id={props.tweet_id}
+            />
        </div>
 
     </div>   );

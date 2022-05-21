@@ -12,9 +12,10 @@ import Likes from "../Home/Likes";
 import axios from "axios";
 import SearchBox from "../Search/SearchBox"
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
-
+import { Puff } from  'react-loader-spinner'
 import Tweet from "../Tweet/Tweet";
-function createProfileData(User) {
+
+function createProfileData(User,protectedAccount) {
  
   return (
       <ProfileData
@@ -24,12 +25,16 @@ function createProfileData(User) {
         name={User.name}
         username={User.username}
         bio={User.bio}
-        location={User.location}
+        location={User.country +", " + User.city}
         website={User.website}
         birthdate={User.birthdate}
-        joineddate={User.joineddate}
+        joineddate={User.createdAt}
         followersCount={User.followersCount}
         followingCount={User.followingCount}
+        isMe={User.isMe}
+        followed={User.followHim}
+        protected={protectedAccount}
+
       />
     );
   }
@@ -38,14 +43,14 @@ function createProfileData(User) {
       <Tweet
         key={tweet.id}
         name={tweet.name}
-        userName={tweet.userName}
-        content={tweet.content}
-        avatar={tweet.avatar}
-        image={tweet.image}
-        video={tweet.video}
-        likeCount={tweet.likeCount}
-        repliesCount={tweet.repliesCount}
-        retweetCount={tweet.retweetCount}
+        userName={tweet.username}
+        content={tweet.body}
+        avatar={tweet.image}
+        image={""}
+        video={""}
+        likeCount={tweet.favoriters.length}
+        repliesCount={tweet.replies.length}
+        retweetCount={tweet.retweeters.length}
       />
     );
   }
@@ -57,9 +62,13 @@ function createProfileData(User) {
    * @returns {div} 
    */
 function Profile() {
-  console.log("BEFORE GETTING",localStorage.getItem("UserProfile"));
+  //console.log("BEFORE GETTING",localStorage.getItem("UserProfile"));
 
   const [ProfileInfo,setProfileInfo ] = React.useState([]);
+  const [profileTweets,setProfileTweets ] = React.useState([]);
+  const [profileReplies,setProfileReplies ] = React.useState([]);
+  const [ProfileInfoReplies,setProfileInfoReplies ] = React.useState([]);
+  const [namee,setNamee ] = React.useState(null);
   function ProfileSubPage(){
     
     let location = useLocation();
@@ -94,9 +103,10 @@ function Profile() {
         };
       let response = '';
     try {
-      //response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
-      response = await axios.get("http://localhost:3001/User").then((res) => res.data);
+      response = await axios.get('http://34.236.108.123:3000/'+UserName,config).then((res) => res.data);
+      //response = await axios.get("http://localhost:3001/User").then((res) => res.data);
       setProfileInfo(response);
+      
       return (response);
     } catch (error) {
       if (error.response) {
@@ -105,41 +115,72 @@ function Profile() {
     }
     return (response);
   }
-  //GetUserProfile(localStorage.getItem("UserProfile"));
+
 
   React.useEffect(() => {
     (async () => {
       const resp = await GetUserProfile(localStorage.getItem("UserProfile"));
       setProfileInfo(resp);
-      //console.log("IS ME CHECK GOWA",ProfileInfo.isMe,ProfileInfo.username);
+      setProfileTweets(resp.tweets);
+      setNamee(resp.name);
+      
 
     })();
   }, []);
-  console.log("IS ME CHECK",ProfileInfo.isMe,ProfileInfo.username);
-  // const [OtherProfileInfo,setOtherProfileInfo ] = React.useState([]);
-  // React.useEffect(() => {
-  //   (async () => {
-  //     const resp = await GetUserProfile(props.userName);
-  //     setOtherProfileInfo(resp);
-  //   })();
-  // }, []);
+  console.log(ProfileInfo);
+  async function GetUserProfileReplies(UserName) {
+    console.log("INSIDE FUNCTION",UserName);
+    var config = {
+        method: 'get',
+        // url: 'http://34.236.108.123:3000/'+UserName,
+        headers: {Authorization:"Bearer "+token }
+      };
+    let response = '';
+  try {
+    response = await axios.get('http://34.236.108.123:3000/'+UserName+'/with_replies',config).then((res) => res.data);
+    //response = await axios.get("http://localhost:3001/User").then((res) => res.data);
+    setProfileInfoReplies(response);
+    return (response);
+  } catch (error) {
+    if (error.response) {
+      return (error.response);
+    }
+  }
+  return (response);
+}
 
-  
+
+React.useEffect(() => {
+  (async () => {
+    const resp = await GetUserProfileReplies(localStorage.getItem("UserProfile"));
+    setProfileInfoReplies(resp);
+    setProfileReplies(resp.tweets)
+    console.log(resp);
+  })();
+}, []);
+let protectedAccount = (!ProfileInfo.isMe && !ProfileInfo.followsHim && ProfileInfo.protectedTweets);
+console.log("protected "+protectedAccount);
+  if(namee)
+  {
   return (
     
     <div className="layout">
       <SideBar />
       <div className="feeder">
       {
-        createProfileData(ProfileInfo)}
-       
+        createProfileData(ProfileInfo, protectedAccount)}
+        
+    {protectedAccount ? null:
+      <div>
       {  ProfileSubPage
-        (subpage==1)?Hometweets.map(getTweet):
-        (subpage==2)?TweetReplies.map(getTweet):
-        (subpage==3)?Media.map(getTweet):
-        (subpage==4)?Likes.map(getTweet):
-        Hometweets.map(getTweet)
+        (subpage==1)?Hometweets?.map(getTweet):
+        (subpage==2)?profileReplies?.map(getTweet):
+        (subpage==3)?Media?.map(getTweet):
+        (subpage==4)?Likes?.map(getTweet):
+        profileTweets?.map(getTweet)
       }
+      </div>
+    }
       </div>
       <div className="widgets">
         <div className="search">
@@ -154,7 +195,23 @@ function Profile() {
         <div className="whoToFollow">  <WhoToFollow /> </div>
     </div>
     </div>
+      
   );
+    }
+    else 
+    {
+      return (
+        <div>     
+        <Puff 
+          color="#00BFFF" 
+          height={750} 
+          width={750} 
+          ariaLabel='loading'
+        />
+        </div>
+
+      );
+    }
 }
 
 export default Profile;

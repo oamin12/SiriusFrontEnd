@@ -31,7 +31,8 @@
   font-size: 130%;
   color: black;
   text-align: left;
-  height: auto;
+  height: 53px;
+  opacity: 90%;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -71,6 +72,14 @@
 .iconsfooter {
   border-bottom: 1px solid rgb(241, 242, 243);
   display: flex;
+  justify-content: space-between;
+
+}
+.emoji_in_reply
+{
+  cursor: pointer;
+  color: rgb(29, 161, 242);
+  margin-left: 30%;
 }
 #file-input {
   display: none;

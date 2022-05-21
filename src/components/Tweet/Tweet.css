@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
 
  .post_body {
@@ -29,6 +28,7 @@
     margin-left: 50px;
     max-width: 600px;
     page-break-inside: auto;
+    gap: 3px;
     
 
   }
@@ -41,14 +41,49 @@
     flex-direction: row !important;
     
   }
-  .post_body3 > img {
-    border-radius: 20px;
+  .post_body3{
+    display: flex;
     max-width: 600px;
     width: 80%;
-    opacity: 100% !important;
     margin-left: 50px;
+    page-break-inside: auto;
+    gap: 3px;
+  }
+  
+  .post_body3_1 > img{
+    max-width: 250px;
+    max-height: 200px;
+    height: 100%;
+    width: 100%;
+  }
+  .post_body3 > img {
+    max-width: 150px;
+    width: 100%;
+    opacity: 100% !important;
+    display: flex;
+    flex-direction: row !important;
     
   }
+  .post_body3_2{
+    display: flex;
+    max-width: 600px;
+    page-break-inside: auto;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .post_body3_2 > img{
+    max-width: 210px;
+    max-height: 95px;
+  }
+  .post_body4{
+    display: flex;
+    max-width: 600px;
+    width: 80%;
+    margin-left: 50px;
+    page-break-inside: auto;
+    gap: 3px;
+  }
+  
   .post_body4 > img {
     border-radius: 20px;
     max-width: 600px;
@@ -121,6 +156,9 @@
 }
 
 .tweet_settings_bar{
+  display: flex;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
   transition: background-color 0.25s;
 }
@@ -131,20 +169,10 @@ background-color:  rgb(225, 232, 237);
   width: 10%;
 }
 
-/* .tweet{
-    display: flex;
-    align-items: flex-start;
-    border: 1px solid black;
-    padding-bottom: 10px;
+.Poll
+{
+  display: flex;
+  width: 100% !important;
+  text-align:center;
+  height:30px
 }
-
-
-
-.tweetbody > img{
-    border-radius: 20px;
-}
-
-.tweettxt > h3 {
-        font-size: 15px;
-        margin-bottom: 5px;
-} */

@@ -1,0 +1,70 @@
+.back-popup {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 90%;
+}
+.container-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+}
+.header-popup {
+  margin-top: -180px;
+  position: fixed;
+  font-size: 20px;
+  text-align: center;
+}
+.deactivate-popup {
+  color: white;
+  width: 220px;
+  height: 40px;
+  background-color: rgb(244, 33, 46);
+  outline: none;
+  font-weight: bold;
+  border: 0px solid;
+  border-radius: 20px;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  transition: all 0.2s ease;
+  position: fixed;
+  margin-bottom: -100px;
+  margin-top: -90px;
+}
+.cancel-popup {
+  width: 220px;
+  height: 40px;
+  background-color: #fff;
+  outline: none;
+  font-weight: bold;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 20px;
+  justify-content: center;
+  font-family: "Lato", sans-serif;
+  transition: all 0.2s ease;
+  margin-top: 130px;
+  position: fixed;
+}
+/*Hovering*/
+.deactivate-popup:hover {
+  background: #bf202be3;
+  cursor: pointer;
+}
+.cancel-popup:hover {
+  background: #b7b7b742;
+  cursor: pointer;
+}

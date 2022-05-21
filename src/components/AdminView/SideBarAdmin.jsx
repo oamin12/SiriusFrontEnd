@@ -15,14 +15,14 @@ const iconInfo = [
     iconText: "Dashboard",
     iconPicOutlined: DashboardOutlinedIcon,
     iconPic: DashboardIcon,
-    link: "/adminView/dashboard",
+    link: "/admin/dashboard",
   },
   {
     id: 1,
     iconText: "Users",
     iconPic: PersonIcon,
     iconPicOutlined: PersonOutlinedIcon,
-    link: "/adminView/User",
+    link: "/admin/user",
   },
 ];
 
@@ -59,7 +59,7 @@ function SideBarAdmin() {
     <div className="SideBarAdmin">
       <div className="SideBarAdminHeader">
         <NavLink
-          to="/adminView/dashboard"
+          to="/admin/dashboard"
           style={{ color: "rgb(29, 161, 242)" }}
         >
           <h1 className="logo" style={{ textAlign: "center" }}>

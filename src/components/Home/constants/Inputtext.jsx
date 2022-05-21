@@ -183,7 +183,7 @@ function Inputtext(props) {
         try {
           response = await axios.post(
             "http://34.236.108.123:3000/home/compose-tweet",
-            { body: inputStr, media: [] },
+            { body: inputStr, media: [], hashtags:["hashtag2"] },
             { headers: { Authorization: "Bearer " + token } }
           );
           return response.data;
@@ -195,8 +195,32 @@ function Inputtext(props) {
         // console.log(response);
         return response;
       }
+      
+      async function PostReply() {
+        let response = "";
+        try {
+          response = await axios.post(
+            "http://34.236.108.123:3000/home/"+props.tweet_id+"/reply",
+            { body: inputStr, media: [], hashtags:["hashtag2"] },
+            { headers: { Authorization: "Bearer " + token } }
+          );
+          return response.data;
+        } catch (error) {
+          if (error.response) {
+            return error.response;
+          }
+        }
+        console.log(response);
+        return response;
+      }
+      if(props.flag_reply===true)
+      {
+        PostReply();
+        props.postingFlag();
+      }
+      else{
       PostTweet();
-      props.postingFlag();
+      props.postingFlag();}
       //b3mel delete lel images lma ados tweet
       handle_delete_img2();
       handle_delete_img1();
@@ -536,15 +560,18 @@ function Inputtext(props) {
       ) : null}
 
       <div className="iconsfooter">
+
         <div className="icons">
-          <Poll
+        {props.flag_reply!==true && <Poll
             className="icons"
             flag_stop_working={flag2_toschedule - 1}
             classname={"Poll"}
             setflag_stop_working={setflag2_toschedule}
           />
+        }
         </div>
 
+          
         {(flag2_toschedule === 1 || flag2_toschedule === 2) && (
           <div className="icons">
             <div className="image-upload">
@@ -571,7 +598,11 @@ function Inputtext(props) {
               year= {scheduled_tweets[i].year}
               am_pm= {scheduled_tweets[i].am_pm}  */}
             <IconGif classname={"Gif"} />
-            <IconSchedule
+
+           
+              
+            {props.flag_reply!==true && <IconSchedule
+              scheduled_tweets={props.scheduled_tweets}
               scheduledtweetsflag={scheduledtweetsflag}
               classname={"Schedule"}
               flagconfirm={props.flagconfirm}
@@ -582,9 +613,8 @@ function Inputtext(props) {
               setmonth={setmonth}
               setam_pm={setam_pm}
               setflag2_toschedule={setflag2_toschedule}
-              setscheduledtweets={setscheduledtweetsflag}
-            />
-          </div>
+              setscheduledtweets={setscheduledtweetsflag}  />}
+         </div>
         )}
         <Popover
           open={open}

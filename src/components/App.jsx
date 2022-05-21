@@ -22,6 +22,14 @@ import ForgetPassword from "./StartupPage/ForgetPassword";
 import SignInRedirect from "./StartupPage/SignInRedirect";
 import Logout from "./StartupPage/Logout";
 import ShowMoreOFWhoToFollow from "./WhoToFollow/showmoreOFwhotofollow";
+import AccountInformation from "./Settings/AccountInformation";
+import ChangePassword from "./Settings/ChangePassword";
+import DeactivateAccount from "./Settings/DeactivateAccount";
+import Popup from "./Settings/Popup";
+import ChangeUsername from "./Settings/ChangeUsername";
+import ChangeEmail from "./Settings/ChangeEmail";
+import ProtectedTweets from "./Settings/ProtectedTweets";
+import TweetPage from "./Tweet/TweetPage";
 
 function App(props) {
   // var userName=localStorage.getItem("UserProfile");
@@ -54,6 +62,14 @@ function App(props) {
             exact
             element={
               <Home
+                weekdayName={props.weekdayName}
+                month={props.month}
+                date={props.date}
+                year={props.year_toset_theyear_value}
+                time={props.time}
+                minutes={props.minutes}
+                hours={props.hours}
+                am_pm={props.am_pm}
                 flag_stop_working_from_poll_to_schedule={
                   props.flag_stop_working_from_poll_to_schedule
                 }
@@ -63,15 +79,13 @@ function App(props) {
               />
             }
           />
-          <Route path="/adminView/dashboard" element={<AdminView />} />
-          <Route path="/adminView/user" element={<AdminViewUser />} />
-          <Route path="/adminView/user/reports" element={<AdminReports />} />
+          <Route path="/admin/dashboard" element={<AdminView />} />
+          <Route path="/admin/user" element={<AdminViewUser />} />
+          <Route path="/admin/:user/reports" element={<AdminReports />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />
-          <Route path="/:userName" element={<Profile />} />
-          <Route path={"/" + UserName} element={<Profile />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />  
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
@@ -84,15 +98,44 @@ function App(props) {
           <Route path={"/" + UserName + "/likes"} element={<Profile />} />
           <Route path={"/" + UserName + "/followers"} element={<Followers />} />
           <Route
-            path={"/" + UserName + "/followings"}
+            path={"/" + UserName + "/following"}
             element={<Followings />}
           />
           <Route path="/:username/with_replies" element={<Profile />} />
           <Route path="/:username/media" element={<Profile />} />
           <Route path="/:username/likes" element={<Profile />} />
           <Route path="/:username/followers" element={<Followers />} />
-          <Route path="/:username/followings" element={<Followings />} />
+          <Route path="/:username/following" element={<Followings />} />
           <Route path="/whotofollow" element={<ShowMoreOFWhoToFollow />} />
+          <Route
+            path="/settings/accountinformation"
+            element={<AccountInformation />}
+          />
+          <Route path="/settings/changepassword" element={<ChangePassword />} />
+          <Route
+            path="/settings/deactivateaccount"
+            element={<DeactivateAccount />}
+          />
+          <Route path="/settings/confirmdeactivate" element={<Popup />} />
+          <Route path="/settings/changeusername" element={<ChangeUsername />} />
+          <Route path="/settings/changeemail" element={<ChangeEmail />} />
+          <Route
+            path="/settings/protectedtweets"
+            element={<ProtectedTweets />}
+          />
+          <Route path={"/"+UserName+"/status/:TweetId"} element={<TweetPage />} />
+          <Route path={"/:username/status/:TweetId"} element={<TweetPage
+          weekdayName={props.weekdayName}
+            month={props.month}
+            date={props.date}
+            year={props.year_toset_theyear_value}
+            time={props.time}
+            minutes={props.minutes}
+            hours={props.hours} 
+            am_pm={props.am_pm}
+            flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule}  
+            flag={props.flag}  
+            flagconfirm={props.flagconfirm} />} />
         </Routes>
       </div>
     </BrowserRouter>

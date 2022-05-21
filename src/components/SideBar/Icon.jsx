@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Icon.css";
+import ReactDOM from "react-dom";
+import App from "../App";
+
 /**
  *
  * @param {object} props active, iconText, iconPic, NavLink
@@ -22,6 +25,6 @@ function Icon({ active, iconText, IconPic, link }) {
       </div>
     </NavLink>
   );
-}
+  };
 export default Icon;
 //pass a component as a prop

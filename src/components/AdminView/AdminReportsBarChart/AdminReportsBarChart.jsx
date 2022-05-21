@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import getTopReports from "./AdminReportsBarChartInfo";
+import dashBoardStats from "../AdminUserChartInfo";
 
 /**
  * @description Component that represents a bar chart representing the top 5 reported users
@@ -21,8 +22,8 @@ function AdminReportsBarChart() {
   const [topReported, setTopReported] = React.useState([]);
   React.useEffect(() => {
     (async () => {
-      const resp = await getTopReports();
-      setTopReported(resp);
+      const resp = await dashBoardStats();
+      setTopReported(resp.TopReported);
     })();
   }, []);
   return (
