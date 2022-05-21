@@ -29,8 +29,15 @@ import SideBar from "../../../SideBar/SideBar";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
+import axios from "axios";
+import { calendericon } from"../../constants/inlinestyling_inputetext"
+import { calenderstatus } from "../../constants/inlinestyling_inputetext"
 
-function IconSchedule(props) {
+// 1.h3red mn e backend el scheduled tweets plus el drafts
+
+function IconSchedule(props)
+ {
+
   let currentDate = new Date();
 
   // function+variables to open and close the pop up page
@@ -51,7 +58,6 @@ function IconSchedule(props) {
   let [month, setmonth] = React.useState(
     convert_monthnumber_to_name(monthnumber)
   );
-
   let [year, setyear] = React.useState(currentDate.getFullYear());
   let [year_toset_theyear_value, set_year_toset_theyear_value] = React.useState(
     currentDate.getFullYear()
@@ -90,8 +96,65 @@ function IconSchedule(props) {
   var [deleteScheduledTweets, set_deleteScheduledTweets] = React.useState(0);
   var [editScheduledTweets, set_editScheduledTweets] = React.useState(0);
   const [TweetButtonPopUpPage, setTweetButtonPopUpPage] = React.useState(0);
+  let [arrayofscheduledtweets, setarrayofscheduledtweets] = React.useState([
+    {
+      content: "",
+      weekdayName: "",
+      month: 0,
+      date: 0,
+      year: 0,
+      time: "",
+      am_pm: "",
+    },
+  ]);
+  const [tabvalue, settabvalue] = React.useState(1);
+
+  function showstweets(value, index) {
+    arrayofscheduledtweets.push({
+      content: props.content,
+      weekdayName: props.weekdayName,
+      month: props.month,
+      date: props.date,
+      year: props.year,
+      time: props.time,
+      am_pm: props.am_pm,
+    });
+    console.log("arrayofscheduledtweets" + arrayofscheduledtweets);
+    if (index !== 0) {
+      return (
+        <div>
+          <CalendarMonthOutlinedIcon 
+          sx={{
+            marginTop:"0%",
+            marginBottom: "10%",
+            borderColor:'grey',
+            border:'1px',
+            marginLeft: "7%",
+            width: "3%",
+            height: "3%",
+            transform: "translate(-50%, -50%)",}} />
+          <h3 style={ {
+            marginTop: "-5%",
+            marginLeft: "10%",
+            fontSize: "95%",
+            fontFamily:'"Gill Sans", "Gill Sans MT", "Calibri", "Trebuchet MS", sans-serif',
+            fontWeight: "lighter",
+            color: "rgb(115, 115, 115)",}} >
+            {" "}
+            Will send on {arrayofscheduledtweets.weekdayName} ,
+            {arrayofscheduledtweets.month} {arrayofscheduledtweets.date},
+            {arrayofscheduledtweets.year} at {arrayofscheduledtweets.time}
+            {arrayofscheduledtweets.am_pm}{" "}
+          </h3>
+          <p>{arrayofscheduledtweets.content}</p>
+        </div>
+      );
+    }
+    // setarrayofscheduledtweets(arrayofscheduledtweets);
+  }
   //bydisplayel days mn 0 l 5
   //functions to convert the date from a numerical value from 0 to 6 to a week day name
+
   function getName(day) {
     if (day === 0) return "Sun";
     else if (day === 1) return "Mon";
@@ -104,29 +167,29 @@ function IconSchedule(props) {
 
   //converting the number of months to a name
   function convert_monthnumber_to_name(monthnumber) {
-    if (monthnumber === "1") {
+    if (monthnumber == 1) {
       return "Jan";
-    } else if (monthnumber === "2") {
+    } else if (monthnumber == 2) {
       return "Feb";
-    } else if (monthnumber === "3") {
+    } else if (monthnumber == 3) {
       return "Mar";
-    } else if (monthnumber === "4") {
+    } else if (monthnumber == 4) {
       return "Apr";
-    } else if (monthnumber === "5") {
+    } else if (monthnumber == 5) {
       return "May";
-    } else if (monthnumber === "6") {
+    } else if (monthnumber == 6) {
       return "Jun";
-    } else if (monthnumber === "7") {
+    } else if (monthnumber == 7) {
       return "Jul";
-    } else if (monthnumber === "8") {
+    } else if (monthnumber == 8) {
       return "Aug";
-    } else if (monthnumber === "9") {
+    } else if (monthnumber == 9) {
       return "Sep";
-    } else if (monthnumber === "10") {
+    } else if (monthnumber == 10) {
       return "Oct";
-    } else if (monthnumber === "11") {
+    } else if (monthnumber == 11) {
       return "Nov";
-    } else if (monthnumber === "12") {
+    } else if (monthnumber == 12) {
       return "Dec";
     }
   }
@@ -194,6 +257,8 @@ function IconSchedule(props) {
     props.setam_pm(am_pm);
     props.setweekdayName(weekdayName);
     props.setflag2_toschedule(2);
+
+    
   }
 
   function handlemonths(event) {
@@ -308,9 +373,9 @@ function IconSchedule(props) {
   }
   function handleScheduledTweets() {
     //hncheeck 3la 3en fy scheduled tweets wla la
-    if (props.scheduledtweets !== undefined) {
-      set_showScheduledTweets(1);
-    } else set_showScheduledTweets(0);
+    // if (props.scheduledtweets !== undefined) {
+    //   set_showScheduledTweets(1);
+    // } else set_showScheduledTweets(0);
   }
   function handledraft() {}
   function backToSchedule() {
@@ -673,7 +738,7 @@ function IconSchedule(props) {
                   <div className="secounddiv">
                     {/* el div kolo shghel lma mykonsh fy tweets bs */}
                     <DialogContent sx={{ style1 }}>
-                      <Tabs sx={{ marginLeft: "0%" }} value={1}>
+                      <Tabs sx={{ marginLeft: "0%" }} value={tabvalue}>
                         <Tab
                           label="Drafts"
                           sx={{
@@ -683,7 +748,7 @@ function IconSchedule(props) {
                               backgroundColor: "#D8D8D8",
                             },
                           }}
-                          onClick={handledraft}
+                          onClick={() => settabvalue(1)}
                           value={1}
                         />
                         <Tab
@@ -696,12 +761,13 @@ function IconSchedule(props) {
                             },
                           }}
                           label="scheduled tweets"
-                          onClick={handleScheduledTweets}
+                          onClick={() => settabvalue(2)}
                           value={2}
                         />
                       </Tabs>
                     </DialogContent>
-                    {showScheduledTweets === 0 && (
+
+                    {props.scheduledtweets !== 1 && tabvalue === 2 && (
                       <div>
                         <img
                           className="scheduledtweets_background"
@@ -717,28 +783,25 @@ function IconSchedule(props) {
                         </h3>
                       </div>
                     )}
-                    {showScheduledTweets === 1 && (
-                      <div>
-                        {props.scheduledtweets.map(function showstweets() {
-                          return (
-                            <div>
-                              <CalendarMonthOutlinedIcon />
-                              <h3>
-                                {" "}
-                                Will send on {
-                                  props.scheduledtweets.weekdayName
-                                }{" "}
-                                , {props.scheduledtweets.month}{" "}
-                                {props.scheduledtweets.date},
-                                {props.scheduledtweets.year} at{" "}
-                                {props.scheduledtweets.time}{" "}
-                                {props.scheduledtweets.am_pm}{" "}
-                              </h3>
-                              <p>{props.scheduledtweets.content}</p>
-                            </div>
-                          );
-                        })}
-                      </div>
+
+                    {props.scheduledtweets === 1 && tabvalue === 2 && (
+                      <div>{props.scheduled_tweets.map(showstweets)}</div>
+                    )}
+                     {tabvalue === 1 && (
+                       <div>
+                       <img
+                         className="scheduledtweets_background"
+                         src="https://abs.twimg.com/sticky/illustrations/empty-states/alarm-clock-800x400.v1.png"
+                         alt=""
+                       />
+                       <h1 className="heading1">Hold that thought</h1>
+                       <h3 className="heading2_part1">
+                         Not ready to send a Tweet just yet? Save it to your
+                       </h3>
+                       <h3 className="heading2_part2">
+                         drafts or schedule it for later
+                       </h3>
+                     </div>
                     )}
                   </div>
                 </DialogContent>

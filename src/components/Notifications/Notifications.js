@@ -10,6 +10,8 @@ import LikeNotif from "./LikeNotif";
 import EmptyNotifications from "./EmptyNotifications";
 import getNotifications from "./Notifsdb";
 import axios from "axios";
+import SearchBox from "../Search/SearchBox"
+import WhoToFollow from "../WhoToFollow/WhoToFollow";
 
 function Notifications() {
   //-----test--------//
@@ -101,9 +103,16 @@ function Notifications() {
         {empty === false && Notif.map(mapNotifications)}
       </div>
       <div className="widgets">
-        <div className="search">search</div>
+      <div className="search"> 
+        <SearchBox size="40"  
+            styling=
+            { {width: "30%",
+            marginTop: "-15.5%",
+            marginLeft: "70%",
+            height:'60%',}}/>
+          </div> 
         <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">who to follow</div>
+        <div className="whoToFollow">  <WhoToFollow /> </div>
       </div>
     </div>
   );

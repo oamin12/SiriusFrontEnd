@@ -44,6 +44,11 @@
   cursor: pointer;
   margin-left: -230%;
 }
+.MediaTweetButton {
+  color: rgb(29, 161, 242);
+  cursor: pointer;
+  margin-left: -230%;
+}
 .Poll {
   color: rgb(29, 161, 242);
   cursor: pointer;

@@ -21,6 +21,8 @@ import { schedulebutton } from "./inlinestyling_inputetext";
 import { schedulebutton_popuppage } from "./inlinestyling_inputetext";
 import { calendericon } from "./inlinestyling_inputetext";
 import { calenderstatus } from "./inlinestyling_inputetext";
+// 1.dlw2ty el user lma hydos schedule fy el input text el data el fy el schedule htroh lel backend
+
 var token = sessionStorage.getItem("tokenValue");
 
 /**
@@ -30,6 +32,7 @@ var token = sessionStorage.getItem("tokenValue");
  * @returns A div that renders this component
  */
 function Inputtext(props) {
+  const [savetweets, setsavetweets] = React.useState(false); //3shan a3ref en fy tweets saved f a save el text e fy textarea
   const [anchorEl, setAnchorEl] = React.useState(null);
   let [flag2, setflag2] = React.useState(0);
   let [text, settext] = React.useState("");
@@ -60,10 +63,10 @@ function Inputtext(props) {
   let [month, setmonth] = React.useState("");
   let [am_pm, setam_pm] = React.useState("");
   let [flag2_toschedule, setflag2_toschedule] = React.useState(1);
+  const [scheduledtweetsflag, setscheduledtweetsflag] = React.useState(0);
+  let [i, seti] = React.useState(1);
   const uploadImage = async (e) => {
-    console.log(
-      "flag stop working from upload image1 =" + props.flag_tweetpopuppage
-    );
+    console.log("2" + props.flag_tweetpopuppage);
     set_flag_stop_working(1);
     if (counter_for_images < 5) {
       const files = e.target.files;
@@ -98,6 +101,10 @@ function Inputtext(props) {
     setInputStr((prevInput) => prevInput + emojiObject.emoji);
     setShowPicker(false);
   };
+  function handleimage() {
+    console.log(props.flag_tweetpopuppage + "bassant");
+    set_counter_for_images(++counter_for_images);
+  }
   function handle_delete_img1() {
     setImage(
       image.filter(function (element) {
@@ -185,7 +192,7 @@ function Inputtext(props) {
             return error.response;
           }
         }
-        console.log(response);
+        // console.log(response);
         return response;
       }
       PostTweet();
@@ -204,17 +211,19 @@ function Inputtext(props) {
     }
     if (flag2 === 2) {
       // text = "";
-      setInputStr("");
+
       //b save el tweets 3shan a3redha fy el scheduled tweets fy el schedular
       scheduled_tweets.push({
-        content: text,
-        weekdayName: props.weekdayName,
-        month: props.month,
-        time: props.time,
-        date: props.date,
-        year: props.year,
-        am_pm: props.am_pm,
+        content: inputStr,
+        weekdayName: weekdayName,
+        month: month,
+        time: time,
+        date: date,
+        year: year,
+        am_pm: am_pm,
       });
+      // seti(++i)
+      setInputStr("");
       set_scheduled_tweets(scheduled_tweets);
       //b3mel delete lel images lma ados schedule
       handle_delete_img2();
@@ -224,6 +233,9 @@ function Inputtext(props) {
       if (props.flag_tweetpopuppage === 1) {
         props.settextPassedToTheTweetbutton(false);
       }
+      setflag2_toschedule(1);
+
+      setscheduledtweetsflag(1);
       // scheduled_tweets.unshift( { id:3 ,weekday : props.weekdayName , month:props.month , daynumber:props.weekday_number ,year:props.year ,am_pm:props.am_pm ,content:text })
       //console.log(scheduled_tweets)
     }
@@ -231,14 +243,14 @@ function Inputtext(props) {
   function handleChange(event) {
     //check on the length of the text if >280 then change the tweet img
     text = event.target.value;
-    if (props.flag2_toschedule === 2) {
+    if (flag2_toschedule === 2) {
       if (text.length === 0 || text.length > 280) {
         flag2 = 0;
         setflag2(0);
         setInputStr(text);
       } else if (280 >= text.length && text.length > 0) {
-        flag2 = 1;
-        setflag2(1);
+        flag2 = 2;
+        setflag2(2);
         setInputStr(text);
       }
     } else {
@@ -268,6 +280,8 @@ function Inputtext(props) {
   }
   return (
     <div>
+      {console.log("1" + props.flag_tweetpopuppage)}
+
       {flag2_toschedule !== 0 ? (
         <div className="cont3">
           <div className="cont2">
@@ -301,7 +315,7 @@ function Inputtext(props) {
               )}
               <input
                 type="image"
-                src="https://abs.twimg.com/sticky/illustrations/empty-states/alarm-clock-800x400.v1.png"
+                src={image[0]}
                 alt=""
                 className="image_to_beuploaded"
               />
@@ -535,21 +549,30 @@ function Inputtext(props) {
           <div className="icons">
             <div className="image-upload">
               <label htmlFor="file-input">
-                {/* {console.log(
-                    "flag stop working before icon media =" +
-                      props.flag_tweetpopuppage
-                  )} */}
+                {console.log(
+                  "flag stop working before icon media =" +
+                    props.flag_tweetpopuppage
+                )}
                 <CollectionsIcon className={props.classname_media} />
               </label>
-              <input id="file-input" type="file" onChange={uploadImage} />
+              <input id="file-input" type="file" onChange={handleimage} />
             </div>
             <SentimentSatisfiedAltIcon
               className={props.classname_emoji}
               onClick={open_pop_over}
             />
+
+            {/* scheduled_tweets={scheduled_tweets}
+              content= {scheduled_tweets[i].content}
+              weekdayName= {scheduled_tweets[i].weekdayName}
+              month=  {scheduled_tweets[i].month}
+              time= {scheduled_tweets[i].time}
+              date= {scheduled_tweets[i].date}
+              year= {scheduled_tweets[i].year}
+              am_pm= {scheduled_tweets[i].am_pm}  */}
             <IconGif classname={"Gif"} />
             <IconSchedule
-              scheduled_tweets={props.scheduled_tweets}
+              scheduledtweetsflag={scheduledtweetsflag}
               classname={"Schedule"}
               flagconfirm={props.flagconfirm}
               setweekdayName={setweekdayName}
@@ -559,6 +582,7 @@ function Inputtext(props) {
               setmonth={setmonth}
               setam_pm={setam_pm}
               setflag2_toschedule={setflag2_toschedule}
+              setscheduledtweets={setscheduledtweetsflag}
             />
           </div>
         )}

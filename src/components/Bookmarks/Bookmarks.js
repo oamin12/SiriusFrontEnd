@@ -8,6 +8,8 @@ import getUser from "../User";
 import EmptyBookmarksPage from "./EmptyBookmarksPage";
 import getBookmarks from "./BookmarkedTweets";
 import axios from "axios";
+import SearchBox from "../Search/SearchBox"
+import WhoToFollow from "../WhoToFollow/WhoToFollow";
 
 function getTweet(tweet) {
   return (
@@ -103,9 +105,16 @@ function Bookmarks() {
         {empty === false && BookmarkedTweets.map(getTweet)}
       </div>
       <div className="widgets">
-        <div className="search">search</div>
+          <div className="search"> 
+        <SearchBox size="40"  
+            styling=
+            { {width: "30%",
+            marginTop: "-15.5%",
+            marginLeft: "70%",
+            height:'60%',}}/>
+          </div> 
         <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">who to follow</div>
+        <div className="whoToFollow">  <WhoToFollow /> </div>
       </div>
     </div>
   );
