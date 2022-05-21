@@ -55,7 +55,22 @@ const styleReport = {
   justifyContent: "flex-start",
   flexDirection: "column",
 };
-
+const style_EditProfile = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  height:500,
+  bgcolor: "background.paper",
+  border: "0px",
+  boxShadow: 24,
+  p: 4,
+  borderRadius: "8px",
+  display: "flex",
+  flexDirection: "column",
+  overflow:"auto",
+};
 /**
  * @description profile page with all the information of visited user or the logged in user
  * @param {object} props username - name - profile picture - cover photo - bio - location - birthdate - joined data
@@ -69,6 +84,10 @@ function ProfileData(props) {
   const [MediaSelected, setPage] = useState(false);
   //UseState for edit profile button
   const [hoverOverLike, setHoverLike] = useState(false);
+  const [hoverOverSave, setHoverSave] = useState(false);
+  const [openModalEP, setOpenModalEP] = React.useState(false);
+
+
   //UseState to keep track of following and unfollowing users
   const [changeFollow, setChangeFollow] = useState(false);
   const [followed, setFollowed] = useState(props.followed);
@@ -159,6 +178,26 @@ function ProfileData(props) {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=6" ,{}, { headers: { Authorization: "Bearer " + token } });
       })(); 
   }
+
+  function handleClickEP(event) {
+    setOpenModalEP(event.currentTarget)
+    console.log("edit clicked");
+  }
+  function handleModalCloseEP() {
+    setOpenModalEP(false);
+  }
+    function SaveEdits()
+    {
+        
+    }
+  function isOverBtnSave()
+    {
+        setHoverSave(true);
+    }
+    function isOutBtnSave()
+    {
+        setHoverSave(false);
+    }
     function handleChange() {
       setPage(true);
     }
@@ -218,7 +257,7 @@ function ProfileData(props) {
     <div className="profile__data">
       <div className="header">
         <div className="ArrowIcon">
-          <NavLink to="/home">
+          <NavLink to="/home" className="link_profile">
             <ArrowBackIcon fontSize="small" />
           </NavLink>
         </div>
@@ -238,7 +277,8 @@ function ProfileData(props) {
         />
         <div className="edit__btn">
           {props.isMe ? (
-            <button
+            <div><button
+              onClick={handleClickEP}
               onMouseOver={isOverBtn}
               onMouseOut={isOutBtn}
               style={{ backgroundColor: hoverOverLike ? "#F5F8FA" : "white" }}
@@ -246,6 +286,39 @@ function ProfileData(props) {
             >
               <b>Edit profile</b>
             </button>
+            <Modal open={openModalEP} onClose={handleModalCloseEP}>
+                            <Box style={{"padding-top":"0px"}} sx={style_EditProfile}>
+                            <div className="modalHeader" style={{"display":"flex"}}>
+                            <h2 >Edit Profile</h2>
+                            <button onClick={SaveEdits} onMouseOver={isOverBtnSave} onMouseOut={isOutBtnSave}  className="Save__btn" >
+                            <b style={{"color":"white", "textAlign":"center"}}>Save</b>
+                            </button>
+                            </div>
+                            <div className="profile__head">
+                                <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
+                                <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
+                            </div>
+                            <div>
+                                <div className="Edit_boxName">
+                                    <p style={{"padding-left": "10px"}}>Name</p>
+                                    <input className="edit_ipBox" autocapitalize="sentences" autocomplete="off" maxlength="50" name="displayName" type="text" dir="auto"  ></input>
+                                </div>
+                                <div className="Edit_boxBio">
+                                    <p style={{"padding-left": "10px"}}>Bio</p>
+                                    <input className="edit_ipBoxBio" autocapitalize="sentences" autocomplete="off" maxlength="160" name="displayName" type="text"  ></input>
+                                </div>
+                                <div className="Edit_boxLoc">
+                                    <p style={{"padding-left": "10px"}}>Location</p>
+                                    <input className="edit_ipBox" autocapitalize="sentences" autocomplete="off" maxlength="30" name="displayName" type="text" dir="auto"  ></input>
+                                </div>
+                                <div className="Edit_boxWeb">
+                                    <p style={{"padding-left": "10px"}}>Website</p>
+                                    <input className="edit_ipBox" autocapitalize="sentences" autocomplete="off" maxlength="100" name="displayName" type="text" dir="auto"  ></input>
+                                </div>
+                            </div>
+                        </Box>
+                        </Modal>
+            </div>
           ) : (
             <div className="visitedProfile">
               <button className="notifAndMoreBtn" onClick={handleSettings}>
