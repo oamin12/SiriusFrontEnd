@@ -43,12 +43,12 @@ const renderCustomizedLabel = ({
  */
 function AdminChartWidget() {
   const [topTrendingTweets, setTopTrendingTweets] = React.useState([]);
-  React.useEffect(() => {
-    (async () => {
-      const resp = await getTopTrendingTweets();
-      setTopTrendingTweets(resp);
-    })();
-  }, []);
+  // React.useEffect(() => {
+  //   (async () => {
+  //     const resp = await getTopTrendingTweets();
+  //     setTopTrendingTweets(resp);
+  //   })();
+  // }, []);
   return (
     <div className="AdminChartWidget">
       <h2
@@ -65,7 +65,7 @@ function AdminChartWidget() {
       <div>
         <ResponsiveContainer height={200}>
           <PieChart width={730} height={250}>
-            <Pie
+            {/* <Pie
               data={topTrendingTweets}
               dataKey="value"
               nameKey="name"
@@ -79,7 +79,7 @@ function AdminChartWidget() {
               {topTrendingTweets.map((entry, index) => (
                 <Cell  fill={COLORS[index]} />
               ))}
-            </Pie>
+            </Pie> */}
             <Tooltip
               wrapperStyle={{ width: "auto" }}
               itemStyle={{ color: "rgb(101, 119, 134)" }}
