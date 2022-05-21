@@ -6,26 +6,31 @@ import Tweet from "../Tweet/Tweet";
 import SideBar from "../SideBar/SideBar";
 import getUser from "../User";
 import EmptyBookmarksPage from "./EmptyBookmarksPage";
-import getBookmarks from "./BookmarkedTweets";
 import axios from "axios";
 
-function getTweet(tweet) {
-  return (
+
+function getTweet(tweet)
+{
+  
+  return(
     <Tweet
-      key={tweet.id}
-      id={tweet.id}
-      name={tweet.name}
-      userName={tweet.userName}
-      content={tweet.content}
-      avatar={tweet.avatar}
-      image={tweet.image}
-      video={tweet.video}
-      likeCount={tweet.likeCount}
-      repliesCount={tweet.repliesCount}
-      retweetCount={tweet.retweetCount}
-      bookMarked_flag={true}
+    key={tweet.key}
+    id={tweet.key}
+    name={tweet.name}
+    userName={tweet.username}
+    content={tweet.tweetBody}
+    avatar={tweet.userImage}
+    image={tweet.tweetMedia}
+    video=''
+    likeCount={tweet.favoritersCount}
+    repliesCount={tweet.repliesCount}
+    retweetCount={tweet.retweetersCount}
+    bookMarked_flag={tweet.isBookmarkedByUser}
+    retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
+    liked_flag={tweet.isLikedByUser==="false"?false:true}
     />
-  );
+
+  )
 }
 /**
  * @description A component which contains the bookmarks header component, the bookmarked tweets, sidebar, and the widgets component.
@@ -33,6 +38,12 @@ function getTweet(tweet) {
  */
 function Bookmarks() {
   const [BookmarkedTweets, setBookmarkedTweets] = React.useState([]);
+  const [BookmarkedTweetsId, setBookmarkedTweetsId] = React.useState([]);
+  const [BookmarkedSuccess,setBookmarkedSuccess] = React.useState("");
+  const [tweets,setTweetsArray] = React.useState([]);
+  const [tweetsInfo,setTweetsInfo ] = React.useState({});    
+  const [Name,setName ] = React.useState();
+
   const [User, setUser] = React.useState([]);
   const [wait, setWait] = React.useState(true);
 
@@ -41,17 +52,82 @@ function Bookmarks() {
   );
 
   //console.log(BookmarkedTweets);
+  var token=sessionStorage.getItem("tokenValue");
 
-  React.useEffect(() => {
-    (async () => {
-      const resp = await getBookmarks();
-      setBookmarkedTweets(resp);
-      if (resp.length === 0) {
-        setWait(false);
-      } else setEmpty(false);
-    })();
-  }, []);
-  //----getting User----//
+
+  async function GetTweetInfo(tweetid) {
+    let response = '';
+    let response2 = '';
+    try {
+      response = await axios.get('http://34.236.108.123:3000/home/'+tweetid+'/getTweetById',{ headers: { Authorization: "Bearer " + token }}).then((res) => res.data);
+      response2=response.tweetData;
+      response2['key']=tweetid;
+      setTweetsInfo(response2);
+      setTweetsArray(oldArray => [...oldArray,response2] );
+      setTweetsArray(...response2);
+      //tweets.push(response2);
+      setName(response.tweetData.name);
+      return (response2);
+    } catch (error) {
+      if (error.response) {
+        return (error.response);
+      }
+    }
+
+    return (response);
+  }
+//--getting Bookmarked Tweet---//
+    
+    var config = {
+      method: 'get',
+      url: 'http://34.236.108.123:3000/home/bookmarkedTweets',
+      headers: {Authorization:"Bearer "+token}
+      };
+    var config2 = {
+      method: 'delete',
+      url: 'http://34.236.108.123:3000/home/deleteBookmarkedTweets',
+      headers: {Authorization:"Bearer "+token}
+      };
+      async function getBookmarks() {
+      let response = '';
+      try {
+        response = await axios.get('http://34.236.108.123:3000/home/bookmarkedTweets',config).then((res) => res.data);
+        setBookmarkedTweetsId(response.bookmarkedTweets);
+        setBookmarkedSuccess(response.message);
+        return (response.bookmarkedTweets);
+      } catch (error) {
+        if (error.response) {
+          
+          return (error.response);
+        }
+      }
+      return (response);
+    }
+    React.useEffect(() => {
+      (async () => {
+        const resp = await getBookmarks();
+        setBookmarkedTweetsId(resp);  
+        if (resp.length === 0) 
+        {
+          setWait(false);
+        } else setEmpty(false);
+      })();
+      }, []);
+
+      if(BookmarkedSuccess==="Success")
+      {
+        for(let i = 0; i < BookmarkedTweetsId.length; i++)
+        {        
+          GetTweetInfo(BookmarkedTweetsId[i]);
+        }
+        
+        
+        console.log(tweets);
+        setBookmarkedSuccess("done");
+      } 
+ 
+ 
+      // ----getting User----//
   React.useEffect(() => {
     (async () => {
       const resp = await getUser();
@@ -69,12 +145,9 @@ function Bookmarks() {
     if (index === true) {
       // post request
       (async () => {
-        for (let i = 0; i < BookmarkedTweets.length; i++) {
           await axios.delete(
-            "http://localhost:3001/Bookmarks/" + BookmarkedTweets[i].id
+            'http://34.236.108.123:3000/home/deleteBookmarkedTweets',config2
           );
-          console.log(BookmarkedTweets[i].id);
-        }
         const resp = await getBookmarks();
         setBookmarkedTweets(resp);
         setEmpty(true);
@@ -100,7 +173,7 @@ function Bookmarks() {
           handleIndex={HandleIndex}
         />
         {empty === true && wait === false && <EmptyBookmarksPage />}
-        {empty === false && BookmarkedTweets.map(getTweet)}
+        {empty === false && BookmarkedSuccess==="done" &&tweets.map(getTweet)}
       </div>
       <div className="widgets">
         <div className="search">search</div>

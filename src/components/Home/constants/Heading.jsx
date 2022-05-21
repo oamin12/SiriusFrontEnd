@@ -5,6 +5,6 @@ import "../index.css";
  * @returns {div} A div that contains this component
  */
 function Heading(props) {
-  return <h2 className={props.classname}>{props.title}</h2>;
+  return <h2 className={props.classname}><div className="Heading_title">{props.title}</div></h2>;
 }
 export default Heading;

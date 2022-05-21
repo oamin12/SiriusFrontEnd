@@ -1,7 +1,7 @@
-.whotofollow {
+.WhatsHappening {
 
 }
-.whotofollow_heading {
+.WhatsHappening_heading {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 130%;
   color: black;
@@ -10,7 +10,7 @@
   border: 1px solid rgb(247 249 249);
 
 }
-.Suggested_heading {
+.WhatsHappening_suggested_heading {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-size: 130%;
   color: black;
@@ -19,20 +19,8 @@
   border: 1px solid white;
   margin-top: 4%;
 }
-.connect_heading {
-  font-family: Helvetica Neue, Arial, sans-serif;
-  font-size: 130%;
-  color: black;
-  text-align: left;
-  height: auto;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: white;
-  border: 1px solid white;
-  margin-left: -84%;
-  margin-top: 2%;
-}
-.cont1 {
+
+.Seemore_wtshpn {
   display: flex;
+  color: #45acf2;
 }

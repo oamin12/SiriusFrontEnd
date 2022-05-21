@@ -1,0 +1,41 @@
+.header {
+
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    font-size:120%;
+    color:black;
+    text-align: left;
+    height: 53px;
+    position: sticky;
+    top: 0;
+    background-color: #F5F8FA;
+    z-index: 100;
+    border: 1px solid white;
+    padding: 15px;
+    opacity: 80%;
+}
+
+.link_text{
+    color: black;
+    width: min-content;
+  
+  }
+.TweetStats
+{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid #f1f4f5;
+    max-width: 628px;
+}
+.TweetStats_likers{
+    padding-bottom: 10px;   
+    display: flex;
+
+}
+.TweetStats_retweeters{
+
+    display: flex;
+    padding-left: 10px;
+    padding-bottom: 10px; 
+}

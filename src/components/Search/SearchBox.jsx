@@ -74,7 +74,7 @@ function SearchBox(props) {
       <input
         className="searchBox"
         type="text"
-        placeholder="Search Twitter"
+        placeholder="Search Sirius"
         size={props.size}
         onClick={OpenSearchMenu}
         onChange={OpenSearchMenu}
