@@ -1,0 +1,38 @@
+.header-email {
+  margin-top: 20px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+.email-email {
+  width: 600px;
+  height: 55px;
+  outline: none;
+  border: 1px solid rgb(211, 210, 210);
+  border-radius: 4px;
+  padding-left: 10px;
+  position: fixed;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.email-email::placeholder {
+  font-size: 18px;
+}
+.email-email:focus {
+  border: 1px solid #00acee;
+}
+.update-email {
+  position: fixed;
+  display: block;
+  width: 644px;
+  height: 60px;
+  margin-top: 5px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #00acee;
+  background-color: white;
+  border: 0;
+}
+.update-email:hover {
+  background: #1f94dd16;
+  cursor: pointer;
+}

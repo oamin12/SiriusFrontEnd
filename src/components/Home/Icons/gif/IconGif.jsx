@@ -1,12 +1,10 @@
 import React from "react";
-
-function IconGif(props)
-{
-  return(
+import GifBoxOutlinedIcon from "@mui/icons-material/GifBoxOutlined";
+function IconGif(props) {
+  return (
     <div>
-  <input type="image" className={props.classname}
-      src={props.img} alt=""/>
-           </div>
-)
+      <GifBoxOutlinedIcon className={props.classname} />
+    </div>
+  );
 }
-export default IconGif
+export default IconGif;

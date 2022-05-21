@@ -17,7 +17,8 @@ import TagIcon from "@mui/icons-material/Tag";
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import SideBarFooter from "./SideBarFooter";
-
+import TweetPopUpPage from "./TweetPopUpPage";
+let isAdmin = true;
 var UserName = localStorage.getItem("UserName");
 const iconInfo = [
   {
@@ -100,25 +101,52 @@ function CreateIcons(icons) {
     );
   }
 }
+
 /**
  *@description Component which is the sidebar which conatins all the navigation routes of the website and the website header
  * @returns {div} a div that returns that component
  */
-function SideBar() {
+function SideBar(props) {
+  const [Open, setOpen] = React.useState(false); //open main popup page of the tweet
+
+  function createTweetPopUpPage() {
+    setOpen(true);
+  }
+
   return (
     <div className="sideBarParent">
-      <div className="sideBar">
-        <NavLink to="/home">
-          <h1 className="logo">Sirius</h1>
-        </NavLink>
-        {iconInfo.map(CreateIcons)}
-        <button className="tweetButtonSideBar">Tweet</button>
-        <SideBarFooter
-          username={accountInfo.username}
-          name={accountInfo.name}
-          picture={accountInfo.picture}
-        />
-      </div>
+      {/* msh 3yza ytrender tany lma arender el page bt3et post a tweet from the schedule */}
+
+      {props.TweetButtonPopUpPage !== 1 && (
+        <div>
+          <div className="sideBar">
+            <NavLink to="/home">
+              <h1 className="logo">Sirius</h1>
+            </NavLink>
+            {iconInfo.map(CreateIcons)}
+            <button
+              className="tweetButtonSideBar"
+              onClick={createTweetPopUpPage}
+            >
+              Tweet
+            </button>
+            {isAdmin?
+          <NavLink to="/admin/dashboard">
+              <button className="tweetButtonSideBar">
+              Switch to Admin
+              </button>
+          </NavLink>
+          :null}
+            <SideBarFooter
+              username={accountInfo.username}
+              name={accountInfo.name}
+              picture={accountInfo.picture}
+            />
+          </div>
+        </div>
+      )}
+      <TweetPopUpPage setOpen={setOpen} Open={Open} />
+
     </div>
   );
 }

@@ -473,3 +473,4 @@ node_modules/.cache/default-development/12.pack
 node_modules/.cache/default-development/10.pack
 node_modules/.cache/default-development/0.pack
 node_modules/.cache/.eslintcache
+*.pack

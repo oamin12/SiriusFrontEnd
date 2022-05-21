@@ -24,12 +24,13 @@
     "followingCount": 30,
     "tweetsCount": 50,
     "bio": "Software Engineer ❤️ Dev Ops!",
-    "location": "Egypt",
+    "location": "Egypt, Cairo",
     "website": "www.facebook.com",
-    "bdate": "Born October 1, 1995",
+    "birthdate": "Born October 1, 1990",
     "joineddate": "Joined October 2019",
     "coverphoto": "",
-    "profilepic": ""
+    "profilepic": "",
+    "isMe": false
   },
   "profile": {
     "id": 1,
@@ -160,7 +161,7 @@
     },
     {
       "name": "Friday",
-      "Users": 200
+      "Users": 100
     }
   ],
   "UserStats": [
@@ -176,48 +177,6 @@
     }
   ],
   "AllUsers": [
-    {
-      "id": 3,
-      "name": "Charlie Puth",
-      "username": "@charlieputh",
-      "bio": "",
-      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Neymar",
-      "username": "@Neymarxv",
-      "bio": "",
-      "imgURL": "https://pbs.twimg.com/profile_images/1508423975793274881/Z3mj7Uq9_400x400.jpg"
-    },
-    {
-      "id": 5,
-      "name": "Beyonce",
-      "username": "@Beyonce",
-      "bio": "",
-      "imgURL": "https://pbs.twimg.com/profile_images/1490488622163763203/9DSoh1oE_400x400.jpg"
-    },
-    {
-      "id": 6,
-      "name": "Robert Lewandowski",
-      "username": "@lewy_official",
-      "bio": "🇵🇱 l ❌ | 🙅🏻‍♂️ l #rl9",
-      "imgURL": "https://pbs.twimg.com/profile_images/1437890233417220101/FAlresZr_400x400.jpg"
-    },
-    {
-      "id": 7,
-      "name": "Charlie Puth",
-      "username": "@charlieputh",
-      "bio": "",
-      "imgURL": "https://pbs.twimg.com/profile_images/1484912807363579907/N4fSfmT__400x400.jpg"
-    },
-    {
-      "id": 8,
-      "name": "Neymar",
-      "username": "@Neymarxv",
-      "bio": "",
-      "imgURL": "https://pbs.twimg.com/profile_images/1508423975793274881/Z3mj7Uq9_400x400.jpg"
-    },
     {
       "id": 9,
       "name": "Beyonce",
@@ -321,42 +280,92 @@
   ],
   "Tweets": [
     {
+      "createdAt": "2022-05-20T01:52:53.040Z",
+      "email": "user1@gmail.com",
+      "favoritersCount": 0,
+      "firstChoice": "",
+      "firstChoiceStats": 0,
+      "fourthChoice": "",
+      "fourthChoiceStats": 0,
+      "hashtags": [],
+      "isAdmin": false,
+      "isBookmarkedByUser": false,
+      "isLikedByUser": "false",
+      "isRetweetedByUser": "false",
+      "name": "user1",
+      "poll": "false",
+      "repliesCount": 0,
+      "retweetersCount": 0,
+      "secondChoice": "",
+      "secondChoiceStats": 0,
+      "taggedUsers": [],
+      "thirdChoice": "",
+      "thirdChoiceStats": 0,
+      "tweetBody": "s",
+      "tweetMedia": [],
+      "userImage": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1238.jpg",
+      "username": "user1"
+    }
+  ],
+  "Notifications": [
+    {
+      "id": 0,
+      "type": 1,
+      "blockDays": 3,
+      "status": "old"
+    },
+    {
       "id": 1,
-      "name": "Omar Amin",
-      "userName": "OfficialOamin",
-      "content": "THE GOAT aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa🐐",
-      "avatar": "https://scontent.fcai20-4.fna.fbcdn.net/v/t39.30808-6/267864635_2201623549975672_7027269087670734262_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=thNg9dccMNQAX8VSP9z&_nc_ht=scontent.fcai20-4.fna&oh=00_AT-LywMyhOSkTUQ9r6HP30lK7n4A-Bh1mgch-YAYDo5pyA&oe=6251462C",
-      "image": [
-        "https://tmssl.akamaized.net/images/foto/galerie/diego-maradona-1401100569-36.jpg?lm=1483605486",
-        "https://i.guim.co.uk/img/media/31fd0df59c553c6615364b505eced01fa453ae0c/0_114_4000_2400/master/4000.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=6eb496e0115187ffb7aec9a1101754c7"
-      ],
-      "likeCount": 14,
-      "repliesCount": 14,
-      "retweetCount": 14
+      "type": 2,
+      "userName": "Sohad",
+      "profilePic": "",
+      "tweetText": "hello from backend",
+      "status": "old"
     },
     {
       "id": 2,
-      "name": "CR7",
-      "userName": "halamadrid",
-      "content": "abooooood",
-      "avatar": "",
-      "image": "",
-      "likeCount": 0,
-      "repliesCount": 0,
-      "retweetCount": 0
+      "type": 3,
+      "userName": "Bassant",
+      "profilePic": "",
+      "tweetText": "hello from backend",
+      "status": "old"
     },
     {
       "id": 3,
-      "name": "abdo",
-      "userName": "abdo",
-      "content": "",
-      "avatar": "",
-      "image": [
-        "https://tmssl.akamaized.net/images/foto/galerie/diego-maradona-1401100569-36.jpg?lm=1483605486"
-      ],
-      "likeCount": 0,
-      "repliesCount": 0,
-      "retweetCount": 0
+      "type": 4,
+      "userName": "Bassant",
+      "profilePic": "",
+      "status": "old"
+    },
+    {
+      "id": 4,
+      "type": 4,
+      "userName": "Bassant",
+      "profilePic": "",
+      "status": "old"
+    }
+  ],
+  "TrendsData": [
+    {
+      "id": 1,
+      "number": "1",
+      "type": "Sports",
+      "name": "al Ahly",
+      "tweets_num": "200k"
+    },
+    {
+      "id": 2,
+      "number": "2",
+      "type": "News",
+      "name": "Africa",
+      "tweets_num": "22k"
+    },
+    {
+      "id": 5,
+      "number": "5",
+      "type": "News",
+      "name": "Ukraine",
+      "tweets_num": "40k"
     }
   ]
 }

@@ -9,12 +9,12 @@ import { NavLink} from "react-router-dom";
  * @returns {div} contains a Tab to navigate between followers and followings of user
  */
 function FollowTab(props){
-    return ( 
+    return (
         <div style={{height:"auto" , maxWidth:"635.29px"}}>
             <div className="header">
                 <div className="ArrowIcon">
                 <NavLink to={"/"+props.username}>
-                    <ArrowBackIcon fontSize="small" />   
+                    <ArrowBackIcon fontSize="small" />
                 </NavLink>
                 </div>
             <h2>{props.name}</h2>
@@ -23,7 +23,7 @@ function FollowTab(props){
                 <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/followers"}>
                 <Tab label="Followers" />
                 </NavLink>
-                <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/followings"}>
+                <NavLink style={{width:"317.15px", color:"black"}} to={"/"+props.username+"/following"}>
                 <Tab label="Followings" />
                 </NavLink>
             </Tabs>

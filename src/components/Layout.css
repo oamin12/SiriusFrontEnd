@@ -40,23 +40,51 @@
   text-align: center;
   position: sticky !important;
   z-index: 100 !important;
-  top:0;
+  top: 0;
 }
 .whatsHappening {
-  border: 2px solid rgb(245, 248, 250);
-  text-align: center;
+  border: 0px solid rgb(245, 248, 250);
+  position: sticky !important;
+  z-index: 100 !important;
+  top: 0 !important; /*bassant changed it from -1 to 0 this is before adding whats happinig*/
+  border-radius: 50px;
+  background-color: rgb(247 249 249);
+  margin-left: 10%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding:20px;
+  padding-right: 0px;
+  width: fit-content;
+  min-width: 348px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  
 }
 .whoToFollow {
   border: 0px solid rgb(245, 248, 250);
-  text-align: center;
   position: sticky !important;
   z-index: 100 !important;
-  top: -1 !important;
+  top: 0 !important; /*bassant changed it from -1 to 0 this is before adding whats happinig*/
+  border-radius: 50px;
+  background-color: rgb(247 249 249);
+  margin-left: 10%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding:20px;
+  padding-right: 0px;
+  width: fit-content;
+  min-width: 348px;
+  
+
 }
 
-@media (max-width:1020px) {
+@media (max-width: 1020px) {
   .widgets {
-      display: none;
+    display: none;
   }
 }
-  
+.Heading_title{
+  padding: 10px;
+}

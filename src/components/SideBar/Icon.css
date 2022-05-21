@@ -19,8 +19,6 @@
 
 .icon > h4 {
   font-weight: 100;
-  
-
 }
 .icon-active > h4 {
   font-weight: 600;
@@ -40,4 +38,3 @@
     margin-left: 2.5px;
   }
 }
-

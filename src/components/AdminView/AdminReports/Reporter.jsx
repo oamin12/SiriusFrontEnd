@@ -7,7 +7,7 @@ import "./Reporter.css";
 function Reporter(props) {
   return (
    <div className="Reporter">
-   <Avatar img={props.img}/>
+   <Avatar src={props.img}/>
    {props.username} 
    <div style={{color:"black" , marginLeft:"20px",fontWeight:"bold",fontSize:"16px"}}>
        Reported this user!

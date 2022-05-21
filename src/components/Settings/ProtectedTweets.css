@@ -1,0 +1,44 @@
+.header-protect {
+  margin-top: 20px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+.manage-protect {
+  opacity: 70%;
+  margin-left: 20px;
+  font-size: 14px;
+  margin-top: 30px;
+  margin-bottom: -20px;
+}
+.protect-protect {
+  opacity: 90%;
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.checkbox-protect {
+  height: 20px;
+  position: fixed;
+  margin-left: -340px;
+  margin-top: -118px;
+}
+.checkbox-protect:hover {
+  background-color: rgb(236, 236, 236);
+  border: 1px solid rgb(236, 236, 236);
+  cursor: pointer;
+}
+.select-protect {
+  opacity: 70%;
+  margin-left: 20px;
+  font-size: 14px;
+  margin-top: -80px;
+  margin-bottom: 100px;
+  position: fixed;
+}
+.learn-protect {
+  color: #00acee;
+}
+.learn-protect:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

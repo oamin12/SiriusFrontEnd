@@ -1,6 +1,31 @@
-.SideBarAdminIcons{
-    display: flex;
-    flex-direction: column;
-    padding-top: 16px;
-   
+.SideBarAdminIcons {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  position: sticky;
+  display: block;
+  height: 100vh;
 }
+
+.SideBarAdminHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(245, 248, 250);
+  padding-bottom: 4px;
+}
+.SideBarAdmin {
+  width: auto;
+  position: sticky;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  height: 100vh;
+}
+@media (max-height: 410px) {
+  .SideBarAdminIcons {
+    overflow-y: scroll;
+  }
+} ;

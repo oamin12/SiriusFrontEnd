@@ -1,0 +1,18 @@
+.BlockNotif {
+  width: 100%;
+  border-bottom: 1px solid rgb(245, 248, 250);
+  padding: 5%;
+  display: flex;
+  transition: background-color 0.25s;
+}
+
+.BlockNotifText {
+  text-align: center;
+}
+.BlockNotif:hover {
+  background-color: rgba(255, 1, 1, 0.037);
+}
+.days{
+    color: red;
+    font-weight: bold;
+}

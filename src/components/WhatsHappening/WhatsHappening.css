@@ -1,0 +1,26 @@
+.WhatsHappening {
+
+}
+.WhatsHappening_heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 130%;
+  color: black;
+  text-align: left;
+  height: auto;
+  border: 1px solid rgb(247 249 249);
+
+}
+.WhatsHappening_suggested_heading {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 130%;
+  color: black;
+  text-align: left;
+  height: auto;
+  border: 1px solid white;
+  margin-top: 4%;
+}
+
+.Seemore_wtshpn {
+  display: flex;
+  color: #45acf2;
+}

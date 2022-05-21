@@ -1,0 +1,17 @@
+.EmptyNotif {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.EmptyNotifHeader {
+  overflow-wrap: break-word;
+  width: 60%;
+  margin-top: 3%;
+}
+.EmptyNotifText {
+  overflow-wrap: break-word;
+  width: 60%;
+  margin-top: 2%;
+  color: rgb(101, 119, 134);
+}

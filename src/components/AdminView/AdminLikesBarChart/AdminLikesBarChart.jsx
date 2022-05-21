@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import getTopLikes from "./AdminLikesBarChartInfo";
+import dashBoardStats from "../AdminUserChartInfo";
 
 
 /**
@@ -22,8 +23,8 @@ function AdminLikesBarChart() {
   const [topLikes, setTopLikes] = React.useState([]);
   React.useEffect(() => {
     (async () => {
-      const resp = await getTopLikes();
-      setTopLikes(resp);
+      const resp = await dashBoardStats();
+      setTopLikes(resp.TopLikes);
     })();
   }, []);
   return (

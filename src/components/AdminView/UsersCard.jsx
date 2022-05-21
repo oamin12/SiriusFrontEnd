@@ -39,12 +39,12 @@ const styleStats = {
   borderRadius: "8px",
 };
 /**
- * @description A component that contain the profile picture, name, username, bio of every user. 4 buttons 
- * 1. Statistics button that shows the change in number, percentage of followers and percantage of tweets for user 
+ * @description A component that contain the profile picture, name, username, bio of every user. 4 buttons
+ * 1. Statistics button that shows the change in number, percentage of followers and percantage of tweets for user
  * 2. Profile button that shows the profile of user
  * 3. Ban button that can ban the user forever
  * 4. Reports button that renders a page showing all reports done on a user
- * @param {object} props id for user - name - username -image(profile pic) - bio 
+ * @param {object} props id for user - name - username -image(profile pic) - bio
  *
  * @returns {div} containing profile data plus 4 buttons
  */
@@ -59,7 +59,7 @@ function UsersCard(props) {
     setOpenModal(false);
   }
   function handleBanLinkClick() {
-    props.handleIndexing(props.id);
+    props.handleIndexing(props.username);
     handleModalClose();
   }
   function handleCancelButtonClick() {
@@ -73,6 +73,12 @@ function UsersCard(props) {
   }
   function handleModalStatsClose() {
     setOpenModalStats(false);
+  }
+  function handleUserClicked(){
+    localStorage.setItem("UserProfile",props.username);
+  }
+  function handleReportClicked(){
+    localStorage.setItem("UserProfile",props.username);
   }
 
   return (
@@ -139,8 +145,8 @@ function UsersCard(props) {
             marginLeft: "20px",
           }}
         >
-          <NavLink
-            to="/profile"
+          <NavLink onClick={handleUserClicked}
+            to={props.link}
             style={{ textDecoration: "none", color: "white" }}
           >
             Profile
@@ -183,8 +189,9 @@ function UsersCard(props) {
           style={{ backgroundColor: "black", marginLeft: "20px" }}
         >
           <NavLink
-            to="/adminView/user/reports"
+            to={"/admin/" + props.username + "/reports"}
             style={{ textDecoration: "none", color: "white" }}
+            onClick={handleReportClicked}
           >
             Reports
           </NavLink>

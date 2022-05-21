@@ -4,7 +4,7 @@
 .profile__data {
     height: auto;
     max-width: 672px;
-        
+
 }
 .header {
 
@@ -40,22 +40,37 @@
 .profile__body {
     height: auto;
     padding-left: 20px;
-    
+
 }
 
 .profile__footer {
     height: auto;
     padding-top: 10px;
     display: flex;
-    
+
 }
 
-.more__info {
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 10px; 
+.Profile__information {
+    font-weight: 400;
+    font-size: 15px;
+    color: rgb(83, 100, 113);
 
-  
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+
+}
+
+.Profile__info__sub {
+
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    gap:4px;
+
+    /* overflow-wrap: break-word; */
 }
 
 .User__name {
@@ -63,28 +78,14 @@
     padding-bottom: 10px;
 }
 
-.location {
-
-    /* width : 100%;
-   
-    font-weight: 500;
-    font-size: 14px; */
-    color: gray;
-    display: flex;
-    align-items: center;
-    padding-right:5px ;
-    white-space: nowrap;
-    
-    /* white-space: nowrap; */
-
-
-}
 
 .follow__section {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 14px;
-    color: gray;
+    color: rgb(83, 100, 113);
 }
+
+
 .Edit__profile__btn{
   height: auto;
   width: 100%;
@@ -104,7 +105,7 @@
 }
 
 .followingBtn{
-    height: auto;
+  height: auto;
   width: 100%;
   padding: 10px;
   border-radius: 300px;
@@ -139,14 +140,15 @@
     margin-top: 12px;
     text-align: center;
     cursor: pointer;
-
+}
+.notifAndMoreBtn:hover{
+    background-color: #F5F8FA;
 }
 
 .visitedProfile {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px;
 
 }
 
@@ -169,12 +171,152 @@
     font-size: 20px;
 }
 
-
-@media (max-width:1020px) {
-    .more__info {
-        display: inline-block;
-        color: gray;
-        align-items: center;
-    }
+.protectedAccount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 15%;
 }
-    
+
+
+.link_profile{
+    color: black;
+}
+
+.EditHeader_settings_menu
+{
+   padding: 10px;
+   border: 1px solid rgb(225, 232, 237);
+   border-radius: 300px;
+   color: black;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   font-weight: bold;
+   transition: background-color 0.25s ease-out, color 0.25s ease-out;
+ }
+
+ .EditHeader_settings_menu:hover
+ {
+       background-color: rgb(225, 232, 237);
+
+}
+.EditHeader_settings_menu_p1
+{
+    font-size: larger;
+    padding-bottom: 20px;
+}
+.EditHeader_settings_menu_p2
+{
+   color: rgb(101, 119, 134);
+   font-size: small;
+}
+.modalHeader {
+    padding-top: 13px;
+    padding-bottom: 13px;
+    margin-bottom: 10px;
+
+    background-color: white;
+    border: 1px solid white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+.Edit_boxName{
+      padding-top: 10px;
+      border: 1px solid rgb(101, 119, 134);
+      border-radius: 10px 10px 10px 10px;
+      height: 56px;
+      margin-bottom: 20px;
+}
+.Edit_boxBio{
+    padding-top: 10px;
+    border: 1px solid rgb(101, 119, 134);
+    border-radius: 10px 10px 10px 10px;
+    height: 96px;
+    margin-bottom: 20px;
+
+}
+.Edit_boxLoc{
+    padding-top: 10px;
+    border: 1px solid rgb(101, 119, 134);
+    border-radius: 10px 10px 10px 10px;
+    height: 56px;
+    margin-bottom: 20px;
+}
+.Edit_boxWeb{
+    padding-top: 10px;
+    border: 1px solid rgb(101, 119, 134);
+    border-radius: 10px 10px 10px 10px;
+    height: 56px;
+    margin-bottom: 20px;
+}
+.edit_ipBox{
+    padding-left: 10px;
+    border: none;
+    inline-size: 500px;
+    overflow-wrap: break-word;
+    width: 100%;
+
+}
+edit_ipBox:focus, input:focus{
+    outline: none;
+    outline-color: transparent;
+}
+.edit_ipBoxBio{
+    padding-left: 10px;
+    border: none;
+    inline-size: 500px;
+    overflow-wrap: break-word;
+    width: 100%;
+    height: 55px;
+
+}
+edit_ipBoxBio:focus, input:focus{
+    outline: none;
+    outline-color: transparent;
+}
+.Save__btn{
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    border-radius: 300px;
+    width: 100px;
+    height: 36px;
+    font-size: 15px;
+    border-style:solid;
+    border-color: gray;
+    background-color:rgb(15, 20, 25);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    opacity: 100% !important;
+
+    /* transition: background-color 0.25s; */
+
+  }
+  .Save__btn:hover{
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    border-radius: 300px;
+    width: 100px;
+    height: 36px;
+    font-size: 15px;
+    border-style:solid;
+    border-color: gray;
+    background-color:rgb(15, 20, 25);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    opacity: 80% !important;
+  }
+  @media (max-width:1020px) {
+
+}

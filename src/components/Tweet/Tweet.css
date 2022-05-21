@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
 
  .post_body {
@@ -157,6 +156,9 @@
 }
 
 .tweet_settings_bar{
+  display: flex;
+  align-items: center;
+  gap: 5px;
   cursor: pointer;
   transition: background-color 0.25s;
 }
@@ -167,20 +169,10 @@ background-color:  rgb(225, 232, 237);
   width: 10%;
 }
 
-/* .tweet{
-    display: flex;
-    align-items: flex-start;
-    border: 1px solid black;
-    padding-bottom: 10px;
+.Poll
+{
+  display: flex;
+  width: 100% !important;
+  text-align:center;
+  height:30px
 }
-
-
-
-.tweetbody > img{
-    border-radius: 20px;
-}
-
-.tweettxt > h3 {
-        font-size: 15px;
-        margin-bottom: 5px;
-} */

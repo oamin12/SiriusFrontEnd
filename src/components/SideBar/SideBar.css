@@ -6,20 +6,25 @@
   flex: 0.2;
   border-right: 1px solid rgb(245, 248, 250);
   height: auto;
+  width: auto;
+  position: sticky;
+  display: block;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  height: 100vh;
 }
 .sideBar {
   width: auto;
   position: sticky;
   padding: 20px;
   display: block;
-
   padding-top: 0;
   padding-top: 12px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   top: 0;
   height: 100vh;
-  
 }
 .logo {
   text-decoration: none;
@@ -53,6 +58,6 @@
 }
 @media (max-height: 410px) {
   .sideBar {
-    overflow-y: scroll
+    overflow-y: scroll;
   }
 } ;

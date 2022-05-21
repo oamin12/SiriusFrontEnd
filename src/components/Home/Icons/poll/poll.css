@@ -17,7 +17,7 @@
   margin-top: 6%;
   margin-left: -3%;
   padding-top: 2%;
-  border-top:solid 1px rgb(203, 208, 211);
+  border-top: solid 1px rgb(203, 208, 211);
 }
 .days_heading {
   font-size: 95%;
@@ -27,8 +27,7 @@
   margin-right: 20%;
   padding-left: 20%;
   margin-top: -25%;
-  padding-bottom:5%;
-
+  padding-bottom: 5%;
 }
 .dayscont {
   margin-top: 60%;
@@ -36,7 +35,6 @@
   margin-right: -100%;
   padding-left: 40%;
   margin-left: -55%;
- 
 }
 .hours_heading {
   font-size: 95%;
@@ -72,7 +70,6 @@
   margin-right: -100%;
   margin-left: 220%;
   margin-top: 2%;
-
 }
 .selecting:focus {
   outline-color: rgb(29, 161, 242);
@@ -98,18 +95,10 @@
 .hours:focus {
   outline: none;
 }
-
-.tweetbutton_for_poll {
-  width: 25%;
-  height: 25%;
-  margin-left: 70%;
-  margin-bottom: -12%;
-  padding-bottom: -30%;
-}
 .remove_poll {
   border-color: transparent;
   background-color: white;
-  margin-left: -8%;
+  margin-left: -9%;
   margin-right: 114%;
   padding-top: 3%;
   padding-bottom: 3%;
@@ -120,57 +109,54 @@
   border-width: 20%;
   color: red;
   border-top: solid 1px rgb(203, 208, 211);
-  border-bottom-left-radius: 7%;
-  border-bottom-right-radius: 7%;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   width: 108%;
 }
 .remove_poll:hover {
   background-color: rgb(252, 219, 219);
 }
 .IconAdd {
-  width: 10%;
-  height: 10%;
-  margin-left: 30%;
-  margin-bottom: 100%;
-  margin-top:-90%;
+  width: 6%;
+  height: 6%;
+  margin-left: 75%;
+  margin-bottom: 90%;
+  margin-top: -50%;
 }
 .Iconsblur {
   display: flex;
   direction: row;
-  margin-left: -100%;
+  margin-left: 4%;
+  margin-top: 4%;
 }
 .Mediablur {
-  width: 32%;
-  margin-left: -10%;
-  padding-left: -20%;
-}
-.Pollblur {
-  width: 30%;
+  color: #93caef;
   margin-left: -20%;
 }
+.Pollblur {
+  color: #93caef;
+}
 .Gifblur {
-  width: 30%;
-  margin-left: -15%;
-  margin-top: 3%;
+  color: #93caef;
+  margin-left: 20%;
 }
 .Scheduleblur {
-  width: 30%;
-  margin-left: -10%;
-  margin-top: -1%;
+  color: #93caef;
+  margin-left: -50%;
 }
-.emojis{
-width:11%
-
+.emojis {
+  margin-left: 6%;
+  cursor: pointer;
+  color: rgb(29, 161, 242);
 }
 .Inputbox_for_poll {
-  width: 170%;
+  width: 70%;
   height: 90%;
-  margin-top: 32%;
   border: none;
   outline: none;
-  margin-left: -90%;
-  margin-bottom: 7%;
-  font-size:100%;
+  margin-left: 10%;
+  margin-top: -5%;
+  font-size: 100%;
   resize: none;
 }
 .Inputbox_for_poll::placeholder {
@@ -187,17 +173,15 @@ width:11%
 .poll {
   border: solid 1px;
   border-color: rgb(203, 208, 211);
-  width:160%;
-  border-radius:10%;
-  padding-left:15%;
+  width: 80%;
+  border-radius: 10%;
+  padding-left: 5%;
   padding-top: 10%;
-  margin-left:-110%;
-  height:200%;
-  padding-bottom:-10%;
-
+  margin-left: 8%;
+  height: 200%;
+  padding-bottom: -8%;
 }
 .selecting {
-padding-bottom: 4%;
-margin-top:-55%;
+  padding-bottom: 4%;
+  margin-top: -55%;
 }
-

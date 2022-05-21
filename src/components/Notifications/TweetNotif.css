@@ -1,0 +1,23 @@
+.TweetNotif {
+  width: 100%;
+  border-bottom: 1px solid rgb(245, 248, 250);
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.25s;
+}
+.TweetNotifHeader {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin-top: 2%;
+}
+.TweetNotifText {
+  display: flex;
+  align-items: center;
+  color: rgb(101, 119, 134);
+  margin-top: 2%;
+}
+.TweetNotif:hover {
+  background-color: rgb(245, 248, 250);
+}
