@@ -7,16 +7,16 @@ import Trend from "../Explore/Trend";
 
 
 function CreateTrends(Trends) {
-    return (
-      <Trend
-        id={Trends.id}
-        number={Trends.number}
-        type={Trends.type}
-        name={Trends.name}
-        tweets_num={Trends.tweets_num}
-      />
-    );
-  }
+  return (
+    <Trend
+      key={Trends.id}
+      number={Trends.rank}
+      type={Trends.type}
+      name={Trends.body}
+      tweets_num={Trends.tweetsCount}
+    />
+  );
+}
 function WhatsHappening(props) {
   return (
     <div className="WhatsHappening">

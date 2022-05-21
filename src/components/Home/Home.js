@@ -119,20 +119,29 @@ async function GetTweetInfo() {
   return (response);
 }
 
-  async function GetTrendsInfo() {
-    let response = '';
-      try {
-          response = await axios.get('http://localhost:3001/TrendsData').then((res) => res.data);
-          setTrendsInfo(response);
-        return (response);
-      } catch (error) {
-        if (error.response) {
-          return (error.response);
-        }
-      }
-      return (response);
+var config2 = {
+  method: "get",
+  url: "http://34.236.108.123:3000/explore",
+  headers: { Authorization: "Bearer " + token },
+};
+async function GetTrendsInfo() {
+  let response = "";
+  try {
+    response = await axios
+      .get("http://34.236.108.123:3000/explore", config2)
+      .then((res) => res.data);
+    //console.log(response.tweetData);
+    setTrendsInfo(response.hashtags);
+
+    return response.hashtags;
+  } catch (error) {
+    if (error.response) {
+      return error.response;
+    }
   }
 
+  return response;
+}
 
 
   var token=sessionStorage.getItem("tokenValue");
