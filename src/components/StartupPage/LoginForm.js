@@ -9,44 +9,47 @@ import { eye } from "react-icons-kit/feather/eye";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 /**
-   * @description Component that renders the Login Page which contains the username input area, password input area and all the required logic to authenticate the user
-   * @returns {div}
-   */
+ * @description Component that renders the Login Page which contains the username input area, password input area and all the required logic to authenticate the user
+ * @returns {div}
+ */
 const LoginForm = () => {
   const [details, setDetails] = useState({ name: "", password: "" });
-  const [SignInToken,setSignInToken ] = React.useState();  
-  const [SignInState,setSignInState ] = React.useState("");
+  const [SignInToken, setSignInToken] = React.useState();
+  const [SignInState, setSignInState] = React.useState("");
   const [errorName, setError] = useState("");
 
   let navigate = useNavigate();
 
-    async function SignIn() {
-    let response = '';
+  async function SignIn() {
+    let response = "";
     try {
-      response = await axios.post('http://34.236.108.123:3000/login',{email:details.name,password:details.password}).then((res) => res.data);
-      sessionStorage.setItem("tokenValue",response.token);
-      if(response.status==="Success")
-      {
+      response = await axios
+        .post("http://34.236.108.123:3000/login", {
+          email: details.name,
+          password: details.password,
+        })
+        .then((res) => res.data);
+      sessionStorage.setItem("tokenValue", response.token);
+      if (response.status === "Success") {
         navigate("/home");
       }
-     // setSignInState(response.status);
+      // setSignInState(response.status);
       //console.log("SUCCESS",response.status);
 
-      return (response.data);
+      return response.data;
     } catch (error) {
       if (error.response) {
-        setError("email or password is incorrect");
+        setError("Email or Password is Incorrect!");
         console.log(error.response);
-        return (error.response);
+        return error.response;
       }
     }
     console.log(response);
-    return (response);
+    return response;
   }
-  const  sumbitHandler = (e) => {
-    if(details.name === "" || details.password==="")
-    {
-      setError("email or password can't be empty");
+  const sumbitHandler = (e) => {
+    if (details.name === "" || details.password === "") {
+      setError("Email or Password cannot be empty!");
       e.preventDefault();
 
       return;
@@ -56,7 +59,7 @@ const LoginForm = () => {
     e.preventDefault();
     // Login(SignInState);
   };
- 
+
   const [type, setType] = useState("password");
   const [icon, setIcon] = useState(eye);
 
@@ -69,8 +72,7 @@ const LoginForm = () => {
       setType("password");
     }
   };
-  
-  
+
   // React.useEffect(() => {
   //   (async () => {
   //     const resp = await SignIn();
@@ -92,7 +94,8 @@ const LoginForm = () => {
           className="boxf2" // Username input box
           type="text"
           placeholder="Email address, or username"
-          onChange={function func(e){ setDetails({ ...details, name: e.target.value })
+          onChange={function func(e) {
+            setDetails({ ...details, name: e.target.value });
           }}
           value={details.name}
         />
@@ -100,7 +103,8 @@ const LoginForm = () => {
           className="boxpf2" // Password input box
           type={type}
           placeholder="Password"
-          onChange={function func(e) { setDetails({ ...details, password: e.target.value })
+          onChange={function func(e) {
+            setDetails({ ...details, password: e.target.value });
           }}
           value={details.password}
         />

@@ -30,7 +30,8 @@ import ChangeUsername from "./Settings/ChangeUsername";
 import ChangeEmail from "./Settings/ChangeEmail";
 import ProtectedTweets from "./Settings/ProtectedTweets";
 import TweetPage from "./Tweet/TweetPage";
-
+import Display from "./Settings/Display";
+import NotificationsSettings from "./Settings/NotificationsSettings";
 function App(props) {
   // var userName=localStorage.getItem("UserProfile");
   var UserName = localStorage.getItem("UserName");
@@ -85,7 +86,7 @@ function App(props) {
           <Route path="/explore" element={<Explore />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/messages" element={<Messages />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />  
+          <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
@@ -123,19 +124,35 @@ function App(props) {
             path="/settings/protectedtweets"
             element={<ProtectedTweets />}
           />
-          <Route path={"/"+UserName+"/status/:TweetId"} element={<TweetPage />} />
-          <Route path={"/:username/status/:TweetId"} element={<TweetPage
-          weekdayName={props.weekdayName}
-            month={props.month}
-            date={props.date}
-            year={props.year_toset_theyear_value}
-            time={props.time}
-            minutes={props.minutes}
-            hours={props.hours} 
-            am_pm={props.am_pm}
-            flag_stop_working_from_poll_to_schedule={props.flag_stop_working_from_poll_to_schedule}  
-            flag={props.flag}  
-            flagconfirm={props.flagconfirm} />} />
+          <Route
+            path={"/" + UserName + "/status/:TweetId"}
+            element={<TweetPage />}
+          />
+          <Route
+            path={"/:username/status/:TweetId"}
+            element={
+              <TweetPage
+                weekdayName={props.weekdayName}
+                month={props.month}
+                date={props.date}
+                year={props.year_toset_theyear_value}
+                time={props.time}
+                minutes={props.minutes}
+                hours={props.hours}
+                am_pm={props.am_pm}
+                flag_stop_working_from_poll_to_schedule={
+                  props.flag_stop_working_from_poll_to_schedule
+                }
+                flag={props.flag}
+                flagconfirm={props.flagconfirm}
+              />
+            }
+          />
+          <Route
+            path="/settings/editnotifications"
+            element={<NotificationsSettings />}
+          />
+          <Route path="/settings/display" element={<Display />} />
         </Routes>
       </div>
     </BrowserRouter>
