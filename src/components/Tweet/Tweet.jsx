@@ -29,15 +29,15 @@ import 'react-leaf-polls/dist/index.css'
 import { WrapText } from "@mui/icons-material";
 var token=sessionStorage.getItem("tokenValue");
 const resData = [
-  { id: 0, text: 'Answer 1', votes: 0 },
-  { id: 1, text: 'Answer 2', votes: 0 },
-  { id: 2, text: 'Answer 3', votes: 0 }
+  { id: 0, text: 'Answer 1', votes: 4 },
+  { id: 1, text: 'Answer 2', votes: 2 },
+  { id: 2, text: 'Answer 3', votes: 12 }
 ]
 const customTheme = {
   textColor: 'black',
   mainColor: '#1d9bf0',
   backgroundColor: 'rgb(255,255,255)',
-  alignment: 'center',
+  alignment: 'start',
   width: "10px",
   height:"10px"
 
@@ -377,17 +377,17 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
 
 
 
-          {(isPoll==="true" || !isReply)?<div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
-          <p className="content_style">{content}</p></div>:
-          <div className="Poll"><LeafPoll
+          <div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
+          <p className="content_style">{content}</p></div>
+         { /* <div className="Poll_Tweet"><LeafPoll
               type='multiple'
-              question='What you wanna ask?'
+              question={content}
               results={resData}
               theme={customTheme}
               onVote={vote}
               isVoted={false}
-            /></div>
-          }
+            /></div> */}
+          
 
       </div>
 

@@ -26,6 +26,8 @@ function createProfileData(User,protectedAccount) {
         username={User.username}
         bio={User.bio}
         location={User.country +", " + User.city}
+        country={User.country}
+        city={User.city}
         website={User.website}
         birthdate={User.birthdate}
         joineddate={User.createdAt}
