@@ -47,6 +47,21 @@ const LoginForm = () => {
     console.log(response);
     return response;
   }
+  function handleEnter(event)
+  {
+    if(event.key==="Enter")
+    {
+      if (details.name === "" || details.password === "") {
+        setError("Email or Password cannot be empty!");
+        event.preventDefault();
+  
+        return;
+      }
+      SignIn();
+  
+      event.preventDefault();
+    } 
+  }
   const sumbitHandler = (e) => {
     if (details.name === "" || details.password === "") {
       setError("Email or Password cannot be empty!");
@@ -103,6 +118,7 @@ const LoginForm = () => {
           className="boxpf2" // Password input box
           type={type}
           placeholder="Password"
+          onKeyPress={handleEnter}
           onChange={function func(e) {
             setDetails({ ...details, password: e.target.value });
           }}
