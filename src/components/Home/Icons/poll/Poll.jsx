@@ -50,7 +50,7 @@ function Poll(props) {
 
   function handlechange(event) {
     name = event.target.name;
-    /*on change of the text box we check every time is the 2 choices text box written 
+    /*on change of the text box we check every time is the 2 choices text box written
      in or not to know weather the user can tweet or not*/
     if (name === "choice1") {
       textc1 = event.target.value;
@@ -234,6 +234,8 @@ function Poll(props) {
                 value={textc}
                 onChange={handlechange}
               />
+
+
             </div>
             <div className="poll">
               <div className="choices">
@@ -257,7 +259,7 @@ function Poll(props) {
                 />
                 <br />
                 <br />
-                {/*the defualt of this flag is 0 => at the begining of the poll there is 2 choices only 
+                {/*the defualt of this flag is 0 => at the begining of the poll there is 2 choices only
                   then on clicking on the add icon the flag changes and choices are added*/}
 
                 {flag9 === 1 && (

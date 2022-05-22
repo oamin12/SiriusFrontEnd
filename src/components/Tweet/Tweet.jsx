@@ -29,18 +29,18 @@ import 'react-leaf-polls/dist/index.css'
 import { WrapText } from "@mui/icons-material";
 var token=sessionStorage.getItem("tokenValue");
 const resData = [
-  { id: 0, text: 'Answer 1', votes: 0 },
-  { id: 1, text: 'Answer 2', votes: 0 },
-  { id: 2, text: 'Answer 3', votes: 0 }
+  { id: 0, text: 'Answer 1', votes: 4 },
+  { id: 1, text: 'Answer 2', votes: 2 },
+  { id: 2, text: 'Answer 3', votes: 12 }
 ]
 const customTheme = {
   textColor: 'black',
   mainColor: '#1d9bf0',
   backgroundColor: 'rgb(255,255,255)',
-  alignment: 'center',
+  alignment: 'start',
   width: "10px",
   height:"10px"
-  
+
 }
 
 const style = {
@@ -211,7 +211,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
   function handleModalClose() {
     setOpenModal(false);
   }
-  
+
   function handleCancelButtonClick() {
     handleModalClose();
     handleClose();
@@ -222,7 +222,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     PostBookmark();
     // if(!bookMarked)
     // {
-      
+
     // }
     // else
     // {
@@ -236,8 +236,8 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
       changeLikesCount(likesCount + 1)
     }
     else { changeLikesCount(likesCount - 1) }
-    
-    
+
+
   }
   function handleRetweet() {
     setRetweeted(!retweeted)
@@ -334,8 +334,8 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
                       <Box sx={style}>
                         <h3 className="modalHeader">Delete Tweet?</h3>
                         <p className="boxParagraph">
-                        This can't be undone and it will be removed from your profile, 
-                        the timeline of any accounts that follow you, and from Twitter search results. 
+                        This can't be undone and it will be removed from your profile,
+                        the timeline of any accounts that follow you, and from Twitter search results.
                         </p>
 
                         <button data-testid="clear-button" className="clearLink" onClick={handleDeleteTweet}>
@@ -375,20 +375,20 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
         {/***********************************************************************************************************************/}
         {/***********************************************************************************************************************/}
 
-        
-            
-          {(isPoll==="true" || !isReply)?<div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
-          <p className="content_style">{content}</p></div>:
-          <div className="Poll"><LeafPoll
+
+
+          <div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
+          <p className="content_style">{content}</p></div>
+         { /* <div className="Poll_Tweet"><LeafPoll
               type='multiple'
-              question='What you wanna ask?'
+              question={content}
               results={resData}
               theme={customTheme}
               onVote={vote}
               isVoted={false}
-            /></div>
-          }
-        
+            /></div> */}
+          
+
       </div>
 
       {/* {image ? <img src={image.med1} alt="" /> : null} */}
@@ -411,13 +411,13 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
       <div className="post_body4_1">
       <img style={{"border-top-left-radius":"20px"}} src={image[0]} alt="" />
       <img style={{"border-bottom-left-radius":"20px"}} src={image[1]} alt="" />
-      </div> 
+      </div>
       <div className="post_body4_2">
       <img style={{"border-top-right-radius":"20px"}} src={image[2]} alt="" />
       <img style={{ "border-bottom-right-radius":"20px"}} src={image[3]} alt="" />
       </div>
       </div>
-      :null} 
+      :null}
 
       {video ? <video src={video} alt="" /> : null}
 

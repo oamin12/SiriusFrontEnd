@@ -227,7 +227,7 @@ function Inputtext(props) {
         // console.log(response);
         return response;
       }
-      
+
       async function PostReply() {
         let response = "";
         try {
@@ -603,7 +603,7 @@ function Inputtext(props) {
         }
         </div>
 
-          
+
         {(flag2_toschedule === 1 || flag2_toschedule === 2) && (
           <div className="icons">
             <div className="image-upload">
@@ -631,8 +631,8 @@ function Inputtext(props) {
               am_pm= {scheduled_tweets[i].am_pm}  */}
             <IconGif classname={"Gif"} />
 
-           
-              
+
+
             {props.flag_reply!==true && <IconSchedule
               scheduled_tweets={props.scheduled_tweets}
               scheduledtweetsflag={scheduledtweetsflag}
@@ -673,17 +673,17 @@ function Inputtext(props) {
 
         {flag2_toschedule !== 0 && flag2_toschedule !== 2 ? (
           <div>
-            {props.flag_tweetpopuppage != 1 ? 
+            {props.flag_tweetpopuppage != 1 ?
               <div>
-             { flag2===1 ? 
+             { flag2===1 ?
              <Button sx={tweetbutton} onClick={handlechangeT}>
                 Tweet
               </Button> :
               <Button sx={tweetbuttonblur} onClick={handlechangeT}>
                 Tweet
-              </Button> 
+              </Button>
              } </div>
-            : ( 
+            : (
               <div>
               {  flag2===1 ?
               <Button sx={tweetbutton_popuppage} onClick={handlechangeT}>

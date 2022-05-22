@@ -123,7 +123,7 @@ function IconSchedule(props)
     if (index !== 0) {
       return (
         <div>
-          <CalendarMonthOutlinedIcon 
+          <CalendarMonthOutlinedIcon
           sx={{
             marginTop:"0%",
             marginBottom: "10%",
@@ -258,7 +258,7 @@ function IconSchedule(props)
     props.setweekdayName(weekdayName);
     props.setflag2_toschedule(2);
 
-    
+
   }
 
   function handlemonths(event) {
