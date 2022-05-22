@@ -3,6 +3,8 @@ import "../Layout.css";
 import "./ChangeEmail.css";
 import SideBar from "../SideBar/SideBar";
 import { useNavigate } from "react-router-dom";
+import WhoToFollow from "../WhoToFollow/WhoToFollow";
+import SearchBox from "../Search/SearchBox";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 function ChangeUsername() {
   let navigate = useNavigate();
@@ -25,9 +27,22 @@ function ChangeUsername() {
         <button className="update-email">Update email address</button>
       </div>
       <div className="widgets">
-        <div className="search">search</div>
+        <div className="search">
+          <SearchBox
+            size="40"
+            styling={{
+              width: "30%",
+              marginTop: "-15.5%",
+              marginLeft: "70%",
+              height: "60%",
+            }}
+          />
+        </div>
         <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">who to follow</div>
+        <div className="whoToFollow">
+          {" "}
+          <WhoToFollow />{" "}
+        </div>
       </div>
     </div>
   );
