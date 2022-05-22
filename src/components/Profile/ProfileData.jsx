@@ -17,6 +17,11 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import Popover from "@mui/material/Popover";
 import Typography from "@mui/material/Typography";
 import FlagIcon from "@mui/icons-material/Flag";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import {getCroppedImg} from "./profileImgUtilities";
+import { dataURLtoFile } from "./profileImgUtilities";
+
 import "../Tweet/Tweet.css";
 import axios from "axios";
 
@@ -94,6 +99,52 @@ function ProfileData(props) {
   const [pending, setPending] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = useState(null);
+  //for Edit Profile
+  const [profilePic,setProfilePic] = React.useState();
+  const [contextMenu, setContextMenu] = React.useState(null);
+  const [editName, setEditName] = React.useState(props.name);
+  const [editBio, setEditBio] = React.useState(props.bio);
+  const [editCountry, setEditCountry] = React.useState(props.country);
+  const [editCity, setEditCity] = React.useState(props.city);
+  const [editWebsite, setEditWebsite] = React.useState(props.website);
+  const [testProfile,setTestProfile]=React.useState();
+
+	const inputRef = React.useRef();
+  const formData = new FormData();
+  var convertedUrlToFile;
+  const triggerFileSelectPopup = () =>{  inputRef.current.click();}
+  const selectFilePP = (event) => {
+		if (event.target.files && event.target.files.length > 0) {
+			const reader = new FileReader();
+			reader.readAsDataURL(event.target.files[0]);
+      setTestProfile(event.target.files[0]);
+
+			reader.addEventListener("load", () => {
+        convertedUrlToFile = dataURLtoFile(reader.result,"image.jpeg");
+        setProfilePic(reader.result);
+        console.log(convertedUrlToFile)
+        console.log(testProfile);
+
+        console.log(profilePic);
+        formData.append("image",convertedUrlToFile)
+        console.log(formData.get("image"));
+        setContextMenu(null);
+        //onUpload();
+			});
+		}
+	};
+
+
+  const onUpload = async () => {
+	
+
+		const canvas = await getCroppedImg(profilePic, 2048);
+		const canvasDataUrl = canvas.toDataURL("image/jpeg");
+		const convertedUrlToFile = dataURLtoFile(canvasDataUrl,"cropped-image.jpeg");
+		console.log(convertedUrlToFile);
+
+	};
+
   var token = sessionStorage.getItem("tokenValue");
 
   async function PostFollow() {
@@ -113,6 +164,25 @@ function ProfileData(props) {
     console.log(response);
     return response;
   }
+  async function EditProfileData() {
+    let response = "";
+    try {
+      response = await axios.patch(
+        "http://34.236.108.123:3000/settings/profile",formData,
+       
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    console.log(response);
+    return response;
+  }
+
+
 
   async function deleteFollow() {
     let response = "";
@@ -136,7 +206,7 @@ function ProfileData(props) {
     setOpenReportModal(false);
       (async () => {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=1" ,{}, { headers: { Authorization: "Bearer " + token } });
-      })(); 
+      })();
   }
   function ReportType2()
   {
@@ -144,7 +214,7 @@ function ProfileData(props) {
     setOpenReportModal(false);
       (async () => {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=2" ,{}, { headers: { Authorization: "Bearer " + token } });
-      })(); 
+      })();
   }
   function ReportType3()
   {
@@ -152,7 +222,7 @@ function ProfileData(props) {
     setOpenReportModal(false);
       (async () => {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=3" ,{}, { headers: { Authorization: "Bearer " + token } });
-      })(); 
+      })();
   }
   function ReportType4()
   {
@@ -160,7 +230,7 @@ function ProfileData(props) {
     setOpenReportModal(false);
       (async () => {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=4" ,{}, { headers: { Authorization: "Bearer " + token } });
-      })(); 
+      })();
   }
   function ReportType5()
   {
@@ -168,7 +238,7 @@ function ProfileData(props) {
     setOpenReportModal(false);
       (async () => {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=5" ,{}, { headers: { Authorization: "Bearer " + token } });
-      })(); 
+      })();
   }
   function ReportType6()
   {
@@ -176,9 +246,10 @@ function ProfileData(props) {
     setOpenReportModal(false);
       (async () => {
         await axios.patch( "http://34.236.108.123:3000/" + props.username +"/report?q=6" ,{}, { headers: { Authorization: "Bearer " + token } });
-      })(); 
+      })();
   }
 
+////////////////// EDIT PROFILE ///////////////////////////////////////////
   function handleClickEP(event) {
     setOpenModalEP(event.currentTarget)
     console.log("edit clicked");
@@ -186,10 +257,10 @@ function ProfileData(props) {
   function handleModalCloseEP() {
     setOpenModalEP(false);
   }
-    function SaveEdits()
-    {
-        
-    }
+  function SaveEdits()
+  {
+    EditProfileData();
+  }
   function isOverBtnSave()
     {
         setHoverSave(true);
@@ -198,10 +269,62 @@ function ProfileData(props) {
     {
         setHoverSave(false);
     }
+
+
+    const handleContextMenuPP = (event) => {
+      event.preventDefault();
+      setContextMenu(
+        contextMenu === null
+          ? {
+              mouseX: event.clientX + 2,
+              mouseY: event.clientY - 6,
+            }
+          : // repeated contextmenu when it is already open closes it with Chrome 84 on Ubuntu
+            // Other native context menus might behave different.
+            // With this behavior we prevent contextmenu from the backdrop to re-locale existing context menus.
+            null,
+      );
+    };
+  
+    const handleCloseMenuPP = () => {
+      setContextMenu(null);
+    };
+
+
+   function OnEditPP()
+   {  
+      triggerFileSelectPopup()
+      setContextMenu(null);
+   }
+   const handleChangeName = (e) => {
+    const  value = e.target.value;
+    setEditName(value);
+
+  };
+  const handleChangeBio = (e) => {
+    const  value = e.target.value;
+    setEditBio(value);
+  };
+  const handleChangeCountry = (e) => {
+    const  value = e.target.value;
+    setEditCountry(value);
+
+  };
+  const handleChangeCity = (e) => {
+    const  value = e.target.value;
+    setEditCity(value);
+
+  };
+  const handleChangeWebsite = (e) => {
+    const  value = e.target.value;
+    setEditWebsite(value);
+
+  };
+///////////////////////////////////////////////////////
     function handleChange() {
       setPage(true);
     }
-    
+
     function isOverBtn() {
       setHoverLike(true);
   }
@@ -296,24 +419,45 @@ function ProfileData(props) {
                             </div>
                             <div className="profile__head">
                                 <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
-                                <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
+                                <div onContextMenu={handleContextMenuPP} style={{ cursor: 'context-menu' }}>
+                                  <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
+                                  <Menu
+                                  open={contextMenu !== null}
+                                  onClose={handleClose}
+                                  style={{"width":"200px"}}
+                                  anchorReference="anchorPosition"
+                                  anchorPosition={
+                                    contextMenu !== null
+                                      ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
+                                      : undefined
+                                  }
+                                >
+                                  <MenuItem onClick={triggerFileSelectPopup} ><input onChange={selectFilePP} accept="image/*" ref={inputRef} type="file" style={{"display":"none"}}></input>Edit</MenuItem>
+                                  <MenuItem onClick={handleCloseMenuPP}>Remove</MenuItem>
+                                  <MenuItem onClick={handleCloseMenuPP}>Cancel</MenuItem>
+                                </Menu>
+                                </div>
                             </div>
                             <div>
                                 <div className="Edit_boxName">
                                     <p style={{"padding-left": "10px"}}>Name</p>
-                                    <input className="edit_ipBox" autocapitalize="sentences" autocomplete="off" maxlength="50" name="displayName" type="text" dir="auto"  ></input>
+                                    <input className="edit_ipBox" onChange={handleChangeName} value={editName} autocapitalize="sentences" autocomplete="off" maxlength="50" type="text" dir="auto"  ></input>
                                 </div>
                                 <div className="Edit_boxBio">
                                     <p style={{"padding-left": "10px"}}>Bio</p>
-                                    <input className="edit_ipBoxBio" autocapitalize="sentences" autocomplete="off" maxlength="160" name="displayName" type="text"  ></input>
+                                    <input className="edit_ipBoxBio" onChange={handleChangeBio} value={editBio} autocapitalize="sentences" autocomplete="off" maxlength="160" type="text"  ></input>
                                 </div>
                                 <div className="Edit_boxLoc">
-                                    <p style={{"padding-left": "10px"}}>Location</p>
-                                    <input className="edit_ipBox" autocapitalize="sentences" autocomplete="off" maxlength="30" name="displayName" type="text" dir="auto"  ></input>
+                                    <p style={{"padding-left": "10px"}}>Country</p>
+                                    <input className="edit_ipBox" onChange={handleChangeCountry} value={editCountry} autocapitalize="sentences" autocomplete="off" maxlength="30"  type="text" dir="auto"  ></input>
+                                </div>
+                                <div className="Edit_boxLoc">
+                                    <p style={{"padding-left": "10px"}}>City</p>
+                                    <input className="edit_ipBox" onChange={handleChangeCity} value={editCity} autocapitalize="sentences" autocomplete="off" maxlength="30"  type="text" dir="auto"  ></input>
                                 </div>
                                 <div className="Edit_boxWeb">
                                     <p style={{"padding-left": "10px"}}>Website</p>
-                                    <input className="edit_ipBox" autocapitalize="sentences" autocomplete="off" maxlength="100" name="displayName" type="text" dir="auto"  ></input>
+                                    <input className="edit_ipBox" onChange={handleChangeWebsite} value={editWebsite?editWebsite:setEditWebsite("https://youtu.be/dQw4w9WgXcQ")} autocapitalize="sentences" autocomplete="off" maxlength="100"  type="text" dir="auto"  ></input>
                                 </div>
                             </div>
                         </Box>

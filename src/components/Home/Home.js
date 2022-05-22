@@ -217,7 +217,7 @@ async function GetTweetInfo() {
        flag={props.flag}
        postingFlag={handleAddTweet} />
 
-
+    
        {tweetsInfo.map(getTweet2)}
       </div>
       <div className="widgets">
