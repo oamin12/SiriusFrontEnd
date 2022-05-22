@@ -31,7 +31,7 @@ function Trend(props) {
     <div className="trend_head">
         <div className="trend_data">
             <p className="trend_name">{props.number}. {props.type}. Trending</p>
-            <p className="trend_hash">{props.name}</p>
+            <p className="trend_hash">#{props.name}</p>
             <p className="trend_number">{props.tweets_num} Tweets</p>
         </div>
     <div className="trend_settings">
