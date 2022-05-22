@@ -18,7 +18,7 @@ import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import SideBarFooter from "./SideBarFooter";
 import TweetPopUpPage from "./TweetPopUpPage";
-let isAdmin = true;
+
 var UserName = localStorage.getItem("UserName");
 const iconInfo = [
   {
@@ -107,6 +107,8 @@ function CreateIcons(icons) {
  * @returns {div} a div that returns that component
  */
 function SideBar(props) {
+  let isAdmin=localStorage.getItem("Admin");
+  console.log("Adminn", isAdmin);
   const [Open, setOpen] = React.useState(false); //open main popup page of the tweet
 
   function createTweetPopUpPage() {
@@ -130,13 +132,17 @@ function SideBar(props) {
             >
               Tweet
             </button>
-            {isAdmin?
-          <NavLink to="/admin/dashboard"> 
-              <button className="tweetButtonSideBar">
-              Switch to Admin
-              </button>
-          </NavLink>
-          :null}
+            { isAdmin==="true" ? (
+              <div>
+                <NavLink to="/admin/dashboard">
+                  <button className="tweetButtonSideBar">
+                    Switch to Admin
+                  </button>
+                </NavLink>
+              </div>
+            ) : (
+              null
+            )}
             <SideBarFooter
               username={accountInfo.username}
               name={accountInfo.name}
@@ -146,7 +152,6 @@ function SideBar(props) {
         </div>
       )}
       <TweetPopUpPage setOpen={setOpen} Open={Open} />
-        
     </div>
   );
 }

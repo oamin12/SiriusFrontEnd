@@ -10,8 +10,6 @@ import Media from "../Home/Media";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Likes from "../Home/Likes";
 import axios from "axios";
-import SearchBox from "../Search/SearchBox"
-import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import { Puff } from  'react-loader-spinner'
 import Tweet from "../Tweet/Tweet";
 
@@ -67,7 +65,8 @@ function Profile() {
   const [ProfileInfo,setProfileInfo ] = React.useState([]);
   const [profileTweets,setProfileTweets ] = React.useState([]);
   const [profileReplies,setProfileReplies ] = React.useState([]);
-  const [ProfileInfoReplies,setProfileInfoReplies ] = React.useState([]);
+  const [ProfileLikes,setProfileLikes ] = React.useState([]);
+  const [ProfileMedia,setProfileMedia ] = React.useState([]);
   const [namee,setNamee ] = React.useState(null);
   function ProfileSubPage(){
     
@@ -127,7 +126,8 @@ function Profile() {
 
     })();
   }, []);
-  console.log(ProfileInfo);
+
+///////////////////////////////////////////With_Replies//////////////////////////////////////////////////
   async function GetUserProfileReplies(UserName) {
     console.log("INSIDE FUNCTION",UserName);
     var config = {
@@ -139,7 +139,6 @@ function Profile() {
   try {
     response = await axios.get('http://34.236.108.123:3000/'+UserName+'/with_replies',config).then((res) => res.data);
     //response = await axios.get("http://localhost:3001/User").then((res) => res.data);
-    setProfileInfoReplies(response);
     return (response);
   } catch (error) {
     if (error.response) {
@@ -153,11 +152,59 @@ function Profile() {
 React.useEffect(() => {
   (async () => {
     const resp = await GetUserProfileReplies(localStorage.getItem("UserProfile"));
-    setProfileInfoReplies(resp);
     setProfileReplies(resp.tweets)
     console.log(resp);
   })();
 }, []);
+////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////Likes///////////////////////////////////////////////////
+async function GetUserProfileLikes(UserName) {
+  console.log("INSIDE FUNCTION",UserName);
+  let response = '';
+try {
+  response = await axios.get('http://34.236.108.123:3000/'+UserName+'/likes',{headers: {Authorization:"Bearer "+token} }).then((res) => res.data);
+  
+  return (response.likes);
+} catch (error) {
+  if (error.response) {
+    return (error.response);
+  }
+}
+return (response);
+}
+
+
+React.useEffect(() => {
+(async () => {
+  const resp = await GetUserProfileLikes(localStorage.getItem("UserProfile"));
+  setProfileLikes(resp);
+})();
+}, []);
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////MEDIA//////////////////////////////////////////////////
+async function GetUserProfileMedia(UserName) {
+  console.log("INSIDE FUNCTION",UserName);
+  let response = '';
+try {
+  response = await axios.get('http://34.236.108.123:3000/'+UserName+'/media',{headers: {Authorization:"Bearer "+token} }).then((res) => res.data);
+  
+  return (response.media);
+} catch (error) {
+  if (error.response) {
+    return (error.response);
+  }
+}
+return (response);
+}
+
+React.useEffect(() => {
+(async () => {
+  const resp = await GetUserProfileMedia(localStorage.getItem("UserProfile"));
+  setProfileMedia(resp);
+})();
+}, []);
+///////////////////////////////////////////////////////////////////////////////////////////////
 let protectedAccount = (!ProfileInfo.isMe && !ProfileInfo.followsHim && ProfileInfo.protectedTweets);
 console.log("protected "+protectedAccount);
   if(namee)
@@ -175,25 +222,18 @@ console.log("protected "+protectedAccount);
       {  ProfileSubPage
         (subpage==1)?Hometweets?.map(getTweet):
         (subpage==2)?profileReplies?.map(getTweet):
-        (subpage==3)?Media?.map(getTweet):
-        (subpage==4)?Likes?.map(getTweet):
+        (subpage==3)?ProfileMedia?.map(getTweet):
+        (subpage==4)?ProfileLikes?.map(getTweet):
         profileTweets?.map(getTweet)
       }
       </div>
     }
       </div>
       <div className="widgets">
-        <div className="search">
-      <SearchBox size="40"  
-            styling=
-            { {width: "30%",
-            marginTop: "-15.5%",
-            marginLeft: "70%",
-            height:'60%',}}/>
-          </div> 
+        <div className="search">search</div>
         <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">  <WhoToFollow /> </div>
-    </div>
+        <div className="whoToFollow">who to follow</div>
+      </div>
     </div>
       
   );
