@@ -101,6 +101,7 @@
     flex-direction: row;
     padding-left: 60px;
     margin-left: 90px;
+    
   }
   
   .post_headerDescription {
@@ -169,10 +170,10 @@ background-color:  rgb(225, 232, 237);
   width: 10%;
 }
 
-.Poll
+.Poll_Tweet
 {
-  display: flex;
+  display: flex !important;
   width: 100% !important;
   text-align:center;
-  height:30px
+
 }

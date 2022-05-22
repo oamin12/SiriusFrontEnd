@@ -56,10 +56,12 @@ function TweetPageData(props) {
         likeCount={tweet.favoritersCount}
         repliesCount={tweet.repliesCount}
         retweetCount={tweet.retweetersCount}
-        bookMarked_flag={false}
         reply_to_reply={handleReplyReply}
         deleted_flag={handleDeletedTweet}
-        isReply={tweetsInfo.isReply}
+        bookMarked_flag={tweet.isBookmarkedByUser==="false"?false:true}
+        retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
+        liked_flag={tweet.isLikedByUser==="false"?false:true}
+        isReply={tweet.isReply}
 
         />
     
@@ -110,10 +112,11 @@ function TweetPageData(props) {
               response = await axios.get('http://34.236.108.123:3000/home/'+localStorage.getItem("TweetID")+'/getReplies',config2).then((res) => res.data);
               //console.log(response.tweetData);
     
-              setRepliesInfo(response.users);
+              setRepliesInfo(response.Replies);
+              console.log(response.Replies);
               setRepliesSuccess(response.message);
 
-              return (response.users);
+              return (response.Replies);
             } catch (error) {
               if (error.response) {
                 return (error.response);
@@ -203,9 +206,9 @@ function TweetPageData(props) {
               flag_reply={true}
               tweet_id={localStorage.getItem("TweetID")}
               />
-            {repliesSuccess!=="" ?
+            {repliesSuccess==="Success" ?
             <div>
-              {repliesInfo.map(getReply)}
+            {repliesInfo.map(getReply)}
             </div>
             :
             <div>
@@ -233,7 +236,6 @@ function TweetPageData(props) {
             ariaLabel='loading'
           />
           </div>
-  
         );
       }
     

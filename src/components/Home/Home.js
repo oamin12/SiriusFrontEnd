@@ -39,7 +39,12 @@ import "../WhoToFollow/WhoToFollow.css"
   )
 }
 
-
+/**
+ *
+ * @param {object} id, name, username, tweet text, user image, tweet images/videos, likes/ replies count, retweet count, bookmarked count
+ * @description Component that contains the tweets, the area designed for writing tweets, side Bar and widgets
+ * @returns {div} A div that renders this page
+ */
 function Home(props) {
 
 
@@ -114,20 +119,55 @@ async function GetTweetInfo() {
   return (response);
 }
 
-  async function GetTrendsInfo() {
-    let response = '';
-      try {
-          response = await axios.get('http://localhost:3001/TrendsData').then((res) => res.data);
-          setTrendsInfo(response);
-        return (response);
-      } catch (error) {
-        if (error.response) {
-          return (error.response);
-        }
-      }
-      return (response);
+var config2 = {
+  method: "get",
+  url: "http://34.236.108.123:3000/explore",
+  headers: { Authorization: "Bearer " + token },
+};
+async function GetTrendsInfo() {
+  let response = "";
+  try {
+    response = await axios
+      .get("http://34.236.108.123:3000/explore", config2)
+      .then((res) => res.data);
+    //console.log(response.tweetData);
+    setTrendsInfo(response.hashtags);
+
+    return response.hashtags;
+  } catch (error) {
+    if (error.response) {
+      return error.response;
+    }
   }
 
+  return response;
+}
+
+
+  var token=sessionStorage.getItem("tokenValue");
+ //console.log('dah el token ',localStorage.getItem("tokenValue"));
+  var config = {
+  method: 'get',
+  url: 'http://34.236.108.123:3000/home/',
+
+  headers: {Authorization:"Bearer "+token}
+};
+async function GetTweetInfo() {
+  let response = '';
+  try {
+    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
+    //console.log('herererer',response.userName);
+    localStorage.setItem("UserName",response.userName);
+    localStorage.setItem("Name",response.name);
+    setTweetsInfo(response.data);
+    return (response.data);
+  } catch (error) {
+    if (error.response) {
+      return (error.response);
+    }
+  }
+  return (response);
+}
 
 
   function handleAddTweet(){
@@ -177,7 +217,7 @@ async function GetTweetInfo() {
        flag={props.flag}
        postingFlag={handleAddTweet} />
 
-
+    
        {tweetsInfo.map(getTweet2)}
       </div>
       <div className="widgets">

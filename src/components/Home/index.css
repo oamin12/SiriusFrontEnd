@@ -43,7 +43,7 @@
 .Media {
   color: rgb(29, 161, 242);
   cursor: pointer;
-  margin-left: -310%;
+  margin-left: -230%;
 }
 .MediaTweetButton {
   color: rgb(29, 161, 242);
@@ -53,12 +53,11 @@
 .Poll {
   color: rgb(29, 161, 242);
   cursor: pointer;
-  margin-left: -6%;
 }
 .Gif {
   color: rgb(29, 161, 242);
   cursor: pointer;
-  margin-left: -250%;
+  margin-left: -260%;
 }
 .emoji {
   cursor: pointer;
@@ -74,13 +73,12 @@
   border-bottom: 1px solid rgb(241, 242, 243);
   display: flex;
   justify-content: space-between;
-
 }
 .emoji_in_reply
 {
   cursor: pointer;
   color: rgb(29, 161, 242);
-  margin-left: 30%;
+  margin-left: 28%;
 }
 #file-input {
   display: none;
@@ -109,8 +107,8 @@
 
 /* .emoji-picker-react .emoji-group {
   clear: both;
-  padding-left: 10px; 
-  padding-right: 150px; 
+  padding-left: 10px;
+  padding-right: 150px;
   margin-left:0%;
   /* list-style: none; */
 /* display: flex;
