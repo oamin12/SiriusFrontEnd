@@ -16,6 +16,8 @@ const Logout = () => {
     localStorage.setItem("Name","");
     localStorage.setItem("UserProfile","");
     localStorage.setItem("TopName","");
+    localStorage.setItem("UserImage","");
+
 
     navigate("/");
   }

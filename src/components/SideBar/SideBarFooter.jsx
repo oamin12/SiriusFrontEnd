@@ -30,7 +30,7 @@ function SideBarFooter(props) {
   return (
     <footer className="footer">
       <button className="avatarButton" onClick={handleClick}>
-        <Avatar alt="profile picture" src={props.picture} />
+        <Avatar src={props.picture} />
         <div className="info">
           <div>{localStorage.getItem("Name")}</div>
           <div>@{localStorage.getItem("UserName")}</div>

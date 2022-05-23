@@ -72,6 +72,7 @@ function FollowingCard(props) {
   }
   function handlePending() {
     setPending(true);
+    PostFollow();
   }
   function handleNotPending() {
     setPending(false);

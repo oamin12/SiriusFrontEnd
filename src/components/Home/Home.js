@@ -53,6 +53,7 @@ function Home(props) {
   const [addedTweet,setAddedTweet ] = React.useState(false);
   const [DeletedTweet,setDeletedTweet ] = React.useState(false);
 
+
   function handleDeletedTweet(){
     setDeletedTweet(true);
   };
@@ -132,11 +133,14 @@ async function GetTweetInfo() {
   try {
     response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
     //console.log('herererer',response.userName);
+    
     localStorage.setItem("UserName",response.userName);
     localStorage.setItem("Name",response.name);
-    localStorage.setItem("Admin",response.isAdmin);
-
+    localStorage.setItem("Admoon",response.isAdmin);
+    localStorage.setItem("UserImage",response.userImage);
+    console.log(response.name);
     setTweetsInfo(response.data);
+  
     return (response.data);
   } catch (error) {
     if (error.response) {
@@ -171,30 +175,8 @@ async function GetTrendsInfo() {
 }
 
 
-  var token=sessionStorage.getItem("tokenValue");
  //console.log('dah el token ',localStorage.getItem("tokenValue"));
-  var config = {
-  method: 'get',
-  url: 'http://34.236.108.123:3000/home/',
-
-  headers: {Authorization:"Bearer "+token}
-};
-async function GetTweetInfo() {
-  let response = '';
-  try {
-    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
-    //console.log('herererer',response.userName);
-    localStorage.setItem("UserName",response.userName);
-    localStorage.setItem("Name",response.name);
-    setTweetsInfo(response.data);
-    return (response.data);
-  } catch (error) {
-    if (error.response) {
-      return (error.response);
-    }
-  }
-  return (response);
-}
+ 
 
 
   function handleAddTweet(){
@@ -205,6 +187,7 @@ async function GetTweetInfo() {
   React.useEffect(() => {
     (async () => {
       const resp = await GetTweetInfo();
+      console.log("gowa use effect home",localStorage.getItem("Admoon"))
       setTweetsInfo(resp);
     })();
   }, []);

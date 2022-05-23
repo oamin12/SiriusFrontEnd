@@ -15,7 +15,7 @@ function PostingTweet(props) {
     <div id="posting_a_tweet" style={{"height":"auto"}}>
 
        <div className="profile_picture">
-          <Avatar className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
+          <Avatar src={localStorage.getItem("UserImage")} className="ProfilePicture"  sx={{ width: 48, height: 48 }}/>
           <Inputtext msg={props.flag_reply===true?"Tweet your Reply":"What's Happening"}
             flag_confirm={props.flag_confirm}
             flag_tweetpopuppage={0}

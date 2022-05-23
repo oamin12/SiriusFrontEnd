@@ -74,8 +74,9 @@ function CreateIcons(icons) {
  * @returns {div} a div that returns that component
  */
 function SideBar(props) {
-  let isAdmin = localStorage.getItem("Admin");
-  console.log("Adminn", isAdmin);
+  const isAdmoon = localStorage.getItem("Admoon");
+  console.log("gowa side bar",isAdmoon)
+
   const [Open, setOpen] = React.useState(false); //open main popup page of the tweet
 
   const [Notif, setNotifs] = React.useState([]);
@@ -182,7 +183,7 @@ function SideBar(props) {
             >
               Tweet
             </button>
-            {isAdmin === "true" ? (
+            {isAdmoon === "true" ? (
               <div>
                 <NavLink to="/admin/dashboard">
                   <button className="tweetButtonSideBar">
@@ -194,7 +195,7 @@ function SideBar(props) {
             <SideBarFooter
               username={accountInfo.username}
               name={accountInfo.name}
-              picture={accountInfo.picture}
+              picture={localStorage.getItem("UserImage")}
             />
           </div>
         </div>

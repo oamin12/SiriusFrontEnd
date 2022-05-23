@@ -149,7 +149,7 @@ function FriendRequestButton() {
         <h3
           style={{ textAlign: "left", fontWeight: "100", marginLeft: "20px" }}
         >
-          Friend requests
+          Follow  requests
         </h3>
       </button>
       <Modal open={open} onClose={handleClose}>
