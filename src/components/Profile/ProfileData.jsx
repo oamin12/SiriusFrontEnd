@@ -99,6 +99,8 @@ function ProfileData(props) {
   const [pending, setPending] = useState(props.pending);
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = useState(null);
+  const [profilePicOut,setProfilePicOut] = React.useState(props.profilepic);
+
   //for Edit Profile
   const [profilePic,setProfilePic] = React.useState();
   const [contextMenu, setContextMenu] = React.useState(null);
@@ -121,6 +123,7 @@ function ProfileData(props) {
 
 			reader.addEventListener("load", () => {
         convertedUrlToFile = dataURLtoFile(reader.result,"image.jpeg");
+        setProfilePicOut(reader.result)
         setProfilePic(reader.result);
         console.log(convertedUrlToFile)
         console.log(testProfile);
@@ -168,7 +171,7 @@ function ProfileData(props) {
     let response = "";
     try {
       response = await axios.patch(
-        "http://34.236.108.123:3000/settings/profile",formData,
+        "http://34.236.108.123:3000/settings/profile",{name:editName, bio:editBio, country:editCountry, city:editCity, website:editWebsite, image:profilePicOut},
        
         { headers: { Authorization: "Bearer " + token } }
       );
@@ -260,6 +263,7 @@ function ProfileData(props) {
   function SaveEdits()
   {
     EditProfileData();
+    handleModalCloseEP();
   }
   function isOverBtnSave()
     {
@@ -289,7 +293,12 @@ function ProfileData(props) {
     const handleCloseMenuPP = () => {
       setContextMenu(null);
     };
+    function handleremovePP()
+    {
+      setProfilePicOut(null);
+      setContextMenu(null);
 
+    }
 
    function OnEditPP()
    {  
@@ -421,7 +430,7 @@ function ProfileData(props) {
                             <div className="profile__head">
                                 <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
                                 <div onContextMenu={handleContextMenuPP} style={{ cursor: 'context-menu' }}>
-                                  <Avatar id="profilepic" src={props.profilepic} sx={{ width: 135, height: 135 }} />
+                                  <Avatar id="profilepic" src={profilePicOut} sx={{ width: 135, height: 135 }} />
                                   <Menu
                                   open={contextMenu !== null}
                                   onClose={handleClose}
@@ -434,7 +443,7 @@ function ProfileData(props) {
                                   }
                                 >
                                   <MenuItem onClick={triggerFileSelectPopup} ><input onChange={selectFilePP} accept="image/*" ref={inputRef} type="file" style={{"display":"none"}}></input>Edit</MenuItem>
-                                  <MenuItem onClick={handleCloseMenuPP}>Remove</MenuItem>
+                                  <MenuItem onClick={handleremovePP}>Remove</MenuItem>
                                   <MenuItem onClick={handleCloseMenuPP}>Cancel</MenuItem>
                                 </Menu>
                                 </div>
@@ -458,7 +467,7 @@ function ProfileData(props) {
                                 </div>
                                 <div className="Edit_boxWeb">
                                     <p style={{"padding-left": "10px"}}>Website</p>
-                                    <input className="edit_ipBox" onChange={handleChangeWebsite} value={editWebsite?editWebsite:setEditWebsite("https://youtu.be/dQw4w9WgXcQ")} autocapitalize="sentences" autocomplete="off" maxlength="100"  type="text" dir="auto"  ></input>
+                                    <input className="edit_ipBox" onChange={handleChangeWebsite} value={editWebsite} autocapitalize="sentences" autocomplete="off" maxlength="100"  type="text" dir="auto"  ></input>
                                 </div>
                             </div>
                         </Box>
