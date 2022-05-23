@@ -59,7 +59,7 @@ const style = {
   justifyContent: "center",
   flexDirection: "column",
 };
-function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply }) {
+function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply,isRetweet,retweeterUser,handleAddRewteet }) {
   const [liked, setLiked] = useState(liked_flag);
   const [retweeted, setRetweeted] = useState(retweeteded_flag);
   const [bookMarked, setBookMarked] = useState(bookMarked_flag);
@@ -240,8 +240,9 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
 
   }
   function handleRetweet() {
-    setRetweeted(!retweeted)
     PostRetweet();
+    setRetweeted(!retweeted)
+    handleAddRewteet();
     if (!retweeted) {
       changeRetweetsCount(retweetsCount + 1)
     }
@@ -285,6 +286,7 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
       onMouseOver={isOverTweet}
       onMouseOut={isOutTweet}
     >
+    {isRetweet?<div className="isRetweeted"><RepeatIcon fontSize="small" />{retweeterUser} retweeted</div>:null}
       <div className="post_header" >
         <div className="post_headerText">
           <NavLink className="link_text" to={"/"+userName} onClick={handleUserClicked}><Avatar src={avatar} sx={{ width: 48, height: 48 }} /></NavLink>

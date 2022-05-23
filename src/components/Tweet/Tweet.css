@@ -177,3 +177,16 @@ background-color:  rgb(225, 232, 237);
   text-align:center;
 
 }
+
+.isRetweeted
+{
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: small;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  color: #5d6d79;
+}

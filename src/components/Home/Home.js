@@ -60,7 +60,7 @@ function Home(props) {
 
   function getTweet2(tweet)
 {
-
+if(!tweet.isRetweet){
   return(
     <Tweet
     key={tweet.key}
@@ -78,10 +78,37 @@ function Home(props) {
     retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
     liked_flag={tweet.isLikedByUser==="false"?false:true}
     isPoll={tweet.poll}
+    isRetweet={tweet.isRetweet}
     deleted_flag={handleDeletedTweet}
+    handleAddRewteet={handleAddTweet}
     />
-
-  )
+  )}
+  else
+  {
+    return(
+      <Tweet
+      key={tweet.key}
+      id={tweet.key}
+      name={tweet.name}
+      userName={tweet.username}
+      content={tweet.tweetBody}
+      avatar={tweet.userImage}
+      image={tweet.tweetMedia}
+      video=''
+      likeCount={tweet.favoritersCount}
+      repliesCount={tweet.repliesCount}
+      retweetCount={tweet.retweetersCount}
+      bookMarked_flag={tweet.isBookmarkedByUser}
+      retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
+      liked_flag={tweet.isLikedByUser==="false"?false:true}
+      isPoll={tweet.poll}
+      deleted_flag={handleDeletedTweet}
+      handleAddRewteet={handleAddTweet}
+      isRetweet={tweet.isRetweet}
+      retweeterUser={tweet.usernameRetweeter}
+      />
+    )
+  }
 }
 
 /**
@@ -173,6 +200,7 @@ async function GetTweetInfo() {
   function handleAddTweet(){
     setAddedTweet(true);
   };
+  
 
   React.useEffect(() => {
     (async () => {
@@ -217,7 +245,7 @@ async function GetTweetInfo() {
        flag={props.flag}
        postingFlag={handleAddTweet} />
 
-    
+
        {tweetsInfo.map(getTweet2)}
       </div>
       <div className="widgets">
