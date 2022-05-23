@@ -19,6 +19,7 @@ import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import BlockIcon from '@mui/icons-material/Block';
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
 import VolumeOffOutlinedIcon from '@mui/icons-material/VolumeOffOutlined';
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import axios from "axios";
@@ -184,7 +185,23 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     return (response);
   }
   //////////////////////
-
+  async function deleteFollow() {
+    let response = "";
+    try {
+      response = await axios.delete(
+        "http://34.236.108.123:3000/" + userName + "/unfollow",
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    console.log(response);
+    return response;
+  }
+  ////////////////
   function HandleDeleteBookmark() {
       // post request
       (async () => {
@@ -271,6 +288,12 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     deleted_flag();
     handleReplyReply();
   }
+  function HandleUnfollow()
+  {
+    console.log("UNFOLLOW");
+    deleteFollow();
+    deleted_flag();
+  }
 
   function handleUserClicked(){
     //ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={0}  flag={1}/>, document.getElementById("root"));
@@ -349,35 +372,21 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
                       </Box>
                    </Modal>
                 </Typography>
-                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
-                  <PushPinOutlinedIcon fontSize="small"/> Pin
-                </Typography>
               </div>
             :
               <div>
-                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
-                  <PersonAddOutlinedIcon fontSize="small"/> Follow @{userName}
+                <Typography onClick={HandleUnfollow} sx={{ p: 2 }} className="tweet_settings_bar">
+                  <PersonRemoveIcon fontSize="small"/> Unfollow @{userName}
                 </Typography>
-                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
-                  <BlockIcon fontSize="small"/> Block @{userName}
-                </Typography>
-                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
-                  <FlagOutlinedIcon fontSize="small"/> Report Tweet
-                </Typography>
-                <Typography sx={{ p: 2 }} className="tweet_settings_bar">
-                  <VolumeOffOutlinedIcon fontSize="small"/> Mute @{userName}
-                </Typography>
+                
               </div>}
             </Popover>
           </div>
-
         </div>
         {/***********************************************************************************************************************/}
         {/***********************************************************************************************************************/}
         {/***********************************************************************************************************************/}
         {/***********************************************************************************************************************/}
-
-
 
           <div className="post_headerDescription" style={{ opacity: hoverOverTweet ? "200%" : "100%" }}>
           <p className="content_style">{content}</p></div>
