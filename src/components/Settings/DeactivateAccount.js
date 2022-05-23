@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DeactivateAccount.css";
 import SideBar from "../SideBar/SideBar";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import SearchBox from "../Search/SearchBox";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function DeactivateAccount() {
   let navigate = useNavigate();
   return (

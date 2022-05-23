@@ -5,26 +5,41 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import SearchBox from "../Search/SearchBox";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function ChangePassword() {
-  const Data = {
-    currentpassword: "",
-    newpassword: "",
-    confirmpassword: "",
-  };
-  const [dataValues, setData] = useState(Data);
-  console.log(
-    " Current Password:",
-    dataValues.currentpassword,
-    "\n",
-    "New Password:",
-    dataValues.newpassword,
-    "\n",
-    "Confirm Password:",
-    dataValues.confirmpassword
-  );
+  var token = sessionStorage.getItem("tokenValue");
+  var loggedusername = localStorage.getItem("UserName");
+  const [successMsg, setSucessMsg] = useState("");
+  const [errorName, setErrorMsg] = useState("");
+  const [newpassword, setNewpassword] = useState("");
+  async function Changepassword() {
+    let response = "";
+    try {
+      response = await axios
+        .put(
+          "http://34.236.108.123:3000/" +
+            loggedusername +
+            "/settings/account/change-password",
+          { name: newpassword },
+          { headers: { Authorization: "Bearer " + token } }
+        )
+        .then((res) => res.data);
+      if (response.success == true) {
+        setSucessMsg("Password changed succesfully!");
+      }
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    console.log(response);
+    return response;
+  }
+
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setData({ ...dataValues, [name]: value });
+    const value = e.target.value;
+    setNewpassword(value);
   };
   function handleClick() {
     let current = document.querySelector(".current-password").value;
@@ -33,8 +48,7 @@ function ChangePassword() {
     let message = document.getElementById("message");
     if (current.length != 0 && password.length != 0) {
       if (password == cnfrmPassword) {
-        message.textContent = "Passwords match";
-        message.style.color = "#1dcd59";
+        Changepassword();
       } else {
         message.textContent = "Passwords don't match";
         message.style.color = "#ff4d4d";
@@ -58,9 +72,6 @@ function ChangePassword() {
           className="current-password"
           type="password"
           placeholder="Current password"
-          onChange={handleChange}
-          value={dataValues.currentpassword}
-          name="currentpassword"
         />
         <a
           onClick={() => navigate("/forgetpassword")}
@@ -74,16 +85,12 @@ function ChangePassword() {
           type="password"
           placeholder="New password"
           onChange={handleChange}
-          value={dataValues.newpassword}
-          name="newpassword"
+          value={newpassword}
         />
         <input
           className="confirm-password"
           type="password"
           placeholder="Confirm password"
-          onChange={handleChange}
-          value={dataValues.confirmpassword}
-          name="confirmpassword"
         />
         <hr className="line2-password"></hr>
         <button onClick={handleClick} className="save-password">
