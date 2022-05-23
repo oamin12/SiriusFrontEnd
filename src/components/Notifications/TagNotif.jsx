@@ -1,8 +1,9 @@
 import React from "react";
-import "./LikeNotif.css";
+import "./TagNotif.css";
 import { Avatar } from "@mui/material";
 import Tweet from "../Tweet/Tweet";
 import getTweet from "./getTweet";
+
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
@@ -27,7 +28,7 @@ function getTweetNotif(tweet) {
     />
   );
 }
-function LikeNotif(props) {
+function TweetNotif(props) {
   const [tweet, setTweet] = React.useState([]);
   React.useEffect(() => {
     (async () => {
@@ -35,6 +36,7 @@ function LikeNotif(props) {
       setTweet([resp.tweetData]);
     })();
   }, []);
+  
   return (
     <div className="TweetNotif">
       <Avatar alt="Profile picture" src={props.image} />
@@ -45,6 +47,6 @@ function LikeNotif(props) {
     </div>
   );
 }
-export default LikeNotif;
+export default TweetNotif;
 //23mly src elavatar
 //<p className="TweetNotifText"></p>

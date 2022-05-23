@@ -36,6 +36,7 @@ function createProfileData(User,protectedAccount) {
         isMe={User.isMe}
         followed={User.followHim}
         protected={protectedAccount}
+        pending={User.pending}
 
       />
     );
@@ -43,18 +44,41 @@ function createProfileData(User,protectedAccount) {
   function getTweet(tweet) {
     return (
       <Tweet
-        key={tweet.id}
+        key={tweet._id}
+        id={tweet._id}
         name={tweet.name}
         userName={tweet.username}
         content={tweet.body}
         avatar={tweet.image}
-        image={""}
+        image={tweet.media}
         video={""}
         likeCount={tweet.favoriters.length}
         repliesCount={tweet.replies.length}
         retweetCount={tweet.retweeters.length}
+        //bookMarked_flag={tweet.isBookmarkedByUser}
+        retweeteded_flag={tweet.isRetweetedByMe}
+        liked_flag={tweet.isLikedByMe}
+
       />
     );
+    // key={tweet.key}
+    // id={tweet.key}
+    // name={tweet.name}
+    // userName={tweet.username}
+    // content={tweet.tweetBody}
+    // avatar={tweet.userImage}
+    // image={tweet.tweetMedia}
+    // video=''
+    // likeCount={tweet.favoritersCount}
+    // repliesCount={tweet.repliesCount}
+    // retweetCount={tweet.retweetersCount}
+    // bookMarked_flag={tweet.isBookmarkedByUser}
+    // retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
+    // liked_flag={tweet.isLikedByUser==="false"?false:true}
+    // isPoll={tweet.poll}
+    // isRetweet={tweet.isRetweet}
+    // deleted_flag={handleDeletedTweet}
+    // handleAddRewteet={handleAddTweet}
   }
   var subpage = 1;
 
@@ -70,6 +94,8 @@ function Profile() {
   const [profileTweets,setProfileTweets ] = React.useState([]);
   const [profileReplies,setProfileReplies ] = React.useState([]);
   const [ProfileInfoReplies,setProfileInfoReplies ] = React.useState([]);
+  const [ProfileLikes,setProfileLikes ] = React.useState([]);
+  const [ProfileMedia,setProfileMedia ] = React.useState([]);
   const [namee,setNamee ] = React.useState(null);
   function ProfileSubPage(){
 
@@ -117,7 +143,55 @@ function Profile() {
     }
     return (response);
   }
+////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////Likes///////////////////////////////////////////////////
+async function GetUserProfileLikes(UserName) {
+  console.log("INSIDE FUNCTION",UserName);
+  let response = '';
+try {
+  response = await axios.get('http://34.236.108.123:3000/'+UserName+'/likes',{headers: {Authorization:"Bearer "+token} }).then((res) => res.data);
+  
+  return (response.likes);
+} catch (error) {
+  if (error.response) {
+    return (error.response);
+  }
+}
+return (response);
+}
 
+
+React.useEffect(() => {
+(async () => {
+  const resp = await GetUserProfileLikes(localStorage.getItem("UserProfile"));
+  setProfileLikes(resp);
+})();
+}, []);
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////MEDIA//////////////////////////////////////////////////
+async function GetUserProfileMedia(UserName) {
+  console.log("INSIDE FUNCTION",UserName);
+  let response = '';
+try {
+  response = await axios.get('http://34.236.108.123:3000/'+UserName+'/media',{headers: {Authorization:"Bearer "+token} }).then((res) => res.data);
+  
+  return (response.media);
+} catch (error) {
+  if (error.response) {
+    return (error.response);
+  }
+}
+return (response);
+}
+
+React.useEffect(() => {
+(async () => {
+  const resp = await GetUserProfileMedia(localStorage.getItem("UserProfile"));
+  setProfileMedia(resp);
+})();
+}, []);
+///////////////////////////////////////////////////////////////////////////////////////////////
 
   React.useEffect(() => {
     (async () => {
@@ -177,8 +251,8 @@ console.log("protected "+protectedAccount);
       {  ProfileSubPage
         (subpage==1)?Hometweets?.map(getTweet):
         (subpage==2)?profileReplies?.map(getTweet):
-        (subpage==3)?Media?.map(getTweet):
-        (subpage==4)?Likes?.map(getTweet):
+        (subpage==3)?ProfileMedia?.map(getTweet):
+        (subpage==4)?ProfileLikes?.map(getTweet):
         profileTweets?.map(getTweet)
       }
       </div>

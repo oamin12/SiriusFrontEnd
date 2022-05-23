@@ -1,14 +1,9 @@
 import axios from "axios";
-var token = sessionStorage.getItem("tokenValue");
-export default async function getNotifications() {
-  var config = {
-    method: "get",
-    headers: { Authorization: "Bearer " + token },
-  };
+export default async function getFriendRequests() {
   let response = "";
   try {
     response = await axios
-      .get("http://34.236.108.123:3000/home/getNotifications", config)
+      .get("http://localhost:3001/FriendRequests")
       .then((res) => res.data);
     return response;
   } catch (error) {

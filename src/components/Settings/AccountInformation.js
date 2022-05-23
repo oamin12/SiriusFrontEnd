@@ -4,6 +4,8 @@ import "./AccountInformation.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import WhoToFollow from "../WhoToFollow/WhoToFollow";
+import SearchBox from "../Search/SearchBox";
 function AccountInformation() {
   let navigate = useNavigate();
   return (
@@ -45,9 +47,22 @@ function AccountInformation() {
         <hr className="line2-account"></hr>
       </div>
       <div className="widgets">
-        <div className="search">search</div>
+        <div className="search">
+          <SearchBox
+            size="40"
+            styling={{
+              width: "30%",
+              marginTop: "-15.5%",
+              marginLeft: "70%",
+              height: "60%",
+            }}
+          />
+        </div>
         <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">who to follow</div>
+        <div className="whoToFollow">
+          {" "}
+          <WhoToFollow />{" "}
+        </div>
       </div>
     </div>
   );

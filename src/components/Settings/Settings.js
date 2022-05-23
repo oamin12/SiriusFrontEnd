@@ -6,8 +6,10 @@ import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import SearchBox from "../Search/SearchBox";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import KeyIcon from "@mui/icons-material/Key";
+import BrushIcon from "@mui/icons-material/Brush";
 import HeartBrokenIcon from "@mui/icons-material/HeartBroken";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
 function Settings() {
   let navigate = useNavigate();
@@ -41,6 +43,28 @@ function Settings() {
         </button>
 
         <button
+          className="notifications-settings"
+          onClick={() => navigate("/settings/editnotifications")}
+        >
+          <NotificationsIcon className="icon4"></NotificationsIcon>
+          Notifications
+          <span className="info4">
+            Select the kinds of notifications you get about your activities.
+          </span>
+          <ArrowForwardIosIcon fontSize="small" className="arrow4" />
+        </button>
+
+        <button
+          className="display-settings"
+          onClick={() => navigate("/settings/display")}
+        >
+          <BrushIcon className="icon5"></BrushIcon>
+          Display
+          <span className="info5">Toggle dark mode</span>
+          <ArrowForwardIosIcon fontSize="small" className="arrow5" />
+        </button>
+
+        <button
           className="deactivate-settings"
           onClick={() => navigate("/settings/deactivateaccount")}
         >
@@ -54,16 +78,22 @@ function Settings() {
       </div>
       <div className="widgets">
         <div className="search">
-      <SearchBox size="40"  
-            styling=
-            { {width: "30%",
-            marginTop: "-15.5%",
-            marginLeft: "70%",
-            height:'60%',}}/>
-          </div> 
+          <SearchBox
+            size="40"
+            styling={{
+              width: "30%",
+              marginTop: "-15.5%",
+              marginLeft: "70%",
+              height: "60%",
+            }}
+          />
+        </div>
         <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">  <WhoToFollow /> </div>
-    </div>
+        <div className="whoToFollow">
+          {" "}
+          <WhoToFollow />{" "}
+        </div>
+      </div>
     </div>
   );
 }

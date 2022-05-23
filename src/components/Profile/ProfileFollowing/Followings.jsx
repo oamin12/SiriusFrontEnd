@@ -16,6 +16,9 @@ function createCard(contact) {
         img={contact.image}
         protectedTweets={contact.protectedTweets}
         followsMe={contact.followsMe}
+        followsHim={contact.followsHim}
+        isProtected={contact.protectedTweets}
+        isMe={contact.isMe}
       />
     );
   }

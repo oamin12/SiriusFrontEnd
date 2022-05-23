@@ -53,6 +53,7 @@ function Home(props) {
   const [addedTweet,setAddedTweet ] = React.useState(false);
   const [DeletedTweet,setDeletedTweet ] = React.useState(false);
 
+
   function handleDeletedTweet(){
     setDeletedTweet(true);
   };
@@ -60,7 +61,7 @@ function Home(props) {
 
   function getTweet2(tweet)
 {
-
+if(!tweet.isRetweet){
   return(
     <Tweet
     key={tweet.key}
@@ -78,10 +79,37 @@ function Home(props) {
     retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
     liked_flag={tweet.isLikedByUser==="false"?false:true}
     isPoll={tweet.poll}
+    isRetweet={tweet.isRetweet}
     deleted_flag={handleDeletedTweet}
+    handleAddRewteet={handleAddTweet}
     />
-
-  )
+  )}
+  else
+  {
+    return(
+      <Tweet
+      key={tweet.key}
+      id={tweet.key}
+      name={tweet.name}
+      userName={tweet.username}
+      content={tweet.tweetBody}
+      avatar={tweet.userImage}
+      image={tweet.tweetMedia}
+      video=''
+      likeCount={tweet.favoritersCount}
+      repliesCount={tweet.repliesCount}
+      retweetCount={tweet.retweetersCount}
+      bookMarked_flag={tweet.isBookmarkedByUser}
+      retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
+      liked_flag={tweet.isLikedByUser==="false"?false:true}
+      isPoll={tweet.poll}
+      deleted_flag={handleDeletedTweet}
+      handleAddRewteet={handleAddTweet}
+      isRetweet={tweet.isRetweet}
+      retweeterUser={tweet.usernameRetweeter}
+      />
+    )
+  }
 }
 
 /**
@@ -105,11 +133,14 @@ async function GetTweetInfo() {
   try {
     response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
     //console.log('herererer',response.userName);
+
     localStorage.setItem("UserName",response.userName);
     localStorage.setItem("Name",response.name);
-    localStorage.setItem("Admin",response.isAdmin);
-
+    localStorage.setItem("Admoon",response.isAdmin);
+    localStorage.setItem("UserImage",response.userImage);
+    console.log(response.name);
     setTweetsInfo(response.data);
+
     return (response.data);
   } catch (error) {
     if (error.response) {
@@ -144,39 +175,19 @@ async function GetTrendsInfo() {
 }
 
 
-  var token=sessionStorage.getItem("tokenValue");
  //console.log('dah el token ',localStorage.getItem("tokenValue"));
-  var config = {
-  method: 'get',
-  url: 'http://34.236.108.123:3000/home/',
 
-  headers: {Authorization:"Bearer "+token}
-};
-async function GetTweetInfo() {
-  let response = '';
-  try {
-    response = await axios.get('http://34.236.108.123:3000/home/',config).then((res) => res.data);
-    //console.log('herererer',response.userName);
-    localStorage.setItem("UserName",response.userName);
-    localStorage.setItem("Name",response.name);
-    setTweetsInfo(response.data);
-    return (response.data);
-  } catch (error) {
-    if (error.response) {
-      return (error.response);
-    }
-  }
-  return (response);
-}
 
 
   function handleAddTweet(){
     setAddedTweet(true);
   };
 
+
   React.useEffect(() => {
     (async () => {
       const resp = await GetTweetInfo();
+      console.log("gowa use effect home",localStorage.getItem("Admoon"))
       setTweetsInfo(resp);
     })();
   }, []);

@@ -1,30 +1,25 @@
 import React from "react";
+import "./Display.css";
 import "../Layout.css";
-import "./ChangeEmail.css";
 import SideBar from "../SideBar/SideBar";
-import { useNavigate } from "react-router-dom";
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import SearchBox from "../Search/SearchBox";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-function ChangeUsername() {
+import { useNavigate } from "react-router-dom";
+function Display() {
   let navigate = useNavigate();
   return (
     <div className="layout">
       <SideBar />
       <div className="feeder">
         <ArrowBackIcon
-          onClick={() => navigate("/settings/accountinformation")}
+          onClick={() => navigate("/settings")}
           className="arrow-back"
         />
-        <h3 className="header-email">Change email</h3>
-        <input
-          className="email-email"
-          type="email"
-          placeholder="Email"
-          name="email"
-        />
-        <hr className="line-password"></hr>
-        <button className="update-email">Update email address</button>
+        <h3 className="header-display">Display</h3>
+        <hr className="line-deactivate-display"></hr>
+        <h4 className="turn-display">Toggle Dark Mode</h4>
+        <input className="checkbox-display" type="checkbox" />
       </div>
       <div className="widgets">
         <div className="search">
@@ -48,4 +43,4 @@ function ChangeUsername() {
   );
 }
 
-export default ChangeUsername;
+export default Display;

@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import greyback from "../StartupPage/Images/grey.png";
+import WhoToFollow from "../WhoToFollow/WhoToFollow";
+import SearchBox from "../Search/SearchBox";
 import "./Popup.css";
 const Popup = () => {
   let navigate = useNavigate();

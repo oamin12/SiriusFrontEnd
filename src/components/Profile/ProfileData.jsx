@@ -96,7 +96,7 @@ function ProfileData(props) {
   //UseState to keep track of following and unfollowing users
   const [changeFollow, setChangeFollow] = useState(false);
   const [followed, setFollowed] = useState(props.followed);
-  const [pending, setPending] = useState(false);
+  const [pending, setPending] = useState(props.pending);
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = useState(null);
   //for Edit Profile
@@ -349,6 +349,7 @@ function ProfileData(props) {
   }
   function handlePending() {
     setPending(true);
+    PostFollow();
   }
   function handleNotPending() {
     setPending(false);

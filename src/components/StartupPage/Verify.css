@@ -70,14 +70,6 @@
   background: #292929f7;
   cursor: pointer;
 }
-.didntv {
-  color: #00acee;
-  text-decoration: none;
-  position: inherit;
-  margin-bottom: 150px;
-  margin-right: -100px;
-  font-size: 14px;
-}
 /*Hovering*/
 .backav:hover {
   background-color: rgb(236, 236, 236);
@@ -87,8 +79,4 @@
 .boxv:focus {
   border: 1px solid #00acee;
   font-size: 18px;
-}
-.didntv:hover {
-  cursor: pointer;
-  text-decoration: underline;
 }

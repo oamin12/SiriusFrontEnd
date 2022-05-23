@@ -1,21 +1,18 @@
-.FollowNotif {
+.VoteNotif {
   width: 100%;
   border-bottom: 1px solid rgb(245, 248, 250);
   padding: 3%;
   display: flex;
+  flex-direction: row;
   transition: background-color 0.25s;
 }
-.FollowNotifHeader {
+.VoteNotifHeader {
   display: flex;
   align-items: center;
   width: fit-content;
   margin-left: 2%;
-  margin-right: 2%;
 }
-.FollowNotifText {
-  display: flex;
-  align-items: center;
-}
-.FollowNotif:hover {
+
+.VoteNotif:hover {
   background-color: rgb(245, 248, 250);
 }

@@ -1,0 +1,28 @@
+.header-display {
+  margin-top: 20px;
+  margin-left: 70px;
+  font-size: 22px;
+}
+.turn-display {
+  opacity: 90%;
+  margin-left: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+.checkbox-display {
+  height: 20px;
+  position: fixed;
+  margin-left: -360px;
+  margin-top: -118px;
+}
+.checkbox-display:hover {
+  background-color: rgb(236, 236, 236);
+  border: 1px solid rgb(236, 236, 236);
+  cursor: pointer;
+}
+.line-deactivate-display {
+  position: fixed;
+  opacity: 10%;
+  margin-top: 15px;
+  width: 644px;
+}

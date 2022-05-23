@@ -20,7 +20,7 @@
     width: 80%;
     opacity: 100% !important;
     margin-left: 50px;
-    
+
   }
   .post_body2
   {
@@ -29,17 +29,17 @@
     max-width: 600px;
     page-break-inside: auto;
     gap: 3px;
-    
+
 
   }
   .post_body2 > img {
-    
+
     max-width: 220px;
     width: 100%;
     opacity: 100% !important;
     display: flex;
     flex-direction: row !important;
-    
+
   }
   .post_body3{
     display: flex;
@@ -49,7 +49,7 @@
     page-break-inside: auto;
     gap: 3px;
   }
-  
+
   .post_body3_1 > img{
     max-width: 250px;
     max-height: 200px;
@@ -62,7 +62,7 @@
     opacity: 100% !important;
     display: flex;
     flex-direction: row !important;
-    
+
   }
   .post_body3_2{
     display: flex;
@@ -83,16 +83,16 @@
     page-break-inside: auto;
     gap: 3px;
   }
-  
+
   .post_body4 > img {
     border-radius: 20px;
     max-width: 600px;
     width: 80%;
     opacity: 100% !important;
     margin-left: 50px;
-    
+
   }
-  
+
   .post_footer {
 
     display: flex;
@@ -101,9 +101,9 @@
     flex-direction: row;
     padding-left: 60px;
     margin-left: 90px;
-    
+
   }
-  
+
   .post_headerDescription {
     margin-bottom: 10px;
     font-size: 15px;
@@ -112,7 +112,7 @@
     word-wrap: break-word;
     padding-right: 10px;
   }
-  
+
   .post_headerText {
     display: flex;
     text-align: left;
@@ -121,9 +121,9 @@
     font-size: 15px;
     margin-bottom: 5px;
   }
-  
- 
-  
+
+
+
   .post_headerUserName {
     font-weight: 600;
     font-size: 12px;
@@ -176,4 +176,17 @@ background-color:  rgb(225, 232, 237);
   width: 100% !important;
   text-align:center;
 
+}
+
+.isRetweeted
+{
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: small;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  color: #5d6d79;
 }

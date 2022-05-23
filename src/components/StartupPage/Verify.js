@@ -51,10 +51,6 @@ const Verify = () => {
         <h1 className="h1v">We sent you a code</h1>
         <p className="infov">Enter it below to verify your email.</p>
         <input className="boxv" name="code" value={dataValue.code} onChange={handleChange} placeholder="Verification code" />
-        <a className="didntv" href="#">
-          {" "}
-          Didn't receive an email?{" "}
-        </a>
         <button onClick={handleVerify} class="nextbtnv">
           Next
         </button>
