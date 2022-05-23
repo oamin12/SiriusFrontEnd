@@ -1,0 +1,23 @@
+.RequestButtons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.AcceptButton {
+  border: 0px;
+  background-color: rgb(29 161 242);
+  color: white;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.RejectButton {
+  border: 0px;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  margin: 5px;
+  padding: 10px;
+  cursor: pointer;
+}

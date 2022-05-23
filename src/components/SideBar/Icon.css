@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  background-color: white;
+  border: 0px;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
 }
 .icon:hover {
@@ -13,12 +15,10 @@
 }
 
 /*the class for material ui is .MuiSvgIcon-root*/
-.icon .MuiSvgIcon-root {
-  margin-right: 20px;
-}
 
 .icon > h4 {
   font-weight: 100;
+  margin-left: 20px;
 }
 .icon-active > h4 {
   font-weight: 600;
@@ -26,6 +26,9 @@
 
 @media (max-width: 640px) {
   h4 {
+    display: none;
+  }
+  h3 {
     display: none;
   }
   .icon {
