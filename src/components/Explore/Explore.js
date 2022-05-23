@@ -10,17 +10,6 @@ import Trend from "./Trend";
 import SearchBox from "../Search/SearchBox";
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import axios from "axios";
-function CreateTrends(Trends) {
-  return (
-    <Trend
-      key={Trends.id}
-      number={Trends.rank}
-      type={Trends.type}
-      name={Trends.body}
-      tweets_num={Trends.tweetsCount}
-    />
-  );
-}
 
 //make width same as home/profile
 /**
@@ -30,7 +19,8 @@ function CreateTrends(Trends) {
  */
 function Explore() {
   const [trendsInfo, setTrendsInfo] = React.useState([]);
-
+  const [pageState,setPageState]= React.useState("foryou");
+  
   var token = sessionStorage.getItem("tokenValue");
   var config = {
     method: "get",
@@ -63,11 +53,55 @@ function Explore() {
     })();
   }, []);
 
+  function CreateTrends(Trends) {
+    if(pageState==="foryou"){
+    return (
+      <Trend
+        key={Trends.id}
+        number={Trends.rank}
+        type={Trends.type}
+        name={Trends.body}
+        tweets_num={Trends.tweetsCount}
+      />
+    );}
+    if(pageState==="entertain" && Trends.type==="Entertainment"){
+      return (
+        <Trend
+          key={Trends.id}
+          number={Trends.rank}
+          type={Trends.type}
+          name={Trends.body}
+          tweets_num={Trends.tweetsCount}
+        />
+      );}
+      if(pageState==="sports" && Trends.type==="Sports"){
+        return ( 
+          <Trend
+            key={Trends.id}
+            number={Trends.rank}
+            type={Trends.type}
+            name={Trends.body}
+            tweets_num={Trends.tweetsCount}
+          />
+        );}
+        if(pageState==="news" && Trends.type==="News"){
+          return (
+            <Trend
+              key={Trends.id}
+              number={Trends.rank}
+              type={Trends.type}
+              name={Trends.body}
+              tweets_num={Trends.tweetsCount}
+            />
+          );}
+  }
+  
+
   return (
     <div className="layout">
       <SideBar />
       <div className="feeder">
-        <ExploreHeader />
+        <ExploreHeader pageFlag={setPageState} />
         {trendsInfo.map(CreateTrends)}
       </div>
       <div className="widgets">
@@ -79,7 +113,6 @@ function Explore() {
             marginLeft: "70%",
             height:'60%',}}/>
           </div> */}
-        <div className="whatsHappening">what's happening</div>
         <div className="whoToFollow">
           {" "}
           <WhoToFollow />{" "}

@@ -13,6 +13,7 @@ import EmptyNotifications from "./EmptyNotifications";
 import VoteNotif from "./VoteNotif";
 import getNotifications from "./Notifsdb";
 import QuoteRetweetNotif from "./quoteRetweet";
+import WhatsHappening from "../WhatsHappening/WhatsHappening";
 import axios from "axios";
 
 var token = sessionStorage.getItem("tokenValue");
@@ -116,6 +117,38 @@ function Notifications() {
     }
   }
   //--------------------------------//
+  //-----------WHATSHAPPENING----------//
+const [trendsInfo,setTrendsInfo]=React.useState([]);
+var config2 = {
+  method: "get",
+  url: "http://34.236.108.123:3000/explore",
+  headers: { Authorization: "Bearer " + token },
+};
+async function GetTrendsInfo() {
+  let response = "";
+  try {
+    response = await axios
+      .get("http://34.236.108.123:3000/explore", config2)
+      .then((res) => res.data);
+    //console.log(response.tweetData);
+    setTrendsInfo(response.hashtags);
+
+    return response.hashtags;
+  } catch (error) {
+    if (error.response) {
+      return error.response;
+    }
+  }
+
+  return response;
+}
+React.useEffect(() => {
+  (async () => {
+    const resp = await GetTrendsInfo();
+    setTrendsInfo(resp);
+  })();
+}, []);
+  //------------------------------------//
   return (
     <div className="layout">
       <SideBar />
@@ -126,7 +159,9 @@ function Notifications() {
       </div>
       <div className="widgets">
         <div className="search">search</div>
-        <div className="whatsHappening">what's happening</div>
+        <div className="whatsHappening">
+          <WhatsHappening WhatsHappening={trendsInfo}/>
+        </div> 
         <div className="whoToFollow">who to follow</div>
       </div>
     </div>

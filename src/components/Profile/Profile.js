@@ -14,6 +14,8 @@ import SearchBox from "../Search/SearchBox"
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import { Puff } from  'react-loader-spinner'
 import Tweet from "../Tweet/Tweet";
+import WhatsHappening from "../WhatsHappening/WhatsHappening";
+
 
 function createProfileData(User,protectedAccount) {
 
@@ -236,6 +238,38 @@ React.useEffect(() => {
 }, []);
 let protectedAccount = (!ProfileInfo.isMe && !ProfileInfo.followsHim && ProfileInfo.protectedTweets);
 console.log("protected "+protectedAccount);
+//-----------WHATSHAPPENING----------//
+const [trendsInfo,setTrendsInfo]=React.useState([]);
+var config2 = {
+  method: "get",
+  url: "http://34.236.108.123:3000/explore",
+  headers: { Authorization: "Bearer " + token },
+};
+async function GetTrendsInfo() {
+  let response = "";
+  try {
+    response = await axios
+      .get("http://34.236.108.123:3000/explore", config2)
+      .then((res) => res.data);
+    //console.log(response.tweetData);
+    setTrendsInfo(response.hashtags);
+
+    return response.hashtags;
+  } catch (error) {
+    if (error.response) {
+      return error.response;
+    }
+  }
+
+  return response;
+}
+React.useEffect(() => {
+  (async () => {
+    const resp = await GetTrendsInfo();
+    setTrendsInfo(resp);
+  })();
+}, []);
+  //------------------------------------//
   if(namee)
   {
   return (
@@ -267,8 +301,10 @@ console.log("protected "+protectedAccount);
             marginLeft: "70%",
             height:'60%',}}/>
           </div>
-        <div className="whatsHappening">what's happening</div>
-        <div className="whoToFollow">  <WhoToFollow /> </div>
+          <div className="whatsHappening">
+          <WhatsHappening WhatsHappening={trendsInfo}/>
+        </div> 
+       <div className="whoToFollow">  <WhoToFollow /> </div>
     </div>
     </div>
 

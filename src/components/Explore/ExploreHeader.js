@@ -22,8 +22,23 @@ function ExploreHeader(props) {
       setOpenModal(false);
     }
     
-    
-    
+   function handleForu()
+   {
+     props.pageFlag("foryou");
+   }
+   function handleNews()
+   {
+     props.pageFlag("news");
+   }
+   function handleSports()
+   {
+     props.pageFlag("sports");
+   }
+   function handleEntertainment()
+   {
+    props.pageFlag("entertain");
+
+   }
     const style = {
         position: "absolute",
         top: "50%",
@@ -74,16 +89,16 @@ function ExploreHeader(props) {
         <div className="Tabs_explore">
         <Tabs textColor="inheret" style={{color:"Black"}} variant="fullWidth">
                 <NavLink to="/explore" style={{color:"Black"}}>
-                <Tab  label="For you" />
+                <Tab onClick={handleForu} label="For you" />
                 </NavLink>
                 <NavLink to="/explore" style={{color:"Black",fontSize:"14px"}}>
-                <Tab  label="News" style={{padding:"7px 7px 7px 7px"}} />
+                <Tab  onClick={handleNews} label="News" style={{padding:"7px 7px 7px 7px"}} />
                 </NavLink>
                 <NavLink  to="/explore" style={{color:"Black"}}>
-                <Tab  label="Sports" />
+                <Tab onClick={handleSports} label="Sports" />
                 </NavLink>
                 <NavLink to="/explore" style={{color:"Black"}}>
-                <Tab  label="Entertainment" />  
+                <Tab onClick={handleEntertainment} label="Entertainment" />  
                 </NavLink>  
             </Tabs>
         </div> 
