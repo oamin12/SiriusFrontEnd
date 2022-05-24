@@ -155,38 +155,4 @@ body {
   background: #1f94dd;
   cursor: pointer;
 }
-@media (max-width: 1500px) {
-  * {
-    text-align: center;
-    margin-right: 700px;
-    margin-bottom: 200px;
-  }
-  .pf1 {
-    margin-left: 350px;
-    width: 30%;
-  }
-  .signupgooglef1 {
-    margin-left: 350px;
-  }
-  .signupfacebookf1 {
-    margin-left: 350px;
-  }
-  .loginf1 {
-    margin-left: 350px;
-  }
-  .signupf1 {
-    margin-left: 350px;
-  }
-  .h1f1 {
-    text-align: center;
-    margin-right: 700px;
-  }
-  .h3f1 {
-    text-align: center;
-    margin-right: 700px;
-  }
-  .backf1 {
-    position: fixed;
-    margin-top: 900px;
-  }
-}
+
