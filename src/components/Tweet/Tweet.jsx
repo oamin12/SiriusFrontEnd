@@ -60,7 +60,7 @@ const style = {
   justifyContent: "center",
   flexDirection: "column",
 };
-function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply,isRetweet,retweeterUser,handleAddRewteet }) {
+function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply,isRetweet,retweeterUser,handleAddRewteet,ifFollowingFlag }) {
   const [liked, setLiked] = useState(liked_flag);
   const [retweeted, setRetweeted] = useState(retweeteded_flag);
   const [bookMarked, setBookMarked] = useState(bookMarked_flag);
@@ -201,6 +201,23 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     console.log(response);
     return response;
   }
+  async function Follow() {
+    let response = "";
+    try {
+      response = await axios.post(
+        "http://34.236.108.123:3000/" + userName + "/follow",
+        {},
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    console.log(response);
+    return response;
+  }
   ////////////////
   function HandleDeleteBookmark() {
       // post request
@@ -294,6 +311,12 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     deleteFollow();
     deleted_flag();
   }
+  function Handlefollow()
+  {
+    Follow();
+    deleted_flag();
+
+  }
 
   function handleUserClicked(){
     //ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={0}  flag={1}/>, document.getElementById("root"));
@@ -375,9 +398,11 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
               </div>
             :
               <div>
-                <Typography onClick={HandleUnfollow} sx={{ p: 2 }} className="tweet_settings_bar">
+                {ifFollowingFlag?<Typography onClick={HandleUnfollow} sx={{ p: 2 }} className="tweet_settings_bar">
                   <PersonRemoveIcon fontSize="small"/> Unfollow @{userName}
-                </Typography>
+                </Typography>:<Typography onClick={Handlefollow} sx={{ p: 2 }} className="tweet_settings_bar">
+                  <PersonAddOutlinedIcon fontSize="small"/> Follow @{userName}
+                </Typography>}
                 
               </div>}
             </Popover>
