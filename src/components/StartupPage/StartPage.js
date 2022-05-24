@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Start.css";
 import background from "./Images/whatshappening.png";
 import { useNavigate } from "react-router-dom";
+import FacebookLogin from "react-facebook-login";
+import axios from "axios";
 /**
  * @description Component that contains the start page where the user can log in or sign up for a new account
  * @returns {div}
- */ 
+ */
+
 const Start = () => {
-  let history = useNavigate();
+  let navigate = useNavigate();
+  const [id, setID] = useState("");
+  function componentClicked() {}
+  const responseFacebook = (response) => {
+    console.log(response);
+    Facebook(response.accessToken);
+  };
+
+  async function Facebook(token) {
+    let response = "";
+    try {
+      response = await axios
+        .post(
+          "http://34.236.108.123:3000/facebook",
+          {},
+          { headers: { Authorization: "Bearer " + token } }
+        )
+        .then((res) => res.data);
+      return response;
+    } catch (error) {}
+    return response;
+  }
+
   return (
     <div className="Start">
       <div className="upf1">
@@ -18,8 +43,15 @@ const Start = () => {
         <div className="leftf1">
           <h1 className="h1f1">Happening now</h1>
           <h3 className="h3f1">Join Sirius today.</h3>
-          <button className="signupgooglef1">Sign up with Google</button>
-          <button className="signupfacebookf1"> Sign up with Facebook </button>
+          {/* <button className="signupgooglef1">Sign up with Google</button> */}
+          <FacebookLogin
+            textButton="Sign up with Facebook"
+            cssClass="signupfacebookf1"
+            appId="3312856885602854"
+            fields="name,email,picture"
+            onClick={componentClicked}
+            callback={responseFacebook}
+          ></FacebookLogin>
           <p className="pf1">
             <span className="spf1">or</span>
           </p>

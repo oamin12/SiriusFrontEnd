@@ -53,28 +53,6 @@ function Settings() {
           </span>
           <ArrowForwardIosIcon fontSize="small" className="arrow4" />
         </button>
-
-        <button
-          className="display-settings"
-          onClick={() => navigate("/settings/display")}
-        >
-          <BrushIcon className="icon5"></BrushIcon>
-          Display
-          <span className="info5">Toggle dark mode</span>
-          <ArrowForwardIosIcon fontSize="small" className="arrow5" />
-        </button>
-
-        <button
-          className="deactivate-settings"
-          onClick={() => navigate("/settings/deactivateaccount")}
-        >
-          <HeartBrokenIcon className="icon3"></HeartBrokenIcon>
-          Deactivate your account
-          <span className="info3">
-            Find out how you can deactivate your account.
-          </span>
-          <ArrowForwardIosIcon fontSize="small" className="arrow3" />
-        </button>
       </div>
       <div className="widgets">
         <div className="search">
