@@ -10,21 +10,24 @@ import { NavLink } from "react-router-dom";
 function getTweetNotif(tweet) {
   return (
     <Tweet
-      key={tweet.key}
-      id={tweet.key}
-      name={tweet.name}
-      userName={tweet.username}
-      content={tweet.tweetBody}
-      avatar={tweet.userImage}
-      image={tweet.tweetMedia}
-      video=""
-      likeCount={tweet.favoritersCount}
-      repliesCount={tweet.repliesCount}
-      retweetCount={tweet.retweetersCount}
-      bookMarked_flag={tweet.isBookmarkedByUser}
-      retweeteded_flag={tweet.isRetweetedByUser === "false" ? false : true}
-      liked_flag={tweet.isLikedByUser === "false" ? false : true}
-      isPoll={tweet.poll}
+        key={tweet.key}
+    id={tweet.key}
+    name={tweet.name}
+    userName={tweet.username}
+    content={tweet.tweetBody}
+    avatar={tweet.userImage}
+    image={tweet.tweetMedia}
+    video=''
+    likeCount={tweet.favoritersCount}
+    repliesCount={tweet.repliesCount}
+    retweetCount={tweet.retweetersCount}
+    bookMarked_flag={tweet.isBookmarkedByUser}
+    retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
+    liked_flag={tweet.isLikedByUser==="false"?false:true}
+    isPoll={tweet.poll}
+    isRetweet={tweet.isRetweet}
+    ifFollowingFlag={tweet.isFollowing}
+    createdAt={tweet.createdAt}
     />
   );
 }

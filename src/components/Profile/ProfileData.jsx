@@ -100,10 +100,13 @@ function ProfileData(props) {
   const [openModal, setOpenModal] = useState(false);
   const [open, setOpen] = useState(null);
   const [profilePicOut,setProfilePicOut] = React.useState(props.profilepic);
-
+  const [coverPicOut,setCoverPicOut] = React.useState(props.coverphoto);
   //for Edit Profile
   const [profilePic,setProfilePic] = React.useState();
+
   const [contextMenu, setContextMenu] = React.useState(null);
+  const [contextMenuCP, setContextMenuCP] = React.useState(null);
+
   const [editName, setEditName] = React.useState(props.name);
   const [editBio, setEditBio] = React.useState(props.bio);
   const [editCountry, setEditCountry] = React.useState(props.country);
@@ -112,6 +115,8 @@ function ProfileData(props) {
   const [testProfile,setTestProfile]=React.useState();
 
 	const inputRef = React.useRef();
+  const inputRefCover = React.useRef();
+
   const formData = new FormData();
   var convertedUrlToFile;
   const triggerFileSelectPopup = () =>{  inputRef.current.click();}
@@ -136,7 +141,23 @@ function ProfileData(props) {
 			});
 		}
 	};
+  const triggerFileSelectPopupCover = () =>{ inputRefCover.current.click();}
+  const selectFileCP = (event) => {
+		if (event.target.files && event.target.files.length > 0) {
+			const reader = new FileReader();
+			reader.readAsDataURL(event.target.files[0]);
 
+			reader.addEventListener("load", () => {
+        convertedUrlToFile = dataURLtoFile(reader.result,"image.jpeg");
+        setCoverPicOut(reader.result)
+        
+
+        formData.append("image",convertedUrlToFile)
+        setContextMenuCP(null);
+        //onUpload();
+			});
+		}
+	};
 
   const onUpload = async () => {
 	
@@ -171,7 +192,7 @@ function ProfileData(props) {
     let response = "";
     try {
       response = await axios.patch(
-        "http://34.236.108.123:3000/settings/profile",{name:editName, bio:editBio, country:editCountry, city:editCity, website:editWebsite, image:profilePicOut},
+        "http://34.236.108.123:3000/settings/profile",{name:editName, bio:editBio, country:editCountry, city:editCity, website:editWebsite, image:profilePicOut,image:profilePicOut,headerImage:coverPicOut},
        
         { headers: { Authorization: "Bearer " + token } }
       );
@@ -289,9 +310,26 @@ function ProfileData(props) {
             null,
       );
     };
+    const handleContextMenuCP = (event) => {
+      event.preventDefault();
+      setContextMenuCP(
+        contextMenuCP === null
+          ? {
+              mouseX: event.clientX + 2,
+              mouseY: event.clientY - 6,
+            }
+          : // repeated contextmenu when it is already open closes it with Chrome 84 on Ubuntu
+            // Other native context menus might behave different.
+            // With this behavior we prevent contextmenu from the backdrop to re-locale existing context menus.
+            null,
+      );
+    };
   
     const handleCloseMenuPP = () => {
       setContextMenu(null);
+    };
+    const handleCloseMenuCP = () => {
+      setContextMenuCP(null);
     };
     function handleremovePP()
     {
@@ -299,7 +337,12 @@ function ProfileData(props) {
       setContextMenu(null);
 
     }
+    function handleremoveCP()
+    {
+      setCoverPicOut(null);
+      setContextMenuCP(null);
 
+    }
    function OnEditPP()
    {  
       triggerFileSelectPopup()
@@ -428,7 +471,24 @@ function ProfileData(props) {
                             </button>
                             </div>
                             <div className="profile__head">
-                                <Avatar id="coverpic" src={props.coverphoto} variant='square' sx={{ width: "auto", height: 200 }} />
+                            <div onContextMenu={handleContextMenuCP} style={{ cursor: 'context-menu' }}>
+                                <Avatar id="coverpic" src={coverPicOut} variant='square' sx={{ width: "auto", height: 200 }} />
+                                <Menu
+                                  open={contextMenuCP !== null}
+                                  onClose={handleClose}
+                                  style={{"width":"200px"}}
+                                  anchorReference="anchorPosition"
+                                  anchorPosition={
+                                    contextMenuCP !== null
+                                      ? { top: contextMenuCP.mouseY, left: contextMenuCP.mouseX }
+                                      : undefined
+                                  }
+                                >
+                                  <MenuItem onClick={triggerFileSelectPopupCover} ><input onChange={selectFileCP} accept="image/*" ref={inputRefCover} type="file" style={{"display":"none"}}></input>Edit</MenuItem>
+                                  <MenuItem onClick={handleremoveCP}>Remove</MenuItem>
+                                  <MenuItem onClick={handleCloseMenuCP}>Cancel</MenuItem>
+                                </Menu>
+                                </div>
                                 <div onContextMenu={handleContextMenuPP} style={{ cursor: 'context-menu' }}>
                                   <Avatar id="profilepic" src={profilePicOut} sx={{ width: 135, height: 135 }} />
                                   <Menu

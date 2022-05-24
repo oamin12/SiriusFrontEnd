@@ -30,6 +30,8 @@ function getTweet(tweet)
     bookMarked_flag={tweet.isBookmarkedByUser}
     retweeteded_flag={tweet.isRetweetedByUser==="false"?false:true}
     liked_flag={tweet.isLikedByUser==="false"?false:true}
+    ifFollowingFlag={tweet.isFollowing}
+    createdAt={tweet.createdAt}
     />
 
   )

@@ -24,6 +24,8 @@ function getTweetNotif(tweet) {
       retweeteded_flag={tweet.isRetweetedByUser === "false" ? false : true}
       liked_flag={tweet.isLikedByUser === "false" ? false : true}
       isPoll={tweet.poll}
+      ifFollowingFlag={tweet.isFollowing}
+      createdAt={tweet.createdAt}
     />
   );
 }
