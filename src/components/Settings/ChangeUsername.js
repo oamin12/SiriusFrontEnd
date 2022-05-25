@@ -11,7 +11,8 @@ function ChangeUsername() {
   let navigate = useNavigate();
   var token = sessionStorage.getItem("tokenValue");
   var loggedusername = localStorage.getItem("UserName");
-
+  const [successMsg, setSucessMsg] = useState("");
+  const [errorName, setErrorMsg] = useState("");
   const [username, setUsername] = useState("");
   console.log(" Current Username:", username);
   const handleChange = (e) => {
@@ -23,15 +24,16 @@ function ChangeUsername() {
     let response = "";
     try {
       response = await axios
-        .put(
-          "http://34.236.108.123:3000/" +
-            loggedusername +
-            "/settings/account/change-username",
-          { name: username },
+        .patch(
+          "http://34.236.108.123:3000/settings/Account-info/Username/",
+          { username: username },
           { headers: { Authorization: "Bearer " + token } }
         )
         .then((res) => res.data);
-      return response.data;
+      if (response.success == true) {
+        setSucessMsg("Username changed succesfully!");
+      }
+      return response;
     } catch (error) {
       if (error.response) {
         return error.response;
@@ -42,7 +44,12 @@ function ChangeUsername() {
   }
 
   function changeUsername() {
-    ChangeUsername();
+    let current = document.querySelector(".username-user").value;
+    if (current != 0) {
+      ChangeUsername();
+    } else {
+      setErrorMsg("Please enter a username!");
+    }
   }
 
   return (
@@ -66,6 +73,37 @@ function ChangeUsername() {
         <button onClick={changeUsername} className="save-user">
           Save
         </button>
+        {errorName != "" ? (
+          <div
+            style={{
+              position: "fixed",
+              marginTop: "20px",
+              marginLeft: "-630px",
+              textAlign: "center",
+              color: "red",
+            }}
+            className="message-message"
+          >
+            {errorName}
+          </div>
+        ) : (
+          ""
+        )}
+        {successMsg != "" ? (
+          <div
+            style={{
+              position: "fixed",
+              marginTop: "20px",
+              marginLeft: "-630px",
+              textAlign: "center",
+              color: "#00acee",
+            }}
+          >
+            {successMsg}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="widgets">
         <div className="search">

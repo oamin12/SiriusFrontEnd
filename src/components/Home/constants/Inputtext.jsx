@@ -215,7 +215,7 @@ function Inputtext(props) {
         try {
           response = await axios.post(
             "http://34.236.108.123:3000/home/compose-tweet",
-            { body: inputStr, media: [], hashtags:["hashtag2"] },
+            { body: inputStr, media: [], hashtags:["hashish<3"] },
             { headers: { Authorization: "Bearer " + token } }
           );
           return response.data;

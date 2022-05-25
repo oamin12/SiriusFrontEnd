@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Layout.css";
 import SideBar from "../SideBar/SideBar";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,37 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import SearchBox from "../Search/SearchBox";
 import "./ProtectedTweets.css";
+import axios from "axios";
+
 function ProtectedTweets() {
+  var token = sessionStorage.getItem("tokenValue");
+  const [successMsg, setSucessMsg] = useState("");
+  async function Protect() {
+    let response = "";
+    try {
+      response = await axios
+        .patch(
+          "http://34.236.108.123:3000/settings/Account-info/Protected-tweets",
+          {},
+          { headers: { Authorization: "Bearer " + token } }
+        )
+        .then((res) => res.data);
+      if (response.success == true) {
+        setSucessMsg("Tweets Protected succesfully!");
+      }
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    console.log(response);
+    return response;
+  }
+
+  function handleClick() {
+    Protect();
+  }
   let navigate = useNavigate();
   return (
     <div className="layout">
@@ -34,7 +64,26 @@ function ProtectedTweets() {
             Learn more
           </a>
         </p>
-        <input className="checkbox-protect" type="checkbox" />
+        <input
+          onClick={handleClick}
+          className="checkbox-protect"
+          type="checkbox"
+        />
+        {successMsg != "" ? (
+          <div
+            style={{
+              position: "fixed",
+              marginTop: "20px",
+              marginLeft: "-630px",
+              textAlign: "center",
+              color: "#00acee",
+            }}
+          >
+            {successMsg}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div className="widgets">
         <div className="search">
