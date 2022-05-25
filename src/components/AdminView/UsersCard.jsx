@@ -70,6 +70,7 @@ function UsersCard(props) {
 
   function handleStatButtonClick() {
     setOpenModalStats(true);
+    localStorage.setItem("UserProfile",props.username);
   }
   function handleModalStatsClose() {
     setOpenModalStats(false);

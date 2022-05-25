@@ -9,6 +9,7 @@ import {
 } from "recharts";
 import "./AdminChartWidget.css";
 import getTopTrendingTweets from "./AdminChartWidgetInfo";
+import dashBoardStats from "./AdminUserChartInfo";
 
 const COLORS = ["#00bfff", " #33ccff", "#66d9ff", "#99e6ff", "#b3ecff"];
 
@@ -43,12 +44,12 @@ const renderCustomizedLabel = ({
  */
 function AdminChartWidget() {
   const [topTrendingTweets, setTopTrendingTweets] = React.useState([]);
-  // React.useEffect(() => {
-  //   (async () => {
-  //     const resp = await getTopTrendingTweets();
-  //     setTopTrendingTweets(resp);
-  //   })();
-  // }, []);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await dashBoardStats();
+      setTopTrendingTweets(resp.topTweetsPerTrend);
+    })();
+  }, []);
   return (
     <div className="AdminChartWidget">
       <h2
@@ -65,10 +66,10 @@ function AdminChartWidget() {
       <div>
         <ResponsiveContainer height={200}>
           <PieChart width={730} height={250}>
-            {/* <Pie
+            <Pie
               data={topTrendingTweets}
-              dataKey="value"
-              nameKey="name"
+              dataKey="count"
+              nameKey="hashtag"
               cx="50%"
               cy="50%"
               outerRadius={80}
@@ -76,10 +77,10 @@ function AdminChartWidget() {
               labelLine={false}
               isAnimationActive={false}
             >
-              {topTrendingTweets.map((entry, index) => (
+              {topTrendingTweets?.map((entry, index) => (
                 <Cell  fill={COLORS[index]} />
               ))}
-            </Pie> */}
+            </Pie>
             <Tooltip
               wrapperStyle={{ width: "auto" }}
               itemStyle={{ color: "rgb(101, 119, 134)" }}
