@@ -82,11 +82,13 @@
 
 }
 
+
+.Heading_title{
+  padding: 10px;
+}
+
 @media (max-width: 1020px) {
   .widgets {
     display: none;
   }
-}
-.Heading_title{
-  padding: 10px;
 }

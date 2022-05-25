@@ -17,7 +17,7 @@ function SearchBox(props) {
 
   function createCard(contact) {
     return (
-      <div style={{ marginLeft: "5%", marginTop: "5%" }}>
+      <div style={{ marginLeft: "5%", marginTop: "5%",width:"100%" }}>
         <Card
           key={contact.id}
           name={contact.name}

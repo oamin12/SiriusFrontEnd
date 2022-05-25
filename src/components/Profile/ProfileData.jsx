@@ -680,24 +680,24 @@ function ProfileData(props) {
           {props.bio}
         </p>
 
-        <div className="Profile__information">
+        <div className="Profile__informationn">
           {props.location !== (" " || undefined) ? (
-            <div className="Profile__info__sub">
+            <div className="Profile__info__subb">
               <AddLocationOutlinedIcon fontSize="small" /> {props.location}
             </div>
           ) : null}
           {props.website !== ("" || null || undefined) ? (
-            <div className="Profile__info__sub">
+            <div className="Profile__info__subb">
               <LinkIcon fontSize="small" /> {props.website}
             </div>
           ) : null}
           {props.birthdate !== (" " || null || undefined) ? (
-            <div className="Profile__info__sub">
+            <div className="Profile__info__subb">
               <CakeOutlinedIcon fontSize="small" /> Born {props.birthdate}
             </div>
           ) : null}
           {props.joineddate !== ("" || null || undefined) ? (
-            <div className="Profile__info__sub">
+            <div className="Profile__info__subb">
               <CalendarMonthOutlinedIcon fontSize="small" /> Joined {props.joineddate}
             </div>
           ) : null}
