@@ -58,6 +58,7 @@ function Notifications() {
       return (
         <TagNotif
           id={Notif.tweetId}
+          key={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}
           image={Notif.imageSender}
@@ -67,6 +68,7 @@ function Notifications() {
       return (
         <LikeNotif
           id={Notif.tweetId}
+          key={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}
           image={Notif.imageSender}
@@ -76,6 +78,7 @@ function Notifications() {
       return (
         <RetweetNotif
           id={Notif.tweetId}
+          key={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}
           image={Notif.imageSender}
@@ -84,6 +87,7 @@ function Notifications() {
     } else if (Notif.activity === "vote") {
       return (
         <VoteNotif
+          key={Notif.tweetId}
           id={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}
@@ -93,6 +97,7 @@ function Notifications() {
     } else if (Notif.activity === "reply") {
       return (
         <ReplyNotif
+          key={Notif.tweetId}
           id={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}
@@ -102,6 +107,7 @@ function Notifications() {
     } else if (Notif.activity === "follow") {
       return (
         <FollowNotif
+          key={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}
           image={Notif.imageSender}
@@ -110,6 +116,7 @@ function Notifications() {
     } else if (Notif.activity === "quoteRetweet") {
       return (
         <QuoteRetweetNotif
+          key={Notif.tweetId}
           id={Notif.tweetId}
           userName={Notif.sender}
           notifText={Notif.mainString}

@@ -82,6 +82,9 @@ if(!tweet.isRetweet){
     isRetweet={tweet.isRetweet}
     deleted_flag={handleDeletedTweet}
     handleAddRewteet={handleAddTweet}
+    ifFollowingFlag={tweet.isFollowing}
+    createdAt={tweet.createdAt}
+
     />
   )}
   else
@@ -106,7 +109,11 @@ if(!tweet.isRetweet){
       deleted_flag={handleDeletedTweet}
       handleAddRewteet={handleAddTweet}
       isRetweet={tweet.isRetweet}
-      retweeterUser={tweet.usernameRetweeter}
+      retweeterUser={tweet.nameRetweeter}
+      ifFollowingFlag={tweet.isFollowing}
+      createdAt={tweet.createdAt}
+
+
       />
     )
   }

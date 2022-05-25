@@ -22,7 +22,7 @@ function createProfileData(User,protectedAccount) {
   return (
       <ProfileData
         key={User.id}
-        coverphoto={User.coverphotoURL}
+        coverphoto={User.headerImage}
         profilepic={User.image}
         name={User.name}
         username={User.username}
@@ -39,7 +39,6 @@ function createProfileData(User,protectedAccount) {
         followed={User.followHim}
         protected={protectedAccount}
         pending={User.pending}
-
       />
     );
   }
@@ -60,6 +59,9 @@ function createProfileData(User,protectedAccount) {
         //bookMarked_flag={tweet.isBookmarkedByUser}
         retweeteded_flag={tweet.isRetweetedByMe}
         liked_flag={tweet.isLikedByMe}
+        ifFollowingFlag={tweet.isFollowing}
+        createdAt={tweet.createdAt}
+
 
       />
     );

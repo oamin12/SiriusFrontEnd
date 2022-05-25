@@ -60,11 +60,11 @@ const style = {
   justifyContent: "center",
   flexDirection: "column",
 };
-function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply,isRetweet,retweeterUser,handleAddRewteet }) {
+function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, likeCount, repliesCount, retweetCount, bookMarked_flag,liked_flag,retweeteded_flag,deleted_flag,handleReplyReply,isPoll,isReply,isRetweet,retweeterUser,handleAddRewteet,ifFollowingFlag,createdAt }) {
   const [liked, setLiked] = useState(liked_flag);
   const [retweeted, setRetweeted] = useState(retweeteded_flag);
   const [bookMarked, setBookMarked] = useState(bookMarked_flag);
-
+  const [IscreatedAt,setCreatedAt]=useState(createdAt);
   const [likesCount, changeLikesCount] = useState(likeCount);
   const [replieCount, changeRepliesCount] = useState(repliesCount);
   const [retweetsCount, changeRetweetsCount] = useState(retweetCount);
@@ -201,6 +201,23 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     console.log(response);
     return response;
   }
+  async function Follow() {
+    let response = "";
+    try {
+      response = await axios.post(
+        "http://34.236.108.123:3000/" + userName + "/follow",
+        {},
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    console.log(response);
+    return response;
+  }
   ////////////////
   function HandleDeleteBookmark() {
       // post request
@@ -294,12 +311,16 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
     deleteFollow();
     deleted_flag();
   }
+  function Handlefollow()
+  {
+    Follow();
+    deleted_flag();
+
+  }
 
   function handleUserClicked(){
     //ReactDOM.render(<App flag_stop_working_from_poll_to_schedule={0}  flag={1}/>, document.getElementById("root"));
-    console.log('in tweet click',userName);
     localStorage.setItem("UserProfile",userName);
-    console.log("USERPROFILEDADAWDWDAD", localStorage.getItem("UserProfile"));
   }
 
   //localStorage.setItem("UserProfile",userName); TODO
@@ -314,11 +335,11 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
         <div className="post_headerText">
           <NavLink className="link_text" to={"/"+userName} onClick={handleUserClicked}><Avatar src={avatar} sx={{ width: 48, height: 48 }} /></NavLink>
           <h3 className="userdata">
-            <div>
+            <div >
               <NavLink  className="link_text" to={"/"+userName} onClick={handleUserClicked}>{name}</NavLink>{" "}
               <span className="post_headerUserName">
                 @
-                <NavLink className="link_text2" to={"/"+userName} onClick={handleUserClicked} >{userName}</NavLink>
+                <NavLink className="link_text2" to={"/"+userName} onClick={handleUserClicked} >{userName} {IscreatedAt?.substring(2, 10)}</NavLink>
               </span>
             </div>
             {/*Button Button Button Button Button Button Button*/}
@@ -375,9 +396,11 @@ function Tweet({ id,avatar, name, userName, timeStamp, content, image, video, li
               </div>
             :
               <div>
-                <Typography onClick={HandleUnfollow} sx={{ p: 2 }} className="tweet_settings_bar">
+                {ifFollowingFlag?<Typography onClick={HandleUnfollow} sx={{ p: 2 }} className="tweet_settings_bar">
                   <PersonRemoveIcon fontSize="small"/> Unfollow @{userName}
-                </Typography>
+                </Typography>:<Typography onClick={Handlefollow} sx={{ p: 2 }} className="tweet_settings_bar">
+                  <PersonAddOutlinedIcon fontSize="small"/> Follow @{userName}
+                </Typography>}
                 
               </div>}
             </Popover>

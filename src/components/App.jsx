@@ -32,6 +32,7 @@ import ProtectedTweets from "./Settings/ProtectedTweets";
 import TweetPage from "./Tweet/TweetPage";
 import Display from "./Settings/Display";
 import NotificationsSettings from "./Settings/NotificationsSettings";
+import VerifyPassword from "./StartupPage/VerifyPassword";
 function App(props) {
   // var userName=localStorage.getItem("UserProfile");
   var UserName = localStorage.getItem("UserName");
@@ -153,6 +154,7 @@ function App(props) {
             element={<NotificationsSettings />}
           />
           <Route path="/settings/display" element={<Display />} />
+          <Route path="/verifypassword" element={<VerifyPassword />} />
         </Routes>
       </div>
     </BrowserRouter>
