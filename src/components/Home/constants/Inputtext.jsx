@@ -25,8 +25,8 @@ import { schedulebuttonblur } from "./inlinestyling_inputetext";
 import { schedulebutton_popuppageblur } from "./inlinestyling_inputetext";
 import { calendericon } from "./inlinestyling_inputetext";
 import { calenderstatus } from "./inlinestyling_inputetext";
-import Editor, { createEditorStateWithText } from "@draft-js-plugins/editor";
-import createHashtagPlugin from "@draft-js-plugins/hashtag";
+//import Editor, { createEditorStateWithText } from "@draft-js-plugins/editor";
+//import createHashtagPlugin from "@draft-js-plugins/hashtag";
 
 // 1.dlw2ty el user lma hydos schedule fy el input text el data el fy el schedule htroh lel backend
 
@@ -74,14 +74,14 @@ function Inputtext(props) {
   const [scheduledtweetsflag, setscheduledtweetsflag] = React.useState(0);
   const [imgout, setimageout] = React.useState("");
 
-  const hashtagPlugin = createHashtagPlugin();
-  const plugins = [hashtagPlugin];
+  // const hashtagPlugin = createHashtagPlugin();
+  // const plugins = [hashtagPlugin];
 
   const [editorState, seteditorState] = React.useState(text);
 
-  let state = {
-    editorState: createEditorStateWithText(text),
-  };
+  // let state = {
+  //   editorState: createEditorStateWithText(text),
+  // };
 
   function onChange(editorState) {
     seteditorState(editorState);
@@ -265,7 +265,7 @@ function Inputtext(props) {
         try {
           response = await axios.post(
             "http://34.236.108.123:3000/home/compose-tweet",
-            { body: inputStr, media: [], hashtags: ["hashtag2"] },
+            { body: inputStr, media: [], hashtags: [] },
 
             { headers: { Authorization: "Bearer " + token } }
           );
