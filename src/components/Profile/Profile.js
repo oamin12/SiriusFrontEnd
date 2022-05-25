@@ -179,8 +179,7 @@ async function GetUserProfileMedia(UserName) {
   let response = '';
 try {
   response = await axios.get('http://34.236.108.123:3000/'+UserName+'/media',{headers: {Authorization:"Bearer "+token} }).then((res) => res.data);
-  
-  return (response.media);
+  return (response.tweets);
 } catch (error) {
   if (error.response) {
     return (error.response);
