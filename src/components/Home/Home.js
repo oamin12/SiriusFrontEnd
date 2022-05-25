@@ -229,20 +229,15 @@ async function GetTrendsInfo() {
        postingFlag={handleAddTweet} />
 
 
-       {tweetsInfo.map(getTweet2)}
+        {tweetsInfo.map(getTweet2)} 
       </div>
       <div className="widgets">
         <div className="search">
-        <SearchBox size="40"
-        styling=
-        { {width: "30%",
-        marginTop: "-15.5%",
-        marginLeft: "70%",
-        height:'60%',}}/>
+        <SearchBox size="40"/>
         </div>
         <div className="whatsHappening">
           <WhatsHappening WhatsHappening={trendsInfo}/>
-        </div>
+        </div> 
         <div className="whoToFollow">
           <WhoToFollow />
         </div>

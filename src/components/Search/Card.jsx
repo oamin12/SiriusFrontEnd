@@ -10,13 +10,51 @@ import { unfollowpopuppage } from "../WhoToFollow/WhoToFollow_style";
 import { heading1_unfollow_popuppage } from "../WhoToFollow/WhoToFollow_style";
 import { heading2_unfollow_popuppage } from "../WhoToFollow/WhoToFollow_style";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 function Card(props) {
-  const [followstate, setfollowstate] = React.useState("Follow");
+  const [followstate, setfollowstate] = React.useState(props.followHim!==undefined ? props.followHim: "Follow");
   const [showunfollowpoppage, setshowunfollowpoppage] = React.useState(false);
+  var token = sessionStorage.getItem("tokenValue");
+
+  async function PostFollow() {
+    let response = "";
+    try {
+      response = await axios.post(
+        "http://34.236.108.123:3000/" + props.username + "/follow",
+        {},
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+
+  async function deleteFollow() {
+    let response = "";
+    try {
+      response = await axios.delete(
+        "http://34.236.108.123:3000/" + props.username + "/unfollow",
+        { headers: { Authorization: "Bearer " + token } }
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
   function follow_unfollow() {
     if (followstate === "Following") {
       setshowunfollowpoppage(true);
+      deleteFollow()
+
     } else setfollowstate("Following");
+    PostFollow();
   }
   function closeunfollowpoppage(event) {
     if (event.target.value === "1") {
@@ -24,9 +62,13 @@ function Card(props) {
     }
     setshowunfollowpoppage(false);
   }
+  function handleclickprofile()
+  {
+    localStorage.setItem("UserProfile",props.username);
+  }
   return (
     <div className="searchCard">
-      <NavLink to="/profile" style={{ color: "black" }}>
+      <NavLink to={"/" + props.username} style={{ color: "black" }} onClick={handleclickprofile}>
         <Avatar src={props.img} />
 
         <div className="searchData">
