@@ -37,10 +37,7 @@ import { calenderstatus } from "../../constants/inlinestyling_inputetext"
 
 function IconSchedule(props)
  {
-
   let currentDate = new Date();
-
-  // function+variables to open and close the pop up page
   const [Open, setOpen] = React.useState(false);
   const [openScheduledTweets, setopenScheduledTweets] = React.useState(false);
   {
@@ -92,9 +89,6 @@ function IconSchedule(props)
     React.useState(1);
   let [flag_schedule_validation_days, setflag_schedule_validation_days] =
     React.useState(1);
-  var [backSchedule, set_backSchedule] = React.useState(0);
-  var [deleteScheduledTweets, set_deleteScheduledTweets] = React.useState(0);
-  var [editScheduledTweets, set_editScheduledTweets] = React.useState(0);
   const [TweetButtonPopUpPage, setTweetButtonPopUpPage] = React.useState(0);
   let [arrayofscheduledtweets, setarrayofscheduledtweets] = React.useState([
     {
@@ -108,6 +102,12 @@ function IconSchedule(props)
     },
   ]);
   const [tabvalue, settabvalue] = React.useState(1);
+
+  
+  
+
+
+  // function+variables to open and close the pop up page
 
   function showstweets(value, index) {
     arrayofscheduledtweets.push({
@@ -253,6 +253,7 @@ function IconSchedule(props)
     props.setyear(year_toset_theyear_value);
     props.settime(time);
     props.setdate(daymonth);
+    props.setmonthnumber(monthnumber)
     props.setmonth(month);
     props.setam_pm(am_pm);
     props.setweekdayName(weekdayName);
@@ -367,17 +368,8 @@ function IconSchedule(props)
   const openScheduleTweets_function = () => {
     setopenScheduledTweets(true);
   };
-  function deleteScheduledTweets() {}
-  function editScheduledTweets() {
-    set_editScheduledTweets(1);
-  }
-  function handleScheduledTweets() {
-    //hncheeck 3la 3en fy scheduled tweets wla la
-    // if (props.scheduledtweets !== undefined) {
-    //   set_showScheduledTweets(1);
-    // } else set_showScheduledTweets(0);
-  }
-  function handledraft() {}
+
+
   function backToSchedule() {
     setopenScheduledTweets(false);
     if (props.FlagToOpenDraftsFromTweetButton !== undefined) {

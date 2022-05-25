@@ -34,13 +34,15 @@
   width: 400px;
   flex-direction: column;
   align-content: center;
+  /* z-index:100; */
 }
 .search {
   border: 0px solid rgb(245, 248, 250);
   text-align: center;
-  position: sticky !important;
-  z-index: 100 !important;
-  top: 0;
+  position: absolute !important;
+  /* z-index: 100 !important; */
+  /* top: 0; */
+
 }
 .whatsHappening {
   border: 0px solid rgb(245, 248, 250);
@@ -58,7 +60,7 @@
   width: fit-content;
   min-width: 348px;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 80px;
   
 }
 .whoToFollow {
@@ -80,11 +82,13 @@
 
 }
 
+
+.Heading_title{
+  padding: 10px;
+}
+
 @media (max-width: 1020px) {
   .widgets {
     display: none;
   }
-}
-.Heading_title{
-  padding: 10px;
 }

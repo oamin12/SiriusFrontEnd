@@ -12,6 +12,7 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import Button from "@mui/material/Button";
 import PollOutlinedIcon from "@mui/icons-material/PollOutlined";
+import axios from "axios";
 
 function Poll(props) {
   let [flag1, setflag1] = React.useState(0); //those flags used for reseting the textboxes
@@ -34,6 +35,34 @@ function Poll(props) {
   const [inputStr, setInputStr] = useState("");
   const [showPicker, setShowPicker] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  let [poll_data, setpoll_data] = React.useState("");
+  var token = sessionStorage.getItem("tokenValue");
+  //console.log("dah el token ", localStorage.getItem("tokenValue"));
+  var config = {
+    method: "post",
+    url: "http://34.236.108.123:3000/home/compose-tweet",
+    headers: { Authorization: "Bearer " + token },
+    data: poll_data,
+  };
+
+  async function postpoll() {
+    let response = "";
+    try {
+      response = await axios
+        .post("http://34.236.108.123:3000/home/compose-tweet",{body:textc,firstChoice:textc1,secoundChoice:textc2,thirdChoice:textc3,forthChoice:textc4},   { headers: { Authorization: "Bearer " + token } })
+        .then((res) => res.data);
+      //console.log("herererer", response.poll);
+
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+  
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -116,6 +145,7 @@ function Poll(props) {
   }
   //on click of the tweet button text boxes and select boxes are reset
   function onclick() {
+    postpoll();
     if (
       flag1 === 1 &&
       flag2 === 1 &&
@@ -147,6 +177,7 @@ function Poll(props) {
       setflag5(flag5);
       setflag6(flag6);
     }
+
   }
   function removepoll() {
     //we reneder the app a new time when removing the poll
@@ -234,8 +265,6 @@ function Poll(props) {
                 value={textc}
                 onChange={handlechange}
               />
-
-
             </div>
             <div className="poll">
               <div className="choices">

@@ -62,12 +62,6 @@ function ExploreHeader(props) {
         <div className="explore_searchBox">
           <SearchBox
           size="80"
-          styling={{
-            width: "30%",
-            marginTop: "-15.5%",
-            marginLeft: "22%",
-            height: "60%",
-          }}
         /></div>
         <div className="button_area"><Button className="exploreSettingsButton" onClick={handleClick}>
         <SettingsOutlinedIcon fontSize="medium"/>

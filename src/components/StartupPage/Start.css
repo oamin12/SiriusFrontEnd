@@ -49,6 +49,7 @@ body {
   color: rgb(78, 78, 78);
 }
 .signupfacebookf1 {
+  margin-top: 20px;
   margin-bottom: 20px;
   margin-left: 10px;
   display: block;
@@ -62,7 +63,7 @@ body {
   text-align: center;
   transition: all 0.2s ease;
   font-size: 15px;
-  color: rgb(78, 78, 78);
+  color: rgb(70, 70, 70);
 }
 .pf1 {
   width: 37%;
@@ -142,13 +143,8 @@ body {
   color: #536471;
   text-align: center;
 }
-.signupgooglef1:hover {
-  background: #1f94dd16;
-  cursor: pointer;
-}
-
 .signupfacebookf1:hover {
-  background: #1f1f1f16;
+  background: #1f94dd16;
   cursor: pointer;
 }
 .loginf1:hover {
@@ -159,8 +155,4 @@ body {
   background: #1f94dd;
   cursor: pointer;
 }
-@media (max-width: 1500px) {
-  .backf1 {
-    display: none;
-  }
-}
+

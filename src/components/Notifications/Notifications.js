@@ -15,6 +15,8 @@ import getNotifications from "./Notifsdb";
 import QuoteRetweetNotif from "./quoteRetweet";
 import WhatsHappening from "../WhatsHappening/WhatsHappening";
 import axios from "axios";
+import WhoToFollow from "../WhoToFollow/WhoToFollow"
+import SearchBox from "../Search/SearchBox";
 
 var token = sessionStorage.getItem("tokenValue");
 function Notifications() {
@@ -165,11 +167,13 @@ React.useEffect(() => {
         {empty === false && Notif.map(mapNotifications)}
       </div>
       <div className="widgets">
-        <div className="search">search</div>
+      <div className="search">
+        <SearchBox size="40"/>
+        </div>
         <div className="whatsHappening">
           <WhatsHappening WhatsHappening={trendsInfo}/>
         </div> 
-        <div className="whoToFollow">who to follow</div>
+        <div className="whoToFollow"><WhoToFollow></WhoToFollow></div>
       </div>
     </div>
   );

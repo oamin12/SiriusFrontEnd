@@ -13,51 +13,58 @@ import WhoToFollow from "../WhoToFollow/WhoToFollow";
 import axios from "axios";
 import Tweet from "../Tweet/Tweet.jsx";
 
-function createcard(contact, index) {
-  return (
-    <Card
-      key={contact.id}
-      name={contact.name}
-      username={contact.username}
-      bio={contact.bio}
-      img={contact.imgURL}
-      style={{ marginLeft: "-2%" }}
-      followbutton={true}
-      styling={{ padding: "3% 15% 3% 15%", marginTop: "5%", marginLeft: "60%" }}
-    />
-  );
-}
-
 var token = localStorage.getItem("tokenValue");
 console.log("dah el token ", localStorage.getItem("tokenValue"));
-var config = {
+var configSearch = {
   method: "get",
-  url: "http://34.236.108.123:3000/home/",
-
+  url: "http://34.236.108.123:3000/search?q=f&f=user",
   headers: { Authorization: "Bearer " + token },
 };
 
 function getTweet(tweet) {
   return (
     <Tweet
-      key={tweet.key}
-      id={tweet.key}
+      key={tweet._id}
+      id={tweet._id}
       name={tweet.name}
       userName={tweet.username}
-      content={tweet.tweetBody}
-      avatar={tweet.userImage}
-      image={tweet.tweetMedia}
-      video=""
-      likeCount={tweet.favoritersCount}
-      repliesCount={tweet.repliesCount}
-      retweetCount={tweet.retweetersCount}
-      bookMarked_flag={false}
+      content={tweet.body}
+      avatar={tweet.image}
+      image={tweet.media}
+      likeCount={tweet.favoriters.length}
+      repliesCount={tweet.replies.length}
+      retweetCount={tweet.retweeters.length}
+      createdAt={tweet.createdAt}
+      bookMarked_flag={tweet.isBookmarkedByMe}
+      retweeteded_flag={tweet.isRetweetedByMe}
+      liked_flag={tweet.isLikedByMe}
+      ifFollowingFlag={tweet.followHim}
     />
   );
 }
+function createCard(contact) {
+  return (
+    <div>
+      <Card
+        key={contact._id}
+        name={contact.name}
+        username={contact.username}
+        img={contact.image}
+        followbutton={true}
+        bio={contact.bio}
+        followHim={contact.followHim === false ? "Follow" : "Following"}
+        sx={{ marginLeft: "4%", width: "90px" }}
+      />
+    </div>
+  );
+}
 function SearchPage(props) {
-  const [tweetsInfo, setTweetsInfo] = React.useState([]);
+  const [tweetsInfo_latest, setTweetsInfo_latest] = React.useState([]);
+  const [tweetsInfo_top, setTweetsInfo_top] = React.useState([]);
+  const [tweetsInfo_media, setTweetsInfo_media] = React.useState([]);
+  const [tweetsInfo_users, setTweetsInfo_users] = React.useState([]);
   const [addedTweet, setAddedTweet] = React.useState(false);
+  const [value, setvalue] = React.useState("");
 
   /**
    *
@@ -65,17 +72,19 @@ function SearchPage(props) {
    * @description Component that contains the tweets, the area designed for writing tweets, side Bar and widgets
    * @returns {div} A div that renders this page
    */
+  //----------GETTING SEARCH RESULTS-------------//
 
-  async function GetTweetInfo() {
+  async function GetSearchResults_latest(val) {
     let response = "";
     try {
       response = await axios
-        .get("http://34.236.108.123:3000/home/", config)
+        .get("http://34.236.108.123:3000/search?q=" + val + "&f=latest", {
+          headers: { Authorization: "Bearer " + token },
+        })
         .then((res) => res.data);
-      console.log("herererer", response.userName);
-      localStorage.setItem("UserName", response.userName);
-      setTweetsInfo(response.data);
-      return response.data;
+      setTweetsInfo_latest(response.tweets);
+
+      return response.tweets;
     } catch (error) {
       if (error.response) {
         return error.response;
@@ -83,52 +92,99 @@ function SearchPage(props) {
     }
     return response;
   }
+  async function GetSearchResults_media(val) {
+    let response = "";
+    try {
+      response = await axios
+        .get("http://34.236.108.123:3000/search?q=" + val + "&f=media", {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((res) => res.data);
+      setTweetsInfo_media(response.tweets);
+
+      return response.tweets;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+  async function GetSearchResults_top(val) {
+    let response = "";
+    try {
+      response = await axios
+        .get("http://34.236.108.123:3000/search?q=" + val + "&f=top", {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((res) => res.data);
+      setTweetsInfo_top(response.tweets);
+
+      return response.tweets;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+  async function GetSearchResults_users(val) {
+    let response = "";
+    try {
+      response = await axios
+        .get("http://34.236.108.123:3000/search?q=" + val + "&f=user", {
+          headers: { Authorization: "Bearer " + token },
+        })
+        .then((res) => res.data);
+      setTweetsInfo_users(response.users);
+      console.log(response.users);
+      return response.users;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+  /////////////////////////////////////////////////
 
   var token = sessionStorage.getItem("tokenValue");
-  console.log("dah el token ", localStorage.getItem("tokenValue"));
-  var config = {
-    method: "get",
-    url: "http://34.236.108.123:3000/home/",
 
-    headers: { Authorization: "Bearer " + token },
-  };
-  async function GetTweetInfo() {
-    let response = "";
-    try {
-      response = await axios
-        .get("http://34.236.108.123:3000/home/", config)
-        .then((res) => res.data);
-      //console.log('herererer',response.userName);
-      localStorage.setItem("UserName", response.userName);
-      localStorage.setItem("Name", response.name);
-      setTweetsInfo(response.data);
-      return response.data;
-    } catch (error) {
-      if (error.response) {
-        return error.response;
-      }
-    }
-    return response;
-  }
-
-  function handleAddTweet() {
-    setAddedTweet(true);
-  }
+  // function handleAddTweet() {
+  //   setAddedTweet(true);
+  // }
 
   React.useEffect(() => {
     (async () => {
-      const resp = await GetTweetInfo();
-      setTweetsInfo(resp);
+      const resp = await GetSearchResults_latest(value);
+      setTweetsInfo_latest(resp);
+    })();
+  }, []);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await GetSearchResults_top(value);
+      setTweetsInfo_top(resp);
+    })();
+  }, []);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await GetSearchResults_media(value);
+      setTweetsInfo_media(resp);
+    })();
+  }, []);
+  React.useEffect(() => {
+    (async () => {
+      const resp = await GetSearchResults_users(value);
+      setTweetsInfo_users(resp);
     })();
   }, []);
 
-  if (addedTweet === true) {
-    (async () => {
-      const resp = await GetTweetInfo();
-      setTweetsInfo(resp);
-      setAddedTweet(false);
-      //console.log(resp);
-    })();
+  function handlesearch() {
+    console.log("this is it", value);
+    if (tabsvalue === 1) GetSearchResults_top(value);
+    else if (tabsvalue === 2) GetSearchResults_latest(value);
+    else if (tabsvalue === 3) GetSearchResults_users(value);
+    else if (tabsvalue === 4) GetSearchResults_media(value);
   }
 
   const [tabsvalue, settabsvalue] = React.useState(1);
@@ -143,30 +199,25 @@ function SearchPage(props) {
             />
           </NavLink>
         </div>
-        <SearchBox
-          size="80"
-          styling={{
-            width: "30%",
-            marginTop: "-15.5%",
-            marginLeft: "28%",
-            height: "60%",
-          }}
-        />
-
+        <div style={{ width: "1200px" }}>
+          <SearchBox flagfromsearch={1} setvalue={setvalue} value1={value} />
+        </div>
         <div className="moreOptions">
           <MoreHorizIcon fontSize="small" />
         </div>
       </div>
-      <SearchFilter tabsvalue={tabsvalue} settabsvalue={settabsvalue} />
-      {tabsvalue === 3
-        ? people.map(createcard)
+      <SearchFilter
+        tabsvalue={tabsvalue}
+        settabsvalue={settabsvalue}
+        handlesearch={handlesearch}
+      />
+      {tabsvalue === 1
+        ? tweetsInfo_top?.map(getTweet)
         : tabsvalue === 2
-        ? tweetsInfo.map(getTweet)
-        : tabsvalue === 1
-        ? tweetsInfo.map(getTweet)
-        : tabsvalue === 4
-        ? tweetsInfo.map(getTweet)
-        : tweetsInfo.map(getTweet)}
+        ? tweetsInfo_latest?.map(getTweet)
+        : tabsvalue === 3
+        ? tweetsInfo_users?.map(createCard)
+        : tweetsInfo_media?.map(getTweet)}
     </div>
   );
 }

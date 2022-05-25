@@ -8,7 +8,7 @@ function SearchFilter(props) {
   const [flag, setflag] = useState(1);
   return (
     <div className="searchFilter">
-      <Tabs value={props.tabsvalue} variant="fullWidth">
+      <Tabs value={props.tabsvalue} variant="fullWidth" onClick={props.handlesearch}>
         <Tab
           value={1}
           onClick={() => props.settabsvalue(1)}
@@ -33,13 +33,7 @@ function SearchFilter(props) {
           label="Photos"
           style={{ textTransform: "none", fontSize: "100%" }}
         />
-        <Tab
-          value={5}
-          onClick={() => props.settabsvalue(5)}
-          label="Videos"
-          style={{ textTransform: "none", fontSize: "100%" }}
-        />
-      </Tabs>
+        </Tabs>
     </div>
   );
 }

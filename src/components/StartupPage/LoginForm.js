@@ -47,20 +47,18 @@ const LoginForm = () => {
     console.log(response);
     return response;
   }
-  function handleEnter(event)
-  {
-    if(event.key==="Enter")
-    {
+  function handleEnter(event) {
+    if (event.key === "Enter") {
       if (details.name === "" || details.password === "") {
         setError("Email or Password cannot be empty!");
         event.preventDefault();
-  
+
         return;
       }
       SignIn();
-  
+
       event.preventDefault();
-    } 
+    }
   }
   const sumbitHandler = (e) => {
     if (details.name === "" || details.password === "") {
@@ -87,21 +85,15 @@ const LoginForm = () => {
       setType("password");
     }
   };
-
-  // React.useEffect(() => {
-  //   (async () => {
-  //     const resp = await SignIn();
-  //     setSignInState(resp);
-  //   })();
-  // }, []);
   return (
     <div className="Login">
       <img className="backf2" src={greyback} />
       <form className="containerf2">
         <CloseIcon className="closef2" onClick={() => navigate("/")} />
         <h1 className="h1f2">Sign in to Sirius</h1>
-        <button className="googlebtnf2">Sign in with Google</button>
-        <button className="facebookbtnf2">Sign in with Facebook</button>
+        <button onClick={() => navigate("/")} className="facebookbtnf2">
+          Sign in with Facebook
+        </button>
         <p class="orf2">
           <span class="linef2">or</span>
         </p>

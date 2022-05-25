@@ -25,9 +25,10 @@ import { schedulebuttonblur } from "./inlinestyling_inputetext";
 import { schedulebutton_popuppageblur } from "./inlinestyling_inputetext";
 import { calendericon } from "./inlinestyling_inputetext";
 import { calenderstatus } from "./inlinestyling_inputetext";
-// 1.dlw2ty el user lma hydos schedule fy el input text el data el fy el schedule htroh lel backend
+import Editor, { createEditorStateWithText } from "@draft-js-plugins/editor";
+import createHashtagPlugin from "@draft-js-plugins/hashtag";
 
-var token = sessionStorage.getItem("tokenValue");
+// 1.dlw2ty el user lma hydos schedule fy el input text el data el fy el schedule htroh lel backend
 
 /**
  *
@@ -39,7 +40,7 @@ function Inputtext(props) {
   const [savetweets, setsavetweets] = React.useState(false); //3shan a3ref en fy tweets saved f a save el text e fy textarea
   const [anchorEl, setAnchorEl] = React.useState(null);
   let [flag2, setflag2] = React.useState(0);
-  let [text, settext] = React.useState("");
+  let [text, settext] = React.useState("gh");
   // let [schedule_flag,setschedule_flag]=React.useStete(0);
   const [inputStr, setInputStr] = useState("");
   const [showPicker, setShowPicker] = useState(false);
@@ -67,62 +68,114 @@ function Inputtext(props) {
   let [time, settime] = React.useState("");
   let [date, setdate] = React.useState(0);
   let [month, setmonth] = React.useState("");
+  let [monthnumber, setmonthnumber] = React.useState(0);
   let [am_pm, setam_pm] = React.useState("");
   let [flag2_toschedule, setflag2_toschedule] = React.useState(1);
   const [scheduledtweetsflag, setscheduledtweetsflag] = React.useState(0);
-  let [i, seti] = React.useState(1);
+  const [imgout, setimageout] = React.useState("");
+
+  const hashtagPlugin = createHashtagPlugin();
+  const plugins = [hashtagPlugin];
+
+  const [editorState, seteditorState] = React.useState(text);
+
+  let state = {
+    editorState: createEditorStateWithText(text),
+  };
+
+  function onChange(editorState) {
+    seteditorState(editorState);
+  }
+
+  // function focus ()  {
+  //   this.editor.focus();
+  // };
+
+  var token = sessionStorage.getItem("tokenValue");
+  async function postschedule() {
+    let response = "";
+    try {
+      response = await axios
+        .post(
+          "http://34.236.108.123:3000/home/compose-tweet",
+          { body: inputStr, postedAt: year + "/" + monthnumber + "/" + date },
+          { headers: { Authorization: "Bearer " + token } }
+        )
+        .then((res) => res.data);
+      //console.log("herererer", response.poll);
+
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+  async function postimage() {
+    let response = "";
+    try {
+      response = await axios
+        .post(
+          "http://34.236.108.123:3000/home/compose-tweet",
+          { body: inputStr, media: [image] },
+          { headers: { Authorization: "Bearer " + token } }
+        )
+        .then((res) => res.data);
+      //console.log("herererer", response.poll);
+
+      return response;
+    } catch (error) {
+      if (error.response) {
+        return error.response;
+      }
+    }
+    return response;
+  }
+  let [imageurl,setimageurl]=React.useState()
+
   const uploadImage = async (e) => {
-    console.log("2" + props.flag_tweetpopuppage);
-    set_flag_stop_working(1);
-    if (counter_for_images < 5) {
-      const files = e.target.files;
-      const data = new FormData();
-      data.append("file", files[0]);
-      data.append("upload_preset", "darwin");
-      setLoading(true);
-      set_flag_img(true);
-      const res = await fetch(
-        "	https://api.cloudinary.com/v1_1/dxifxd1ms/image/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const file = await res.json();
-      image[counter_for_images] = file.secure_url;
-      if (image[counter_for_images] !== undefined) {
-        setImage((state) => [...state, image]);
-        set_counter_for_images(++counter_for_images);
-      }
-      setLoading(false);
-    }
+    // set_flag_stop_working(1);
+    // if (counter_for_images < 5) {
+     
+    //   const files = this.myFiles.files
+    //   // Define what type of file to accept:
+    //   const accept = ["image/png"];
+    //   if (accept.indexOf(files[0].mediaType) > -1) {   
+    //     setimageurl  (files[0].getAsDataURL())    
+    //        }
+    //   }
+    //   console.log(files[0])
+  
+    //   const file = e.target.files;
+    //   const data = new FormData();
+    //   const reader = new FileReader();
+    //   file.readAsDataURL(e.target.files);
+     
+    //   data.append("file", file);
+    //   data.append("upload_preset", "darwin");
+    //   setLoading(true);
+    //   set_flag_img(true);
+    //   const res = await fetch(
+    //     "	https://api.cloudinary.com/v1_1/dxifxd1ms/image/upload",
+    //     {
+    //       method: "POST",
+    //       body: data,
+    //     }
+    //   );
+    //   file.addEventListener("load", () => {
+    //     console.log(file.result);
+		// 	});
+    //   // const file = await res.json();
+    //   // image[counter_for_images] = file.secure_url;
+    //   if (image[counter_for_images] !== undefined) {
+    //     setImage((state) => [...state, image]);
+    //     set_counter_for_images(++counter_for_images);
+    //   }
+    //   setLoading(false);
+    // }
   };
-  const uploadImage2 = async (e) => {
-    console.log("2" + props.flag_tweetpopuppage);
-    set_flag_stop_working(1);
-    if (counter_for_images < 5) {
-      const files = e.target.files;
-      const data = new FormData();
-      data.append("file", files[0]);
-      data.append("upload_preset", "darwin");
-      setLoading(true);
-      set_flag_img(true);
-      const res = await fetch(
-        "	https://api.cloudinary.com/v1_1/dxifxd1ms/image/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-      const file = await res.json();
-      image2[counter_for_images2] = file.secure_url;
-      if (image2[counter_for_images2] !== undefined) {
-        setImage((state) => [...state, image]);
-        set_counter_for_images(++counter_for_images2);
-      }
-      setLoading(false);
-    }
-  };
+ 
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -133,10 +186,7 @@ function Inputtext(props) {
     setInputStr((prevInput) => prevInput + emojiObject.emoji);
     setShowPicker(false);
   };
-  function handleimage() {
-    console.log(props.flag_tweetpopuppage + "bassant");
-    set_counter_for_images(++counter_for_images);
-  }
+
   function handle_delete_img1() {
     setImage(
       image.filter(function (element) {
@@ -215,7 +265,8 @@ function Inputtext(props) {
         try {
           response = await axios.post(
             "http://34.236.108.123:3000/home/compose-tweet",
-            { body: inputStr, media: [], hashtags:["hashtag2"] },
+            { body: inputStr, media: [], hashtags: ["hashtag2"] },
+
             { headers: { Authorization: "Bearer " + token } }
           );
           return response.data;
@@ -228,12 +279,13 @@ function Inputtext(props) {
         return response;
       }
 
+      
       async function PostReply() {
         let response = "";
         try {
           response = await axios.post(
-            "http://34.236.108.123:3000/home/"+props.tweet_id+"/reply",
-            { body: inputStr, media: [], hashtags:["hashtag2"] },
+            "http://34.236.108.123:3000/home/" + props.tweet_id + "/reply",
+            { body: inputStr, media: [], hashtags: ["hashtag2"] },
             { headers: { Authorization: "Bearer " + token } }
           );
           return response.data;
@@ -245,14 +297,13 @@ function Inputtext(props) {
         console.log(response);
         return response;
       }
-      if(props.flag_reply===true)
-      {
+      if (props.flag_reply === true) {
         PostReply();
         props.postingFlag();
+      } else {
+        PostTweet();
+        props.postingFlag();
       }
-      else{
-      PostTweet();
-      props.postingFlag();}
       //b3mel delete lel images lma ados tweet
       handle_delete_img2();
       handle_delete_img1();
@@ -267,7 +318,7 @@ function Inputtext(props) {
     }
     if (flag2 === 2) {
       // text = "";
-
+      postschedule();
       //b save el tweets 3shan a3redha fy el scheduled tweets fy el schedular
       scheduled_tweets.push({
         content: inputStr,
@@ -299,6 +350,7 @@ function Inputtext(props) {
   function handleChange(event) {
     //check on the length of the text if >280 then change the tweet img
     text = event.target.value;
+
     if (flag2_toschedule === 2) {
       if (text.length === 0 || text.length > 280) {
         flag2 = 0;
@@ -336,8 +388,6 @@ function Inputtext(props) {
   }
   return (
     <div>
-      {console.log("1" + props.flag_tweetpopuppage)}
-
       {flag2_toschedule !== 0 ? (
         <div className="cont3">
           <div className="cont2">
@@ -350,10 +400,6 @@ function Inputtext(props) {
                 </h5>
               </div>
             ) : null}
-            {console.log(
-              "flag stop working from upload image3 =" +
-                props.flag_tweetpopuppage
-            )}
             <TextareaAutosize
               minRows={5}
               className="inputtext"
@@ -361,6 +407,14 @@ function Inputtext(props) {
               value={inputStr}
               onChange={handleChange}
             />
+            {/* <Editor
+            editorState={state.editorState}
+            onChange={onChange}
+            plugins={plugins}
+            ref={(element) => {
+              Editor = element;
+            }}
+          />  */}
           </div>
 
           {counter_for_images === 1 ? (
@@ -592,61 +646,51 @@ function Inputtext(props) {
       ) : null}
 
       <div className="iconsfooter">
-
         <div className="icons">
-        {props.flag_reply!==true && <Poll
-            className="icons"
-            flag_stop_working={flag2_toschedule - 1}
-            classname={"Poll"}
-            setflag_stop_working={setflag2_toschedule}
-          />
-        }
+          {props.flag_reply !== true && (
+            <Poll
+              className="icons"
+              flag_stop_working={flag2_toschedule - 1}
+              classname={"Poll"}
+              setflag_stop_working={setflag2_toschedule}
+              tweet_id={props.tweet_id}
+            />
+          )}
         </div>
-
 
         {(flag2_toschedule === 1 || flag2_toschedule === 2) && (
           <div className="icons">
             <div className="image-upload">
               <label htmlFor="file-input">
-                {console.log(
-                  "flag stop working before icon media =" +
-                    props.flag_tweetpopuppage
-                )}
                 <CollectionsIcon className={props.classname_media} />
               </label>
-              <input id="file-input" type="file" onChange={handleimage} />
+              <input id="file-input" type="file" onChange={uploadImage} />
             </div>
             <SentimentSatisfiedAltIcon
               className={props.classname_emoji}
               onClick={open_pop_over}
             />
 
-            {/* scheduled_tweets={scheduled_tweets}
-              content= {scheduled_tweets[i].content}
-              weekdayName= {scheduled_tweets[i].weekdayName}
-              month=  {scheduled_tweets[i].month}
-              time= {scheduled_tweets[i].time}
-              date= {scheduled_tweets[i].date}
-              year= {scheduled_tweets[i].year}
-              am_pm= {scheduled_tweets[i].am_pm}  */}
             <IconGif classname={"Gif"} />
 
-
-
-            {props.flag_reply!==true && <IconSchedule
-              scheduled_tweets={props.scheduled_tweets}
-              scheduledtweetsflag={scheduledtweetsflag}
-              classname={"Schedule"}
-              flagconfirm={props.flagconfirm}
-              setweekdayName={setweekdayName}
-              setyear={setyear}
-              settime={settime}
-              setdate={setdate}
-              setmonth={setmonth}
-              setam_pm={setam_pm}
-              setflag2_toschedule={setflag2_toschedule}
-              setscheduledtweets={setscheduledtweetsflag}  />}
-         </div>
+            {props.flag_reply !== true && (
+              <IconSchedule
+                scheduled_tweets={props.scheduled_tweets}
+                scheduledtweetsflag={scheduledtweetsflag}
+                classname={"Schedule"}
+                flagconfirm={props.flagconfirm}
+                setweekdayName={setweekdayName}
+                setyear={setyear}
+                settime={settime}
+                setdate={setdate}
+                setmonth={setmonth}
+                setam_pm={setam_pm}
+                setmonthnumber={setmonthnumber}
+                setflag2_toschedule={setflag2_toschedule}
+                setscheduledtweets={setscheduledtweetsflag}
+              />
+            )}
+          </div>
         )}
         <Popover
           open={open}
@@ -673,27 +717,32 @@ function Inputtext(props) {
 
         {flag2_toschedule !== 0 && flag2_toschedule !== 2 ? (
           <div>
-            {props.flag_tweetpopuppage != 1 ?
+            {props.flag_tweetpopuppage != 1 ? (
               <div>
-             { flag2===1 ?
-             <Button sx={tweetbutton} onClick={handlechangeT}>
-                Tweet
-              </Button> :
-              <Button sx={tweetbuttonblur} onClick={handlechangeT}>
-                Tweet
-              </Button>
-             } </div>
-            : (
+                {flag2 === 1 ? (
+                  <Button sx={tweetbutton} onClick={handlechangeT}>
+                    Tweet
+                  </Button>
+                ) : (
+                  <Button sx={tweetbuttonblur} onClick={handlechangeT}>
+                    Tweet
+                  </Button>
+                )}{" "}
+              </div>
+            ) : (
               <div>
-              {  flag2===1 ?
-              <Button sx={tweetbutton_popuppage} onClick={handlechangeT}>
-                Tweet
-              </Button>
-              :
-              <Button sx={tweetbutton_popuppageblur} onClick={handlechangeT}>
-              Tweet
-            </Button>
-             }
+                {flag2 === 1 ? (
+                  <Button sx={tweetbutton_popuppage} onClick={handlechangeT}>
+                    Tweet
+                  </Button>
+                ) : (
+                  <Button
+                    sx={tweetbutton_popuppageblur}
+                    onClick={handlechangeT}
+                  >
+                    Tweet
+                  </Button>
+                )}
               </div>
             )}
           </div>
@@ -701,36 +750,43 @@ function Inputtext(props) {
           <div>
             {props.flag_tweetpopuppage != 1 ? (
               <div>
-            { flag2===2 ? <Button
-                sx={schedulebutton}
-                className={props.classname}
-                onClick={handlechangeT}
-              >
-                Schedule
-              </Button>:<Button
-                sx={schedulebuttonblur}
-                className={props.classname}
-                onClick={handlechangeT}
-              >
-                Schedule
-              </Button>}
+                {flag2 === 2 ? (
+                  <Button
+                    sx={schedulebutton}
+                    className={props.classname}
+                    onClick={handlechangeT}
+                  >
+                    Schedule
+                  </Button>
+                ) : (
+                  <Button
+                    sx={schedulebuttonblur}
+                    className={props.classname}
+                    onClick={handlechangeT}
+                  >
+                    Schedule
+                  </Button>
+                )}
               </div>
             ) : (
               <div>
-              { flag2===2 ? <Button
-                sx={schedulebutton_popuppage}
-                className={props.classname}
-                onClick={handlechangeT}
-              >
-                Schedule
-              </Button>:
-              <Button
-                sx={schedulebutton_popuppageblur}
-                className={props.classname}
-                onClick={handlechangeT}
-              >
-                Schedule
-              </Button>}
+                {flag2 === 2 ? (
+                  <Button
+                    sx={schedulebutton_popuppage}
+                    className={props.classname}
+                    onClick={handlechangeT}
+                  >
+                    Schedule
+                  </Button>
+                ) : (
+                  <Button
+                    sx={schedulebutton_popuppageblur}
+                    className={props.classname}
+                    onClick={handlechangeT}
+                  >
+                    Schedule
+                  </Button>
+                )}
               </div>
             )}
           </div>

@@ -31,19 +31,20 @@
 }
 
 .searchBox {
-  /* position: sticky; */
+  /* position: sticky; 
   top: -1;
-  z-index: 100;
-  /* height: auto; */
+  z-index: 100;*/
+  position: relative;
+  height: auto;
   border: none;
   border-radius: 50px 50px 50px 50px;
-  height: 43px;
-  width: 300px;
-  padding-left: 40px;
+  padding-left: 4%;
+  padding-right: 5%;
   background-color: #eff3f4;
-  margin-left: -65%;
-  z-index: 1;
-  min-width: 350px;
+  /* margin-left: -65%; */
+  z-index: 100;
+ width: 80%;
+/* margin-right: 10%; */
 }
 .searchBox:focus {
   outline: none;
@@ -52,6 +53,31 @@
   border-color: #45a1df;
 }
 
+.dropdownsearch {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 80%;
+  z-index: 200 !important;
+  border-radius: 30px;
+  background: white;
+ box-shadow:1px 1px 1px 1px rgb(222, 220, 220);
+ max-height: 300px;
+ overflow: auto;
+ scrollbar-width: none;  
+}
+.searchContainer {
+  display: flex;
+  vertical-align: top;
+  height: 43px;
+  position: relative;
+  left: 50px;
+  top: 5px; 
+  border-radius: 50px 0px 0px 50px;
+  border-color: #45a1df;
+  display: "inline-block";
+ 
+}
 .searchIcon {
   display: flex;
   border-radius: 50px 0px 0px 50px;
@@ -65,18 +91,7 @@
   z-index: 2;
 }
 
-.searchContainer {
-  display: flex;
-  vertical-align: top;
-  height: 43px;
-  width: 50px;
-  position: relative;
-  left: 50px;
-  top: 5px;
-  border-radius: 50px 0px 0px 50px;
-  border-color: #45a1df;
-  /* background-color: #EFF3F4; */
-}
+
 
 .followButton {
   width: 30%;
@@ -173,6 +188,3 @@
   max-width: 600px;
 }
 
-.css-i4bv87-MuiSvgIcon-root {
-  display: none;
-}
